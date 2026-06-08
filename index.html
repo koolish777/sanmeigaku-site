@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>総合運勢診断（先生用・全表示版）</title>
+<style>
+  :root {
+    --bg: #f7f3ec;
+    --paper: #fffdf8;
+    --ink: #3a3226;
+    --accent: #8b1e2d;
+    --accent-soft: #b85c4a;
+    --gold: #a8893c;
+    --line: #d9cfbe;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.9;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { text-align: center; padding: 40px 0 24px; }
+  header h1 { font-size: 1.9rem; letter-spacing: 0.25em; color: var(--accent); font-weight: 600; }
+  header p.sub { margin-top: 8px; font-size: 0.95rem; color: #7a6f5d; letter-spacing: 0.1em; }
+  .test-badge {
+    display: inline-block; margin-top: 12px; padding: 2px 14px;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.78rem; letter-spacing: 0.15em; border-radius: 999px;
+  }
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 10px; padding: 28px 24px; margin-top: 24px;
+    box-shadow: 0 2px 10px rgba(90,70,40,0.06);
+  }
+  .card h2 {
+    font-size: 1.1rem; color: var(--accent); letter-spacing: 0.2em;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 18px;
+  }
+  form .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  select {
+    font-family: inherit; font-size: 1.05rem; padding: 10px 14px;
+    border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  button.go {
+    display: block; margin: 22px auto 0; padding: 12px 56px;
+    font-family: inherit; font-size: 1.05rem; letter-spacing: 0.3em;
+    color: #fff; background: var(--accent); border: none; border-radius: 999px;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  button.go:hover { opacity: 0.85; }
+  #result { display: none; }
+  .pillars { display: flex; gap: 10px; justify-content: center; text-align: center; }
+  .pillar { flex: 1; max-width: 160px; border: 1px solid var(--line); border-radius: 8px; padding: 14px 6px; background: #fcf9f2; }
+  .pillar .label { font-size: 0.8rem; color: #7a6f5d; letter-spacing: 0.2em; }
+  .pillar .kanshi { font-size: 1.7rem; margin-top: 4px; color: var(--ink); }
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    max-width: 480px; margin: 0 auto;
+  }
+  .cell {
+    border: 1px solid var(--line); border-radius: 8px; min-height: 92px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #fcf9f2; padding: 8px 4px; text-align: center;
+  }
+  .cell.empty { border: none; background: transparent; }
+  .cell .pos { font-size: 0.75rem; color: #7a6f5d; letter-spacing: 0.12em; }
+  .cell .star { font-size: 1.15rem; margin-top: 2px; color: var(--accent); font-weight: 600; }
+  .cell .energy { font-size: 0.72rem; color: var(--gold); margin-top: 2px; }
+  .cell.center { background: #f6eddc; border-color: var(--gold); }
+  .cell.bansei { border: 1.5px dashed var(--accent-soft); border-radius: 50%; background: transparent; opacity: 0.9; }
+  .tenchu {
+    text-align: center; font-size: 1.25rem; letter-spacing: 0.2em;
+    color: var(--accent); padding: 8px 0;
+  }
+  table.un { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  table.un th, table.un td { border-bottom: 1px solid var(--line); padding: 7px 6px; text-align: center; }
+  table.un th { color: #7a6f5d; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.1em; }
+  table.un tr.now td { background: #f6eddc; }
+  table.un td.adv { text-align: left; font-size: 0.84rem; line-height: 1.6; }
+  .un-meta { text-align: center; font-size: 0.85rem; color: #7a6f5d; margin-bottom: 12px; }
+  #sogo p, #honshitsu p { margin: 10px 0; font-size: 0.95rem; }
+  .energy-total { text-align: center; font-size: 0.95rem; color: #7a6f5d; margin-top: 14px; }
+  .energy-total b { color: var(--gold); font-size: 1.3rem; }
+  .reading { margin-top: 6px; }
+  .reading h3 {
+    font-size: 1rem; color: var(--accent-soft); margin: 20px 0 6px;
+    padding-left: 10px; border-left: 3px solid var(--accent-soft); letter-spacing: 0.1em;
+  }
+  .reading p { font-size: 0.95rem; }
+  .note {
+    margin-top: 28px; padding: 16px 18px; background: #f3ede1;
+    border-radius: 8px; font-size: 0.82rem; color: #7a6f5d; line-height: 1.8;
+  }
+  .note b { color: var(--accent-soft); }
+  footer { text-align: center; margin-top: 40px; font-size: 0.78rem; color: #a59a86; letter-spacing: 0.1em; }
+  /* 75歳にも見やすく：全体の文字を大きく */
+  html { font-size: 17.5px; }
+  body { line-height: 1.75; }
+  select, button, input { font-size: 1.05rem; }
+  select { padding: 6px 4px; }
+  h2 { letter-spacing: 0.06em; }
+  .un th, .un td { padding: 7px 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>総合運勢診断</h1>
+    <p class="sub">算命学・九星気学・インド占星術で、あなたの宿命の星を読み解きます</p>
+    <span class="test-badge">先生用・全表示版</span>
+  </header>
+
+  <div class="card">
+    <h2>生年月日を入力</h2>
+    <form id="form" onsubmit="return false;">
+      <div class="row">
+        <select id="y"></select>
+        <select id="m"></select>
+        <select id="d"></select>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <label style="cursor:pointer;"><input type="radio" name="sex" value="m" checked> 男性</label>
+        <label style="cursor:pointer;"><input type="radio" name="sex" value="f"> 女性</label>
+      </div>
+      <div class="row" style="margin-top:14px;">
+        <select id="hh"></select>
+        <select id="mi"></select>
+        <select id="pref"></select>
+      </div>
+      <div style="text-align:center;font-size:0.78rem;color:#7a6f5d;margin-top:6px;">出生時刻・出生地は占星術（月星座・アセンダント）に使います。不明でも診断できます</div>
+      <button class="go" onclick="run()">診断する</button>
+    </form>
+  </div>
+
+  <div id="result">
+    <div class="card">
+      <h2>陰占　─ 宿命の干支 ─</h2>
+      <div class="un-meta">生年月日を、昔のこよみ「干支（かんし）」に置き換えたもの。あなたの宿命の設計図です。漢字の意味は「星の読み解き」でやさしく説明します</div>
+      <div class="pillars">
+        <div class="pillar"><div class="label">日（あなた自身）</div><div class="kanshi" id="p-day"></div></div>
+        <div class="pillar"><div class="label">月（仕事・社会）</div><div class="kanshi" id="p-month"></div></div>
+        <div class="pillar"><div class="label">年（家系・目上）</div><div class="kanshi" id="p-year"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>陽占　─ 人体星図 ─</h2>
+      <div class="un-meta">干支から導いた星の配置。胸の星があなたの本質、まわりの星が場面ごとの顔です。点数はエネルギーの大きさで、優劣ではありません</div>
+      <div class="grid" id="grid"></div>
+      <div class="energy-total">エネルギー総数　<b id="energy"></b><span>　点</span></div>
+    </div>
+
+    <div class="card">
+      <h2>星の読み解き</h2>
+      <div class="un-meta">あなたの星をひとつずつ、ことばにしました</div>
+      <div class="reading" id="reading"></div>
+    </div>
+
+    <div class="card">
+      <h2>あなたという人　─ 本質と素顔 ─</h2>
+      <div class="un-meta">太陽（生き方）・月（心）・星々の配置から見た、あなたの素顔です</div>
+      <div id="honshitsu"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>宿命と適性　─ 職業・健康・組織 ─</h2>
+      <div class="reading" id="tekisei"></div>
+    </div>
+
+    <div class="card">
+      <h2>天中殺</h2>
+      <div class="un-meta">天の後ろ盾がひと休みする期間。悪い時期ではなく「守りと準備」の時期です</div>
+      <div class="tenchu" id="tenchu-name"></div>
+      <p id="tenchu-text" style="font-size:0.95rem;"></p>
+      <div id="tenchu-extra"></div>
+    </div>
+
+    <div class="card">
+      <h2>大運　─ 10年ごとの運の流れ ─</h2>
+      <div class="un-meta" id="taiun-meta"></div>
+      <div class="un-meta">色のついた行が「いま」のあなた。星の名前の下に、その星のテーマを小さく添えています</div>
+      <div id="taiun"></div>
+    </div>
+
+    <div class="card">
+      <h2>年運　─ 年ごとの運勢 ─</h2>
+      <div class="un-meta">年の切り替わりはお正月ではなく立春です。色のついた行が「今年」</div>
+      <div id="nenun"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>今月と今週の運勢</h2>
+      <div class="un-meta">今日から7日間の星と、過ごし方のヒント。いちばん右の「過ごし方」だけ読めば大丈夫です</div>
+      <div id="getsunichi"></div>
+    </div>
+
+    <div class="card">
+      <h2>総合アドバイス</h2>
+      <div class="un-meta">すべての結果をまとめた、いまのあなたへのメッセージです</div>
+      <div id="sogo"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>九星気学　─ 吉方位と色 ─</h2>
+      <div class="un-meta" id="kigaku-meta"></div>
+      <div id="kigaku"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>相性診断　─ 恋愛・仕事 ─</h2>
+      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
+      <div style="text-align:center;margin:12px 0;">
+        <select id="ay"></select>
+        <select id="am"></select>
+        <select id="ad"></select><br>
+        <span style="font-size:0.9rem;">
+          <label><input type="radio" name="arel" value="love" checked> 恋愛・パートナー</label>
+          <label style="margin-left:14px;"><input type="radio" name="arel" value="work"> 仕事・対人</label>
+        </span><br>
+        <button type="button" onclick="runAishou()" style="margin-top:10px;">相性を見る</button>
+      </div>
+      <div class="reading" id="aout"></div>
+    </div>
+
+    <div class="card">
+      <h2>占星術　─ ホロスコープ（インド式） ─</h2>
+      <div class="un-meta">実際の星空に合わせたインド式。雑誌の星占いと星座がひとつずれることがあります</div>
+      <div id="seiyo"></div>
+    </div>
+
+    <div class="card">
+      <h2>ことばの小事典　─ 用語のやさしい説明 ─</h2>
+      <div class="un-meta">この診断に出てくることばの意味です。読み物としてもお楽しみください</div>
+      <table class="un" style="font-size:0.86rem;">
+        <tr><th style="width:8.5em;">ことば</th><th class="adv">意味</th></tr>
+        <tr><td>陰占（いんせん）</td><td class="adv">生年月日を干支（年柱・月柱・日柱）に置き換えたもの。宿命の設計図です</td></tr>
+        <tr><td>陽占（ようせん）・人体星図</td><td class="adv">陰占から導いた星の配置。性格・才能・人生の各時期をあらわします</td></tr>
+        <tr><td>十干（じっかん）・日干</td><td class="adv">甲乙丙丁戊己庚辛壬癸の10文字。<b>日干＝あなた自身</b>をあらわす、いちばん大切な字です</td></tr>
+        <tr><td>十二支・蔵干（ぞうかん）</td><td class="adv">子丑寅卯…の12文字。支の中に隠れている干を「蔵干」と呼び、星を出すときに使います</td></tr>
+        <tr><td>五行（ごぎょう）</td><td class="adv">木・火・土・金・水の5つの気。すべての干支はどれかに属します</td></tr>
+        <tr><td>相生・相剋（そうしょう・そうこく）</td><td class="adv">五行の助け合い（木→火→土→金→水→木）と、抑え合い（木は土を、土は水を、水は火を、火は金を、金は木を抑える）</td></tr>
+        <tr><td>干合（かんごう）</td><td class="adv">特定の十干どうし（甲と己、乙と庚、丙と辛、丁と壬、戊と癸）が強く引き合う特別な縁。隣り合う柱で成立し、結びつくと五行が変化することがあります</td></tr>
+        <tr><td>位相法（いそうほう）</td><td class="adv">支どうしの関係（支合・対冲・半会・方三位・刑・害・破など）。相性や、年まわりとの噛み合わせを見る技法です</td></tr>
+        <tr><td>十大主星</td><td class="adv">貫索・石門・鳳閣・調舒・禄存・司禄・車騎・牽牛・龍高・玉堂。性格と才能をあらわす10の星です</td></tr>
+        <tr><td>十二大従星</td><td class="adv">天報〜天馳の12星。人生の各時期のエネルギーの質と量（点数）をあらわします</td></tr>
+        <tr><td>エネルギー総数</td><td class="adv">従星3つの点数の合計。高ければパワー型、低ければ感性型——優劣ではなく、型の違いです</td></tr>
+        <tr><td>身強・身弱（みきょう・みじゃく）</td><td class="adv">日干の体力のこと。エネルギー点数が高ければ身強（押せる体質）、低ければ身弱（繊細な体質）です</td></tr>
+        <tr><td>食傷（しょくしょう）</td><td class="adv">日干が「生み出す」側の五行（例：土の人なら金）。あふれた力を外へ流す、表現と発散の働きです</td></tr>
+        <tr><td>比劫・財・官殺・印</td><td class="adv">日干から見た五行の関係の呼び名。比劫＝自分と同じ、食傷＝自分が生み出す、財＝自分が働きかけて動かす、官殺＝自分を律する、印＝自分を育ててくれる、という関係です</td></tr>
+        <tr><td>天中殺（てんちゅうさつ）</td><td class="adv">天の後ろ盾がひと休みする期間。年（12年に2年）・月（12ヶ月に2ヶ月）・日（12日に2日）の単位でめぐります。悪い時期ではなく「守りと準備」の時期です</td></tr>
+        <tr><td>中殺（ちゅうさつ）</td><td class="adv">はたらきが封じられて空（から）になること。「天中殺」「宿命中殺」の「中殺」はこの意味です</td></tr>
+        <tr><td>宿命中殺</td><td class="adv">生まれつき命式の中に持っている中殺（生年中殺・生月中殺・日座中殺）。独特の才能のしるしでもあります</td></tr>
+        <tr><td>大運（たいうん）・立運</td><td class="adv">10年ごとに切り替わる大きな運気が大運。それが何歳から始まるかが立運です</td></tr>
+        <tr><td>年運・月運</td><td class="adv">その年・その月にめぐってくる干支から見る運気。年の切り替わりはお正月ではなく立春です</td></tr>
+        <tr><td>調候守護神（ちょうこうしゅごじん）</td><td class="adv">生まれた季節（月支）と日干の組み合わせで決まる、命式の寒暖バランスを整えてくれる神（干）。冬生まれには火、というように季節を調える存在です</td></tr>
+        <tr><td>調和の守護神</td><td class="adv">五行の過不足のバランスをとってくれる五行。あふれた力は「漏らして流す」のが第一です</td></tr>
+        <tr><td>忌神（いみがみ）</td><td class="adv">過剰になっている五行のこと。「悪い神様」ではなく、強すぎる力。基本は無理をさせず守り、ときに自分を鍛える試練にもなります</td></tr>
+        <tr><td>過多（かた）</td><td class="adv">命式6文字の中に同じ五行が3つ以上あること。多すぎる力は、上手に流すことで才能になります</td></tr>
+        <tr><td>九星気学（きゅうせいきがく）</td><td class="adv">生まれ年の九星（本命星）で吉方位や色を見る占い。月命星は生まれ月の九星です</td></tr>
+        <tr><td>五黄殺・暗剣殺</td><td class="adv">九星気学の代表的な凶方位。五黄土星のある方位と、その正反対の方位です</td></tr>
+        <tr><td>吉方参り（きっぽうまいり）</td><td class="adv">吉方位の神社にお参りして運気をいただく開運法。水の方位なら水神様・竜神様など、五行に縁のある神様とつながります</td></tr>
+        <tr><td>サイデリアル（インド式）</td><td class="adv">実際の星空の位置に合わせた星座の出し方。西洋の星占いと約1星座分ずれるため、「星座が変わった」と感じる方も多いです</td></tr>
+        <tr><td>ナクシャトラ</td><td class="adv">月の通り道を27に分けた「月の宿」。性格や相性を見るインド占星術の技法です</td></tr>
+        <tr><td>アセンダント</td><td class="adv">生まれた瞬間に東の地平線から昇っていた星座。まわりに見せている第一印象の顔です</td></tr>
+        <tr><td>ハウス（お部屋）</td><td class="adv">空を12の「お部屋」に分けたもの。第1＝自分、第2＝お金、第4＝家庭、第5＝恋愛、第7＝結婚、第10＝天職など。星がどのお部屋にいるかで、その力が人生のどの場面で働くかを見ます</td></tr>
+        <tr><td>高揚・減衰・自星座・友好・敵対</td><td class="adv">惑星の「居心地」のランク。居心地のよい星はあなたの武器に、窮屈な星はゆっくり磨かれる課題になります</td></tr>
+      </table>
+      <div style="font-size:0.78rem;color:#7a6f5d;margin-top:8px;">※やさしい言い換えのため、専門書の厳密な定義とは少し異なることがあります。</div>
+    </div>
+
+    <div class="card">
+      <h2>結果の読み解きガイド　─ 数や星を「どう読むか」─</h2>
+      <div class="un-meta">出てきた数字や守護神が「どういう意味で、どう読めるか」の一般的な見方です（流派によらない標準的な考え方）</div>
+
+      <p style="font-size:0.9rem;">算命学のおおもとは「<b>人も自然の一部</b>」という考え方です。陰陽（光と影）と五行（木・火・土・金・水。生み合い・抑え合い）の巡りで、命式＝生まれた瞬間の自然のバランスを読みます。下の項目はすべて「<b>その人の中の自然のバランスをどう見るか</b>」の道具です。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">① 身強・身弱 ─ 攻めの人か、受けの人か</h3>
+      <p style="font-size:0.9rem;"><b>意味：</b>日干（＝あなた自身）の力が、命式全体の中で強い状態か弱い状態か。味方（同じ五行の仲間＝比劫／生んでくれる＝印）が多いと<b>身強</b>、力を減らす・抑えるもの（食傷・財・官）が多いと<b>身弱</b>です。<br>
+      <b>“数”の正体：</b>生まれ月の季節・地支の根・味方の数を点数化した「味方と敵のバランス点」。この診断では陽占のエネルギー点数（6〜33点・中央およそ19.5点／目安20点以上＝身強・17点以下＝身弱）で見ています。<br>
+      <b>読み方：</b>良し悪しではなく<b>エネルギーの使い方</b>が変わります。身強＝力が余る→<b>出して使う</b>（行動・発信・与える・引っ張る）と活きる。身弱＝控えめ→<b>守り・受け取る・人の力を借りる</b>（協調・サポート）と活きる。過強＝我が強く孤立しやすい（出口＝食傷・財・官を作ると楽）。過弱＝流されやすい（支え＝印・仲間があると安定）。偏りは欠点でなく<b>個性</b>です。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">② 蔵干 ─ 内に秘めた性質・本音</h3>
+      <p style="font-size:0.9rem;"><b>意味：</b>十二支の中に隠れている十干（例：寅＝甲・丙・戊）。季節がなだらかに移るときの「地中に溜まったエネルギー」です。<br>
+      <b>読み方：</b>表に出た干（天干）が<b>外面・行動</b>なら、蔵干は<b>内面・潜在・本音</b>。日支の蔵干＝その人の核と配偶者運。蔵干に日干と同じ五行があれば「<b>根がある</b>（芯が強い・身強寄り）」。表の干と蔵干がズレていれば、外に見せる顔と本音に差がある人、と読みます。だから蔵干は「数えるための材料」だけでなく、<b>その人の内面を読む手がかり</b>です。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">③ 干合 ─ 結びつきのご縁</h3>
+      <p style="font-size:0.9rem;"><b>意味：</b>十干どうしが強く引き合って結びつく、次の5組だけの特別な縁です。隣り合う柱で成立します。</p>
+      <table class="un" style="font-size:0.86rem;"><tr><th>組</th><th class="adv">結びつくと変化する五行</th></tr>
+      <tr><td>甲 と 己</td><td class="adv">土</td></tr>
+      <tr><td>乙 と 庚</td><td class="adv">金</td></tr>
+      <tr><td>丙 と 辛</td><td class="adv">水</td></tr>
+      <tr><td>丁 と 壬</td><td class="adv">木</td></tr>
+      <tr><td>戊 と 癸</td><td class="adv">火</td></tr></table>
+      <p style="font-size:0.9rem;"><b>読み方：</b>良い面＝<b>縁・協調・魅力</b>（人を惹きつける、まとめ役）。注意の面＝結ばれて<b>本来の星の働きが止まる</b>（優柔・束縛）。日干の干合＝人に合わせ、情に流されやすい一方、人に好かれ縁を結ぶ力。年運でその年の干と干合すると、その星のテーマ（恋愛・仕事・人間関係など）が動く年、と読みます。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">④ 守護神 ─ 足りない力を補う、暮らしの指針</h3>
+      <p style="font-size:0.9rem;"><b>意味：</b>命式のバランスを整える、その人に最も必要な五行（中国式の「用神」にあたります）。<br>
+      <b>決め方は2本柱：</b>(1)<b>扶抑</b>＝身強なら抑える・漏らす五行、身弱なら助ける五行。(2)<b>調候</b>＝生まれた季節の寒暖で決める（自然そのもの）。</p>
+      <table class="un" style="font-size:0.86rem;"><tr><th>命式の傾き</th><th class="adv">補うとよい守護神</th></tr>
+      <tr><td>冬生まれ・水が多い（寒く湿る）</td><td class="adv">火（温める）</td></tr>
+      <tr><td>夏生まれ・火が多い（暑く乾く）</td><td class="adv">水（潤す）</td></tr>
+      <tr><td>木が茂りすぎ</td><td class="adv">金（剪定する）</td></tr>
+      <tr><td>土が重く多い</td><td class="adv">木（耕す）・水（潤す）</td></tr></table>
+      <p style="font-size:0.9rem;"><b>使い方：</b>守護神の五行を<b>色・方位・季節・関わる人・行動</b>に取り入れると安定し、運が開きやすくなります（例：守護神が火→南／赤・暖色／明るい場所／夏が追い風）。これが「吉方・今日の色」につながります。守護神は記号ではなく、<b>心地よく生きるために自然界から補うとよい力</b>。逆に邪魔をする五行を忌神と呼び、基本は無理をさせず守ります。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">命式を読む順番（全体の流れ）</h3>
+      <p style="font-size:0.9rem;">①日干（自分の基本性質）→ ②月支とその蔵干（才能の土台）→ ③身強・身弱（攻めか受けか）→ ④守護神（何を補えば活きるか＝暮らしの指針）→ ⑤星の配置（人生のどの分野に力が集まるか）→ ⑥干合・冲・刑など（星どうしのドラマ）→ ⑦大運・年運（時期。守護神が巡る時期は追い風、忌神が巡る時期は「整える時」）。</p>
+
+      <div class="note" style="margin-top:10px;">すべて「こう<b>傾きやすい</b>／こう<b>活かせる</b>」という傾向と活かし方でお伝えします。「必ずこうなる」と決めつけたり、不安をあおったりはしません。最後に選ぶのはご本人です。<br><span style="font-size:0.78rem;color:#7a6f5d;">※ここでの説明は、流派によらない一般的・標準的なセオリーです。</span></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>鑑定者用メモ　─ 命式の詳細 ─</h2>
+      <div class="un-meta">位相法・干合・宿命中殺・五行バランス（非公開）</div>
+      <div id="pro"></div>
+    </div>
+
+    <div class="card">
+      <div class="note">
+        <b>※ この診断について</b><br>
+        この診断は、自然法算命学の系譜に連なる鑑定方法と、一般に公開されている標準的な計算方式に基づいて作られています。<br>
+        【計算方式】節入りは太陽黄経による天文計算（日単位・日本時間）。蔵干は二十八元法。大運の立運は「節入りまでの日数÷3（余り2日は切り上げ・最低1歳）」、初旬は月柱の隣の干支から。九星気学は本命星＝年の九星・立春切替の標準方式。占星術はインド式（サイデリアル・ラヒリ方式の近似）を主表示とし、西洋式を参考表示。惑星位置はケプラー軌道要素による計算（精度±1度ほど）で、星座の境目付近では前後する場合があります。出生時刻を入れない場合、月星座は正午で計算した参考値です。ハウスはアセンダント基準のホールサイン方式で、出生時刻があるときのみ表示します。<br>
+        【鑑定の方式】調候守護神は標準表（日干×月支120パターン）。忌神は過剰になっている五行。五行の過多は命式6文字中3つ以上が目安で、厳密には日干・身強身弱と照らして判定します。干合は隣り合う柱でのみ成立し、成立したときは変化後の五行で数え直します。身強・身弱は陽占のエネルギー点数で見ます。伴星は日干と「年干と干合する干」から出します（実例で確認済み）。相性診断に点数は表示しません——数字より、縁の形を言葉でお伝えする方針です。<br>
+        【ご注意】健康に関する記述は東洋五行の伝統的な見方の紹介であり、医学的な診断・助言ではありません。気になる症状は医療機関にご相談ください。解釈の文章は、鑑定の経験をもとにこれからも磨き続けていきます。
+      </div>
+    </div>
+  </div>
+
+  <footer>総合運勢診断 — 先生用・全表示版（v25・解説入り）</footer>
+</div>
+
+<script>
+// ========== 計算ロジック ==========
+const STEMS = ["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"];
+const BRANCHES = ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"];
+const SETSU_LON=[315,345,15,45,75,105,135,165,195,225,255,285];
+const SETSU_APPROX=[[2,4],[3,6],[4,5],[5,6],[6,6],[7,7],[8,8],[9,8],[10,8],[11,7],[12,7],[1,6]];
+function sunLon(jd){
+  const T=(jd-2451545)/36525;
+  const L0=280.46646+36000.76983*T+0.0003032*T*T;
+  const M=(357.52911+35999.05029*T-0.0001537*T*T)*Math.PI/180;
+  const C=(1.914602-0.004817*T-0.000014*T*T)*Math.sin(M)+(0.019993-0.000101*T)*Math.sin(2*M)+0.000289*Math.sin(3*M);
+  const om=(125.04-1934.136*T)*Math.PI/180;
+  let lam=(L0+C-0.00569-0.00478*Math.sin(om))%360;
+  return lam<0?lam+360:lam;
+}
+function jdToDateJST(jd){
+  const z=Math.floor(jd+0.5+9/24);
+  let a=z;
+  if(z>=2299161){const al=Math.floor((z-1867216.25)/36524.25);a=z+1+al-Math.floor(al/4);}
+  const b=a+1524,c=Math.floor((b-122.1)/365.25),dd=Math.floor(365.25*c),e=Math.floor((b-dd)/30.6001);
+  const day=b-dd-Math.floor(30.6001*e), month=e<14?e-1:e-13, year=month>2?c-4716:c-4715;
+  return {y:year,m:month,d:day};
+}
+const setsuCache={};
+function setsuJdn(calYear,idx){
+  const key=calYear+"_"+idx;
+  if(setsuCache[key])return setsuCache[key];
+  const target=SETSU_LON[idx],[am,ad]=SETSU_APPROX[idx];
+  let lo=jdn(calYear,am,ad)-0.5-10, hi=lo+20;
+  const f=j=>(((sunLon(j)-target+540)%360)-180);
+  for(let i=0;i<50;i++){const mid=(lo+hi)/2;if(f(mid)<0)lo=mid;else hi=mid;}
+  const t=jdToDateJST((lo+hi)/2);
+  return setsuCache[key]=jdn(t.y,t.m,t.d);
+}
+const ZOKAN28 = {
+  0:[[8,10],[9,99]],
+  1:[[9,9],[7,12],[5,99]],
+  2:[[4,7],[2,14],[0,99]],
+  3:[[0,10],[1,99]],
+  4:[[1,9],[9,12],[4,99]],
+  5:[[4,5],[6,14],[2,99]],
+  6:[[2,10],[5,19],[3,99]],
+  7:[[3,9],[1,12],[5,99]],
+  8:[[4,7],[8,14],[6,99]],
+  9:[[6,10],[7,99]],
+  10:[[7,9],[3,12],[4,99]],
+  11:[[4,7],[0,14],[8,99]]
+};
+function zokan(branch, days){
+  for(const [stem, upto] of ZOKAN28[branch]){ if(days <= upto) return stem; }
+  return ZOKAN28[branch][ZOKAN28[branch].length-1][0];
+}
+function jdn(y,m,d){const a=Math.floor((14-m)/12),yy=y+4800-a,mm=m+12*a-3;
+  return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045;}
+function dayKanshi(y,m,d){return ((jdn(y,m,d)+49)%60+60)%60;}
+function solarMonth(y,m,d){
+  const myJ=jdn(y,m,d);
+  let best=null;
+  for(let yy=y-1;yy<=y;yy++){
+    for(let i=0;i<12;i++){
+      const tj=setsuJdn(yy,i);
+      if(tj<=myJ&&(!best||tj>best.tj))best={tj,idx:i};
+    }
+  }
+  const setsuYear=myJ>=setsuJdn(y,0)?y:y-1;
+  return {setsuYear,monthIdx:best.idx,setsuJ:best.tj};
+}
+function nextSetsuJdn(y,m,d){
+  const myJ=jdn(y,m,d);
+  let best=null;
+  for(let yy=y;yy<=y+1;yy++){
+    for(let i=0;i<12;i++){
+      const tj=setsuJdn(yy,i);
+      if(tj>myJ&&(!best||tj<best))best=tj;
+    }
+  }
+  return best;
+}
+function kanshi60(s,b){return ((6*s-5*b)%60+60)%60;}
+function kanshiName(idx){return STEMS[idx%10]+BRANCHES[idx%12];}
+function yearKanshi(sy){return {stem:((sy-4)%10+10)%10, branch:((sy-4)%12+12)%12};}
+function monthKanshi(ys,mi){return {stem:(((ys%5)*2+2)+mi)%10, branch:(2+mi)%12};}
+const MAIN=[["貫索星","石門星"],["鳳閣星","調舒星"],["禄存星","司禄星"],["車騎星","牽牛星"],["龍高星","玉堂星"]];
+function mainStar(ds,ts){
+  const ed=Math.floor(ds/2),et=Math.floor(ts/2);
+  const rel=((et-ed)%5+5)%5, same=(ds%2)===(ts%2)?0:1;
+  return MAIN[rel][same];
+}
+const CHOSEI={0:11,2:2,4:2,6:5,8:8,1:6,3:9,5:9,7:0,9:3};
+const SUB=["天貴星","天恍星","天南星","天禄星","天将星","天堂星","天胡星","天極星","天庫星","天馳星","天報星","天印星"];
+const SUB_E=[9,7,10,11,12,8,4,2,5,1,3,6];
+function subStar(ds,br){
+  const cs=CHOSEI[ds], yang=ds%2===0;
+  const st=yang?((br-cs)%12+12)%12:((cs-br)%12+12)%12;
+  return {name:SUB[st],energy:SUB_E[st]};
+}
+const TENCHU=["戌亥天中殺","申酉天中殺","午未天中殺","辰巳天中殺","寅卯天中殺","子丑天中殺"];
+
+const KYUSEI=["一白水星","二黒土星","三碧木星","四緑木星","五黄土星","六白金星","七赤金星","八白土星","九紫火星"];
+const KYUSEI_SHORT=["一白","二黒","三碧","四緑","五黄","六白","七赤","八白","九紫"];
+const KYUSEI_ELEM=[4,2,0,0,2,3,3,2,1];
+const KYUSEI_COLOR=["白・黒・青","黄・茶","青・緑","緑・青","黄・茶・ベージュ","白・金・銀","赤・ピンク","白・黄・茶","赤・紫"];
+// 九星の象意・長所・短所（標準的な通説・要監修）
+const KYUSEI_SHOI=[
+ {k:"水・夜・思索・交わり・苦労・秘密ごと・水辺",g:"柔軟で適応力があり、思慮深い。人当たりが柔らかく、忍耐強い。苦労を深みに変えられる。",b:"悩みを抱え込みやすく、流されやすい。秘密主義になりがちで、心身が冷えやすい。"},
+ {k:"大地・母・育成・勤労・大衆・不動産・古いもの",g:"勤勉で誠実、世話好き。こつこつ努力を積み上げ、人を育てる母性がある。",b:"優柔不断で決断が遅れがち。心配性で受け身になりやすく、損な役回りを引き受けすぎる。"},
+ {k:"雷・若木・音・声・発展・スピード・新しいこと",g:"行動力と明るさがあり、発想が新しい。時代の先駆けになれる若々しさを持つ。",b:"短気で飽きっぽい。口が先に動いて軽率になりやすく、詰めが甘くなりがち。"},
+ {k:"風・成木・信用・縁・結婚・旅行・運ぶこと",g:"社交的で信用を得るのがうまい。穏やかに場を調え、良い縁を結び運んでくる。",b:"八方美人になりやすく、押しに弱い。風向きに流されて自分の軸を見失うことがある。"},
+ {k:"帝王・中心・支配・破壊と再生・強烈な力",g:"親分肌で度量が大きく、逆境に強い。壊れた状況を立て直す再生の力を持つ。",b:"強引で我が強く、極端に走りやすい。良くも悪くも周囲への影響が大きすぎることがある。"},
+ {k:"天・父・権威・公・完全・神仏・乗り物・高級品",g:"責任感と統率力があり、正義感が強い。気品があり、公の場で信頼される。",b:"プライドが高く頑固。働きすぎで、人にも自分にも厳しくなりすぎることがある。"},
+ {k:"沢・少女・口・喜び・社交・飲食・金銭・恋愛",g:"愛嬌と話術があり、人を楽しませる天才。金運に恵まれ、場を華やがせる。",b:"浪費しやすく、口が災いのもとになりがち。楽しみに流れて飽きっぽくなることがある。"},
+ {k:"山・変化と停止・蓄積・相続・改革・親族",g:"堅実で蓄える力があり、継続力に優れる。変わり目で思い切った改革ができる。",b:"頑固で閉鎖的になりやすい。変化を恐れて動けないか、逆に急変しすぎることがある。"},
+ {k:"火・美・名誉・芸術・学問・先見・別れと出会い",g:"華やかで直感が鋭く、審美眼と頭脳明晰さを持つ。先を見抜く力がある。",b:"熱しやすく冷めやすい。見栄を張りがちで、人との別れ・離合が多くなりやすい。"}
+];
+function shoiRow(label,st){
+  const s=KYUSEI_SHOI[st-1];
+  return '<tr><td>'+label+'</td><td><b>'+KYUSEI_SHORT[st-1]+'</b></td><td class="adv">象意：'+s.k+'<br><span style="color:var(--accent);">長所：</span>'+s.g+'<br><span style="color:#7a6f5d;">短所：</span>'+s.b+'</td></tr>';
+}
+function nineStarYear(sy){return ((11-(sy%9))-1)%9+1;}
+function nineStarMonth(sy,mi){const g=sy%3;const start=g===1?8:(g===2?5:2);return ((start-1-mi)%9+9)%9+1;}
+function solsticeJdn(cy,summer){
+  const target=summer?90:270,am=summer?6:12,ad=summer?21:22;
+  let lo=jdn(cy,am,ad)-0.5-8,hi=lo+16;
+  const f=j=>(((sunLon(j)-target+540)%360)-180);
+  for(let i=0;i<50;i++){const mid=(lo+hi)/2;if(f(mid)<0)lo=mid;else hi=mid;}
+  const t=jdToDateJST((lo+hi)/2);
+  return jdn(t.y,t.m,t.d);
+}
+function nineStarDay(y,m,d){
+  const myJ=jdn(y,m,d);
+  let cur=null;
+  for(let yy=y-2;yy<=y;yy++){
+    for(const summer of [false,true]){
+      const sj=solsticeJdn(yy,summer);
+      const r=((sj+49)%60+60)%60;
+      const delta=(60-r)%60;
+      const c1=sj+delta,c2=sj+delta-60;
+      const anchor=(c1-sj<=sj-c2)?c1:c2;
+      if(anchor<=myJ&&(!cur||anchor>cur.j))cur={j:anchor,yang:!summer};
+    }
+  }
+  const diff=myJ-cur.j;
+  return cur.yang?(diff%9)+1:9-(diff%9);
+}
+function aishou(a,b){const ea=KYUSEI_ELEM[a-1],eb=KYUSEI_ELEM[b-1];return ea===eb||(ea+1)%5===eb||(eb+1)%5===ea;}
+function kippoTable(center,honmei,branch){
+  const DIRNAMES=["北","北東","東","東南","南","南西","西","北西"];
+  const TEII=[1,8,3,4,9,2,7,6];
+  const BRD=[0,1,1,2,3,3,4,5,5,6,7,7];
+  const stars=TEII.map(p=>((center+p-6)%9+9)%9+1);
+  const gohoIdx=stars.indexOf(5);
+  const haDir=BRD[(branch+6)%12];
+  const honmeiIdx=stars.indexOf(honmei);
+  return DIRNAMES.map((name,i)=>{
+    const st=stars[i];
+    let mark="−",why="";
+    if(i===gohoIdx){mark="✕";why="五黄殺";}
+    else if(gohoIdx>=0&&i===(gohoIdx+4)%8){mark="✕";why="暗剣殺";}
+    else if(i===haDir){mark="✕";why="破";}
+    else if(i===honmeiIdx){mark="✕";why="本命殺";}
+    else if(honmeiIdx>=0&&i===(honmeiIdx+4)%8){mark="✕";why="本命的殺";}
+    else if(st!==5&&aishou(st,honmei)){mark="◎";why="吉方";}
+    return {name,star:st,mark,why};
+  });
+}
+function kippoHtml(title,center,honmei,branch){
+  const rows=kippoTable(center,honmei,branch);
+  let h='<div style="margin-top:14px;"><b style="color:var(--accent-soft);font-size:0.9rem;">'+title+'（'+KYUSEI_SHORT[center-1]+'中宮）</b>';
+  h+='<table class="un"><tr>'+rows.map(r=>'<th>'+r.name+'</th>').join('')+'</tr>';
+  h+='<tr>'+rows.map(r=>'<td>'+KYUSEI_SHORT[r.star-1]+'</td>').join('')+'</tr>';
+  h+='<tr>'+rows.map(r=>'<td>'+(r.mark==="◎"?'<span style="color:var(--accent);font-weight:bold;">◎</span>':(r.mark==="✕"?'<span style="color:#999;">✕</span>':'−'))+'</td>').join('')+'</tr>';
+  h+='<tr>'+rows.map(r=>'<td style="font-size:0.7rem;color:#7a6f5d;">'+(r.why||'')+'</td>').join('')+'</tr></table></div>';
+  return h;
+}
+
+function kangoCheck(a,b){return ((a-b+10)%10===5)?"干合":null;}
+const SANGO=[[8,0,4],[2,6,10],[5,9,1],[11,3,7]];
+const HOSANI=[[2,3,4],[5,6,7],[8,9,10],[11,0,1]];
+function branchRels(a,b){
+  const out=[];
+  if(a!==b&&((a+b===1)||(a+b===13)))out.push("支合");
+  if((a-b+12)%12===6)out.push("対冲");
+  for(const t of SANGO){if(a!==b&&t.includes(a)&&t.includes(b))out.push("半会");}
+  for(const t of HOSANI){if(a!==b&&t.includes(a)&&t.includes(b))out.push("方三位");}
+  const KEI=[[2,5],[5,8],[2,8],[1,10],[10,7],[1,7],[0,3]];
+  if(KEI.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)))out.push("刑");
+  if(a===b&&[4,6,9,11].includes(a))out.push("自刑");
+  const GAI=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
+  if(GAI.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)))out.push("害");
+  const HA=[[0,9],[1,4],[2,11],[3,6],[5,8],[10,7]];
+  if(HA.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)))out.push("破");
+  return out;
+}
+function pillarRels(i1,i2){
+  const out=[];
+  if(i1===i2)out.push("律音");
+  else if(i1%10===i2%10&&((i1%12)-(i2%12)+12)%12===6)out.push("納音");
+  return out;
+}
+
+const ZODIAC=["牡羊座","牡牛座","双子座","蟹座","獅子座","乙女座","天秤座","蠍座","射手座","山羊座","水瓶座","魚座"];
+const ZODIAC_TEXT=[
+  "思い立ったら即行動。切り拓く力と素直な情熱の星座です。",
+  "五感と安定を大切にする星座。じっくり育てて確かなものを残します。",
+  "好奇心と言葉の星座。情報を集めて軽やかにつなぎます。",
+  "情と記憶の星座。身内を守る力と共感力に恵まれます。",
+  "自己表現の星座。堂々と輝くことで周囲も明るくします。",
+  "分析と気配りの星座。細部を整える確かな実務力があります。",
+  "調和と美の星座。人と人の間でバランスを取る名人です。",
+  "深く一途な星座。本物だけを見抜き、とことん極めます。",
+  "自由と探究の星座。遠くへ、より高くへと飛び立ちます。",
+  "責任と達成の星座。現実を一歩ずつ登り頂上に至ります。",
+  "独創と博愛の星座。常識にとらわれない視点を持ちます。",
+  "想像と慈愛の星座。境界を越えて人の心に寄り添います。"
+];
+const SUN_NATURE=[
+ "まっすぐで、うそのつけない人です。新しい扉をいちばんに開ける勇気を持って生まれていますよ。",
+ "ゆっくりでも、確かなものを選べる人です。本物を見きわめる、良い目をお持ちですよ。",
+ "風のように、好奇心で活発に動く人です。人と人、世界と世界をつなぐ翼を持っていますよ。",
+ "大切な人を守ろうとする、あたたかい人です。覚えていてあげられるやさしさは、なによりの才能です。",
+ "そこにいるだけで、その場を明るくする人です。堂々と輝いていいのだと、星が示してくれていますよ。",
+ "細かいところまで心の届く人です。誰かのために、そっと差しのべる手を持っていますよ。",
+ "人と人の間に、やわらかな橋をかけられる人です。あなたがいると、場の空気がふっとやわらぎます。",
+ "一度信じたものを、とことん大切にする深い人です。その一途さは、得がたい宝物ですよ。",
+ "遠くを見つめて生きる、自由な人です。あなたの冒険心は、まわりの人に希望を配っています。",
+ "黙々と山を登れる、誠実な人です。積み上げてきたものは、けっして裏切りませんからね。",
+ "誰とも違う目を持っている人です。その「人と違うところ」こそ、あなたからの贈り物ですよ。",
+ "人の痛みを自分のことのように感じられる人です。そのやさしさを、世界はちゃんと必要としています。"
+];
+const MOON_HEART=[
+ "心の奥には、いくつになっても消えない情熱と、子どものような素直さがあります。",
+ "心の奥では、穏やかで変わらないものを何より求めています。安心できる場所さえあれば、あなたは強い人ですよ。",
+ "心の奥はいつも好奇心でいっぱい。ほんとうは、誰かに話を聞いてほしい人です。",
+ "心の奥はとても情が深くて、大切な人のことをいつまでも覚えています。",
+ "心の奥には「見ていてほしい」という素直な願いがあります。それは恥ずかしいことではありませんよ。",
+ "心の奥では、いつも「ちゃんとしなくちゃ」と頑張っています。もう十分、ちゃんとしていますよ。",
+ "心の奥では、争いのない穏やかな世界を願っています。その願いが、あなたの品の良さになっています。",
+ "心の奥には、めったに人に見せない深い情熱があります。見せるお相手は、選んでいいのですよ。",
+ "心の奥はいつも自由を求めています。縛られると苦しくなっても、それをわがままと思わなくていいのですよ。",
+ "心の奥では、責任をひとりで背負いがちです。荷物は、分けていいのですよ。",
+ "心の奥には、誰にも踏みこませない自分だけの世界があります。そこは大切に守っていい場所です。",
+ "心の奥はとても繊細で、人の気持ちを吸いこみやすい人です。疲れたら、そっと離れて大丈夫ですよ。"
+];
+const ASC_FACE=[
+  "まわりからは、元気で行動的な人に見られています。",
+  "まわりからは、落ち着いた安心感のある人に見られています。",
+  "まわりからは、明るく話しやすい人に見られています。",
+  "まわりからは、やわらかく親しみやすい人に見られています。",
+  "まわりからは、華やかで存在感のある人に見られています。",
+  "まわりからは、きちんとした信頼できる人に見られています。",
+  "まわりからは、感じのよい上品な人に見られています。",
+  "まわりからは、ミステリアスで芯のある人に見られています。",
+  "まわりからは、おおらかで自由な人に見られています。",
+  "まわりからは、しっかり者の頼れる人に見られています。",
+  "まわりからは、知的で個性的な人に見られています。",
+  "まわりからは、やさしく穏やかな人に見られています。"
+];
+const CHEST_WEAK={
+ "貫索星":"ひとりで抱えこみやすいところがあるかもしれませんね。でもそれは、責任感の裏返し。たまには人に頼っても、まわりの人ががっかりしたりしませんよ。",
+ "石門星":"まわりに気をつかいすぎて、自分の本音をあとまわしにしがちかもしれません。大丈夫。あなたの本音は、思っているよりずっと歓迎されますよ。",
+ "鳳閣星":"のんびりして見えて、誤解されることがあるかもしれません。でもその余裕に、まわりの人はずいぶん救われているのですよ。",
+ "調舒星":"傷つきやすくて、人といると疲れてしまうことがあるでしょう。それは感受性が豊かな証拠。無理に鈍くなる必要はありませんからね。",
+ "禄存星":"人に尽くしすぎて、自分のことがあとまわしになりがちです。与えたぶんは、ちゃんと巡って返ってきます。今度は、受け取る練習をなさいね。",
+ "司禄星":"心配性で、なかなか冒険できないところがあるかもしれません。でもその慎重さが、これまであなたと大切な人を守ってきたのですよ。",
+ "車騎星":"突っ走って、あとからどっと疲れが出ることがあるでしょう。走れるのは才能。そして、止まるのも技術ですよ。",
+ "牽牛星":"プライドが邪魔をして、弱音を吐けないことがあるかもしれません。弱音は負けではなくて、信頼の証。頼られた人は「信頼してもらえた」と、きっと喜んでくれますよ。",
+ "龍高星":"落ち着き場所が見つからず、根なし草のように感じる日もあるでしょう。でもね、旅の途中こそ、あなたの定位置なのです。",
+ "玉堂星":"考えすぎて動けなくなることがあるかもしれません。でもその考える力は、いざというとき、あなたを救う武器になりますよ。"
+};
+const PREF=[["北海道",43.06,141.35],["青森県",40.82,140.74],["岩手県",39.70,141.15],["宮城県",38.27,140.87],["秋田県",39.72,140.10],["山形県",38.24,140.36],["福島県",37.75,140.47],["茨城県",36.34,140.45],["栃木県",36.57,139.88],["群馬県",36.39,139.06],["埼玉県",35.86,139.65],["千葉県",35.61,140.12],["東京都",35.69,139.69],["神奈川県",35.45,139.64],["新潟県",37.90,139.02],["富山県",36.70,137.21],["石川県",36.59,136.63],["福井県",36.07,136.22],["山梨県",35.66,138.57],["長野県",36.65,138.18],["岐阜県",35.39,136.72],["静岡県",34.98,138.38],["愛知県",35.18,136.91],["三重県",34.73,136.51],["滋賀県",35.00,135.87],["京都府",35.02,135.76],["大阪府",34.69,135.52],["兵庫県",34.69,135.18],["奈良県",34.69,135.83],["和歌山県",34.23,135.17],["鳥取県",35.50,134.24],["島根県",35.47,133.05],["岡山県",34.66,133.93],["広島県",34.40,132.46],["山口県",34.19,131.47],["徳島県",34.07,134.56],["香川県",34.34,134.04],["愛媛県",33.84,132.77],["高知県",33.56,133.53],["福岡県",33.61,130.42],["佐賀県",33.25,130.30],["長崎県",32.74,129.87],["熊本県",32.79,130.74],["大分県",33.24,131.61],["宮崎県",31.91,131.42],["鹿児島県",31.56,130.56],["沖縄県",26.21,127.68]];
+function gmstDeg(jd){
+  const T=(jd-2451545)/36525;
+  let g=280.46061837+360.98564736629*(jd-2451545)+0.000387933*T*T-T*T*T/38710000;
+  g%=360;return g<0?g+360:g;
+}
+function moonLon(jd){
+  const T=(jd-2451545)/36525,rad=Math.PI/180;
+  const Lp=218.3164477+481267.88123421*T-0.0015786*T*T+T*T*T/538841;
+  const D=(297.8501921+445267.1114034*T-0.0018819*T*T)*rad;
+  const M=(357.5291092+35999.0502909*T-0.0001536*T*T)*rad;
+  const Mp=(134.9633964+477198.8675055*T+0.0087414*T*T)*rad;
+  const F=(93.272095+483202.0175233*T-0.0036539*T*T)*rad;
+  let lon=Lp
+    +6.288774*Math.sin(Mp)+1.274027*Math.sin(2*D-Mp)+0.658314*Math.sin(2*D)
+    +0.213618*Math.sin(2*Mp)-0.185116*Math.sin(M)-0.114332*Math.sin(2*F)
+    +0.058793*Math.sin(2*D-2*Mp)+0.057066*Math.sin(2*D-M-Mp)+0.053322*Math.sin(2*D+Mp)
+    +0.045758*Math.sin(2*D-M)-0.040923*Math.sin(M-Mp)-0.034720*Math.sin(D)
+    -0.030383*Math.sin(M+Mp)+0.015327*Math.sin(2*D-2*F)-0.012528*Math.sin(Mp+2*F)
+    +0.010980*Math.sin(Mp-2*F);
+  lon%=360;return lon<0?lon+360:lon;
+}
+function ayanamsa(jd){
+  const yr=(jd-2451545)/365.25+2000;
+  return 23.85+(yr-2000)*0.01397;
+}
+function siderealSign(lon,jd){
+  return Math.floor(((lon-ayanamsa(jd))%360+360)%360/30)%12;
+}
+function ascendant(jdUT,lat,lonE){
+  const T=(jdUT-2451545)/36525;
+  const eps=(23.4392911-0.0130042*T)*Math.PI/180;
+  const R=((gmstDeg(jdUT)+lonE)%360)*Math.PI/180;
+  const phi=lat*Math.PI/180;
+  let asc=Math.atan2(Math.cos(R),-(Math.sin(R)*Math.cos(eps)+Math.tan(phi)*Math.sin(eps)))*180/Math.PI;
+  asc%=360;return asc<0?asc+360:asc;
+}
+// ===== 惑星の位置（ケプラー軌道要素・JPL近似 1800-2050年） =====
+const ORB={
+  "水星":[0.38709927,0.00000037,0.20563593,0.00001906,7.00497902,-0.00594749,252.25032350,149472.67411175,77.45779628,0.16047689,48.33076593,-0.12534081],
+  "金星":[0.72333566,0.00000390,0.00677672,-0.00004107,3.39467605,-0.00078890,181.97909950,58517.81538729,131.60246718,0.00268329,76.67984255,-0.27769418],
+  "地球":[1.00000261,0.00000562,0.01671123,-0.00004392,-0.00001531,-0.01294668,100.46457166,35999.37244981,102.93768193,0.32327364,0,0],
+  "火星":[1.52371034,0.00001847,0.09339410,0.00007882,1.84969142,-0.00813131,-4.55343205,19140.30268499,-23.94362959,0.44441088,49.55953891,-0.29257343],
+  "木星":[5.20288700,-0.00011607,0.04838624,-0.00013253,1.30439695,-0.00183714,34.39644051,3034.74612775,14.72847983,0.21252668,100.47390909,0.20469106],
+  "土星":[9.53667594,-0.00125060,0.05386179,-0.00050991,2.48599187,0.00193609,49.95424423,1222.49362201,92.59887831,-0.41897216,113.66242448,-0.28867794]
+};
+function keplerE(M,e){let E=M;for(let i=0;i<20;i++){E=M+e*Math.sin(E);}return E;}
+function helioPos(el,T){
+  const rad=Math.PI/180;
+  const a=el[0]+el[1]*T,e=el[2]+el[3]*T,I=(el[4]+el[5]*T)*rad,L=el[6]+el[7]*T,wbar=el[8]+el[9]*T,O=(el[10]+el[11]*T)*rad;
+  const M=(((L-wbar)%360+360)%360)*rad, w=wbar*rad-O;
+  const E=keplerE(M,e);
+  const xv=a*(Math.cos(E)-e), yv=a*Math.sqrt(1-e*e)*Math.sin(E);
+  const v=Math.atan2(yv,xv), r=Math.sqrt(xv*xv+yv*yv);
+  return [
+    r*(Math.cos(O)*Math.cos(v+w)-Math.sin(O)*Math.sin(v+w)*Math.cos(I)),
+    r*(Math.sin(O)*Math.cos(v+w)+Math.cos(O)*Math.sin(v+w)*Math.cos(I)),
+    r*Math.sin(v+w)*Math.sin(I)
+  ];
+}
+function planetGeoLon(name,jd){
+  const T=(jd-2451545)/36525;
+  const p=helioPos(ORB[name],T), e=helioPos(ORB["地球"],T);
+  let lon=Math.atan2(p[1]-e[1],p[0]-e[0])*180/Math.PI;
+  return lon<0?lon+360:lon;
+}
+const LORDS=["火星","金星","水星","月","太陽","水星","金星","火星","木星","土星","土星","木星"];
+const MAITRI={
+  "太陽":{f:["月","火星","木星"],e:["金星","土星"]},
+  "月":{f:["太陽","水星"],e:[]},
+  "火星":{f:["太陽","月","木星"],e:["水星"]},
+  "水星":{f:["太陽","金星"],e:["月"]},
+  "木星":{f:["太陽","月","火星"],e:["水星","金星"]},
+  "金星":{f:["水星","土星"],e:["太陽","月"]},
+  "土星":{f:["水星","金星"],e:["太陽","月","火星"]}
+};
+const EXALT={"太陽":0,"月":1,"火星":9,"水星":5,"木星":3,"金星":11,"土星":6};
+function dignity(planet,sign){
+  if(EXALT[planet]===sign)return ["高揚","その力が最も高まる場所。大きな才能です。"];
+  if((EXALT[planet]+6)%12===sign)return ["減衰","力を出しにくい場所。課題と学びの配置です。"];
+  const lord=LORDS[sign];
+  if(lord===planet)return ["自星座","自分の家にいて、安定して力を発揮できます。"];
+  if(MAITRI[planet].f.includes(lord))return ["友好","友人の家にいる、居心地のよい配置です。"];
+  if(MAITRI[planet].e.includes(lord))return ["敵対","窮屈な場所。この力を使うには努力が要ります。"];
+  return ["中立","可もなく不可もない、落ち着いた配置です。"];
+}
+
+// ===== 調候守護神（標準表・要監修）行=日干(甲..癸), 列=月支(寅卯辰巳午未申酉戌亥子丑) =====
+const SHUGO=[
+ [[3,6],[3,6],[2,9],[6,5],[6,3],[9,3],[9,6],[6,3],[3,6],[3,6],[3,6],[6,3]],
+ [[2,4],[2,0],[2,9],[2,9],[9,2],[9,2],[9,2],[9,2],[2,9],[9,2],[9,2],[2,4]],
+ [[0,8],[8,0],[8,6],[8,6],[8,0],[8,6],[8,6],[8,6],[8,0],[8,0],[0,8],[0,8]],
+ [[0,6],[0,6],[6,0],[6,0],[0,6],[8,6],[8,6],[0,6],[0,6],[0,6],[0,6],[0,6]],
+ [[2,0],[2,0],[2,0],[2,0],[0,9],[9,0],[9,0],[9,0],[2,9],[2,9],[0,9],[0,2]],
+ [[2,0],[2,0],[2,0],[0,2],[2,9],[9,2],[8,2],[9,2],[2,9],[2,9],[0,2],[2,0]],
+ [[3,0],[2,3],[2,0],[3,0],[0,3],[8,2],[8,7],[3,0],[3,0],[3,0],[0,8],[3,0]],
+ [[2,8],[2,8],[5,8],[8,0],[8,0],[8,9],[8,5],[8,6],[8,0],[8,0],[8,0],[8,2]],
+ [[4,2],[2,0],[4,6],[4,7],[0,6],[8,6],[9,6],[6,0],[4,3],[0,7],[0,2],[4,2]],
+ [[2,7],[2,7],[7,2],[7,6],[7,2],[7,8],[7,8],[7,8],[3,0],[7,2],[7,0],[7,2]]
+];
+const GOGYO_NAME=["木","火","土","金","水"];
+
+// ===== 日干の解釈（基本10種=サンプル文、60干支=先生の言葉を順次収録） =====
+const NIKKAN_NATURE=["大木","草花","太陽","灯火","山","田畑","鋼","宝石","大河","雨露"];
+const NIKKAN_TEXT=[
+ "まっすぐ天にのびる大木です。曲がったことが嫌いで、一本筋の通った生き方をします。折れても倒れても、また伸びる強さがありますよ。",
+ "しなやかな草花です。踏まれても立ち上がる粘り強さと、どんな場所でも咲けるやわらかさを持っています。",
+ "あたりを明るく照らす太陽です。いるだけで人を元気にする、隠しごとのない開けっぴろげな気性ですよ。",
+ "闇をともす灯火、夜空の月です。細やかな気配りと深い心を持ち、困っている人のそばでこそ輝きます。",
+ "どっしり構えた山です。動じない安定感で人に頼られ、そのふところに多くのものを蓄えます。",
+ "作物を育てる田畑です。面倒見がよくて、人を育てる土壌。実りは、関わった人の数だけ増えていきますよ。",
+ "鍛えられて光る鋼です。決断力と行動力があって、苦労を経るほど切れ味を増します。",
+ "磨かれて輝く宝石です。繊細で美意識が高く、その誇り高さがそのまま品格になります。",
+ "ゆうゆうと流れる大河です。包容力と知恵があって、流れ続けることで清らかさを保ちます。",
+ "万物をうるおす雨や露です。静かで深い愛情をそそぎ、誰も気づかないところで命を育てます。"
+];
+// 60干支の解釈（監修者の言葉。収録された干支のみ表示される）
+const KANSHI60_TEXT={
+ "戊辰":"ここぞという土壇場で、思いがけない底力の出る人です。ものごとの筋をすっと見抜く、賢い星ですよ。"
+};
+// 日支の解釈（12種・サンプル文・要監修）
+const NISSHI_TEXT=[
+ "夜の水・子。頭の回転が速くて、機転がききます。流れや情報をつかむのが上手な人ですよ。",
+ "凍土の牛・丑。黙々と耐えて積み上げる努力家です。遅咲きでも、実りは確かですからね。",
+ "春の虎・寅。勢いと度胸があって、新しいことの先頭に立てる人です。",
+ "春の兎・卯。やわらかで人あたりがよく、敵をつくらない人です。",
+ "竜・辰。十二支でただひとつの想像上の生きもの。スケールが大きく、ここ一番で大化けする器ですよ。",
+ "初夏の蛇・巳。粘り強い集中力と、洗練された美意識を持っています。",
+ "真夏の馬・午。明るく駆けまわる行動派。場を盛り上げる、太陽のような存在です。",
+ "晩夏の羊・未。温和で情が深く、家族や仲間を大切に守る人です。",
+ "初秋の猿・申。器用で多才。頭の回転の速さと遊び心を、あわせ持っていますよ。",
+ "秋の鶏・酉。几帳面で、細かいところによく気がつく審美眼の持ち主です。",
+ "晩秋の犬・戌。忠実で正義感が強く、信じた人をとことん守ります。",
+ "初冬の猪・亥。一直線に進む純粋さ。裏表のなさが、いちばんの魅力ですよ。"
+];
+// 日干ごとの男女別の特徴（[男性, 女性]・サンプル文・要監修）
+const NIKKAN_MF=[
+ ["大黒柱の人です。組織の長やまとめ役に向く、曲げない頼もしさがありますよ。","自立心の強いしっかり者。支えるより並んで歩く人で、仕事を持つと輝きますよ。"],
+ ["物腰のやわらかい調整役です。敵をつくらずに実を取る、賢さがあります。","やわらかな物腰の奥に、強い芯のある人。家庭でも仕事でも、粘り強く花を咲かせます。"],
+ ["豪快で面倒見のいい兄貴分。裏表がなくて、人が自然と集まってきます。","明るく華やかな人気者。場の真ん中にいるときほど、運がまわってきますよ。"],
+ ["物静かでも、内に情熱を秘めた人です。職人仕事や専門の道で光ります。","細やかな気配りの人。家庭や職場を、あたたかく灯します。"],
+ ["どっしり動じない親分肌。守りに強く、人から頼られる存在です。","姉御肌のしっかり者。頼られると、俄然力が出る人ですよ。"],
+ ["実直な努力家です。人を育てる上司や先生の役に向いています。","お世話好きのお母さん型。家庭や職場の、土台になる人です。"],
+ ["決断と行動の人です。勝負ごとに強く、鍛えられるほど伸びますよ。","さばさばした行動派。男勝りなんて言われがちですが、情はとても厚い人ですよ。"],
+ ["美意識の高いこだわりの人。専門の道を磨いて光ります。","繊細で品があって、磨かれるほど輝きます。身を置く場所を、大切に選んでくださいね。"],
+ ["包容力と知恵の人です。大きな絵を描いて、人を動かします。","おおらかで聡明。小さな枠には収まらない、自由な人です。"],
+ ["静かな知恵者です。縁の下で、組織や家族をうるおします。","深い愛情を静かにそそぐ人。直感の鋭さは、随一ですよ。"]
+];
+
+// ===== 天中殺の用語・宿命中殺・職業・組織・健康（サンプル文・要監修） =====
+const TENCHU_GLOSSARY="「天中」は天の中心・天の気のこと。「中殺」は、はたらきがしばらくお休みになることです。つまり天中殺とは、天の後ろ盾がちょっと留守になる期間。運が悪いのではなくて、見えない応援が届きにくい時間、と考えてくださいね。";
+const TENCHU_USAGE="この期間は、新しいことを始めるより、整理や学び直し、準備に向いています。無理をせず、守りながら自分を育てる時間になさいね。";
+const SHUKU_TEXT={
+ "生年中殺":"年柱の中殺です。目上や親、家系とのご縁が独特になります。後ろ盾に頼らず自力で立つことで、かえって大きく伸びる人ですよ。",
+ "生月中殺":"月柱の中殺です。世間の「普通の枠」にはまりにくい宿命。型にはまらない働き方、生き方でこそ才能が出ます。",
+ "日座中殺":"日柱そのものの中殺です。配偶者や家庭とのご縁が独特で、心の世界やスケールの大きな生き方と縁の深い人です。"
+};
+const JOB_TEXT={
+ "貫索星":"独立自営・職人・専門職。人に使われるより、自分の城を持つと伸びますよ。",
+ "石門星":"組織づくり・営業・政治・団体の運営。人とのご縁が、そのまま仕事になります。",
+ "鳳閣星":"飲食・観光・放送・子どもに関わる仕事。楽しさを伝える場で輝きますよ。",
+ "調舒星":"芸術・創作・専門技術。少人数で完結する仕事ほど、才能が冴えます。",
+ "禄存星":"金融・サービス・医療や福祉。人に尽くすことが、そのまま実績になりますよ。",
+ "司禄星":"経理・事務・不動産・銀行。こつこつ型の積み重ねが信用になる仕事に向いています。",
+ "車騎星":"営業・スポーツ・警察消防・現場の仕事。動きまわる仕事ほど、成果が出ますよ。",
+ "牽牛星":"公務員・大きな組織・士業・管理職。肩書きと責任が、力になる人です。",
+ "龍高星":"海外・研究開発・企画・ものづくり。前例のない分野ほど、燃える人ですよ。",
+ "玉堂星":"教育・学問・出版・伝統文化。教えること、伝えることが天職です。"
+};
+const ORG_TEXT={
+ "貫索星":"独立採算の一国一城の主。大きな組織より、自分の裁量がきく形が合っていますよ。",
+ "石門星":"チームをまとめる束ね役。手をつなぎ、輪を広げていく経営に向いています。",
+ "鳳閣星":"風通しのよい、自由な組織づくり。現場の楽しさを大切にする人です。",
+ "調舒星":"少数精鋭、こだわりの工房型。量より質で光りますよ。",
+ "禄存星":"人望で人を集める親分肌。お客さま第一の面倒見のよさが、組織の土台になります。",
+ "司禄星":"堅実経営、お金まわりに強い番頭役。守りの要として欠かせない人ですよ。",
+ "車騎星":"すぐ決めてすぐ動く、現場の指揮官。先頭に立つことで組織を引っぱります。",
+ "牽牛星":"組織人として超一流。二番手・参謀としても、組織を立派に支えますよ。",
+ "龍高星":"改革者、新しい事業の開拓者。変わり目の組織でこそ、真価を発揮します。",
+ "玉堂星":"理念と育成の人。人を育てることで、組織を強くしていくタイプですよ。"
+};
+const HEALTH_TEXT=[
+ "肝臓・胆のう・目・筋にあらわれやすい体質です。目の疲れやイライラ、無理のしすぎに気をつけてくださいね。",
+ "心臓・小腸・血のめぐりにあらわれやすい体質です。働きすぎ、気の高ぶりすぎにご用心。休む勇気が、いちばんの薬ですよ。",
+ "胃腸・消化器にあらわれやすい体質です。考えごとを抱えこむと胃にきやすい人。食事のリズムが、なによりの養生です。",
+ "肺・呼吸器・大腸・お肌にあらわれやすい体質です。乾燥と冷えにやや弱め。深呼吸と新鮮な空気が、味方になりますよ。",
+ "腎臓・膀胱・冷え・婦人科系にあらわれやすい体質です。体を冷やさないこと。休息と眠りが、運気の土台ですよ。"
+];
+// ===== 異常干支（13種・通説の一覧）と伴星（使命星）（サンプル文・要監修） =====
+const IJO_NORMAL=["甲戌","乙亥","戊戌","庚子","辛亥","丁巳"];
+const IJO_ANGO=["辛巳","壬午","丙戌","丁亥","戊子","癸巳","己亥"];
+const IJO_TEXT={
+ "通常異常干支":"枠からはみ出す独自の感性と、常識にとらわれない発想を持つ干支です。「普通」に収まらないほど、才能が光ります。",
+ "暗合異常干支":"天と地が裏で手を結ぶ特別な形。直感が鋭く、目に見えないものを感じ取る力を持つ干支です。"
+};
+const BANSEI_TEXT={
+ "貫索星":"自分の力で道を切り開き、決めたことを守り抜くことが今世のお役目。人に流されず、自分の城を持つ生き方が指針です。",
+ "石門星":"人と人をつなぎ、輪をつくることがお役目。出会いを大切に、仲間とともに豊かさを広げる生き方が指針です。",
+ "鳳閣星":"楽しむこと・表現することがお役目。自然体で人を和ませ、人生をゆっくり味わう生き方が指針です。",
+ "調舒星":"自分だけの感性を磨いて表現することがお役目。孤独を恐れず、オンリーワンを生み出す生き方が指針です。",
+ "禄存星":"人に与え、尽くすことがお役目。見返りを求めない愛情が、めぐりめぐってあなたを豊かにします。",
+ "司禄星":"こつこつ積み重ね、家族や身近な人を守ることがお役目。蓄えた信用が一生の財産になります。",
+ "車騎星":"体を動かし、人のために働くことがお役目。考えるより先に動く勇気が道をひらきます。",
+ "牽牛星":"責任を引き受け、人のお手本となることがお役目。役割を全うする姿が、まわりを導きます。",
+ "龍高星":"学び、旅し、新しいものを生み出すことがお役目。枠の外へ出る勇気が、ご先祖様からの贈り物です。",
+ "玉堂星":"学んだことを人に伝え、育てることがお役目。知識を独り占めせず、分かち合う生き方が指針です。"
+};
+const STAR_KEY={"貫索星":"自分を貫く","石門星":"仲間と組む","鳳閣星":"楽しむ・表現する","調舒星":"感性を磨く","禄存星":"人に尽くす","司禄星":"こつこつ蓄える","車騎星":"動く・働く","牽牛星":"役割を果たす","龍高星":"学ぶ・旅する","玉堂星":"知恵を深める"};
+const STAR_TEXT={
+ "貫索星":"自分の世界をしっかり持って、一度決めたことを最後までやり通す星です。人に流されない芯の強さがありますよ。頑固に見えることもありますけれど、その変わらなさこそ、人さまから信用される土台です。",
+ "石門星":"人の輪の中で力を出す、和合の星です。やわらかな物腰の奥に、しっかりした意志を持っています。仲間をまとめる力があって、人とのご縁がそのまま財産になる人です。",
+ "鳳閣星":"自然体でのびのび生きる、楽しみ上手の星です。ものごとをあるがままに見る目と、衣食住を味わう才能があります。肩の力が抜けているときほど、いい結果に恵まれますよ。",
+ "調舒星":"鋭い感受性と豊かな想像力を持つ、芸術の星です。人と同じであることを好まず、自分だけの美意識で世界を見ています。その繊細さは弱さではなくて、ほかの誰にも見えないものを見つける力ですよ。",
+ "禄存星":"惜しみない愛情で人を惹きつける、奉仕の星です。困っている人を放っておけない性分で、与えることで自分も豊かになります。人に尽くしたぶんは、巡りめぐって財や信頼になって返ってきますからね。",
+ "司禄星":"こつこつ積み重ねる、堅実な星です。日々の小さな努力を絶やさず、家庭や身近な人を大切に守ります。派手さはなくても、気がつけば誰よりも確かなものを築いている人ですよ。",
+ "車騎星":"考えるより先に体が動く、行動の星です。困難に正面から立ち向かう勇気があって、忙しいときほど生き生きします。立ち止まらずに動き続けることが、運をひらく鍵ですよ。",
+ "牽牛星":"責任感と誇りを胸に歩む、名誉の星です。役割をいただくと力が出る人で、礼節を重んじ、約束を守ります。まわりからの信頼が、そのまま運の追い風になりますよ。",
+ "龍高星":"未知の世界へ飛びこむ、探究の星です。いまの場所に満足せず、旅や学び、新しい発想で人生を切りひらきます。生まれた場所や慣れたところを離れるほど、大きく伸びる星といわれていますよ。",
+ "玉堂星":"学びを愛して、知性で人生を導く星です。ものごとの本質を見抜く目があって、知ったことを人に伝えるのも上手。母のようなやさしさと、冷静な判断力をあわせ持つ人です。"
+};
+const POS_META = [
+  ["head","頭","目上・親との関わり方、若い頃に表に出る性質"],
+  ["chest","胸（中心星）","あなたの本質。人生の中心となる性質"],
+  ["belly","腹","家庭や身近な人への接し方、土台となる性質"],
+  ["leftHand","左手","プライベート・家庭側で発揮される性質"],
+  ["rightHand","右手","仕事や社会との関わりで発揮される性質"]
+];
+const SUB_TEXT={
+ "天報星":"胎児の星。たくさんの可能性を抱いて、変化と転身をくり返しながら、自分を見つけていきます。",
+ "天印星":"赤ん坊の星。無邪気な愛され力があって、自然と人の助けが集まってきますよ。",
+ "天貴星":"児童の星。素直な向上心と礼儀正しさで、こつこつ学んで育っていきます。",
+ "天恍星":"思春期の星。華やかさと夢見る力があって、人を惹きつける魅力の持ち主です。",
+ "天南星":"青年の星。怖いもの知らずの前進力で、道を切りひらいていきます。",
+ "天禄星":"壮年の星。落ち着きと管理の力があって、堅実に成果を積み上げます。",
+ "天将星":"頂点の星。十二大従星でいちばん大きなエネルギー。背負うものが大きいほど輝く人ですよ。",
+ "天堂星":"老年の星。穏やかな品格と忍耐力で、まわりから一目置かれます。",
+ "天胡星":"病人の星。鋭い感性と、ひらめきの力を持つ芸術の星です。",
+ "天極星":"死の星。欲のない純粋さを持って、心の世界と深いご縁があります。",
+ "天庫星":"墓の星。ひとつのことを深く掘り下げる集中力と、ご先祖様との強いご縁を持ちます。",
+ "天馳星":"あの世の星。エネルギーはいちばん小さくても、瞬発力と身のこなしの速さは随一ですよ。"
+};
+const TENCHU_TEXT={
+ "子丑天中殺":"夢やロマンを追い続ける生き方が向いています。現実離れと言われても、理想をかかげることがあなたの運気の源になりますよ。",
+ "寅卯天中殺":"目上の引き立てを受けにくいぶん、自力で道を切りひらく力が育ちます。晩年に向けて、運が安定していく人です。",
+ "辰巳天中殺":"配偶者や身近な人との関わりに、学びの多い宿命です。心の自立が、運をひらく鍵になりますよ。",
+ "午未天中殺":"親や家系から受け継ぐものにご縁がうすいぶん、自分の代で新しい流れをつくる開拓者の宿命です。",
+ "申酉天中殺":"子どもや後輩、部下との関わりに独特のご縁があります。未来に何を残すかを考えると、人生が深まりますよ。",
+ "戌亥天中殺":"スケールの大きな精神世界を持つ宿命です。目に見えない世界や、大きな理想とご縁の深い人です。"
+};
+
+// ========== 画面 ==========
+const ySel=document.getElementById("y"),mSel=document.getElementById("m"),dSel=document.getElementById("d");
+const thisYear=new Date().getFullYear();
+for(let i=thisYear;i>=1925;i--){ySel.add(new Option(i+"年",i));}
+for(let i=1;i<=12;i++){mSel.add(new Option(i+"月",i));}
+for(let i=1;i<=31;i++){dSel.add(new Option(i+"日",i));}
+ySel.value=1990;mSel.value=1;dSel.value=1;
+const FULL=true; // 先生用・常に全表示
+const AIKOTOBA="ほしよみ";
+if(AIKOTOBA){
+  try{
+    if(localStorage.getItem("aikotoba_ok")!==AIKOTOBA){
+      let ans="";
+      while(ans!==AIKOTOBA){
+        ans=prompt("あいことばを入れてください");
+        if(ans===null)ans="";
+      }
+      localStorage.setItem("aikotoba_ok",AIKOTOBA);
+    }
+  }catch(e){}
+}
+if(!FULL){document.querySelectorAll(".member-only").forEach(el=>el.style.display="none");}
+const hhSel=document.getElementById("hh"),miSel=document.getElementById("mi"),prefSel=document.getElementById("pref");
+hhSel.add(new Option("時刻不明","x"));
+for(let i=0;i<=23;i++){hhSel.add(new Option(i+"時",i));}
+for(let i=0;i<=59;i++){miSel.add(new Option(i+"分",i));}
+PREF.forEach((p,i)=>{prefSel.add(new Option(p[0],i));});
+prefSel.value=12;
+const aySel=document.getElementById("ay"),amSel=document.getElementById("am"),adSel=document.getElementById("ad");
+for(let i=thisYear;i>=1925;i--){aySel.add(new Option(i+"年",i));}
+for(let i=1;i<=12;i++){amSel.add(new Option(i+"月",i));}
+for(let i=1;i<=31;i++){adSel.add(new Option(i+"日",i));}
+aySel.value=1992;amSel.value=1;adSel.value=1;
+try{
+  const saved=JSON.parse(localStorage.getItem("uranai_input")||"null");
+  if(saved){
+    ySel.value=saved.y;mSel.value=saved.m;dSel.value=saved.d;
+    hhSel.value=saved.hh;miSel.value=saved.mi;prefSel.value=saved.pref;
+    const sx=document.querySelector('input[name="sex"][value="'+saved.sex+'"]');
+    if(sx)sx.checked=true;
+  }
+}catch(e){}
+
+// ===== 相性診断（恋愛・仕事）数字は見せない方針（先生）。サンプル文・要監修 =====
+const STAR_GROUP={"貫索星":0,"石門星":0,"鳳閣星":1,"調舒星":1,"禄存星":2,"司禄星":2,"車騎星":3,"牽牛星":3,"龍高星":4,"玉堂星":4};
+const GROUP_TEXT={
+ "00":"おふたりとも、自分の世界を大切にする人。べったりせず、それぞれの城を尊重し合えると、いちばん強い組み合わせですよ。",
+ "01":"守りの人と、楽しみの人。肩の力を抜かせてくれる相手と、安心の土台をくれる相手の組み合わせです。",
+ "02":"マイペースな人と、尽くす人。与えすぎ・受け取らなすぎにだけ気をつければ、穏やかに続くご縁ですよ。",
+ "03":"じっくり型と、スピード型。テンポの違いを「役割の違い」にできれば、よく補い合えます。",
+ "04":"守る人と、学ぶ人。静かな時間を一緒に楽しめる、落ち着いた組み合わせです。",
+ "11":"おふたりとも、楽しみ上手な人。一緒にいて飽きませんが、現実面の係を決めておくと安心ですよ。",
+ "12":"楽しむ人と、お世話好きな人。甘えと感謝のつり合いが取れているうちは、とても円満です。",
+ "13":"感性の人と、行動の人。ひらめきを形にしてもらえる、いいコンビになれますよ。",
+ "14":"表現の人と、知恵の人。話が尽きない、教え合い学び合うご縁です。",
+ "22":"おふたりとも、情の深い組み合わせ。尽くし合いすぎて疲れないよう、自分の時間も大切にね。",
+ "23":"愛情の人と、行動の人。守りたい人と守られたい人がかみ合えば、とても強いご縁ですよ。",
+ "24":"情の人と、理の人。温度差を感じたら、「表現の仕方が違うだけ」と思い出してくださいね。",
+ "33":"おふたりとも行動派。並んで走れば最高、正面からぶつかると激しい。目標を分かち合うのがコツですよ。",
+ "34":"動く人と、考える人。参謀と実行部隊、役割のはっきりした、仕事にも強いご縁です。",
+ "44":"おふたりとも、学びの人。知的な刺激を与え合える、静かで深いご縁ですよ。"
+};
+const KANREL_TEXT={
+ love:{
+  kgo:"おふたりの日干は<b>干合</b>。十干の中でただ一組だけ結ばれる、特別なご縁です。理屈を超えて引き合う組み合わせですよ。",
+  give:"あなたがお相手を育て、うるおす関係です。尽くしすぎにだけ気をつければ、与える愛がちゃんと形になりますよ。",
+  given:"お相手があなたを支え、育ててくれる関係です。素直に甘えることが、おふたりをうまくいかせる鍵ですよ。",
+  same:"似た者同士のご縁です。わかり合うのは早いぶん、ぶつかるときは正面から。役割を分けると長続きしますよ。",
+  lead:"あなたがリードするご縁です。引っぱりすぎると重くなりますから、お相手の歩はばも大切にしてあげてくださいね。",
+  led:"お相手があなたを鍛えてくれる関係です。窮屈に感じる日もあるでしょうけれど、あなたをいちばん成長させてくれる人ですよ。"
+ },
+ work:{
+  kgo:"おふたりの日干は<b>干合</b>。損得を超えて組める、名コンビのご縁です。長いおつきあいの仕事に向いていますよ。",
+  give:"あなたが教えて、お相手が伸びる関係です。育て役・先輩役は、あなたが適任ですよ。",
+  given:"お相手から学び、引き上げてもらえる関係です。相手の知恵を借りるほど、成果が出ますよ。",
+  same:"対等な同志のご縁です。競い合うと消耗、分担すると倍の速さ。受け持ちをはっきり決めるのがコツですよ。",
+  lead:"あなたが指揮を執るとうまく回る関係です。指示ははっきり、ねぎらいは忘れずにね。",
+  led:"お相手が手綱を握る関係です。枠をもらったほうが力の出る場面では、いい相性ですよ。"
+ }
+};
+const BRREL_TEXT={
+ "支合":"日支が<b>支合</b>。そばにいるだけで安心できる、結びつきのご縁です。",
+ "対冲":"日支が<b>対冲</b>。正反対だからこそ強く引き合う、磁石のようなご縁です。刺激的ですが、疲れたら少し間をとるのも薬ですよ。",
+ "半会":"日支が<b>半会</b>。目指す方向が重なる、協力のご縁です。",
+ "方三位":"日支が<b>方三位</b>。同じ季節を生きる、感覚の近いご縁です。",
+ "刑":"日支が<b>刑</b>。近づきすぎると角が立つご縁です。親しき仲にも礼儀あり、がお守りになりますよ。",
+ "自刑":"同じ日支どうしの<b>自刑</b>。自分を見ているようなご縁です。長所も短所も、倍になりますよ。",
+ "害":"日支が<b>害</b>。小さなすれ違いの起きやすいご縁です。察し合いより、言葉にして確かめる習慣をね。",
+ "破":"日支が<b>破</b>。調子の乱れやすいご縁です。約束ごとを決めておくと、安定しますよ。"
+};
+function runAishou(){
+  const yA=+ySel.value,mA=+mSel.value,dA=+dSel.value;
+  const yB=+document.getElementById("ay").value,mB=+document.getElementById("am").value,dB2=+document.getElementById("ad").value;
+  const dim2=new Date(yB,mB,0).getDate();
+  if(dB2>dim2){alert(yB+"年"+mB+"月は"+dim2+"日までです。");return;}
+  const mode=document.querySelector('input[name="arel"]:checked').value;
+  function chart(y,m,d){
+    const di=dayKanshi(y,m,d),ds2=di%10,db3=di%12;
+    const sm=solarMonth(y,m,d);
+    const yk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(yk2.stem,sm.monthIdx);
+    const dss=jdn(y,m,d)-sm.setsuJ+1;
+    const chest=mainStar(ds2,zokan(mk2.branch,dss));
+    const tc2=TENCHU[Math.floor(di/10)];
+    const jdUT2=jdn(y,m,d)-0.5+(12-9)/24;
+    const moonSid2=siderealSign(moonLon(jdUT2),jdUT2);
+    return {di,ds:ds2,db:db3,chest,tc:tc2,moon:moonSid2};
+  }
+  const A=chart(yA,mA,dA),B=chart(yB,mB,dB2);
+  let out="<h3>ふたりの星</h3><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
+    +"<tr><td>あなた</td><td>"+kanshiName(A.di)+"</td><td>"+A.chest+"</td><td>"+A.tc.slice(0,2)+"</td><td>"+ZODIAC[A.moon]+"</td></tr>"
+    +"<tr><td>お相手</td><td>"+kanshiName(B.di)+"</td><td>"+B.chest+"</td><td>"+B.tc.slice(0,2)+"</td><td>"+ZODIAC[B.moon]+"</td></tr></table>";
+  out+="<h3>縁の形</h3>";
+  if(A.di===B.di)out+="<p>同じ日干支どうしの<b>律音</b>——60分の1の確率でしか出会えない、鏡のような縁です。</p>";
+  const T=KANREL_TEXT[mode];
+  if(kangoCheck(A.ds,B.ds))out+="<p>"+T.kgo+"</p>";
+  else{
+    const eA=Math.floor(A.ds/2),eB=Math.floor(B.ds/2),rel2=((eB-eA)%5+5)%5;
+    out+="<p>"+T[rel2===0?"same":rel2===1?"give":rel2===2?"lead":rel2===3?"led":"given"]+"</p>";
+  }
+  const brs=branchRels(A.db,B.db).filter(rr=>BRREL_TEXT[rr]);
+  if(brs.length)brs.forEach(rr=>{out+="<p>"+BRREL_TEXT[rr]+"</p>";});
+  else out+="<p>日支に特別な位相はありません。しがらみのない、フラットで自由な距離感の縁です。</p>";
+  out+=A.tc===B.tc?"<p>おふたりは<b>同じ"+A.tc+"</b>——運気の季節のリズムが同じです。お互いの「冬」を一緒に越えていける組み合わせです。</p>"
+    :"<p>天中殺の時期が異なるので、どちらかが「冬」のとき、もう一方が支え役に回れます。交代で守り合える縁です。</p>";
+  const elA=A.moon%4,elB=B.moon%4;
+  if(elA===elB)out+="<p>月（心）のエレメントが同じ——感情の動き方が似ていて、説明のいらない安心感があります。</p>";
+  else if((elA+elB)===2||(elA===1&&elB===3)||(elA===3&&elB===1))out+="<p>月（心）のエレメントが響き合う組み合わせ——一緒にいると、心が軽くなります。</p>";
+  else out+="<p>月（心）のエレメントは違うタイプ——感じ方の違いを「翻訳」し合えると、お互いの世界が広がります。</p>";
+  const gk=[STAR_GROUP[A.chest],STAR_GROUP[B.chest]].sort().join("");
+  out+="<h3>性格の組み合わせ（中心星から）</h3><p>"+GROUP_TEXT[gk]+"</p>";
+  out+="<p>相性に「絶対にだめ」はありませんよ。ご縁の形を知って、合うところは生かして、ぶつかるところは少しだけ間をとる。それだけで、おつきあいはずっと楽になります。</p>";
+  out+="<div style='font-size:0.78rem;color:#7a6f5d;'>※点数は表示しません——数字より、縁の形を言葉でお伝えする方針です。月星座は正午計算の参考値。</div>";
+  document.getElementById("aout").innerHTML=out;
+}
+function run(){
+  const y=+ySel.value,m=+mSel.value,d=+dSel.value;
+  const dim=new Date(y,m,0).getDate();
+  if(d>dim){alert(y+"年"+m+"月は"+dim+"日までです。");return;}
+  try{localStorage.setItem("uranai_input",JSON.stringify({
+    y,m,d,
+    hh:document.getElementById("hh").value,
+    mi:document.getElementById("mi").value,
+    pref:document.getElementById("pref").value,
+    sex:document.querySelector('input[name="sex"]:checked').value
+  }));}catch(e){}
+
+  const dayIdx=dayKanshi(y,m,d), ds=dayIdx%10, db=dayIdx%12;
+  const {setsuYear,monthIdx,setsuJ}=solarMonth(y,m,d);
+  const yk=yearKanshi(setsuYear), mk=monthKanshi(yk.stem,monthIdx);
+  const daysSinceSetsu=jdn(y,m,d)-setsuJ+1;
+
+  document.getElementById("p-day").textContent=STEMS[ds]+BRANCHES[db];
+  document.getElementById("p-month").textContent=STEMS[mk.stem]+BRANCHES[mk.branch];
+  document.getElementById("p-year").textContent=STEMS[yk.stem]+BRANCHES[yk.branch];
+
+  const stars={
+    head:mainStar(ds,yk.stem),
+    chest:mainStar(ds,zokan(mk.branch,daysSinceSetsu)),
+    belly:mainStar(ds,mk.stem),
+    leftHand:mainStar(ds,zokan(db,daysSinceSetsu)),
+    rightHand:mainStar(ds,zokan(yk.branch,daysSinceSetsu)),
+    early:subStar(ds,yk.branch),
+    middle:subStar(ds,mk.branch),
+    late:subStar(ds,db)
+  };
+  const total=stars.early.energy+stars.middle.energy+stars.late.energy;
+
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  const bansei=mainStar(ds,(yk.stem+5)%10); // 伴星＝日干×（年干と干合する干）の主星
+  const cells=[
+    {pos:"",empty:true},
+    {pos:"頭",star:stars.head},
+    {pos:"初年期",star:stars.early.name,energy:stars.early.energy+"点"},
+    {pos:"左手",star:stars.leftHand},
+    {pos:"胸（中心星）",star:stars.chest,center:true},
+    {pos:"右手",star:stars.rightHand},
+    {pos:"晩年期",star:stars.late.name,energy:stars.late.energy+"点"},
+    {pos:"腹",star:stars.belly},
+    {pos:"中年期",star:stars.middle.name,energy:stars.middle.energy+"点"}
+  ];
+  cells.forEach(c=>{
+    const div=document.createElement("div");
+    div.className="cell"+(c.empty?" empty":"")+(c.center?" center":"")+(c.bansei?" bansei":"");
+    if(!c.empty){
+      div.innerHTML='<div class="pos">'+c.pos+'</div><div class="star">'+c.star+'</div>'+(c.energy?'<div class="energy">'+c.energy+'</div>':'');
+    }
+    grid.appendChild(div);
+  });
+  document.getElementById("energy").textContent=total;
+
+  const tc=TENCHU[Math.floor(dayIdx/10)];
+  document.getElementById("tenchu-name").textContent=tc;
+  document.getElementById("tenchu-text").textContent=TENCHU_TEXT[tc];
+
+  const r=document.getElementById("reading");
+  r.innerHTML="";
+  const k60=KANSHI60_TEXT[kanshiName(dayIdx)];
+  const isMale=document.querySelector('input[name="sex"]:checked').value==="m";
+  r.insertAdjacentHTML("beforeend",
+    "<h3>日干 "+STEMS[ds]+"（"+NIKKAN_NATURE[ds]+"）── あなた自身の性質</h3><p>"+NIKKAN_TEXT[ds]+
+    (k60?"<br><span style='color:var(--accent);'><b>"+kanshiName(dayIdx)+"日生まれ：</b>"+k60+"</span>":"")+"</p>"+
+    "<h3>日支 "+BRANCHES[db]+"</h3><p>"+NISSHI_TEXT[db]+"</p>"+
+    "<h3>"+STEMS[ds]+"の"+(isMale?"男性":"女性")+"として</h3><p>"+NIKKAN_MF[ds][isMale?0:1]+"</p>");
+  // 十干の相性（日干から自動判定）
+  const edRel=Math.floor(ds/2);
+  const kgoStem=(ds+5)%10;
+  function stemsOf(e,exclKgo){
+    const out=[];
+    for(let s=0;s<10;s++){if(Math.floor(s/2)===e&&s!==ds&&!(exclKgo&&s===kgoStem))out.push(STEMS[s]);}
+    return out.join("・");
+  }
+  let aiRows="";
+  aiRows+="<tr><td>最も深い縁（干合）</td><td><b>"+STEMS[kgoStem]+"</b></td></tr>";
+  aiRows+="<tr><td>支えてくれる相手</td><td>"+stemsOf((edRel+4)%5,true)+"</td></tr>";
+  aiRows+="<tr><td>仲間・同志</td><td>"+(stemsOf(edRel,true)||"−")+"</td></tr>";
+  aiRows+="<tr><td>あなたが育てる相手</td><td>"+stemsOf((edRel+1)%5,true)+"</td></tr>";
+  aiRows+="<tr><td>あなたがリードする相手</td><td>"+(stemsOf((edRel+2)%5,true)||"−")+"</td></tr>";
+  aiRows+="<tr><td>あなたを鍛える相手</td><td>"+(stemsOf((edRel+3)%5,true)||"−")+"</td></tr>";
+  r.insertAdjacentHTML("beforeend",
+    "<h3>十干の相性（あなた＝"+STEMS[ds]+"から見て）</h3><table class='un'>"+aiRows+"</table>"+
+    "<p style='font-size:0.8rem;color:#7a6f5d;'>相手の日干（生まれ日の干）で見ます。干合は陰陽が引き合う特別な縁。「鍛える相手」は苦手ではなく、あなたを成長させる相手です。</p>");
+  POS_META.forEach(([key,label,meaning])=>{
+    const star=stars[key];
+    r.insertAdjacentHTML("beforeend",
+      "<h3>"+label+"に "+star+"</h3><p><span style='color:#7a6f5d;font-size:0.85rem;'>（"+meaning+"）</span><br>"+STAR_TEXT[star]+"</p>");
+  });
+  [["初年期",stars.early],["中年期",stars.middle],["晩年期",stars.late]].forEach(([label,s])=>{
+    r.insertAdjacentHTML("beforeend",
+      "<h3>"+label+"に "+s.name+"（"+s.energy+"点）</h3><p>"+SUB_TEXT[s.name]+"</p>");
+  });
+  // 伴星・異常干支はお客さんには出さない（先生）→ 鑑定者用メモにのみ表示
+
+  // ===== 大運 =====
+  const male=document.querySelector('input[name="sex"]:checked').value==="m";
+  const yangYear=yk.stem%2===0;
+  const forward=(yangYear&&male)||(!yangYear&&!male);
+  const myJ=jdn(y,m,d);
+  const days=forward?(nextSetsuJdn(y,m,d)-myJ):(myJ-setsuJ);
+  let ritsuun=Math.floor(days/3)+((days%3===2)?1:0);
+  if(ritsuun<1)ritsuun=1;
+
+  const now=new Date();
+  const ty=now.getFullYear(),tm=now.getMonth()+1,td=now.getDate();
+  let age=ty-y;
+  if(tm<m||(tm===m&&td<d))age--;
+
+  const mi=kanshi60(mk.stem,mk.branch);
+  let curTaiunIdx=null;
+  let taiunHtml='<table class="un"><tr><th>年齢</th><th>干支</th><th>主星</th><th>従星</th></tr>';
+  for(let k=1;k<=10;k++){
+    const idx=((mi+(forward?k:-k))%60+60)%60;
+    const from=ritsuun+(k-1)*10;
+    const ss=subStar(ds,idx%12);
+    const cur=(age>=from&&age<from+10)?' class="now"':'';
+    if(cur)curTaiunIdx=idx;
+    const tst=mainStar(ds,idx%10);
+    taiunHtml+='<tr'+cur+'><td>'+from+'〜'+(from+9)+'歳</td><td>'+kanshiName(idx)+'</td><td>'+tst+'<br><span style="font-size:0.72rem;color:#7a6f5d;">'+STAR_KEY[tst]+'</span></td><td>'+ss.name+'（'+ss.energy+'点）</td></tr>';
+  }
+  taiunHtml+='</table>';
+  if(curTaiunIdx!==null){const cst=mainStar(ds,curTaiunIdx%10);taiunHtml+="<p style='font-size:0.92rem;'>いまの10年は<b>"+cst+"</b>の季節。「"+STAR_KEY[cst]+"」が、運をひらくテーマですよ。</p>";}
+  document.getElementById("taiun").innerHTML=taiunHtml;
+  document.getElementById("taiun-meta").textContent=
+    (male?"男性":"女性")+"・"+(yangYear?"陽":"陰")+"の年干 → "+(forward?"順行":"逆行")+"　／　立運 "+ritsuun+"歳（節入りまで"+days+"日）";
+
+  // ===== 年運 =====
+  let nenunHtml='<table class="un"><tr><th>年</th><th>年齢</th><th>干支</th><th>主星</th><th>従星</th></tr>';
+  let nenNowStar=null;
+  const curSetsuYear=solarMonth(ty,tm,td).setsuYear;
+  for(let i=0;i<10;i++){
+    const yy=curSetsuYear+i;
+    const s=((yy-4)%10+10)%10,b=((yy-4)%12+12)%12;
+    const ss=subStar(ds,b);
+    const cur=(i===0)?' class="now"':'';
+    const nst=mainStar(ds,s);
+    if(i===0)nenNowStar=nst;
+    nenunHtml+='<tr'+cur+'><td>'+yy+'年</td><td>'+(yy-y)+'歳</td><td>'+STEMS[s]+BRANCHES[b]+'</td><td>'+nst+'<br><span style="font-size:0.72rem;color:#7a6f5d;">'+STAR_KEY[nst]+'</span></td><td>'+ss.name+'（'+ss.energy+'点）</td></tr>';
+  }
+  nenunHtml+='</table>';
+  nenunHtml+="<p style='font-size:0.92rem;'>今年は<b>"+nenNowStar+"</b>の年。「"+STAR_KEY[nenNowStar]+"」を心がけると、流れに乗りやすい一年ですよ。</p>";
+  document.getElementById("nenun").innerHTML=nenunHtml;
+
+  // ===== 月運・今週7日間 =====
+  const ADVICE={
+    "貫索星":"自分のペースを守って進めると吉。単独でじっくり取り組む作業に向く日。",
+    "石門星":"人と組むと運が開く日。集まりやチームでの相談ごとに向きます。",
+    "鳳閣星":"肩の力を抜いて。おいしい食事や趣味の時間が運気を整える日。",
+    "調舒星":"感性が冴える日。創作や細かい作業に吉。対人の摩擦には少し注意。",
+    "禄存星":"人への親切が巡る日。贈り物やお礼、サービス精神が吉。出費はほどほどに。",
+    "司禄星":"こつこつ作業の日和。貯蓄・整理整頓・家のことを進めると吉。",
+    "車騎星":"動いてこそ運が回る日。後回しの用事を一気に片付けるのに向きます。",
+    "牽牛星":"評価されやすい日。手続き・挨拶・目上への報告ごとに吉。",
+    "龍高星":"新しいことに触れると吉。学び・旅・初めての場所が運を運ぶ日。",
+    "玉堂星":"学びと読書の日。調べ物や勉強、年長者の知恵を借りるのに向きます。"
+  };
+  function adviceOf(star,energy){
+    let a=ADVICE[star];
+    if(energy>=10)a+="（エネルギーの強い日。攻めの行動OK）";
+    else if(energy<=4)a+="（エネルギー控えめの日。無理せず休息も）";
+    return a;
+  }
+  const cm=solarMonth(ty,tm,td);
+  const cyk=yearKanshi(cm.setsuYear);
+  const cmk=monthKanshi(cyk.stem,cm.monthIdx);
+  const cms=subStar(ds,cmk.branch);
+  const cmStar=mainStar(ds,cmk.stem);
+  const WEEKDAYS=["日","月","火","水","木","金","土"];
+  const cMonNine=nineStarMonth(cm.setsuYear,cm.monthIdx);
+  let gHtml='<table class="un"><tr><th>日付</th><th>干支</th><th>主星</th><th>従星</th><th>九星・色</th><th>過ごし方のヒント</th></tr>';
+  gHtml+='<tr><td>今月（'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'月）</td><td>'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'</td><td>'+cmStar+'</td><td>'+cms.name+'（'+cms.energy+'点）</td><td>'+KYUSEI_SHORT[cMonNine-1]+'<br>'+KYUSEI_COLOR[cMonNine-1]+'</td><td class="adv">今月のテーマ：'+ADVICE[cmStar]+'</td></tr>';
+  for(let i=0;i<7;i++){
+    const dt=new Date(ty,tm-1,td+i);
+    const dy=dt.getFullYear(),dm=dt.getMonth()+1,dd=dt.getDate();
+    const dIdx=dayKanshi(dy,dm,dd);
+    const dStar=mainStar(ds,dIdx%10);
+    const dSub=subStar(ds,dIdx%12);
+    const dNine=nineStarDay(dy,dm,dd);
+    const label=(i===0?"今日 ":"")+dm+"/"+dd+"（"+WEEKDAYS[dt.getDay()]+"）";
+    gHtml+='<tr'+(i===0?' class="now"':'')+'><td>'+label+'</td><td>'+kanshiName(dIdx)+'</td><td>'+dStar+'</td><td>'+dSub.name+'（'+dSub.energy+'点）</td><td>'+KYUSEI_SHORT[dNine-1]+'<br>'+KYUSEI_COLOR[dNine-1]+'</td><td class="adv">'+adviceOf(dStar,dSub.energy)+'</td></tr>';
+  }
+  gHtml+='</table>';
+  document.getElementById("getsunichi").innerHTML=gHtml;
+
+  // ===== 九星気学 =====
+  const honmei=nineStarYear(setsuYear);
+  const getsumei=nineStarMonth(setsuYear,monthIdx);
+  document.getElementById("kigaku-meta").innerHTML=
+    "本命星：<b>"+KYUSEI[honmei-1]+"</b>（ラッキーカラー："+KYUSEI_COLOR[honmei-1]+"）　月命星："+KYUSEI[getsumei-1];
+  const todayNine=nineStarDay(ty,tm,td);
+  let kHtml='<div style="text-align:center;font-size:0.95rem;">今日の九星：<b>'+KYUSEI[todayNine-1]+'</b>　今日の色：<b style="color:var(--accent);">'+KYUSEI_COLOR[todayNine-1]+'</b></div>';
+  kHtml+='<div class="un-meta" style="margin-top:6px;">いちばんかんたんな使い方：今日の色をどこかひとつ身につける。お出かけは「◎」の方角へ。それだけで十分ですよ</div>';
+  kHtml+='<div style="margin-top:14px;"><b style="color:var(--accent-soft);font-size:0.9rem;">星の象意（長所と短所）</b><table class="un"><tr><th></th><th>星</th><th class="adv">象意・長所・短所</th></tr>'+shoiRow("本命星",honmei)+shoiRow("月命星",getsumei)+shoiRow("今日の星",todayNine)+'</table></div>';
+  kHtml+=kippoHtml("今年の方位（年盤）",nineStarYear(curSetsuYear),honmei,yearKanshi(curSetsuYear).branch);
+  kHtml+=kippoHtml("今月の方位（月盤）",cMonNine,honmei,cmk.branch);
+  kHtml+=kippoHtml("今日の方位（日盤）",todayNine,honmei,dayKanshi(ty,tm,td)%12);
+  kHtml+='<div style="font-size:0.78rem;color:#7a6f5d;margin-top:10px;">◎＝吉方（本命星と相生・比和の星）、✕＝凶方（五黄殺・暗剣殺・破・本命殺・本命的殺）、−＝平。この表は基本の吉凶（相生・比和の吉と、五黄殺・暗剣殺・破・本命殺・本命的殺の凶）で見ています。</div>';
+  kHtml+='<div style="font-size:0.78rem;color:#7a6f5d;margin-top:6px;">吉方位への神社参り（吉方参り）は開運の柱のひとつです。たとえば水の方位なら水神様・竜神様など、五行に縁のある神様にお参りします。</div>';
+  document.getElementById("kigaku").innerHTML=kHtml;
+
+  // ===== 鑑定者用メモ =====
+  const proTb1=(10-2*Math.floor(dayIdx/10)+12)%12, proTb2=(11-2*Math.floor(dayIdx/10)+12)%12;
+  let pro="";
+  const shuku=[];
+  if(yk.branch===proTb1||yk.branch===proTb2)shuku.push("生年中殺");
+  if(mk.branch===proTb1||mk.branch===proTb2)shuku.push("生月中殺");
+  if(dayIdx===10||dayIdx===11)shuku.push("日座天中殺（"+kanshiName(dayIdx)+"日）");
+  pro+="<p><b>宿命中殺：</b>"+(shuku.length?shuku.join("・"):"なし")+"</p>";
+  const ijoPro=[],ijoDetail=[];
+  [["年柱",kanshiName(kanshi60(yk.stem,yk.branch)),"家系・目上との関わりや若い頃に"],["月柱",kanshiName(kanshi60(mk.stem,mk.branch)),"仕事・社会との関わりに"],["日柱",kanshiName(dayIdx),"本人と家庭に最も強く"]].forEach(([lb,kn,where])=>{
+    let type=null;
+    if(IJO_NORMAL.includes(kn))type="通常異常干支";
+    else if(IJO_ANGO.includes(kn))type="暗合異常干支";
+    if(type){ijoPro.push(lb+"「"+kn+"」（"+type.slice(0,2)+"）");ijoDetail.push([lb,kn,type,where]);}
+  });
+  pro+="<p><b>異常干支：</b>"+(ijoPro.length?ijoPro.join("・"):"なし")+"　<b>伴星（使命星）：</b><b style='color:var(--accent);'>"+bansei+"</b><span style='font-size:0.78rem;color:#7a6f5d;'>（出し方＝日干×年干の干合相手の主星。朱学院系。1951例で先生の表「牽牛星」と一致を確認済み。お客様画面には出しません・先生）</span></p>";
+  pro+="<p style='font-size:0.85rem;'><b>伴星「"+bansei+"」の使命（読み材料）：</b>"+BANSEI_TEXT[bansei]+"</p>";
+  ijoDetail.forEach(([lb,kn,type,where])=>{
+    pro+="<p style='font-size:0.85rem;'><b>"+lb+"「"+kn+"」＝"+type+"（読み材料）：</b>"+IJO_TEXT[type]+"この性質は"+where+"あらわれます。</p>";
+  });
+  if(ijoDetail.length>=2)pro+="<p style='font-size:0.85rem;'>異常干支"+ijoDetail.length+"つ持ちは希少。「普通」の枠に収まらない大きな才能の持ち主です。</p>";
+  const pairs=[
+    ["年-月",yk.stem,mk.stem,yk.branch,mk.branch,kanshi60(yk.stem,yk.branch),kanshi60(mk.stem,mk.branch)],
+    ["月-日",mk.stem,ds,mk.branch,db,kanshi60(mk.stem,mk.branch),dayIdx],
+    ["年-日",yk.stem,ds,yk.branch,db,kanshi60(yk.stem,yk.branch),dayIdx]
+  ];
+  let isouRows="";
+  pairs.forEach(([label,s1,s2,b1,b2,p1,p2])=>{
+    const found=[];
+    const kg=kangoCheck(s1,s2);if(kg)found.push(kg+"（"+STEMS[s1]+"×"+STEMS[s2]+"）");
+    branchRels(b1,b2).forEach(rr=>found.push(rr+"（"+BRANCHES[b1]+"×"+BRANCHES[b2]+"）"));
+    pillarRels(p1,p2).forEach(rr=>found.push(rr));
+    isouRows+="<tr><td>"+label+"</td><td class='adv'>"+(found.length?found.join("、"):"−")+"</td></tr>";
+  });
+  pro+="<p style='margin-bottom:4px;'><b>命式内の干合・位相法：</b></p><table class='un'>"+isouRows+"</table>";
+  const gogyoN=[0,0,0,0,0];
+  [yk.stem,mk.stem,ds].forEach(s=>gogyoN[Math.floor(s/2)]++);
+  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokan(b,daysSinceSetsu)/2)]++);
+  const dE=Math.floor(ds/2);
+  const REL_NAME=["比劫","食傷","財","官殺","印"];
+  const relOf=e=>REL_NAME[((e-dE)%5+5)%5];
+  const relRow="<tr>"+[0,1,2,3,4].map(e=>"<td style='font-size:0.75rem;color:#7a6f5d;'>"+relOf(e)+"</td>").join("")+"</tr>";
+  pro+="<p style='margin-bottom:4px;'><b>五行バランス（三干＋蔵干）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+gogyoN.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>下段＝日干"+STEMS[ds]+"（"+GOGYO_NAME[dE]+"）から見た関係。比劫＝日干と同じ／食傷＝日干が生む／財＝日干が剋す／官殺＝日干を剋す／印＝日干を生む。過多・不足は数だけでなく、日干と照らし合わせて判定します（先生）。</p>";
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokan(yk.branch,daysSinceSetsu)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokan(mk.branch,daysSinceSetsu)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokan(db,daysSinceSetsu)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
+  // 身強・身弱（先生確定: 陽占の点数の単純比較。特別な流儀なし）
+  const miJudge=total>=20?"身強（みきょう）——エネルギー点数が高く、背負える・押せる体質":total<=17?"身弱（みじゃく）——エネルギー点数が低めの、繊細・感性型の体質":"中間——強弱のバランス型";
+  pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小6点〜最大33点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
+  const stN=(gogyoN[dE]-1)+gogyoN[(dE+4)%5];
+  const wkN=gogyoN[(dE+1)%5]+gogyoN[(dE+2)%5]+gogyoN[(dE+3)%5];
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>参考（五行側の見方）：日干を強める星（比劫・印）＝"+stN+"つ〔"+GOGYO_NAME[dE]+"・"+GOGYO_NAME[(dE+4)%5]+"〕／弱める星（食傷・財・官殺）＝"+wkN+"つ〔"+GOGYO_NAME[(dE+1)%5]+"・"+GOGYO_NAME[(dE+2)%5]+"・"+GOGYO_NAME[(dE+3)%5]+"〕。過多・忌神の厳密な判定は身強・身弱と照らして行います（先生）。境界は通常の目安（20点以上=身強・17点以下=身弱）を採用しています（先生: 通常どおり）。</p>";
+  const kata=[],fusoku=[];
+  gogyoN.forEach((n,i)=>{if(n>=3)kata.push(GOGYO_NAME[i]+"（"+n+"つ）");if(n===0)fusoku.push(GOGYO_NAME[i]);});
+  pro+="<p style='font-size:0.85rem;'>"+(kata.length?"<b>過多：</b>"+kata.join("・")+"。":"")+(fusoku.length?" <b>命式にない五行：</b>"+fusoku.join("・")+"。":"")+((kata.length||fusoku.length)?"":"五行は比較的バランスが取れています。")+"</p>";
+  // 干合が成立した場合は変化後の五行で数え直す（先生）
+  const KANGO_GO=[2,3,4,0,1];
+  const naiKgo=[];
+  [[yk.stem,mk.stem,"年干と月干"],[mk.stem,ds,"月干と日干"]].forEach(([a,b,lb])=>{if(kangoCheck(a,b))naiKgo.push([a,b,lb]);}); // 干合は隣り合う柱のみ成立（先生確認）。年干と日干は離れているため除外
+  if(naiKgo.length){
+    const g3=gogyoN.slice();
+    naiKgo.forEach(([a,b])=>{const ka=KANGO_GO[a%5];g3[Math.floor(a/2)]--;g3[Math.floor(b/2)]--;g3[ka]+=2;});
+    pro+="<p style='margin-bottom:4px;'><b>干合変化後の五行バランス（"+naiKgo.map(x=>x[2]).join("・")+"が干合）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+g3.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
+    pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>干合が成立した場合は、変化後の五行で数え直します（先生）。変化の組：甲と己→土、乙と庚→金、丙と辛→水、丁と壬→木、戊と癸→火。成立は<b>隣り合う柱のみ</b>。年干と日干のように離れた柱の結びつきは成立しません（先生確認）。</p>";
+  }
+  // 調候守護神（標準表・要監修）
+  const sg=SHUGO[ds][monthIdx];
+  const sgPlaces=[["年干",yk.stem],["月干",mk.stem],
+    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokan(yk.branch,daysSinceSetsu)],
+    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokan(mk.branch,daysSinceSetsu)],
+    ["日支"+BRANCHES[db]+"の蔵干",zokan(db,daysSinceSetsu)]];
+  let sgHtml="";
+  sg.forEach((g,i)=>{
+    const exact=sgPlaces.filter(([lb,s])=>s===g).map(([lb])=>lb);
+    const elem=sgPlaces.filter(([lb,s])=>s!==g&&Math.floor(s/2)===Math.floor(g/2)).map(([lb,s])=>lb+"（"+STEMS[s]+"）");
+    let where;
+    if(exact.length)where="命式内にあり："+exact.join("、")+(elem.length?"／同五行："+elem.join("、"):"");
+    else if(elem.length)where="同じ五行が命式内に："+elem.join("、");
+    else where="命式内になし（外に求める・開運までに試練型）";
+    sgHtml+="<tr><td>第"+(i+1)+"守護神</td><td><b>"+STEMS[g]+"</b>（"+GOGYO_NAME[Math.floor(g/2)]+"）</td><td class='adv'>"+where+"</td></tr>";
+  });
+  const sgCount=gogyoN[Math.floor(sg[0]/2)];
+  let sgState="";
+  if(sgCount>=3)sgState="第一守護神の五行（"+GOGYO_NAME[Math.floor(sg[0]/2)]+"）が命式に"+sgCount+"つ——守護神に囲まれた恵まれた命式です。ただし過多の場合は偏りにも注意。";
+  else if(sgCount>=1)sgState="第一守護神の五行（"+GOGYO_NAME[Math.floor(sg[0]/2)]+"）を命式に"+sgCount+"つ持っています。";
+  else sgState="第一守護神の五行を命式内に持っていません。外から取り入れて開運するタイプ（開運までに試練）です。";
+  pro+="<p style='margin-bottom:4px;'><b>調候守護神（標準表）：</b></p><table class='un'>"+sgHtml+"</table><p style='font-size:0.85rem;'>"+sgState+"</p>";
+  // ===== 忌神・調和の守護神（仮ロジック・要監修） =====
+  // 定石: 過多の五行→剋して抑える/生じて漏らす五行が調和候補。過多そのもの・過多を生む五行・第一守護神を剋す五行が忌神候補。不足(0)の五行は補う候補。
+  const kataIdx=[],fusokuIdx=[];
+  gogyoN.forEach((n,i)=>{if(n>=3)kataIdx.push(i);if(n===0)fusokuIdx.push(i);});
+  const chowaC=[],imiC=[];
+  const addCand=(arr,e,reason)=>{const f=arr.find(x=>x.e===e);if(f)f.r.push(reason);else arr.push({e,r:[reason]});};
+  kataIdx.forEach(i=>{
+    addCand(chowaC,(i+1)%5,GOGYO_NAME[i]+"の過剰な力を生じて漏らす（食傷の働き・先生の方式では第一候補）");
+    addCand(chowaC,(i+3)%5,GOGYO_NAME[i]+"の過多を剋して抑える（補助候補）");
+    addCand(imiC,i,"過剰の五行そのもの（先生確認：忌神＝過剰の五行）");
+    addCand(imiC,(i+4)%5,"過多の"+GOGYO_NAME[i]+"をさらに生んでしまう");
+  });
+  fusokuIdx.forEach(i=>{addCand(chowaC,i,"命式にない五行を補う");});
+  const sgElem0=Math.floor(sg[0]/2);
+  addCand(imiC,(sgElem0+3)%5,"第一守護神の五行（"+GOGYO_NAME[sgElem0]+"）を剋す");
+  const shokuElem=(Math.floor(ds/2)+1)%5;
+  if(gogyoN[shokuElem]>=3)addCand(imiC,shokuElem,"日干の力を過剰に奪う（食傷の過多・先生の定義）");
+  let kjHtml="<tr><th>区分</th><th>五行</th><th class='adv'>理由（定石）</th><th>命式内</th></tr>";
+  const split=e=>chowaC.some(x=>x.e===e)&&imiC.some(x=>x.e===e);
+  chowaC.forEach(c=>{
+    let extra=c.e===sgElem0?"<br><span style='color:var(--accent);'>※調候第一守護神と同じ五行——強い守護神。ただし劇薬にもなり、人生のブレイクスルーの鍵（先生）</span>":"";
+    if(split(c.e))extra+="<br><span style='color:#a33;'>※調和と忌の両面を持つ五行。大運・生まれた時間まで含めた、その時々のバランスで判定（先生）</span>";
+    kjHtml+="<tr><td>調和</td><td><b>"+GOGYO_NAME[c.e]+"</b></td><td class='adv'>"+c.r.join("、")+extra+"</td><td>"+(gogyoN[c.e]||"−")+"</td></tr>";
+  });
+  imiC.forEach(c=>{
+    const extra=split(c.e)?"<br><span style='color:#a33;'>※調和と忌の両面を持つ五行。大運・生まれた時間まで含めた、その時々のバランスで判定（先生）</span>":"";
+    kjHtml+="<tr><td>忌神</td><td><b>"+GOGYO_NAME[c.e]+"</b></td><td class='adv'>"+c.r.join("、")+extra+"</td><td>"+(gogyoN[c.e]||"−")+"</td></tr>";
+  });
+  let kjNote="";
+  if(!kataIdx.length&&!fusokuIdx.length)kjNote="五行が比較的調和しているため、調和の守護神は立てず調候守護神を優先します。忌神候補は守護神を剋す五行のみ表示しています。";
+  pro+="<p style='margin-bottom:4px;'><b>忌神・調和の守護神（先生の方式）：</b></p><table class='un'>"+kjHtml+"</table>"+(kjNote?"<p style='font-size:0.85rem;'>"+kjNote+"</p>":"")+"<p style='font-size:0.8rem;color:#7a6f5d;'>忌神の扱い（先生）：基本は無理をさせず守る。ただし「星を逃がす」「試練」「自分を鍛える」と捉える面もあり、人生のブレイクスルーにつながることがあります。</p>";
+  // ===== 大運込みの五行バランス（先生: バランスは大運込みで見る） =====
+  if(curTaiunIdx!==null){
+    const BRANCH_ELEM=[4,2,0,0,2,1,1,2,3,3,2,4];
+    const g2=gogyoN.slice();
+    g2[Math.floor((curTaiunIdx%10)/2)]++;
+    g2[BRANCH_ELEM[curTaiunIdx%12]]++;
+    const kata2=[],fusoku2=[];
+    g2.forEach((n,i)=>{if(n>=3)kata2.push(GOGYO_NAME[i]+"（"+n+"つ）");if(n===0)fusoku2.push(GOGYO_NAME[i]);});
+    const kgo2=[];
+    const tStem=curTaiunIdx%10, tBranch=curTaiunIdx%12;
+    [["年干",yk.stem],["月干",mk.stem],["日干",ds]].forEach(([lb,s])=>{if(kangoCheck(tStem,s))kgo2.push([lb,s]);});
+    pro+="<p style='margin-bottom:4px;'><b>現大運（"+kanshiName(curTaiunIdx)+"）込みの五行バランス（8文字・参考）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+g2.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
+    pro+="<p style='font-size:0.85rem;'>"+(kata2.length?"<b>多めの五行（3つ以上・目安）：</b>"+kata2.join("・")+"。":"")+(fusoku2.length?" <b>ない五行：</b>"+fusoku2.join("・")+"。":"")+((kata2.length||fusoku2.length)?"":"大運込みでもバランスが取れています。")+"<br>8文字では数だけで過多と決めず、日干との関係（上の比劫〜印）と照らして厳密に判定します。「4つ以上」とも固定しません（先生）。</p>";
+    pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助：現大運の支"+BRANCHES[tBranch]+"の蔵干（本気）＝"+STEMS[zokan(tBranch,99)]+"（"+GOGYO_NAME[Math.floor(zokan(tBranch,99)/2)]+"・日干から見て"+relOf(Math.floor(zokan(tBranch,99)/2))+"）。深く調べるときの補助です（先生）。</p>";
+    if(kgo2.length){
+      const g2b=g2.slice();
+      kgo2.forEach(([lb,s])=>{const ka=KANGO_GO[tStem%5];g2b[Math.floor(tStem/2)]--;g2b[Math.floor(s/2)]--;g2b[ka]+=2;});
+      pro+="<p style='margin-bottom:4px;'><b>大運の干が"+kgo2.map(x=>x[0]).join("・")+"と干合——変化後の五行バランス：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+g2b.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
+      pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>干合が成立した場合は、変化後の五行で数え直します（先生）。複数の干と同時に干合する場合は、両方とも変化します（先生確認）。</p>";
+    }
+    pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>先生の方針：調和・忌の判定は固定ではなく、大運（と生まれた時間）まで含めた、その時々のバランスで見る。この表は現大運の干支2文字を足した参考値です（大運支は本気の五行で計算）。</p>";
+  }
+  // ===== 天中殺の補足（用語・宿命中殺の解説） =====
+  let tx="<div style='font-size:0.85rem;color:#5d5546;margin-top:12px;border-top:1px dashed #d8cfc0;padding-top:10px;'><b>「天中殺」ということば：</b>"+TENCHU_GLOSSARY+"</div>";
+  tx+="<div style='font-size:0.85rem;margin-top:8px;'><b>天中殺のめぐり：</b>年の天中殺（12年のうち2年）・月の天中殺（12ヶ月のうち2ヶ月）・日の天中殺（12日のうち2日）。"+TENCHU_USAGE+"</div>";
+  const tYears=[];
+  for(let yy=curSetsuYear;yy<curSetsuYear+13&&tYears.length<2;yy++){const b3=yearKanshi(yy).branch;if(b3===proTb1||b3===proTb2)tYears.push(yy+"年");}
+  const inTY=(yearKanshi(curSetsuYear).branch===proTb1||yearKanshi(curSetsuYear).branch===proTb2);
+  const mm1=proTb1===0?12:proTb1, mm2=proTb2===0?12:proTb2;
+  const tDays=[];
+  for(let i3=0;i3<60&&tDays.length<4;i3++){const dt3=new Date(ty,tm-1,td+i3);const di3=dayKanshi(dt3.getFullYear(),dt3.getMonth()+1,dt3.getDate());if(di3%12===proTb1||di3%12===proTb2)tDays.push((dt3.getMonth()+1)+"/"+dt3.getDate()+"（"+WEEKDAYS[dt3.getDay()]+"）");}
+  tx+="<div style='font-size:0.85rem;margin-top:8px;background:rgba(0,0,0,0.04);border-radius:8px;padding:8px 10px;'><b>あなたの天中殺はいつ？（"+BRANCHES[proTb1]+"・"+BRANCHES[proTb2]+"）</b><br>"
+    +"<b>天中殺の年</b>：直近では<b>"+tYears.join("・")+"</b>"+(inTY?"<b>（いままさに天中殺の年です）</b>":"")+"。年の切り替わりは立春です。<br>"
+    +"<b>年の天中殺月</b>：毎年およそ<b>"+mm1+"月・"+mm2+"月</b>（節入りで切り替わるため数日前後します）<br>"
+    +"<b>月の中殺日</b>：直近では<b>"+tDays.join("、")+"</b>。12日にいちど、2日続けてめぐります。</div>";
+  if(shuku.length){
+    tx+="<div style='font-size:0.85rem;margin-top:8px;'><b>宿命中殺（生まれつき持っている中殺）：</b>";
+    shuku.forEach(s=>{
+      const key=s.startsWith("生年")?"生年中殺":s.startsWith("生月")?"生月中殺":"日座中殺";
+      tx+="<br><b>・"+s+"</b>──"+SHUKU_TEXT[key];
+    });
+    tx+="</div>";
+  }
+  document.getElementById("tenchu-extra").innerHTML=tx;
+  // ===== 宿命と適性（職業・健康・組織）（サンプル・要監修） =====
+  let tk="<h3>職業適性 ── 中心星と右手の星から</h3>"
+    +"<p><b>"+stars.chest+"（あなたの本質）：</b>"+JOB_TEXT[stars.chest]+(stars.rightHand!==stars.chest?"<br><b>"+stars.rightHand+"（仕事の場での顔）：</b>"+JOB_TEXT[stars.rightHand]:"")+"</p>";
+  tk+="<h3>経営・組織の中でのあなた</h3>"
+    +"<p><b>"+stars.chest+"：</b>"+ORG_TEXT[stars.chest]+(stars.rightHand!==stars.chest?"<br><b>"+stars.rightHand+"：</b>"+ORG_TEXT[stars.rightHand]:"")+"</p>";
+  if([stars.early.name,stars.middle.name,stars.late.name].includes("天将星"))tk+="<p>十二大従星に<b>天将星</b>を持っています。組織の頂点に立つ器——背負うものが大きいほど輝く人です。</p>";
+  tk+="<h3>健康 ── 五行と体の対応（東洋の伝統的な見方）</h3>";
+  const dElem=Math.floor(ds/2);
+  tk+="<p><b>体質の中心（日干の五行＝"+GOGYO_NAME[dElem]+"）：</b>"+HEALTH_TEXT[dElem]+"</p>";
+  kataIdx.forEach(i=>{tk+="<p><b>"+GOGYO_NAME[i]+"が多い命式：</b>"+HEALTH_TEXT[i]+"</p>";});
+  fusokuIdx.forEach(i=>{tk+="<p><b>"+GOGYO_NAME[i]+"が命式にない：</b>"+HEALTH_TEXT[i]+"</p>";});
+  if(!kataIdx.length&&!fusokuIdx.length)tk+="<p>五行のバランスがよく、特定の偏りからくる弱点は目立ちません。</p>";
+  // いまは我慢か、GOか（先生: 健康は宿命と年・月で見る。仮ロジック・要監修）
+  const cyk4=yearKanshi(curSetsuYear);
+  const BR_EL=[4,2,0,0,2,1,1,2,3,3,2,4];
+  const yEl2=[Math.floor(cyk4.stem/2),BR_EL[cyk4.branch]];
+  const mEl2=[Math.floor(cmk.stem/2),BR_EL[cmk.branch]];
+  const inTY3=(cyk4.branch===proTb1||cyk4.branch===proTb2);
+  const inTM3=(cmk.branch===proTb1||cmk.branch===proTb2);
+  function gamanGo(isT,els,label){
+    if(isT)return "<b>"+label+"：我慢（守り）</b>——天中殺の時期です。無理を重ねない・よく休む・整える。検査や手入れにはよい時期です。";
+    if(els.includes(sgElem0))return "<b>"+label+"：GO</b>——守護神の五行（"+GOGYO_NAME[sgElem0]+"）が巡っています。動くなら、始めるならいまです。";
+    if(kataIdx.some(i=>els.includes(i)))return "<b>"+label+"：慎重に</b>——もともと多い五行（"+kataIdx.map(i=>GOGYO_NAME[i]).join("・")+"）がさらに重なる時期。無理は禁物です。";
+    return "<b>"+label+"：平</b>——淡々と。生活のリズムを守ることが、いちばんの養生です。";
+  }
+  tk+="<h3>いまは我慢か、GOか</h3><p><span style='color:#7a6f5d;font-size:0.85rem;'>（先生の見方「健康は宿命と年・月で見る。我慢かGOか」に基づく判定）</span><br>"+gamanGo(inTY3,yEl2,"今年")+"<br>"+gamanGo(inTM3,mEl2,"今月")+"</p>";
+  tk+="<p style='font-size:0.78rem;color:#7a6f5d;'>※東洋五行の伝統的な対応の紹介であり、医学的な診断・助言ではありません。気になる症状は医療機関にご相談ください。</p>";
+  document.getElementById("tekisei").innerHTML=tk;
+  const cyk2=yearKanshi(curSetsuYear);
+  const vsList=[["年支",yk.branch],["月支",mk.branch],["日支",db]];
+  const stemList=[["年干",yk.stem],["月干",mk.stem],["日干",ds]];
+  let nenIso=[];
+  vsList.forEach(([lb,b])=>{branchRels(cyk2.branch,b).forEach(rr=>nenIso.push(lb+"と"+rr));});
+  stemList.forEach(([lb,s])=>{if(kangoCheck(cyk2.stem,s))nenIso.push(lb+"と干合");});
+  if(cyk2.branch===proTb1||cyk2.branch===proTb2)nenIso.push("【今年は天中殺の年】");
+  pro+="<p><b>今年（"+STEMS[cyk2.stem]+BRANCHES[cyk2.branch]+"年）との位相：</b>"+(nenIso.length?nenIso.join("、"):"特になし")+"</p>";
+  if(curTaiunIdx!==null){
+    const tsm=curTaiunIdx%10,tbb=curTaiunIdx%12;
+    let tIso=[];
+    vsList.forEach(([lb,b])=>{branchRels(tbb,b).forEach(rr=>tIso.push(lb+"と"+rr));});
+    stemList.forEach(([lb,s])=>{if(kangoCheck(tsm,s))tIso.push(lb+"と干合");});
+    if(tbb===proTb1||tbb===proTb2)tIso.push("【大運天中殺】");
+    pro+="<p><b>現大運（"+kanshiName(curTaiunIdx)+"）との位相：</b>"+(tIso.length?tIso.join("、"):"特になし")+"</p>";
+  }
+  pro+='<div style="font-size:0.78rem;color:#7a6f5d;margin-top:8px;">※半会・方三位は2支の組み合わせで表示しています。忌神・調和の守護神は自然法算命学・一般の定石による判定です。ことばの意味は「ことばの小事典」カードにまとめてあります。</div>';
+  document.getElementById("pro").innerHTML=pro;
+
+  // ===== 占星術（インド式主表示） =====
+  const hhV=document.getElementById("hh").value, miV=+document.getElementById("mi").value;
+  const knownTime=hhV!=="x";
+  const hUsed=knownTime?+hhV:12;
+  const jdUT=jdn(y,m,d)-0.5+(hUsed+miV/60-9)/24;
+  const sunL=sunLon(jdUT), moonL=moonLon(jdUT);
+  const sunSign=Math.floor(sunL/30)%12, moonSign=Math.floor(moonL/30)%12;
+  let sHtml='<table class="un"><tr><th></th><th>星座</th><th class="adv">意味あい</th></tr>';
+  const ELEM4=["火","地","風","水"];
+  const sunSid=siderealSign(sunL,jdUT), moonSid=siderealSign(moonL,jdUT);
+  sHtml+='<tr><td>太陽星座</td><td><b>'+ZODIAC[sunSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[sunSid%4]+'のエレメント<br>西洋式では'+ZODIAC[sunSign]+'</span></td><td class="adv">人生の目的・本質。'+ZODIAC_TEXT[sunSid]+'</td></tr>';
+  sHtml+='<tr><td>月星座'+(knownTime?'':'<br><span style="font-size:0.7rem;">（時刻不明のため正午で計算・参考値）</span>')+'</td><td><b>'+ZODIAC[moonSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[moonSid%4]+'のエレメント<br>西洋式では'+ZODIAC[moonSign]+'</span></td><td class="adv">感情・素顔・内面。'+ZODIAC_TEXT[moonSid]+'</td></tr>';
+  const NAK=["アシュヴィニー","バラニー","クリッティカー","ローヒニー","ムリガシラー","アールドラー","プナルヴァス","プシュヤ","アーシュレーシャー","マガー","プールヴァ・パールグニー","ウッタラ・パールグニー","ハスタ","チットラー","スヴァーティー","ヴィシャーカー","アヌラーダー","ジェーシュター","ムーラ","プールヴァ・アーシャーダー","ウッタラ・アーシャーダー","シュラヴァナ","ダニシュター","シャタビシャー","プールヴァ・バードラパダー","ウッタラ・バードラパダー","レーヴァティー"];
+  const sidMoonLon=((moonL-ayanamsa(jdUT))%360+360)%360;
+  sHtml+='<tr><td>月の宿<br><span style="font-size:0.7rem;">（ナクシャトラ）</span></td><td><b style="font-size:0.95rem;">'+NAK[Math.floor(sidMoonLon/(360/27))%27]+'</b></td><td class="adv">インド占星術で性格・相性の鍵となる、あなたの「月の宿」です。くわしい読み解きは個別相談でお伝えします。</td></tr>';
+  let ascSign=null, ascSid=null;
+  if(knownTime){
+    const p=PREF[+document.getElementById("pref").value];
+    const ascL=ascendant(jdUT,p[1],p[2]);
+    ascSign=Math.floor(ascL/30)%12;
+    ascSid=siderealSign(ascL,jdUT);
+    sHtml+='<tr><td>アセンダント<br><span style="font-size:0.7rem;">（'+p[0]+'・'+hUsed+'時'+miV+'分）</span></td><td><b>'+ZODIAC[ascSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[ascSid%4]+'のエレメント<br>西洋式では'+ZODIAC[ascSign]+'</span></td><td class="adv">第一印象・外向きの顔。'+ZODIAC_TEXT[ascSid]+'</td></tr>';
+  }else{
+    sHtml+='<tr><td>アセンダント</td><td>−</td><td class="adv">出生時刻を入力すると表示されます。</td></tr>';
+  }
+  // 惑星の配置と居心地（グラハ・マイトリー）
+  sHtml+='<tr><th colspan="3" style="padding-top:16px;text-align:left;color:var(--accent-soft);">惑星の配置と居心地（インド式）</th></tr>';
+  const planetList=[["太陽","自我・生命力",sunSid,dignity("太陽",sunSid)],["月","心・感情",moonSid,dignity("月",moonSid)]];
+  [["水星","知性・言葉・商才"],["金星","愛情・美・楽しみ"],["火星","行動力・勇気"],["木星","幸運・拡大・知恵"],["土星","試練・継続・責任"]].forEach(([pn,mean])=>{
+    const gl=planetGeoLon(pn,jdUT);
+    const sgn=siderealSign(gl,jdUT);
+    planetList.push([pn,mean,sgn,dignity(pn,sgn)]);
+  });
+  planetList.forEach(([pn,mean,sgn,dg])=>{
+    sHtml+='<tr><td>'+pn+'<br><span style="font-size:0.7rem;">'+mean+'</span></td><td><b>'+ZODIAC[sgn]+'</b><br><span style="font-size:0.75rem;color:var(--accent);">'+dg[0]+'</span></td><td class="adv">'+dg[1]+'</td></tr>';
+  });
+  const DIG_RANK={"高揚":5,"自星座":4,"友好":3,"中立":2,"敵対":1,"減衰":0};
+  const sortedP=[...planetList].sort((a,b)=>DIG_RANK[b[3][0]]-DIG_RANK[a[3][0]]);
+  const bestP=sortedP[0], worstP=sortedP[sortedP.length-1];
+  sHtml+='</table>';
+  // ひとこと要約（ぱっとわかる入口）
+  const ZKEY=["勇気","安定","好奇心","愛情","輝き","気配り","調和","深さ","自由","努力","個性","やさしさ"];
+  sHtml="<div style='font-size:0.95rem;background:#f4ecdc;border-radius:10px;padding:10px 14px;margin-bottom:10px;'>あなたをひとことで——生き方は<b>"+ZODIAC[sunSid]+"</b>（"+ZKEY[sunSid]+"の人）、心の中は<b>"+ZODIAC[moonSid]+"</b>（"+ZKEY[moonSid]+"の心）"+(ascSid!==null?"、まわりから見た顔は<b>"+ZODIAC[ascSid]+"</b>":"")+"。<br><span style='font-size:0.8rem;color:#7a6f5d;'>下の表がむずかしく見えても大丈夫。この一行と、「居心地」のことば（高揚・友好など＝その星の元気さ）だけ見れば十分ですよ。</span></div>"+sHtml;
+  // 星のお部屋（ハウス・ホールサイン方式）
+  if(knownTime&&ascSid!==null){
+    const HOUSE_NAME=["自分自身・体質","お金・持ちもの","学び・きょうだい・身近な外出","家庭・住まい・母","恋愛・子ども・楽しみ","お勤め・日々の務め・健康管理","結婚・パートナー","受け継ぐもの・深いご縁","学問・信仰・遠い旅","天職・社会での顔","友人・願いごと","癒やし・静養・見えない世界"];
+    const houseOf=s=>((s-ascSid+12)%12);
+    let hHtml='<div style="margin-top:14px;"><b style="color:var(--accent-soft);font-size:0.9rem;">星のお部屋（ハウス）── その星が人生のどの場面で働くか</b><table class="un"><tr><th>星</th><th>お部屋</th><th class="adv">その部屋の意味</th></tr>';
+    planetList.forEach(([pn,mean,sgn])=>{const h=houseOf(sgn);hHtml+='<tr><td>'+pn+'<br><span style="font-size:0.7rem;">'+mean+'</span></td><td>第'+(h+1)+'ハウス</td><td class="adv">'+HOUSE_NAME[h]+'</td></tr>';});
+    hHtml+='</table>';
+    hHtml+="<p style='font-size:0.92rem;'>とくに大事なのはこの2つです。<br><b>太陽は第"+(houseOf(sunSid)+1)+"ハウス（"+HOUSE_NAME[houseOf(sunSid)]+"のお部屋）</b>——あなたの人生の主な舞台は、ここになります。<br><b>月は第"+(houseOf(moonSid)+1)+"ハウス（"+HOUSE_NAME[houseOf(moonSid)]+"のお部屋）</b>——心がいちばん安らぐのは、この場面ですよ。</p>";
+    hHtml+='<div style="font-size:0.78rem;color:#7a6f5d;">ハウス＝空を12の「お部屋」に分けたもの。生まれた瞬間に東からのぼっていた星座（アセンダント）のお部屋を第1ハウスとして、順番に数えます（ホールサイン方式）。</div></div>';
+    sHtml+=hHtml;
+  }else{
+    sHtml+='<div style="font-size:0.85rem;color:#7a6f5d;margin-top:10px;">出生時刻を入れると「星のお部屋（ハウス）」——その星が人生のどの場面（お金・家庭・天職など）で働くか——も表示されます。</div>';
+  }
+  document.getElementById("seiyo").innerHTML=sHtml;
+
+  // ===== あなたという人（インド式基準） =====
+  let hon="<p>"+SUN_NATURE[sunSid]+"</p>";
+  hon+="<p>"+MOON_HEART[moonSid]+"</p>";
+  if(ascSid!==null){
+    hon+="<p>"+ASC_FACE[ascSid]+(ascSid!==sunSid?"見た目の印象とほんとうのあなたに差があるのは、二面性ではありませんよ。それだけ、あなたという人に奥行きがあるということ。たくさんの可能性があるのです。":"見た目の印象と中身がそろった、裏表のない人です。まわりの人からの信頼も、きっと厚いでしょう。")+"</p>";
+  }
+  hon+="<p>いっぽうで——"+CHEST_WEAK[stars.chest]+"</p>";
+  if(DIG_RANK[bestP[3][0]]>=3){
+    hon+="<p>星々の配置を見ると、"+bestP[1]+"をつかさどる<b>"+bestP[0]+"</b>が、"+ZODIAC[bestP[2]]+"という、のびのび力を出せる場所（"+bestP[3][0]+"）にあります。「"+bestP[1].split("・")[0]+"」の力は、あなたが思っている以上に頼れる、生まれ持った武器です。</p>";
+  }
+  if(DIG_RANK[worstP[3][0]]<=1){
+    hon+="<p>逆に、"+worstP[1]+"をつかさどる<b>"+worstP[0]+"</b>は、いまは少し窮屈な場所にあります。「"+worstP[1].split("・")[0]+"」のことで人より時間がかかると感じてきたなら、それは欠点ではなく、いまもゆっくり磨かれている途中の力だということです。</p>";
+  }
+  hon+="<p>いまあなたを悩ませていることにも、かならず出口があります。終わらない冬がないように、運にもかならず巡りが来ますからね。ひとりで抱えきれなくなったら、いつでもここへ戻っていらっしゃい。</p>";
+  hon+='<div style="font-size:0.78rem;color:#7a6f5d;margin-top:8px;">※占星術（太陽・月・アセンダント）と算命学（中心星）を組み合わせて自動で組み立てたサンプル文です。</div>';
+  document.getElementById("honshitsu").innerHTML=hon;
+
+  // ===== 総合アドバイス =====
+  const tg=Math.floor(dayIdx/10);
+  const tb1=(10-2*tg+12)%12, tb2=(11-2*tg+12)%12;
+  const curYB=yearKanshi(curSetsuYear).branch;
+  const inTenchuYear=(curYB===tb1||curYB===tb2);
+  const inTenchuMonth=(cmk.branch===tb1||cmk.branch===tb2);
+  const CHEST_AFFIRM={
+    "貫索星":"一度決めたら曲げない芯の強さ",
+    "石門星":"人をまとめ、輪をつくる力",
+    "鳳閣星":"ものごとをありのままに楽しむ、自然体な姿",
+    "調舒星":"人には見えないものを感じ取る繊細な感性",
+    "禄存星":"人に惜しみなく与えられる愛情",
+    "司禄星":"こつこつ積み上げる誠実さ",
+    "車騎星":"迷わず動ける行動力",
+    "牽牛星":"役割を全うする責任感",
+    "龍高星":"未知へ踏み出す探究心",
+    "玉堂星":"学び続けられる知性"
+  };
+  let opening;
+  if(inTenchuYear)opening="ここまで、ほんとうによく歩いてこられましたね。いまは運気の冬。あわてずに、息を整える季節です。";
+  else if(inTenchuMonth)opening="気がつけば、ずいぶん遠くまで来られましたね。今月は、荷物をいったん下ろして、身のまわりを整えるときです。";
+  else if(total>=26)opening="いま、あなたの足もとには追い風が吹きはじめています。こらえて蓄えてきた力が、外に出たがっていますよ。";
+  else if(total>=15)opening="季節は少しずつ、あなたの味方に変わってきています。あわてなくて大丈夫。流れはちゃんと整ってきていますよ。";
+  else opening="あなたはここまで、自分の歩はばで、ていねいに歩いてこられました。その歩き方のままでいいのです。道は、ちゃんとひらけていきますからね。";
+  let sogo="<p>"+opening+"</p><p>あなたの心の中心には<b>"+stars.chest+"</b>という星があります。これは「"+CHEST_AFFIRM[stars.chest]+"」をあらわす星。いまもし自信を失っていたとしても、その力があなたから消えてしまったわけではありません。</p>";
+  if(total>=26)sogo+="<p>あなたはもともと、大きなものを背負える人です。いま肩が重いのなら、それは弱いからではなくて、背負っているものが大きいから。ぜんぶを一度に運ばなくていいのですよ。あなたの足腰は、ご自分で思っているよりずっと丈夫にできています。</p>";
+  else if(total>=15)sogo+="<p>あなたは、無理に大きく見せなくても、ちゃんと人に届く力を持っています。なにもかも頑張らなくていいのです。大事な場面をひとつ選んで、そこにだけ力を注いでごらんなさい。それで十分に伝わりますよ。</p>";
+  else sogo+="<p>あなたは、力や勢いではなく、深さと感性で生きる人です。人と同じ速さで走れなくても、ご自分を責めないでくださいね。あなたにしか見えないもの、あなたにしか作れないものが、ちゃんとあります。疲れたら休む。それも大切な才能のひとつですよ。</p>";
+  if(inTenchuYear)sogo+="<p>いまは運気を季節でいえば、「冬」の年です。冬に芽が出ないのは、あなたのせいではありませんよ。土の下では、根がちゃんと育っています。急いで答えを出さなくて大丈夫。学ぶこと、整えること、大切な人との時間。そういう静かな積み重ねが、季節の変わり目に、思いがけない花を咲かせてくれます。</p>";
+  else if(inTenchuMonth)sogo+="<p>今月は、少し立ち止まる月です。決めきれないことがあっても、それは迷いではなくて、時期がまだ熟していないだけのこと。あせらなくていいのですよ。いまは身のまわりを整えることに、時間を使ってくださいね。</p>";
+  else sogo+="<p>いま、あなたの前の道はひらいています。こわさがあっても大丈夫。迷っているということは、半分はもう心が決まっているということですもの。その一歩を、星も後押ししてくれていますよ。</p>";
+  if(DIG_RANK[bestP[3][0]]>=4)sogo+="<p>迷ったときの羅針盤をひとつ。あなたの星の中では、"+bestP[1]+"をつかさどる<b>"+bestP[0]+"</b>が、いちばんのびのびと働ける場所にいます。「"+bestP[1].split("・")[0]+"」につながる道を選べば、大きく外れることはありません。</p>";
+  let bestDay=null;
+  for(let i=0;i<7;i++){
+    const dt=new Date(ty,tm-1,td+i);
+    const di=dayKanshi(dt.getFullYear(),dt.getMonth()+1,dt.getDate());
+    const e=subStar(ds,di%12).energy;
+    if(!bestDay||e>bestDay.e)bestDay={e,label:(dt.getMonth()+1)+"/"+dt.getDate()+"（"+WEEKDAYS[dt.getDay()]+"）"};
+  }
+  const kdirs=kippoTable(cMonNine,honmei,cmk.branch).filter(rr=>rr.mark==="◎").map(rr=>rr.name);
+  if(FULL){
+    sogo+="<p>それでも迷うときは、こんな小さなことから始めてみてください。<br>"+
+          "<b>いつ：</b>今週なら"+bestDay.label+"が、あなたの星がいちばん力を持つ日です。<br>"+
+          "<b>どこ：</b>今月の吉方位は"+(kdirs.length?kdirs.join("・"):"お休み中です。方角は気にせず、近くの好きな場所で大丈夫")+"。散歩や買い物でこの方角を選ぶだけでも構いません。<br>"+
+          "<b>色：</b>今日の色は"+KYUSEI_COLOR[todayNine-1]+"。お守りのように、どこかひとつ身につけてみてください。</p>";
+  }else{
+    sogo+="<p style='border-top:1px solid var(--line);padding-top:12px;'>「今日は何色を身につけるといいか」「どの方角が味方をしてくれるか」「今週のどの日に動くといいか」——そうした日々の指針は、メンバーの方に毎日お届けしています。<br>"+
+          "そして、もっと深く話を聞いてほしいとき、誰かに受け止めてほしいときは、個別相談へ。あなたの話を、時間をとってお聴きします。</p>";
+  }
+  sogo+='<div style="font-size:0.78rem;color:#7a6f5d;margin-top:8px;">※あなたの星の配置から、自動でお作りしたメッセージです。</div>';
+  document.getElementById("sogo").innerHTML=sogo;
+
+  document.getElementById("result").style.display="block";
+  document.getElementById("result").scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
