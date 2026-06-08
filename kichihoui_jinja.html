@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>吉方位・神社さがし（全国）</title>
+<style>
+  :root{ --accent:#1f6f8b; --ink:#3a3326; --paper:#fbf7ef; --line:#e6ddca; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink);
+        font-family:"Hiragino Mincho ProN","Yu Mincho",serif; line-height:1.7; }
+  .wrap{ max-width:680px; margin:0 auto; padding:18px 16px 60px; }
+  h1{ font-size:1.3rem; margin:8px 0 2px; }
+  .lead{ font-size:0.86rem; color:#7a6f5d; margin:0 0 16px; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px; margin:14px 0;
+         box-shadow:0 1px 4px rgba(0,0,0,.04); }
+  label{ font-size:0.9rem; font-weight:700; display:block; margin:10px 0 4px; }
+  input[type=text], select{ width:100%; padding:10px 12px; font-size:1rem; border:1px solid var(--line);
+        border-radius:8px; background:#fff; color:var(--ink); }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .row > div{ flex:1; min-width:140px; }
+  button{ margin-top:14px; width:100%; padding:12px; font-size:1.02rem; font-weight:700; color:#fff;
+          background:var(--accent); border:0; border-radius:24px; cursor:pointer; }
+  button:active{ opacity:.85; }
+  .hint{ font-size:0.78rem; color:#9a8f7d; margin-top:6px; }
+  .result h2{ font-size:1.05rem; margin:4px 0 8px; color:var(--accent); }
+  .pill{ display:inline-block; background:#eef4f6; color:var(--accent); border-radius:14px;
+         padding:2px 10px; font-size:0.8rem; font-weight:700; margin:2px 4px 2px 0; }
+  .jinja{ border-left:4px solid var(--accent); padding:8px 0 8px 12px; margin:10px 0; }
+  .jinja .nm{ font-weight:700; font-size:1rem; }
+  .jinja .meta{ font-size:0.82rem; color:#7a6f5d; }
+  .empty{ color:#9a8f7d; font-size:0.9rem; padding:8px 0; }
+  .note{ background:#f4efe2; border-radius:8px; padding:10px 12px; font-size:0.82rem; color:#6f6450; margin-top:12px; }
+  a{ color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>吉方位・神社さがし（全国）</h1>
+  <p class="lead">お住まいの郵便番号と「守護神の五行」から、相性のよい方角にある実在の神社・パワースポットをご案内します。</p>
+
+  <div class="card">
+    <label>① 郵便番号（7桁）</label>
+    <input type="text" id="zip" inputmode="numeric" placeholder="例：9000015（ハイフン無し）" maxlength="8">
+    <div class="hint">入力後に下のボタンを押すと、お住まいの都道府県を調べます（インターネット接続が必要です）。</div>
+
+    <label>② 守護神の五行（診断結果から選んでください）</label>
+    <select id="gogyo">
+      <option value="">— 選んでください —</option>
+      <option value="木">木（守護神が木）</option>
+      <option value="火">火（守護神が火）</option>
+      <option value="土">土（守護神が土）</option>
+      <option value="金">金（守護神が金）</option>
+      <option value="水">水（守護神が水）</option>
+    </select>
+    <div class="hint">五行が分からない時は、本体の診断ページ「守護神 開運ガイド」で確認できます。</div>
+
+    <div id="manualPref" style="display:none;">
+      <label>都道府県（郵便番号が調べられない時はこちらで選択）</label>
+      <select id="prefSel"></select>
+    </div>
+
+    <button id="go">この条件で神社を探す</button>
+  </div>
+
+  <div class="card result" id="result" style="display:none;"></div>
+  <div class="note">
+    方角は「自宅の都道府県」と「神社の都道府県」のおおよその位置から計算しています（広い吉方位の目安）。
+    神社は実在するもののみを掲載し、データは順次拡充します。お参りの作法やより精密な気学の吉方位（年・月で変わります）は、先生にご相談ください。
+  </div>
+</div>
+
+<script>
+// ===== 都道府県のおおよその座標（県庁所在地・概算） =====
+const PREF = {
+"北海道":[43.06,141.35],"青森県":[40.82,140.74],"岩手県":[39.70,141.15],"宮城県":[38.27,140.87],
+"秋田県":[39.72,140.10],"山形県":[38.24,140.36],"福島県":[37.75,140.47],"茨城県":[36.34,140.45],
+"栃木県":[36.57,139.88],"群馬県":[36.39,139.06],"埼玉県":[35.86,139.65],"千葉県":[35.61,140.12],
+"東京都":[35.69,139.69],"神奈川県":[35.45,139.64],"新潟県":[37.90,139.02],"富山県":[36.70,137.21],
+"石川県":[36.59,136.63],"福井県":[36.07,136.22],"山梨県":[35.66,138.57],"長野県":[36.65,138.18],
+"岐阜県":[35.39,136.72],"静岡県":[34.98,138.38],"愛知県":[35.18,136.91],"三重県":[34.73,136.51],
+"滋賀県":[35.00,135.87],"京都府":[35.02,135.76],"大阪府":[34.69,135.52],"兵庫県":[34.69,135.18],
+"奈良県":[34.69,135.83],"和歌山県":[34.23,135.17],"鳥取県":[35.50,134.24],"島根県":[35.47,133.05],
+"岡山県":[34.66,133.93],"広島県":[34.40,132.46],"山口県":[34.19,131.47],"徳島県":[34.07,134.56],
+"香川県":[34.34,134.04],"愛媛県":[33.84,132.77],"高知県":[33.56,133.53],"福岡県":[33.61,130.42],
+"佐賀県":[33.25,130.30],"長崎県":[32.74,129.87],"熊本県":[32.79,130.74],"大分県":[33.24,131.61],
+"宮崎県":[31.91,131.42],"鹿児島県":[31.56,130.56],"沖縄県":[26.21,127.68]
+};
+
+// 守護神の五行 → 吉方位
+const GUARDIAN_DIRS = {
+  "木":["東","東南"], "火":["南"], "土":["南西","北東"], "金":["西","北西"], "水":["北"]
+};
+const DIR8 = ["北","北東","東","東南","南","南西","西","北西"]; // 0,45,90,...
+
+// フォールバック用の種データ（shrines.json が読めない時）
+const SEED = { "shrines": [
+  {"name":"北海道神宮","pref":"北海道","note":"開拓三神・北海道総鎮守"},
+  {"name":"鹿島神宮","pref":"茨城県","note":"武甕槌大神。勝負・決断"},
+  {"name":"日光東照宮","pref":"栃木県","note":"徳川家康。世界遺産"},
+  {"name":"明治神宮","pref":"東京都","note":"明治天皇を祀る都心の杜"},
+  {"name":"諏訪大社","pref":"長野県","note":"諏訪明神。生命力"},
+  {"name":"伊勢神宮","pref":"三重県","note":"天照大神。日本の総氏神"},
+  {"name":"熊野本宮大社","pref":"和歌山県","note":"再生・浄化"},
+  {"name":"出雲大社","pref":"島根県","note":"縁結び"},
+  {"name":"厳島神社","pref":"広島県","note":"世界遺産・海の守り"},
+  {"name":"金刀比羅宮","pref":"香川県","note":"海上守護・商売"},
+  {"name":"太宰府天満宮","pref":"福岡県","note":"学問・至誠"},
+  {"name":"霧島神宮","pref":"鹿児島県","note":"天孫降臨の地"},
+  {"name":"波上宮","pref":"沖縄県","note":"沖縄総鎮守"}
+]};
+
+let SHRINES = SEED.shrines;
+
+// shrines.json を読めれば差し替え
+fetch("shrines.json").then(r=>r.ok?r.json():null).then(d=>{
+  if(d && Array.isArray(d.shrines) && d.shrines.length) SHRINES = d.shrines;
+}).catch(()=>{});
+
+// 県セレクト初期化
+const prefSel = document.getElementById("prefSel");
+Object.keys(PREF).forEach(p=>{ const o=document.createElement("option"); o.value=p; o.textContent=p; prefSel.appendChild(o); });
+
+function toRad(d){ return d*Math.PI/180; }
+function bearing(a,b){ // a,b = [lat,lng] → 北=0 時計回り
+  const [la1,lo1]=a, [la2,lo2]=b;
+  const y=Math.sin(toRad(lo2-lo1))*Math.cos(toRad(la2));
+  const x=Math.cos(toRad(la1))*Math.sin(toRad(la2)) - Math.sin(toRad(la1))*Math.cos(toRad(la2))*Math.cos(toRad(lo2-lo1));
+  let deg=Math.atan2(y,x)*180/Math.PI; return (deg+360)%360;
+}
+function dist(a,b){ // 概算km
+  const R=6371,[la1,lo1]=a,[la2,lo2]=b;
+  const dla=toRad(la2-la1),dlo=toRad(lo2-lo1);
+  const h=Math.sin(dla/2)**2+Math.cos(toRad(la1))*Math.cos(toRad(la2))*Math.sin(dlo/2)**2;
+  return Math.round(2*R*Math.asin(Math.min(1,Math.sqrt(h))));
+}
+function dir8(deg){ return DIR8[Math.round(deg/45)%8]; }
+
+async function resolvePref(){
+  const zip=(document.getElementById("zip").value||"").replace(/[^0-9]/g,"");
+  if(zip.length===7){
+    try{
+      const r=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+zip);
+      const d=await r.json();
+      if(d && d.results && d.results[0]) return d.results[0].address1;
+    }catch(e){}
+  }
+  // フォールバック：手動選択を表示
+  document.getElementById("manualPref").style.display="block";
+  return prefSel.value || null;
+}
+
+document.getElementById("go").addEventListener("click", async ()=>{
+  const gogyo=document.getElementById("gogyo").value;
+  const box=document.getElementById("result");
+  box.style.display="block";
+  if(!gogyo){ box.innerHTML='<div class="empty">②「守護神の五行」を選んでください。</div>'; return; }
+  box.innerHTML='<div class="empty">調べています…</div>';
+  const pref=await resolvePref();
+  if(!pref || !PREF[pref]){
+    box.innerHTML='<div class="empty">郵便番号から地域を特定できませんでした。「都道府県」を選んで、もう一度ボタンを押してください。</div>';
+    return;
+  }
+  const home=PREF[pref];
+  const goodDirs=GUARDIAN_DIRS[gogyo];
+  // 各神社を方角・距離で評価
+  const list=SHRINES.map(s=>{
+    const sc=PREF[s.pref]; if(!sc) return null;
+    const d=dist(home,sc), b=bearing(home,sc), dr=dir8(b);
+    return {...s, _dist:d, _dir:dr, _near:d<40};
+  }).filter(Boolean);
+  const match=list.filter(s=> s._near || goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+
+  let html='<div class="result">';
+  html+='<h2>'+pref+'のあなたへ（守護神：'+gogyo+'）</h2>';
+  html+='<div>吉方位：'+goodDirs.map(d=>'<span class="pill">'+d+'</span>').join('')+'　<span class="hint">＋お近くの神社</span></div>';
+  if(!match.length){
+    html+='<div class="empty">この方角に該当する神社が、今のデータにありません。データ拡充をお待ちください（実在のみ掲載のため）。</div>';
+  }else{
+    match.forEach(s=>{
+      const tag = s._near ? 'お近く' : (s._dir+'の方角');
+      html+='<div class="jinja"><div class="nm">'+s.name+'</div>'+
+            '<div class="meta"><span class="pill">'+tag+'</span>'+s.pref+(s.city?'・'+s.city:'')+'／約'+s._dist+'km'+
+            (s.note?'　'+s.note:'')+(s.url?'　<a href="'+s.url+'" target="_blank" rel="noopener">公式</a>':'')+'</div></div>';
+    });
+  }
+  html+='<div class="hint" style="margin-top:8px;">※掲載は'+SHRINES.length+'件（順次拡充）。方角は都道府県のおおよその位置から計算した目安です。</div>';
+  html+='</div>';
+  box.innerHTML=html;
+});
+</script>
+</body>
+</html>

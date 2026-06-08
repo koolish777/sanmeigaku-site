@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>総合運勢診断（先生用・全表示版）</title>
+<title>総合運勢診断（テスト運用版 v24）</title>
 <style>
   :root {
     --bg: #f7f3ec;
@@ -110,7 +110,7 @@
   <header>
     <h1>総合運勢診断</h1>
     <p class="sub">算命学・九星気学・インド占星術で、あなたの宿命の星を読み解きます</p>
-    <span class="test-badge">先生用・全表示版</span>
+    <span class="test-badge">テスト運用版 v24</span>
   </header>
 
   <div class="card">
@@ -136,6 +136,7 @@
   </div>
 
   <div id="result">
+
     <div class="card">
       <h2>陰占　─ 宿命の干支 ─</h2>
       <div class="un-meta">生年月日を、昔のこよみ「干支（かんし）」に置き換えたもの。あなたの宿命の設計図です。漢字の意味は「星の読み解き」でやさしく説明します</div>
@@ -165,11 +166,6 @@
       <div id="honshitsu"></div>
     </div>
 
-    <div class="card member-only">
-      <h2>宿命と適性　─ 職業・健康・組織 ─</h2>
-      <div class="reading" id="tekisei"></div>
-    </div>
-
     <div class="card">
       <h2>天中殺</h2>
       <div class="un-meta">天の後ろ盾がひと休みする期間。悪い時期ではなく「守りと準備」の時期です</div>
@@ -191,44 +187,10 @@
       <div id="nenun"></div>
     </div>
 
-    <div class="card member-only">
-      <h2>今月と今週の運勢</h2>
-      <div class="un-meta">今日から7日間の星と、過ごし方のヒント。いちばん右の「過ごし方」だけ読めば大丈夫です</div>
-      <div id="getsunichi"></div>
-    </div>
-
     <div class="card">
       <h2>総合アドバイス</h2>
       <div class="un-meta">すべての結果をまとめた、いまのあなたへのメッセージです</div>
       <div id="sogo"></div>
-    </div>
-
-    <div class="card member-only">
-      <h2>九星気学　─ 吉方位と色 ─</h2>
-      <div class="un-meta" id="kigaku-meta"></div>
-      <div id="kigaku"></div>
-    </div>
-
-    <div class="card member-only">
-      <h2>相性診断　─ 恋愛・仕事 ─</h2>
-      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
-      <div style="text-align:center;margin:12px 0;">
-        <select id="ay"></select>
-        <select id="am"></select>
-        <select id="ad"></select><br>
-        <span style="font-size:0.9rem;">
-          <label><input type="radio" name="arel" value="love" checked> 恋愛・パートナー</label>
-          <label style="margin-left:14px;"><input type="radio" name="arel" value="work"> 仕事・対人</label>
-        </span><br>
-        <button type="button" onclick="runAishou()" style="margin-top:10px;">相性を見る</button>
-      </div>
-      <div class="reading" id="aout"></div>
-    </div>
-
-    <div class="card">
-      <h2>占星術　─ ホロスコープ（インド式） ─</h2>
-      <div class="un-meta">実際の星空に合わせたインド式。雑誌の星占いと星座がひとつずれることがあります</div>
-      <div id="seiyo"></div>
     </div>
 
     <div class="card">
@@ -271,7 +233,41 @@
       <div style="font-size:0.78rem;color:#7a6f5d;margin-top:8px;">※やさしい言い換えのため、専門書の厳密な定義とは少し異なることがあります。</div>
     </div>
 
-    <div class="card">
+    <div class="card member-only" style="text-align:center;border:1px dashed var(--accent);background:#f7f3ea;">
+      <h2 style="color:var(--accent);">━━ ここから有料メニュー ━━</h2>
+      <div class="un-meta">ここから下は、より深い読み解きと勉強用の内容です。算命学を中心に、いちばん下にインド式占星術を置いています。</div>
+    </div>
+
+    <div class="card member-only">
+      <h2>算命学「名前と意味」勉強シート　─ 十神（通変星）─</h2>
+      <div class="un-meta">日干（＝あなた自身）から見た、各干の「関係の呼び名」。命式の核（型）を読むための基本です</div>
+      <table class="un" style="font-size:0.84rem;">
+        <tr><th style="width:7.5em;">十神</th><th class="adv">関係</th><th class="adv">意味（性質）</th></tr>
+        <tr><td>比肩（ひけん）</td><td class="adv">同五行・同陰陽</td><td class="adv">自分・自立・仲間・競争心。芯がある</td></tr>
+        <tr><td>劫財（ごうざい）</td><td class="adv">同五行・陰陽ちがい</td><td class="adv">仲間でありライバル。協力と奪い合い・行動的</td></tr>
+        <tr><td>食神（しょくじん）</td><td class="adv">自分が生む・同陰陽</td><td class="adv">表現・創作・衣食・楽しむ力。おだやかな出力</td></tr>
+        <tr><td>傷官（しょうかん）</td><td class="adv">自分が生む・陰陽ちがい</td><td class="adv">鋭い才能・技巧・批評・繊細・反骨</td></tr>
+        <tr><td>偏財（へんざい）</td><td class="adv">自分が剋す・同陰陽</td><td class="adv">流動的なお金・商才・人づきあい・チャンス</td></tr>
+        <tr><td>正財（せいざい）</td><td class="adv">自分が剋す・陰陽ちがい</td><td class="adv">堅実な財・地道な蓄積・家庭・誠実</td></tr>
+        <tr><td>偏官＝七殺（しちさつ）</td><td class="adv">自分を剋す・同陰陽</td><td class="adv">プレッシャー・行動力・闘争・厳しい自己駆動</td></tr>
+        <tr><td>正官（せいかん）</td><td class="adv">自分を剋す・陰陽ちがい</td><td class="adv">規律・責任・地位・信用・品格</td></tr>
+        <tr><td>偏印（へんいん）</td><td class="adv">自分を生む・同陰陽</td><td class="adv">独特の知性・直感・専門性・型破りな学び</td></tr>
+        <tr><td>印綬＝正印（いんじゅ）</td><td class="adv">自分を生む・陰陽ちがい</td><td class="adv">母性・庇護・学問・伝統・安心・受け取る力</td></tr>
+      </table>
+      <div style="font-size:0.82rem;color:#7a6f5d;margin-top:6px;">覚え方：自分を生む＝印／自分が生む＝食傷／自分が剋す＝財／自分を剋す＝官殺／同じ＝比劫。守護神（必要な五行）がどの十神かで「何で開けるか」が分かります（例：印が守護神＝学び・休息で開く）。</div>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">よく出る「型」</h3>
+      <p style="font-size:0.9rem;">
+      <b>食神生財：</b>創ったもの・表現で価値を生みお金に変える＝クリエイター／事業を生む型。<br>
+      <b>殺印相生：</b>プレッシャーを学び・知性で受け止め力に変える。<br>
+      <b>食神制殺：</b>創作・表現で重圧をかわす。<br>
+      <b>財多身弱：</b>チャンスは多いが手を広げると消耗→根（味方・休息）を固め一点集中。</p>
+
+      <h3 style="margin:14px 0 4px;font-size:1rem;color:var(--accent);">読む手順</h3>
+      <p style="font-size:0.9rem;">①日干を決める → ②各柱の干と支（蔵干）を十神に変換 → ③<b>月柱＝社会・仕事の柱</b>を重視し組合せで「型」を見る → ④強弱（身強身弱・財多身弱） → ⑤守護神 → ⑥助言（勝ち筋＋注意点＋重圧の御し方）。</p>
+    </div>
+
+    <div class="card member-only">
       <h2>結果の読み解きガイド　─ 数や星を「どう読むか」─</h2>
       <div class="un-meta">出てきた数字や守護神が「どういう意味で、どう読めるか」の一般的な見方です（流派によらない標準的な考え方）</div>
 
@@ -313,9 +309,217 @@
     </div>
 
     <div class="card member-only">
+      <h2>守護神 開運ガイド（五行別）　─ 暮らしに取り入れる ─</h2>
+      <div class="un-meta">あなたの守護神（必要な五行）が分かったら、その五行の「色・方位・小物・行動」を暮らしに少し足すと、運が安定し開きやすくなります</div>
+
+      <div style="border-left:4px solid #5aa469;padding:6px 0 6px 12px;margin:10px 0;">
+        <p style="font-size:0.92rem;margin:0;"><b style="color:#5aa469;">木が必要なあなたへ</b><br>
+        <b>色：</b>青・緑　／　<b>方位：</b>東・東南<br>
+        <b>取り入れる物：</b>観葉植物・生花・木製家具・本<br>
+        <b>行動：</b>成長や学びにつながること　／　<b>味：</b>酸味<br>
+        <span style="color:#7a6f5d;">ヒント：縦に伸びるもの、植物を置くのが王道です。</span></p>
+      </div>
+
+      <div style="border-left:4px solid #d6604d;padding:6px 0 6px 12px;margin:10px 0;">
+        <p style="font-size:0.92rem;margin:0;"><b style="color:#d6604d;">火が必要なあなたへ</b><br>
+        <b>色：</b>赤・紫・ピンク　／　<b>方位：</b>南<br>
+        <b>取り入れる物：</b>照明・キャンドル・電化製品・赤い小物<br>
+        <b>行動：</b>表現や発信、人と会うこと　／　<b>味：</b>苦味<br>
+        <span style="color:#7a6f5d;">ヒント：明かりを増やす、暗い部屋を作らない。</span></p>
+      </div>
+
+      <div style="border-left:4px solid #c9a227;padding:6px 0 6px 12px;margin:10px 0;">
+        <p style="font-size:0.92rem;margin:0;"><b style="color:#b8911f;">土が必要なあなたへ</b><br>
+        <b>色：</b>黄・茶・ベージュ　／　<b>方位：</b>中央・南西・北東<br>
+        <b>取り入れる物：</b>陶器・石・どっしりした低めの家具<br>
+        <b>行動：</b>安定や蓄積、地に足をつけること　／　<b>味：</b>甘味<br>
+        <span style="color:#7a6f5d;">ヒント：陶器やセラミックの置物が効きやすい。</span></p>
+      </div>
+
+      <div style="border-left:4px solid #9aa0a6;padding:6px 0 6px 12px;margin:10px 0;">
+        <p style="font-size:0.92rem;margin:0;"><b style="color:#8a9096;">金が必要なあなたへ</b><br>
+        <b>色：</b>白・金・銀　／　<b>方位：</b>西・北西<br>
+        <b>取り入れる物：</b>金属の置物・時計・鏡・宝飾品<br>
+        <b>行動：</b>整理整頓・けじめ　／　<b>味：</b>辛味<br>
+        <span style="color:#7a6f5d;">ヒント：金属製で丸みのあるものを。</span></p>
+      </div>
+
+      <div style="border-left:4px solid #4a6fa5;padding:6px 0 6px 12px;margin:10px 0;">
+        <p style="font-size:0.92rem;margin:0;"><b style="color:#4a6fa5;">水が必要なあなたへ</b><br>
+        <b>色：</b>黒・紺　／　<b>方位：</b>北<br>
+        <b>取り入れる物：</b>ガラス製品・鏡・水回り・小さな噴水<br>
+        <b>行動：</b>休息や内省、知識を蓄えること　／　<b>味：</b>塩味<br>
+        <span style="color:#7a6f5d;">ヒント：流動的・透明なもの。</span></p>
+      </div>
+
+      <h3 style="margin:16px 0 4px;font-size:1rem;color:var(--accent);">いまの運勢に「足りないもの」の見方</h3>
+      <p style="font-size:0.9rem;">守護神は“生まれつき必要な五行”ですが、<b>その時々の運（大運・年運）</b>でも五行の過不足は動きます。読み方はかんたんです。<br>
+      ① 自分の<b>守護神の五行</b>を確認する。<br>
+      ② いまの<b>大運・年運でめぐっている五行</b>を見る（このサイトの運勢欄に出ます）。<br>
+      ③ <b>守護神の五行が今めぐっていない／弱い</b>なら、それが「いま足りないもの」。上の表のとおり、その五行の<b>色・小物</b>を身のまわりに足すのがピンポイントの開運です。<br>
+      <span style="color:#7a6f5d;">例：守護神が火で、いま火が巡っていない時期 → 赤い小物・照明を足す、明るい場所で人と会う。守護神が水なら → 黒・紺を身につけ、静かに休む時間と学びを増やす。</span></p>
+
+      <div class="note" style="margin-top:10px;">小物や色は「お守り」ではなく、暮らしを守護神の方へ少し寄せる工夫です。無理に揃えなくて大丈夫。できるものを一つ足すだけでも十分です。</div>
+      <div style="text-align:center;margin-top:14px;">
+        <a href="kichihoui_jinja.html" style="display:inline-block;padding:10px 18px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-size:0.92rem;letter-spacing:0.06em;">吉方位・神社さがしを開く</a>
+      </div>
+    </div>
+
+    <div class="card member-only">
+      <h2>宿命と適性　─ 職業・健康・組織 ─</h2>
+      <div class="reading" id="tekisei"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>今月と今週の運勢</h2>
+      <div class="un-meta">今日から7日間の星と、過ごし方のヒント。いちばん右の「過ごし方」だけ読めば大丈夫です</div>
+      <div id="getsunichi"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>九星気学　─ 吉方位と色 ─</h2>
+      <div class="un-meta" id="kigaku-meta"></div>
+      <div id="kigaku"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>相性診断　─ 恋愛・仕事 ─</h2>
+      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
+      <div style="text-align:center;margin:12px 0;">
+        <select id="ay"></select>
+        <select id="am"></select>
+        <select id="ad"></select><br>
+        <span style="font-size:0.9rem;">
+          <label><input type="radio" name="arel" value="love" checked> 恋愛・パートナー</label>
+          <label style="margin-left:14px;"><input type="radio" name="arel" value="work"> 仕事・対人</label>
+        </span><br>
+        <button type="button" onclick="runAishou()" style="margin-top:10px;">相性を見る</button>
+      </div>
+      <div class="reading" id="aout"></div>
+    </div>
+
+    <div class="card member-only">
       <h2>鑑定者用メモ　─ 命式の詳細 ─</h2>
       <div class="un-meta">位相法・干合・宿命中殺・五行バランス（非公開）</div>
       <div id="pro"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>読み解き例（詳細）　─ 勉強用サンプル ─</h2>
+      <div class="un-meta">「命式をどう読むか」の見本です（例：1983年6月6日／日干 乙）。実際の鑑定はご自身の命式で行います</div>
+
+      <h3 style="margin:10px 0 4px;font-size:1rem;color:var(--accent);">構造（十神で核を見る）</h3>
+      <p style="font-size:0.9rem;">
+      ・月柱 <b>戊午</b>＝正財（戊）＋食神（午）＝<b>食神生財</b>。創って価値化する型が、社会・仕事の柱に乗る＝生まれつき「創る人・事業を生む人」。<br>
+      ・時支 酉・日支 丑（<b>酉丑半合</b>）＝<b>七殺</b>。締切・自己ドライブ。鋭い駆動だが押し負けると消耗。<br>
+      ・年干 <b>癸（偏印＝守護神の水）が戊癸合で塞がれている</b>。支える知性・休息（印）が働けていない。<br>
+      ・真夏の乙木＋食傷過多＋圧、給水源（印）が塞がれ → <b>守護神は水</b>。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">読み解き</h3>
+      <p style="font-size:0.9rem;"><b>核の一言：「創って稼ぐのが本流。ただし水を切らすな。圧は作るか学ぶかで受け、一人で抱えず支柱を持て。」</b></p>
+      <p style="font-size:0.9rem;">
+      <b>1. 創って形にして稼ぐ動線を本流に（食神生財）：</b>固い統率者型を無理にやらない。着想→形にする→価値化が自然な勝ち筋。<br>
+      <b>2. 最大の注意・水（印）を意識的に補給：</b>強い出力と圧を浴び続け給水源が塞がれ＝放置で枯れる構図。出力より先に休息・インプット・内省を確保。<br>
+      <b>3. プレッシャーは力で押し返さない（七殺）：</b>ゴリ押しで耐えると焼ける。創作で受ける（食神制殺）／学び・仕組み化で受ける（殺印相生）。「頑張る」でなく「作る・学ぶ」へ逃がす。<br>
+      <b>4. 一人で立たず支柱に巻きつく（乙木）：</b>つる草は支柱があって高く伸びる。組む相手・乗る基盤・型を一本持つ。<br>
+      <b>5. 欲張らず一点集中（財多身弱）：</b>稼ぎ先が多くチャンスも多いが、広げると散る。根（味方の木・休息の水）を先に固め、対象を絞る。</p>
+    </div>
+
+    <div class="card member-only">
+      <h2>総合読み解き例（最高級プラン）　─ 算命学 × 西洋 × インド式 ブレンド ─</h2>
+      <div class="un-meta">3つの占いを束ね、別々の言語で同じ結論を確かめる最上位の読み解きです（例：1983年6月6日）。算命学を主、西洋・インド式を補助として重ねます</div>
+
+      <h3 style="margin:10px 0 4px;font-size:1rem;color:var(--accent);">双子座は「西洋式」、インド式では別の顔が出る</h3>
+      <p style="font-size:0.9rem;">西洋占星術（トロピカル）では6/6生まれ＝双子座で正しい。インド式（サイデリアル＝実際の星座位置）に直すと太陽が約24°ずれます。<br>
+      ・太陽：牡牛座21.5°／ローヒニー宿（支配星：月）<br>
+      ・月：魚座20.0°／レーヴァティー宿（支配星：水星）← インド式で最重要の「生まれ星」<br>
+      ・水星：牡羊座／クリッティカー　火星：牡牛座（太陽と合）<br>
+      ・土星：天秤座（高揚＝最強配置）　木星：蠍座<br>
+      「双子座っぽさ」が本物なのは、生まれ星レーヴァティーの支配星も西洋双子座の支配星もどちらも<b>水星</b>＝中核に水星（言葉・着想・つなぐ力）が一本通っているから。層が違うだけです。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">3システムが同じ結論に収束する</h3>
+      <p style="font-size:0.9rem;">
+      <b>収束1：あなたは「着想する人」。実行は支柱に巻きつけ。</b><br>
+      算命学＝乙木（つる草）は支柱がないと伸びない／食神生財の創作型。西洋＝双子座（水星の着想家）は地のサイン（乙女・山羊・牡牛）の実行者と組むと最強。インド＝土星が天秤座で高揚＝「公正な仕組み・パートナーシップで長く築く」力が生まれつき備わる。→ 概念を生み形にする人。運用・構造を担う相棒を一人置くのが最大レバレッジ。ソロで全部抱える設計は、どのシステムも勧めていません。<br><br>
+      <b>収束2：いま「自分の名前で立つ」時期に入っている。</b><br>
+      インド式ヴィムショッタリ・ダシャー（大運）：20年の金星期（協調・裏方）を終え、2023年2月から<b>太陽期</b>に。太陽期は「自分が前に出て、認知され、自分の旗で立つ」期。Aquane AI HUB を創業者として立ち上げる時期とドンピシャ。窓は2029年2月まで＝次の約3年が、自分の事業と自分自身を世に確立する勝負どころ。<br><br>
+      <b>収束3：だからこそ「枯れるな」の警告が二重に効く。</b><br>
+      算命学＝夏の草花は水（休息・インプット）が要る。インド＝太陽期は熱く乾く期。両方が「燃え尽き注意」を指す。可視化を追って走るほど、意識して水を入れる（休む・学ぶ・内省する）。前回の守護神（水）の話と完全に一致。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">組む相手（相性を事業に落とす）</h3>
+      <p style="font-size:0.9rem;">着想・発信のあなたに効く事業パートナー＝地のサインの実行者＝「支柱」。<br>
+      ・<b>山羊座</b>：戦略・規律・長期構造。土星(高揚)と響き、継続力を補う。<br>
+      ・<b>乙女座</b>：水星仲間。あなたが大枠、相手が細部・運用。同じ言語で噛み合う。<br>
+      ・<b>牡牛座</b>：資金・粘り・地に足。散りやすさを安定させる。<br>
+      エンジン役＝獅子座・牡羊座（火）。知的共鳴＝水瓶座・天秤座（風）。インド式でも生まれ星レーヴァティーは「つなぐ・育てる・国境を越える」性質（調和型）＝コミュニティ運営・教育・海外接続と好相性。魚座の月（直感・ビジョン）と合わせ「人を導き、つなぎ、世界に届ける」事業向き。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">膨らませた事業像（まとめ）</h3>
+      <p style="font-size:0.9rem;">あなた＝概念と言葉で価値を生む創業者（食神生財／水星／ローヒニー太陽＝形にして魅せる力）。いまは自分の旗で立つ太陽期。だから——自分は着想と発信に専念し、運用は地のサインの相棒へ。仕組みは天秤・土星の力で長期設計。レーヴァティーの「つなぐ・育てる」を活かしコミュニティや海外を視野に。ただし熱い時期ゆえ、水（休息・学び）を切らさない。<br>
+      AIエージェント事業を「<b>あなたが0→1で概念設計＋発信／実務運用は相棒／コミュニティで育てる</b>」構造にすると、4つの系（算命学・西洋・インド・ダシャー）がすべて追い風になります。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">ハウス（お部屋）の読み方</h3>
+      <div class="un-meta">空を12の「お部屋」に分け、どの惑星がどの部屋にいるかで、その力が人生のどの場面で働くかを見ます（出生時刻があるほど正確）。</div>
+      <table class="un" style="font-size:0.82rem;">
+        <tr><th style="width:4.5em;">ハウス</th><th class="adv">人生のどの場面か</th></tr>
+        <tr><td>第1</td><td class="adv">自分・第一印象・心身の基盤</td></tr>
+        <tr><td>第2</td><td class="adv">お金・才能・所有・自己価値</td></tr>
+        <tr><td>第3</td><td class="adv">学び・言葉・兄弟・近場の移動・発信</td></tr>
+        <tr><td>第4</td><td class="adv">家庭・心の土台・住まい・ルーツ</td></tr>
+        <tr><td>第5</td><td class="adv">恋愛・創造・遊び・子ども・自己表現</td></tr>
+        <tr><td>第6</td><td class="adv">仕事の実務・健康・習慣・奉仕</td></tr>
+        <tr><td>第7</td><td class="adv">結婚・パートナー・契約・対人</td></tr>
+        <tr><td>第8</td><td class="adv">深い変容・継承・共有の財・絆</td></tr>
+        <tr><td>第9</td><td class="adv">学問・思想・海外・師・遠い世界</td></tr>
+        <tr><td>第10</td><td class="adv">天職・社会的地位・キャリア・名声</td></tr>
+        <tr><td>第11</td><td class="adv">仲間・コミュニティ・願望・収入の広がり</td></tr>
+        <tr><td>第12</td><td class="adv">潜在・休息・秘密・スピリチュアル・手放し</td></tr>
+      </table>
+      <p style="font-size:0.9rem;">読み方：<b>惑星が入ったハウス＝その星の力が働く舞台</b>。例）太陽が第10＝天職・社会で輝く／月が第4＝家庭と内面が要／土星が第7＝結婚・契約に責任と学び。<b>高揚の星のあるハウスは武器、減衰の星のあるハウスはゆっくり磨く課題</b>。算命学の核（食神生財・水の補給）と同じ方向を指すハウスがあれば“裏取り”として強調します。<br>
+</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">この例の方のハウス配置と読み解き（東京・1983/6/6・18:00／蠍座ラグナ）</h3>
+      <div class="un-meta">木星がラグナ（蠍座11.2°）にほぼ完全合。出生時刻が±15分ずれても木星は1室に残るので、ここは堅い読みです（ホールサイン）。</div>
+      <table class="un" style="font-size:0.84rem;">
+        <tr><th style="width:4.5em;">ハウス</th><th class="adv">在住の星</th></tr>
+        <tr><td>第1（自分）</td><td class="adv">木星（ラグナ＝蠍座）</td></tr>
+        <tr><td>第5（創造・知性）</td><td class="adv">月（魚座・レーヴァティー）</td></tr>
+        <tr><td>第6（課題解決・サービス）</td><td class="adv">水星</td></tr>
+        <tr><td>第7（提携・市場）</td><td class="adv">太陽＋火星</td></tr>
+        <tr><td>第8（変革・最先端）</td><td class="adv">ラーフ（双子）</td></tr>
+        <tr><td>第9（幸運・学び・海外）</td><td class="adv">金星</td></tr>
+        <tr><td>第12（裏方・海外・仕組み）</td><td class="adv">土星（天秤＝高揚）</td></tr>
+      </table>
+      <p style="font-size:0.9rem;">
+      <b>① 木星がラグナ＝「ビジョンを語る顔」で立つ。</b>蠍座ラグナに最大吉星・木星。木星は蠍座の2室(資産・言葉)＆5室(創造)の支配星＝富と創造性が自分自身と言葉から直接流れ出る配置。→賢者・導き手として前へ。Aquaneを「思想を語る創業者の旗」に。<br><br>
+      <b>② 7室に太陽＋火星＝提携と市場がキャリアそのもの。</b>太陽は10室(仕事)の支配星で7室(提携・顧客)に在住＝人と組み市場に出てこそ発火（「組め」がハウスで確定）。熱い二星同居＝主導権争い・摩擦のリスク（算命学の七殺と符合）。対策：役割を明文化し、張り合わない補完型の相棒を選び、火星の闘争心は市場・競合へ向ける。<br><br>
+      <b>③ いまの太陽期(2023–2029)がこの7室太陽を点火。</b>10室主星×7室在住の太陽が大ダシャー＝“提携と公の場で職業的アイデンティティを確立する”時期。創業し、組み、顔を出すなら今。窓は2029年2月まで。契約と役割分担を丁寧に。<br><br>
+      <b>④ 5室の月＝創造と直感が幸運の源泉。</b>月は9室(幸運)の支配星で5室に在住＝1-5-9の幸運ラインがつながる「創造的知性が運を呼ぶ」配置。直感的な着想を事業の核に据えてよい。0→1の強みは運の入口。<br><br>
+      <b>⑤ 12室に高揚の土星＝裏方・システム・海外で長期構築。</b>継続力と構造構築力は、表より“裏の仕組み・国際/オンライン展開”で最大。表の顔(木星ラグナ＋太陽期)と裏の仕組み(土星12室)を役割で分ける設計が理想。支出管理も土星の規律で。<br><br>
+      <b>⑥ 6室の水星＋8室ラーフ＝具体課題を解く尖った技術屋。</b>水星(論理・コード)が6室(サービス・課題解決)、11室(利益)の支配星でもあり、利益は“課題を解くこと”から来る。8室ラーフ＝最先端・変革技術への強い牽引。→抽象ビジョン(5室木星)に加え、具体的な痛みを解くサービス型プロダクトが利益線。<br><br>
+      <b>⑦ 9室の金星＝ブランド・関係・海外が運を運ぶ。</b>金星(美・関係)が9室(幸運・学び・海外)、7室(提携)の支配星でもある＝良縁の相棒は学びの場・海外/オンライン・発信から来る。ブランドの美しさも運に直結。</p>
+
+      <h3 style="margin:12px 0 4px;font-size:1rem;color:var(--accent);">束ねた事業像（四層の結論）</h3>
+      <p style="font-size:0.9rem;">表は「ビジョンを語る賢者の創業者」(木星ラグナ＋太陽期)として顔を出す。事業の核は着想と言葉(5室月・木星)。提携と市場に必ず出る＝キャリアの発火点(7室太陽＝10室主星)。ただし相手は補完型を選び役割を明文化(7室の熱)。利益線は“具体課題を解くサービス型プロダクト”(6室水星)。裏では国際/オンラインの仕組みを土星の規律で長期構築(12室高揚土星)。最先端AIという変革領域はラーフ8室の追い風。良縁とブランド運は学び・海外・発信から(9室金星)。<br>
+      <b>つまり：あなたが前で思想と着想を語り、補完型の相棒が運用を握り、裏で国際オンラインの仕組みを積み、具体課題を解く尖ったプロダクトで稼ぐ。</b>この形が、算命学・西洋・インド式・ハウスの四層すべてに乗ります。</p>
+
+      <h3 style="margin:14px 0 6px;font-size:1.05rem;color:var(--accent);">統括 ─ ひとつにまとめると ─</h3>
+      <div style="border-left:4px solid var(--accent);padding:4px 0 4px 14px;">
+      <p style="font-size:0.95rem;">あなたは、概念を生み、言葉にして、人に手渡す人です。乙木（しなやかな草花）であり、食神生財の創作者であり、双子座＝水星の着想家であり、創造の星・月を5室に持ち、知恵の木星を額（ラグナ）にいただいている。どの占術も、あなたの価値が「実行力」ではなく「着想と語り」から湧くと言っています。だから——磨くべきは、効率的な実務マシンになることではなく、あなたにしか出せない概念と声です。そこをビジネスの核に据えていい。</p>
+      <p style="font-size:0.95rem;">ただし、四層すべてが声を揃えて言うことがもう一つ。<b>あなたは一人では立てない。そしてそれは弱さではなく設計です。</b>乙木はつる草で、支柱があって初めて高く伸びる。キャリアは7室＝提携と市場で点火する（仕事の星・太陽がそこに居る）。だから補完型の相棒を一人、本気で迎える。これが最大の一手。注意は一点——7室には熱い太陽と火星が同居。相手は「あなたと張り合わない、地に足のついた運用役」を選び、役割を最初に紙に書く。火星の闘争心は、相棒ではなく市場へ。</p>
+      <p style="font-size:0.95rem;">そして今が、その旗を立てる時期です。20年続いた協調の金星期を終え、2023年から自分の名前で前に出る太陽期に入った。窓は2029年2月まで。構想を深める力が強いぶん、計画の中に長く留まれてしまう人でもある。でも星回りは明確に言っています——<b>磨き続けるより、出して、見られなさい。</b>粗削りでも世に出す。それが時期に乗るということ。</p>
+      <p style="font-size:0.95rem;">最後に、これだけは守ってほしい一点。全部の占術が、別々の言い方で同じ警告を出していました。<b>あなたは、出力し続けると枯れる。</b>真夏の草花で、守護神の水は戊に手を握られて働けていない。熱い太陽期はなおさら乾く。だから「水を入れる」——休む、学ぶ、内省する、何も生み出さない時間をあえて確保する——これは贅沢でも怠けでもなく、長く創り続けるための構造そのもの。インプットのない出力は、草花を乾かします。ここは仕組みとして生活に組み込んでください。</p>
+      <p style="font-size:0.95rem;">事業の形に落とすなら：前で思想と着想を語り（木星ラグナ）、補完型の相棒が運用を握り、裏で国際オンラインの仕組みを規律で積み（土星12室）、具体的な痛みを解くプロダクトで稼ぐ（水星6室）。育てる・つなぐ・導く性質（レーヴァティー・9室金星）があるので、コミュニティや教える要素を持たせると、運も意味も濃くなります。</p>
+      <p style="font-size:1rem;text-align:center;font-weight:700;color:var(--accent);margin:12px 0;">もし全部忘れても、これだけ——<br>「声を核に。一人で抱えず、今出す。そして水を切らすな。」</p>
+      <p style="font-size:0.88rem;color:#7a6f5d;">ひとつ添えると、占いは鏡であって設計図ではありません。響いたものは取り、違うと感じたものは捨てていい。生きて、選ぶのはあなた自身です。四層が同じ方向を指したのは、たぶんあなたが薄々分かっていたことの裏づけにすぎない。あとは、出すだけです。</p>
+      </div>
+
+      <div class="note" style="margin-top:10px;">惑星の位置・宿・ダシャーは計算による目安です（境目付近は前後します）。最高級プランは、算命学の核に西洋・インド式を重ねて「同じ結論か／どこが違うか」を確かめ、納得感と精度を上げる読み方です。</div>
+    </div>
+
+    <div class="card member-only">
+      <h2>占星術　─ ホロスコープ（インド式） ─</h2>
+      <div class="un-meta">実際の星空に合わせたインド式。雑誌の星占いと星座がひとつずれることがあります</div>
+      <div id="seiyo"></div>
     </div>
 
     <div class="card">
@@ -327,9 +531,10 @@
         【ご注意】健康に関する記述は東洋五行の伝統的な見方の紹介であり、医学的な診断・助言ではありません。気になる症状は医療機関にご相談ください。解釈の文章は、鑑定の経験をもとにこれからも磨き続けていきます。
       </div>
     </div>
+
   </div>
 
-  <footer>総合運勢診断 — 先生用・全表示版（v25・解説入り）</footer>
+  <footer>総合運勢診断（プロトタイプ v29） — テスト運用中</footer>
 </div>
 
 <script>
@@ -858,20 +1063,7 @@ for(let i=thisYear;i>=1925;i--){ySel.add(new Option(i+"年",i));}
 for(let i=1;i<=12;i++){mSel.add(new Option(i+"月",i));}
 for(let i=1;i<=31;i++){dSel.add(new Option(i+"日",i));}
 ySel.value=1990;mSel.value=1;dSel.value=1;
-const FULL=true; // 先生用・常に全表示
-const AIKOTOBA="ほしよみ";
-if(AIKOTOBA){
-  try{
-    if(localStorage.getItem("aikotoba_ok")!==AIKOTOBA){
-      let ans="";
-      while(ans!==AIKOTOBA){
-        ans=prompt("あいことばを入れてください");
-        if(ans===null)ans="";
-      }
-      localStorage.setItem("aikotoba_ok",AIKOTOBA);
-    }
-  }catch(e){}
-}
+const FULL=!(new URLSearchParams(location.search).has("public"));
 if(!FULL){document.querySelectorAll(".member-only").forEach(el=>el.style.display="none");}
 const hhSel=document.getElementById("hh"),miSel=document.getElementById("mi"),prefSel=document.getElementById("pref");
 hhSel.add(new Option("時刻不明","x"));

@@ -1,0 +1,3072 @@
+{
+  "_meta": {
+    "about": "全国の実在する神社・パワースポットのデータ。吉方位・神社さがしページ用。捏造禁止のためWikidata/Wikipedia/公式サイト等で実在確認できたもののみ。",
+    "schema": "name / pref / city / gogyo(木火土金水。不明は空欄) / note / lat / lng / url",
+    "status": "全国47都道府県版（Wikidata SPARQLで神社→現在市区町村→都道府県の行政区画ルートを確認して抽出）",
+    "updated": "2026-06-08",
+    "source": "Wikidata Query Service; urlは公式サイト(P856)優先、なければ日本語Wikipedia、なければWikidata item",
+    "prefecture_count": 47,
+    "shrine_count": 376,
+    "per_prefecture_counts": {
+      "北海道": 8,
+      "青森県": 8,
+      "岩手県": 8,
+      "宮城県": 8,
+      "秋田県": 8,
+      "山形県": 8,
+      "福島県": 8,
+      "茨城県": 8,
+      "栃木県": 8,
+      "群馬県": 8,
+      "埼玉県": 8,
+      "千葉県": 8,
+      "東京都": 8,
+      "神奈川県": 8,
+      "新潟県": 8,
+      "富山県": 8,
+      "石川県": 8,
+      "福井県": 8,
+      "山梨県": 8,
+      "長野県": 8,
+      "岐阜県": 8,
+      "静岡県": 8,
+      "愛知県": 8,
+      "三重県": 8,
+      "滋賀県": 8,
+      "京都府": 8,
+      "大阪府": 8,
+      "兵庫県": 8,
+      "奈良県": 8,
+      "和歌山県": 8,
+      "鳥取県": 8,
+      "島根県": 8,
+      "岡山県": 8,
+      "広島県": 8,
+      "山口県": 8,
+      "徳島県": 8,
+      "香川県": 8,
+      "愛媛県": 8,
+      "高知県": 8,
+      "福岡県": 8,
+      "佐賀県": 8,
+      "長崎県": 8,
+      "熊本県": 8,
+      "大分県": 8,
+      "宮崎県": 8,
+      "鹿児島県": 8,
+      "沖縄県": 8
+    },
+    "under_minimum_5": [],
+    "query_errors": []
+  },
+  "shrines": [
+    {
+      "name": "義経神社",
+      "pref": "北海道",
+      "city": "平取町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yoshitsune-jinja.com/website/"
+    },
+    {
+      "name": "湯倉神社",
+      "pref": "北海道",
+      "city": "函館市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yukurajinja.or.jp/"
+    },
+    {
+      "name": "樽前山神社",
+      "pref": "北海道",
+      "city": "苫小牧市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tarumaesanjinja.net/"
+    },
+    {
+      "name": "弥彦神社",
+      "pref": "北海道",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.iyahiko.or.jp/"
+    },
+    {
+      "name": "永山神社",
+      "pref": "北海道",
+      "city": "旭川市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hokkaidou-asahikawa-nagayamajinnja.com/"
+    },
+    {
+      "name": "新琴似神社",
+      "pref": "北海道",
+      "city": "新琴似",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://shinkotonijinja.or.jp/"
+    },
+    {
+      "name": "札幌護国神社",
+      "pref": "北海道",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sapporo-gokoku.jp/"
+    },
+    {
+      "name": "刈田神社",
+      "pref": "北海道",
+      "city": "登別市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kattajinja.jimdo.com/"
+    },
+    {
+      "name": "櫛引八幡宮",
+      "pref": "青森県",
+      "city": "八幡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kushihikihachimangu.com/"
+    },
+    {
+      "name": "長者山新羅神社",
+      "pref": "青森県",
+      "city": "長者",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.at-ml.jp/72215/"
+    },
+    {
+      "name": "高山稲荷神社",
+      "pref": "青森県",
+      "city": "つがる市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://takayamainari.jp/"
+    },
+    {
+      "name": "秋葉山神社",
+      "pref": "青森県",
+      "city": "八戸市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://shinto-shrine-871.business.site/"
+    },
+    {
+      "name": "岩木山神社",
+      "pref": "青森県",
+      "city": "百沢",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://iwakiyamajinja.or.jp/"
+    },
+    {
+      "name": "弘前八幡宮",
+      "pref": "青森県",
+      "city": "弘前市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://hirosaki-hachimangu.com/"
+    },
+    {
+      "name": "青森県護国神社",
+      "pref": "青森県",
+      "city": "下白銀町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://aomorigokoku-housankai.com/"
+    },
+    {
+      "name": "熊野奥照神社",
+      "pref": "青森県",
+      "city": "弘前市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.city.hirosaki.aomori.jp/gaiyou/bunkazai/kuni/kuni15.html"
+    },
+    {
+      "name": "桜山神社",
+      "pref": "岩手県",
+      "city": "盛岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sakurayamajinja.jp/"
+    },
+    {
+      "name": "盛岡八幡宮",
+      "pref": "岩手県",
+      "city": "盛岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://morioka8man.jp/"
+    },
+    {
+      "name": "小鎚神社",
+      "pref": "岩手県",
+      "city": "大槌町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kozuchi-shrine.jimdofree.com/"
+    },
+    {
+      "name": "駒形神社",
+      "pref": "岩手県",
+      "city": "胆沢郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://komagata.iwate.jp/"
+    },
+    {
+      "name": "横山八幡宮",
+      "pref": "岩手県",
+      "city": "宮古市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://y-hachimangu.com/"
+    },
+    {
+      "name": "榊山稲荷神社",
+      "pref": "岩手県",
+      "city": "盛岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://kaiunjinja.jp/"
+    },
+    {
+      "name": "黒森神社",
+      "pref": "岩手県",
+      "city": "宮古市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E6%A3%AE%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "鹿島神社",
+      "pref": "岩手県",
+      "city": "一関市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E7%A5%9E%E7%A4%BE_(%E4%B8%80%E9%96%A2%E5%B8%82%E7%9C%9F%E6%9F%B4)"
+    },
+    {
+      "name": "大崎八幡宮",
+      "pref": "宮城県",
+      "city": "青葉区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osakihachimangu.com/"
+    },
+    {
+      "name": "鹿島御児神社",
+      "pref": "宮城県",
+      "city": "牡鹿郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kashimamiko.org/"
+    },
+    {
+      "name": "二柱神社",
+      "pref": "宮城県",
+      "city": "泉区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.f-shrine.com/"
+    },
+    {
+      "name": "黄金山神社",
+      "pref": "宮城県",
+      "city": "涌谷町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://wakuya-koganeyama.info/kogane-annai/"
+    },
+    {
+      "name": "榴岡天満宮",
+      "pref": "宮城県",
+      "city": "榴ケ岡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tsutsujigaokatenmangu.jp/"
+    },
+    {
+      "name": "陸奥総社宮",
+      "pref": "宮城県",
+      "city": "多賀城市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sousyanomiya.jp/"
+    },
+    {
+      "name": "計仙麻大嶋神社",
+      "pref": "宮城県",
+      "city": "気仙沼市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ohshima.miyagi.jp/"
+    },
+    {
+      "name": "和我神社（築館）",
+      "pref": "宮城県",
+      "city": "栗原郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://miyagi-jinjacho.or.jp/jinja-search/detail.php?code=310020562"
+    },
+    {
+      "name": "土崎神明社",
+      "pref": "秋田県",
+      "city": "秋田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tsuchizakishinnmeisha.or.jp/"
+    },
+    {
+      "name": "真山神社",
+      "pref": "秋田県",
+      "city": "男鹿市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.namahage.ne.jp/~shinzanjinja/"
+    },
+    {
+      "name": "彌高神社",
+      "pref": "秋田県",
+      "city": "秋田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.iyataka-jinja.jp/"
+    },
+    {
+      "name": "日吉神社",
+      "pref": "秋田県",
+      "city": "秋田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://hiyoshi-jinja.jp/"
+    },
+    {
+      "name": "金峰神社 (にかほ市)",
+      "pref": "秋田県",
+      "city": "にかほ市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://akita-jinjacho.sakura.ne.jp/tatsujin_etc/01_jinja/nikaho/10_kinbou.html"
+    },
+    {
+      "name": "高岩神社",
+      "pref": "秋田県",
+      "city": "能代市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B2%A9%E7%A5%9E%E7%A4%BE_(%E8%83%BD%E4%BB%A3%E5%B8%82)"
+    },
+    {
+      "name": "金澤八幡宮",
+      "pref": "秋田県",
+      "city": "金沢",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%BE%A4%E5%85%AB%E5%B9%A1%E5%AE%AE"
+    },
+    {
+      "name": "赤神神社",
+      "pref": "秋田県",
+      "city": "男鹿市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%A5%9E%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "松岬神社",
+      "pref": "山形県",
+      "city": "米沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.uesugi-jinja.or.jp/about/#matsugasakijinja"
+    },
+    {
+      "name": "上杉神社",
+      "pref": "山形県",
+      "city": "米沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.uesugi-jinja.or.jp/"
+    },
+    {
+      "name": "荘内神社",
+      "pref": "山形県",
+      "city": "鶴岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://jinjahan.com/"
+    },
+    {
+      "name": "鳥海山大物忌神社",
+      "pref": "山形県",
+      "city": "飽海郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www9.piala.or.jp/thoukai/"
+    },
+    {
+      "name": "熊野神社",
+      "pref": "山形県",
+      "city": "宮内町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kumano-taisha.or.jp"
+    },
+    {
+      "name": "出羽神社",
+      "pref": "山形県",
+      "city": "田川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.dewasanzan.jp/publics/index/55/"
+    },
+    {
+      "name": "湯殿山神社",
+      "pref": "山形県",
+      "city": "鶴岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.dewasanzan.jp/publics/index/52/"
+    },
+    {
+      "name": "月山神社",
+      "pref": "山形県",
+      "city": "庄内町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.dewasanzan.jp/publics/index/51/"
+    },
+    {
+      "name": "大國魂神社",
+      "pref": "福島県",
+      "city": "石城郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ookunisama.jp/"
+    },
+    {
+      "name": "田村神社 (郡山市)",
+      "pref": "福島県",
+      "city": "郡山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kanko-koriyama.gr.jp/tourism/detail2-3-80.html"
+    },
+    {
+      "name": "開成山大神宮",
+      "pref": "福島県",
+      "city": "郡山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kaiseizan.jp/"
+    },
+    {
+      "name": "福島縣護國神社",
+      "pref": "福島県",
+      "city": "福島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gokoku559.info/"
+    },
+    {
+      "name": "福島稲荷神社",
+      "pref": "福島県",
+      "city": "福島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.fukushima-inari.com/"
+    },
+    {
+      "name": "青海神社",
+      "pref": "福島県",
+      "city": "蒲原郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.aomi-jinjya.or.jp/"
+    },
+    {
+      "name": "二本松神社",
+      "pref": "福島県",
+      "city": "二本松市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nihonmatsu-shrine.com/"
+    },
+    {
+      "name": "石都々古和気神社",
+      "pref": "福島県",
+      "city": "石川町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www13.plala.or.jp/seihuukan/"
+    },
+    {
+      "name": "筑波山神社",
+      "pref": "茨城県",
+      "city": "筑波",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tsukubasanjinja.jp/"
+    },
+    {
+      "name": "大中神社",
+      "pref": "茨城県",
+      "city": "常陸太田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.oonakajinjya.com/"
+    },
+    {
+      "name": "眞弓神社",
+      "pref": "茨城県",
+      "city": "常陸太田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.mayumi-jinja.or.jp"
+    },
+    {
+      "name": "国王神社",
+      "pref": "茨城県",
+      "city": "坂東市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kokuou.or.jp/"
+    },
+    {
+      "name": "取手八坂神社",
+      "pref": "茨城県",
+      "city": "取手市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://toride-yasaka.or.jp/"
+    },
+    {
+      "name": "酒列磯前神社",
+      "pref": "茨城県",
+      "city": "那珂郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sakatura.org/"
+    },
+    {
+      "name": "常磐神社",
+      "pref": "茨城県",
+      "city": "水戸市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://komonsan.jp/"
+    },
+    {
+      "name": "鹿島神宮",
+      "pref": "茨城県",
+      "city": "宮中",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kashimajingu.jp/"
+    },
+    {
+      "name": "日光東照宮",
+      "pref": "栃木県",
+      "city": "日光市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.toshogu.jp/english/"
+    },
+    {
+      "name": "乃木神社",
+      "pref": "栃木県",
+      "city": "那須塩原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nasu-nogijinja.jp/"
+    },
+    {
+      "name": "日光二荒山神社",
+      "pref": "栃木県",
+      "city": "日光市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.futarasan.info/"
+    },
+    {
+      "name": "名草厳島神社",
+      "pref": "栃木県",
+      "city": "足利市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ashikaga-kankou.jp/spot/nagusaitsukushima"
+    },
+    {
+      "name": "髙靇神社",
+      "pref": "栃木県",
+      "city": "日光市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://takaokami.skr.jp/"
+    },
+    {
+      "name": "那須神社",
+      "pref": "栃木県",
+      "city": "大田原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nasujinja.jp/"
+    },
+    {
+      "name": "那須温泉神社",
+      "pref": "栃木県",
+      "city": "那須郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nasu-yuzen.jp/"
+    },
+    {
+      "name": "朝日森天満宮",
+      "pref": "栃木県",
+      "city": "佐野市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://asahimoritenmangu.wixsite.com/asahimoritenmangu"
+    },
+    {
+      "name": "前橋東照宮",
+      "pref": "群馬県",
+      "city": "大手町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.toshogu.net/maebashi/"
+    },
+    {
+      "name": "咲前神社",
+      "pref": "群馬県",
+      "city": "安中市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sakisaki.net/pages/27/"
+    },
+    {
+      "name": "世良田東照宮",
+      "pref": "群馬県",
+      "city": "太田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.net-you.com/toshogu/"
+    },
+    {
+      "name": "総社神社",
+      "pref": "群馬県",
+      "city": "元総社町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.net-you.com/souja/"
+    },
+    {
+      "name": "妙義神社",
+      "pref": "群馬県",
+      "city": "富岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.myougi.jp/"
+    },
+    {
+      "name": "玉村八幡宮",
+      "pref": "群馬県",
+      "city": "玉村町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://top.tamamurahachimangu.net/"
+    },
+    {
+      "name": "高山神社",
+      "pref": "群馬県",
+      "city": "太田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://takayamajinjya.com/"
+    },
+    {
+      "name": "渋川八幡宮",
+      "pref": "群馬県",
+      "city": "渋川市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://shibukawa-hachimangu.jp/"
+    },
+    {
+      "name": "瀧宮神社",
+      "pref": "埼玉県",
+      "city": "深谷市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.takinomiya.or.jp/"
+    },
+    {
+      "name": "草加神社",
+      "pref": "埼玉県",
+      "city": "草加市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sokajinja.jp/"
+    },
+    {
+      "name": "所澤神明社",
+      "pref": "埼玉県",
+      "city": "所沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shinmeisha.or.jp/"
+    },
+    {
+      "name": "荒薙山王教神社",
+      "pref": "埼玉県",
+      "city": "日高市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sannokyojinja.jp/"
+    },
+    {
+      "name": "賀茂神社",
+      "pref": "埼玉県",
+      "city": "足立郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.saitama-jinjacho.or.jp/shrine/9124/"
+    },
+    {
+      "name": "中氷川神社",
+      "pref": "埼玉県",
+      "city": "入間郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nakahikawa.or.jp/"
+    },
+    {
+      "name": "三峯神社",
+      "pref": "埼玉県",
+      "city": "秩父市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.mitsuminejinja.or.jp/"
+    },
+    {
+      "name": "氷川神社",
+      "pref": "埼玉県",
+      "city": "川越市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kawagoehikawa.jp/"
+    },
+    {
+      "name": "玉崎神社",
+      "pref": "千葉県",
+      "city": "旭市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tamasakijinja.com/"
+    },
+    {
+      "name": "玉前神社",
+      "pref": "千葉県",
+      "city": "上埴生郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tamasaki.org/tamasaki_english/"
+    },
+    {
+      "name": "玉崎神社",
+      "pref": "千葉県",
+      "city": "市原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tamasaki.org/"
+    },
+    {
+      "name": "諏訪神社 (流山市)",
+      "pref": "千葉県",
+      "city": "流山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.suwano-mori.com/"
+    },
+    {
+      "name": "二宮神社",
+      "pref": "千葉県",
+      "city": "千葉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ninomiya-jinja.jp/"
+    },
+    {
+      "name": "松戸神社",
+      "pref": "千葉県",
+      "city": "松戸市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.matsudojinja.com/"
+    },
+    {
+      "name": "葛飾八幡宮 (市川市)",
+      "pref": "千葉県",
+      "city": "八幡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.katsushikahachimangu.com/"
+    },
+    {
+      "name": "銚港神社",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.chokojinja.info/"
+    },
+    {
+      "name": "雪ヶ谷八幡神社",
+      "pref": "東京都",
+      "city": "大田区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yukigaya.info/"
+    },
+    {
+      "name": "湯島天満宮",
+      "pref": "東京都",
+      "city": "湯島",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yushimatenjin.or.jp/pc/eng-page/english.htm"
+    },
+    {
+      "name": "代々木八幡宮",
+      "pref": "東京都",
+      "city": "代々木",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yoyogihachimangu.or.jp/"
+    },
+    {
+      "name": "靖国神社",
+      "pref": "東京都",
+      "city": "九段北",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yasukuni.or.jp/"
+    },
+    {
+      "name": "宇喜田稲荷神社",
+      "pref": "東京都",
+      "city": "北葛西",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ukita-inari.net/"
+    },
+    {
+      "name": "妻恋神社",
+      "pref": "東京都",
+      "city": "湯島",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tsumakoi.jp/"
+    },
+    {
+      "name": "住吉神社",
+      "pref": "東京都",
+      "city": "佃",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sumiyoshijinja.or.jp/"
+    },
+    {
+      "name": "水天宮",
+      "pref": "東京都",
+      "city": "日本橋蛎殻町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.suitengu.or.jp/"
+    },
+    {
+      "name": "座間神社",
+      "pref": "神奈川県",
+      "city": "座間",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://zamajinja.or.jp/"
+    },
+    {
+      "name": "天照山神社",
+      "pref": "神奈川県",
+      "city": "湯河原町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.town.yugawara.kanagawa.jp/soshiki/8/1281.html"
+    },
+    {
+      "name": "瀬戸神社",
+      "pref": "神奈川県",
+      "city": "瀬戸",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.setojinja.or.jp/"
+    },
+    {
+      "name": "諏訪神社",
+      "pref": "神奈川県",
+      "city": "横須賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osuwasama.com/"
+    },
+    {
+      "name": "報徳二宮神社",
+      "pref": "神奈川県",
+      "city": "小田原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ninomiya.or.jp/"
+    },
+    {
+      "name": "児玉神社",
+      "pref": "神奈川県",
+      "city": "藤沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kodamajinja.or.jp/"
+    },
+    {
+      "name": "諏訪神社",
+      "pref": "神奈川県",
+      "city": "仙石原",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kintokijinja.com/jinja-suwa.html"
+    },
+    {
+      "name": "春日神社",
+      "pref": "神奈川県",
+      "city": "横須賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kanagawa-jinja.or.jp/shrine/1205060-000/"
+    },
+    {
+      "name": "彌彦神社",
+      "pref": "新潟県",
+      "city": "弥彦村",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yahiko-jinjya.or.jp/"
+    },
+    {
+      "name": "白山神社",
+      "pref": "新潟県",
+      "city": "一番堀通町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.niigatahakusanjinja.or.jp/"
+    },
+    {
+      "name": "新潟縣護國神社",
+      "pref": "新潟県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.niigata-gokoku.or.jp/"
+    },
+    {
+      "name": "宝徳山稲荷大社",
+      "pref": "新潟県",
+      "city": "長岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.houtoku.or.jp/"
+    },
+    {
+      "name": "蒼柴神社",
+      "pref": "新潟県",
+      "city": "長岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.aoshijinja.or.jp/%E8%92%BC%E6%9F%B4%E7%A5%9E%E7%A4%BE%E3%81%AE%E6%AD%B4%E5%8F%B2/history/"
+    },
+    {
+      "name": "青海神社",
+      "pref": "新潟県",
+      "city": "加茂市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.aomi-jinjya.or.jp/"
+    },
+    {
+      "name": "古町愛宕神社",
+      "pref": "新潟県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.niigata-atago.jp/"
+    },
+    {
+      "name": "金峯神社 (長岡市)",
+      "pref": "新潟県",
+      "city": "長岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kinpu.jp/"
+    },
+    {
+      "name": "高瀬神社",
+      "pref": "富山県",
+      "city": "礪波郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.takase.or.jp/"
+    },
+    {
+      "name": "高岡関野神社",
+      "pref": "富山県",
+      "city": "高岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.takaokasekinojinjya.com/"
+    },
+    {
+      "name": "二上射水神社",
+      "pref": "富山県",
+      "city": "高岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.imizujinjya.or.jp/about"
+    },
+    {
+      "name": "射水神社",
+      "pref": "富山県",
+      "city": "射水郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.imizujinjya.or.jp/"
+    },
+    {
+      "name": "日枝神社",
+      "pref": "富山県",
+      "city": "富山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hie.jp/"
+    },
+    {
+      "name": "気多神社",
+      "pref": "富山県",
+      "city": "射水郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ketaweb.net/"
+    },
+    {
+      "name": "浅井神社",
+      "pref": "富山県",
+      "city": "礪波郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www3.ic-net.or.jp/~asaijinjya/"
+    },
+    {
+      "name": "諏訪神社",
+      "pref": "富山県",
+      "city": "魚津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www115.sakura.ne.jp/~suwajinjya/"
+    },
+    {
+      "name": "石浦神社",
+      "pref": "石川県",
+      "city": "本多町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ishiura.jp/"
+    },
+    {
+      "name": "石川護国神社",
+      "pref": "石川県",
+      "city": "石引",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ishikawagokoku.or.jp/"
+    },
+    {
+      "name": "神目神社",
+      "pref": "石川県",
+      "city": "鳳至郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ishikawa-jinjacho.or.jp/shrine/j1730/"
+    },
+    {
+      "name": "諸岡比古神社",
+      "pref": "石川県",
+      "city": "鳳至郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ishikawa-jinjacho.or.jp/shrine/j1590/"
+    },
+    {
+      "name": "椿原天満宮",
+      "pref": "石川県",
+      "city": "金沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tsubakihara.wixsite.com/my-site"
+    },
+    {
+      "name": "大地主神社",
+      "pref": "石川県",
+      "city": "七尾市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sannoushrinenoto.wixsite.com/mysite"
+    },
+    {
+      "name": "大野湊神社",
+      "pref": "石川県",
+      "city": "金沢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://oonominato.or.jp/"
+    },
+    {
+      "name": "気多大社",
+      "pref": "石川県",
+      "city": "羽咋郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://keta.jp"
+    },
+    {
+      "name": "毛谷黒龍神社",
+      "pref": "福井県",
+      "city": "福井市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kurotatu-jinja.jp/"
+    },
+    {
+      "name": "黒龍神社（白山神社境内）",
+      "pref": "福井県",
+      "city": "坂井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.jinja-fukui.jp/detail/index.php?ID=20170112_165124"
+    },
+    {
+      "name": "岡太神社",
+      "pref": "福井県",
+      "city": "越前市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.jinja-fukui.jp/detail/index.php?ID=20160121_091752"
+    },
+    {
+      "name": "福井県護国神社",
+      "pref": "福井県",
+      "city": "福井市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.fukuigokoku.jp/"
+    },
+    {
+      "name": "足羽神社",
+      "pref": "福井県",
+      "city": "足羽",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.asuwajinja.jp/english.htm"
+    },
+    {
+      "name": "藤島神社",
+      "pref": "福井県",
+      "city": "福井市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nitta.or.jp/"
+    },
+    {
+      "name": "氣比神宮",
+      "pref": "福井県",
+      "city": "敦賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kehijingu.jp/"
+    },
+    {
+      "name": "柴田神社",
+      "pref": "福井県",
+      "city": "福井市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.sibatajinja.jp/"
+    },
+    {
+      "name": "北口本宮冨士浅間神社",
+      "pref": "山梨県",
+      "city": "富士吉田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sengenjinja.jp/english/"
+    },
+    {
+      "name": "冨士御室浅間神社",
+      "pref": "山梨県",
+      "city": "富士河口湖町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.fujiomurosengenjinja.com/"
+    },
+    {
+      "name": "三國第一山新倉富士浅間神社",
+      "pref": "山梨県",
+      "city": "富士吉田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.arakurafujisengen.com/"
+    },
+    {
+      "name": "大嶽山那賀都神社",
+      "pref": "山梨県",
+      "city": "山梨市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nagato-jinja.jp/"
+    },
+    {
+      "name": "若宮八幡宮",
+      "pref": "山梨県",
+      "city": "韮崎市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kawarabesan.jp/"
+    },
+    {
+      "name": "河口浅間神社",
+      "pref": "山梨県",
+      "city": "八代郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://asamajinja.or.jp/"
+    },
+    {
+      "name": "浅間神社",
+      "pref": "山梨県",
+      "city": "笛吹市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://asamajinja.jp"
+    },
+    {
+      "name": "新屋山神社",
+      "pref": "山梨県",
+      "city": "富士吉田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.yamajinja.jp/"
+    },
+    {
+      "name": "戸隠神社",
+      "pref": "長野県",
+      "city": "長野市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.togakushi-jinja.jp/english/"
+    },
+    {
+      "name": "仁科神明宮",
+      "pref": "長野県",
+      "city": "大町市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sinmeigu.jp/"
+    },
+    {
+      "name": "王滝御嶽神社",
+      "pref": "長野県",
+      "city": "王滝村",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ontakejinja.jp/"
+    },
+    {
+      "name": "御柱祭",
+      "pref": "長野県",
+      "city": "長野県",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.onbashira.jp/"
+    },
+    {
+      "name": "生島足島神社",
+      "pref": "長野県",
+      "city": "小県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ikushimatarushima.com/"
+    },
+    {
+      "name": "長谷寺",
+      "pref": "長野県",
+      "city": "更級郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hasedera.net/"
+    },
+    {
+      "name": "深志神社",
+      "pref": "長野県",
+      "city": "深志",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.fukashi-tenjin.or.jp/"
+    },
+    {
+      "name": "諏訪大社",
+      "pref": "長野県",
+      "city": "下諏訪町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://suwataisha.or.jp/"
+    },
+    {
+      "name": "養老神社",
+      "pref": "岐阜県",
+      "city": "養老町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yoro-park.com/facility-map/yoro-falls/#01"
+    },
+    {
+      "name": "春日神社",
+      "pref": "岐阜県",
+      "city": "関市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.seki-kasuga.com/html/english.html"
+    },
+    {
+      "name": "走り乃神社",
+      "pref": "岐阜県",
+      "city": "高山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.optionland.jp/blank-1"
+    },
+    {
+      "name": "南宮大社",
+      "pref": "岐阜県",
+      "city": "不破郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nangu-san.com/"
+    },
+    {
+      "name": "春日神社",
+      "pref": "岐阜県",
+      "city": "下中屋町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=798&shrname=%E2%98%85%E6%98%A5%E6%97%A5%E7%A5%9E%E7%A4%BE%E2%98%85"
+    },
+    {
+      "name": "八幡神社",
+      "pref": "岐阜県",
+      "city": "中津川市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=2220"
+    },
+    {
+      "name": "天神神社 (岐阜市柳津町)",
+      "pref": "岐阜県",
+      "city": "岐阜市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=193"
+    },
+    {
+      "name": "大八賀神社",
+      "pref": "岐阜県",
+      "city": "高山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=1699&shrname=%E2%96%A0%E5%A4%A7%E5%85%AB%E8%B3%80%E7%A5%9E%E7%A4%BE%E2%96%A0"
+    },
+    {
+      "name": "日吉浅間神社",
+      "pref": "静岡県",
+      "city": "今泉",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yoshikazurokusho.wixsite.com/hiyoshi-sengen"
+    },
+    {
+      "name": "焼津神社",
+      "pref": "静岡県",
+      "city": "焼津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yaizujinja.or.jp"
+    },
+    {
+      "name": "久能山東照宮",
+      "pref": "静岡県",
+      "city": "駿河区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.toshogu.or.jp/tw/"
+    },
+    {
+      "name": "久能山東照宮社殿",
+      "pref": "静岡県",
+      "city": "静岡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.toshogu.or.jp/about/shinto_shrine.php"
+    },
+    {
+      "name": "曽我八幡宮",
+      "pref": "静岡県",
+      "city": "富士宮市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.soga-kamiide.com/"
+    },
+    {
+      "name": "日吉神社",
+      "pref": "静岡県",
+      "city": "島田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sizutabi.com/simada/hiyosi.html"
+    },
+    {
+      "name": "矢奈比売神社",
+      "pref": "静岡県",
+      "city": "磐田郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.mitsuke-tenjin.com/"
+    },
+    {
+      "name": "秋葉山本宮秋葉神社",
+      "pref": "静岡県",
+      "city": "天竜区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.akihasanhongu.jp/"
+    },
+    {
+      "name": "八百富神社",
+      "pref": "愛知県",
+      "city": "蒲郡市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yaotomi.net/"
+    },
+    {
+      "name": "砥鹿神社",
+      "pref": "愛知県",
+      "city": "宝飯郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.togajinja.or.jp/"
+    },
+    {
+      "name": "石刀神社",
+      "pref": "愛知県",
+      "city": "一宮市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.iwatojinja.com/"
+    },
+    {
+      "name": "伊文神社",
+      "pref": "愛知県",
+      "city": "西尾市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ibunjinja.net/"
+    },
+    {
+      "name": "星神社 (名古屋市)",
+      "pref": "愛知県",
+      "city": "西区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hoshijinjya.com/"
+    },
+    {
+      "name": "鳳来山東照宮",
+      "pref": "愛知県",
+      "city": "新城市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.horaisantoshogu.com/"
+    },
+    {
+      "name": "針綱神社",
+      "pref": "愛知県",
+      "city": "犬山",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.haritsunajinja.com/"
+    },
+    {
+      "name": "綾衾神社",
+      "pref": "愛知県",
+      "city": "葉栗郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=163&shrname=%E2%98%85%E7%B6%BE%E8%A1%BE%E7%A5%9E%E7%A4%BE%E2%98%85"
+    },
+    {
+      "name": "菅原神社",
+      "pref": "三重県",
+      "city": "伊賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sugawara25.jp/"
+    },
+    {
+      "name": "猿田彦神社",
+      "pref": "三重県",
+      "city": "伊勢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sarutahikojinja.or.jp/"
+    },
+    {
+      "name": "桑名宗社",
+      "pref": "三重県",
+      "city": "桑名市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kuwanasousha.org/"
+    },
+    {
+      "name": "神服織機殿神社",
+      "pref": "三重県",
+      "city": "多気郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.jingukaikan.jp/125mairi/m09/0902.html"
+    },
+    {
+      "name": "宇治山田神社",
+      "pref": "三重県",
+      "city": "伊勢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.jingukaikan.jp/125mairi/m03/0307.html"
+    },
+    {
+      "name": "皇大神宮",
+      "pref": "三重県",
+      "city": "伊勢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.isejingu.or.jp/en/about/index.html#naiku"
+    },
+    {
+      "name": "豊受大神宮",
+      "pref": "三重県",
+      "city": "伊勢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.isejingu.or.jp/en/about/index.html#geku"
+    },
+    {
+      "name": "月讀宮",
+      "pref": "三重県",
+      "city": "伊勢市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.isejingu.or.jp/about/outerbetsugu/#tsukiyomi"
+    },
+    {
+      "name": "飯道神社（信楽町）",
+      "pref": "滋賀県",
+      "city": "甲賀郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shiga-jinjacho.jp/ycBBS/Board.cgi/02_jinja_db/db/ycDB_02jinja-pc-detail.html?mode:view=1&view:oid=630"
+    },
+    {
+      "name": "飯道神社（甲西町）",
+      "pref": "滋賀県",
+      "city": "甲賀郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shiga-jinjacho.jp/ycBBS/Board.cgi/02_jinja_db/db/ycDB_02jinja-pc-detail.html?mode:view=1&view:oid=526"
+    },
+    {
+      "name": "立志神社",
+      "pref": "滋賀県",
+      "city": "湖南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ryushijinjya.com/"
+    },
+    {
+      "name": "伊砂砂神社",
+      "pref": "滋賀県",
+      "city": "草津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.isasajinja.com/"
+    },
+    {
+      "name": "都久夫須麻神社",
+      "pref": "滋賀県",
+      "city": "長浜市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.chikubusima.or.jp/"
+    },
+    {
+      "name": "近津尾神社",
+      "pref": "滋賀県",
+      "city": "国分",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.chikatsuo-com.com/"
+    },
+    {
+      "name": "立木神社",
+      "pref": "滋賀県",
+      "city": "草津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tatikijinja.net/"
+    },
+    {
+      "name": "関蝉丸神社",
+      "pref": "滋賀県",
+      "city": "大津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://semimaru.ehoh.net/"
+    },
+    {
+      "name": "吉田神社",
+      "pref": "京都府",
+      "city": "左京区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yoshidajinja.com/"
+    },
+    {
+      "name": "八坂神社",
+      "pref": "京都府",
+      "city": "東山区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yasaka-jinja.or.jp/en/"
+    },
+    {
+      "name": "宇治上神社",
+      "pref": "京都府",
+      "city": "宇治郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ujikamijinja.jp/"
+    },
+    {
+      "name": "賀茂御祖神社",
+      "pref": "京都府",
+      "city": "愛宕郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shimogamo-jinja.or.jp/english/"
+    },
+    {
+      "name": "晴明神社",
+      "pref": "京都府",
+      "city": "上京区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.seimeijinja.jp/ch/"
+    },
+    {
+      "name": "山王宮日吉神社",
+      "pref": "京都府",
+      "city": "宮津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sannougu.jp/"
+    },
+    {
+      "name": "半木神社",
+      "pref": "京都府",
+      "city": "左京区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.pref.kyoto.jp/plant/11900017.html"
+    },
+    {
+      "name": "梨木神社",
+      "pref": "京都府",
+      "city": "上京区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nashinoki.jp/"
+    },
+    {
+      "name": "住吉大社",
+      "pref": "大阪府",
+      "city": "住吉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sumiyoshitaisha.net/"
+    },
+    {
+      "name": "四條畷神社",
+      "pref": "大阪府",
+      "city": "四條畷市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shijonawatejinja.or.jp/"
+    },
+    {
+      "name": "柴籬神社",
+      "pref": "大阪府",
+      "city": "松原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shibagaki.or.jp/"
+    },
+    {
+      "name": "サムハラ神社",
+      "pref": "大阪府",
+      "city": "立売堀",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.samuhara.or.jp/"
+    },
+    {
+      "name": "大阪護國神社",
+      "pref": "大阪府",
+      "city": "南加賀屋",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osakagokoku.or.jp/"
+    },
+    {
+      "name": "久佐々神社",
+      "pref": "大阪府",
+      "city": "能勢郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osaka-jinjacho.jp/funai_jinja/dai1shibu/nose-cho/01020kusasajinja.html"
+    },
+    {
+      "name": "豊國神社",
+      "pref": "大阪府",
+      "city": "大阪城",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osaka-hokokujinja.org/"
+    },
+    {
+      "name": "大鳥大社",
+      "pref": "大阪府",
+      "city": "大鳥郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ootoritaisha.jp/"
+    },
+    {
+      "name": "弓弦羽神社",
+      "pref": "兵庫県",
+      "city": "東灘区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yuzuruha-jinja.jp/"
+    },
+    {
+      "name": "住吉神社",
+      "pref": "兵庫県",
+      "city": "明石市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sumiyoshijinjya.com/"
+    },
+    {
+      "name": "湊川神社",
+      "pref": "兵庫県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.minatogawajinja.or.jp/"
+    },
+    {
+      "name": "北野天満神社",
+      "pref": "兵庫県",
+      "city": "北野町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kobe-kitano.net/"
+    },
+    {
+      "name": "柏原八幡宮",
+      "pref": "兵庫県",
+      "city": "丹波市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kaibarahachiman.jp/"
+    },
+    {
+      "name": "いそ部神社",
+      "pref": "兵庫県",
+      "city": "氷上郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hyogo-jinjacho.com/data/6308071.html"
+    },
+    {
+      "name": "西宮神社",
+      "pref": "兵庫県",
+      "city": "西宮市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hyogo-jinjacho.com/data/6301007.html"
+    },
+    {
+      "name": "大国主西神社",
+      "pref": "兵庫県",
+      "city": "菟原郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hyogo-jinjacho.com/data/6301007.html"
+    },
+    {
+      "name": "八咫烏神社",
+      "pref": "奈良県",
+      "city": "宇陀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yatagarasujinja.net/"
+    },
+    {
+      "name": "吉水神社",
+      "pref": "奈良県",
+      "city": "吉野町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yoshimizu-shrine.com/"
+    },
+    {
+      "name": "與喜天満神社",
+      "pref": "奈良県",
+      "city": "初瀬",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yokitenmanjinja.jp/"
+    },
+    {
+      "name": "薬師寺",
+      "pref": "奈良県",
+      "city": "奈良市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yakushiji.or.jp/"
+    },
+    {
+      "name": "天河大弁財天社",
+      "pref": "奈良県",
+      "city": "天川村",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tenkawa-jinja.or.jp/"
+    },
+    {
+      "name": "龍田大社",
+      "pref": "奈良県",
+      "city": "平群郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tatsutataisha.jp/"
+    },
+    {
+      "name": "談山神社",
+      "pref": "奈良県",
+      "city": "桜井市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tanzan.or.jp/"
+    },
+    {
+      "name": "吉野神宮",
+      "pref": "奈良県",
+      "city": "吉野町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.naranet.co.jp/yoshinojingu/"
+    },
+    {
+      "name": "春日神社",
+      "pref": "和歌山県",
+      "city": "海南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kasuga-kainan.com/"
+    },
+    {
+      "name": "竈山神社",
+      "pref": "和歌山県",
+      "city": "名草郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kamayama-jinja.com/"
+    },
+    {
+      "name": "淡嶋神社",
+      "pref": "和歌山県",
+      "city": "名草郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kada.jp/awashima/"
+    },
+    {
+      "name": "熊野本宮大社",
+      "pref": "和歌山県",
+      "city": "本宮町本宮",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hongutaisha.jp/english/"
+    },
+    {
+      "name": "隅田八幡神社",
+      "pref": "和歌山県",
+      "city": "橋本市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sudahachimanjinjya.org/"
+    },
+    {
+      "name": "丹生都比売神社",
+      "pref": "和歌山県",
+      "city": "かつらぎ町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://niutsuhime.or.jp/"
+    },
+    {
+      "name": "飛瀧神社",
+      "pref": "和歌山県",
+      "city": "那智勝浦町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kumanonachitaisha.or.jp/pavilion/"
+    },
+    {
+      "name": "熊野那智大社",
+      "pref": "和歌山県",
+      "city": "那智勝浦町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kumanonachitaisha.or.jp/"
+    },
+    {
+      "name": "宇倍神社",
+      "pref": "鳥取県",
+      "city": "法美郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ubejinja.or.jp/"
+    },
+    {
+      "name": "倭文神社",
+      "pref": "鳥取県",
+      "city": "河村郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.sitorijinja.com/"
+    },
+    {
+      "name": "白兎神社",
+      "pref": "鳥取県",
+      "city": "鳥取市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://hakutojinja.jp/"
+    },
+    {
+      "name": "妖怪神社",
+      "pref": "鳥取県",
+      "city": "大正町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://yo-kai.net/"
+    },
+    {
+      "name": "大神山神社",
+      "pref": "鳥取県",
+      "city": "大山町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.oogamiyama.or.jp/"
+    },
+    {
+      "name": "鳥取東照宮",
+      "pref": "鳥取県",
+      "city": "鳥取市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B3%A5%E5%8F%96%E6%9D%B1%E7%85%A7%E5%AE%AE"
+    },
+    {
+      "name": "金持神社",
+      "pref": "鳥取県",
+      "city": "日野町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%8C%81%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "赤猪岩神社",
+      "pref": "鳥取県",
+      "city": "南部町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%8C%AA%E5%B2%A9%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "八重垣神社",
+      "pref": "島根県",
+      "city": "意宇郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yaegakijinja.or.jp"
+    },
+    {
+      "name": "物部神社",
+      "pref": "島根県",
+      "city": "安濃郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.mononobe-jinja.jp/"
+    },
+    {
+      "name": "松江護國神社",
+      "pref": "島根県",
+      "city": "松江市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.matsuegokoku.com/"
+    },
+    {
+      "name": "須我神社",
+      "pref": "島根県",
+      "city": "雲南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://suga-jinja.or.jp/"
+    },
+    {
+      "name": "命主社 (神魂伊能知奴志神社)",
+      "pref": "島根県",
+      "city": "出雲市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://izumooyashiro.or.jp/precinct/keidai-index/setumatu"
+    },
+    {
+      "name": "出雲大社",
+      "pref": "島根県",
+      "city": "出雲市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://izumooyashiro.or.jp/"
+    },
+    {
+      "name": "熊野大社",
+      "pref": "島根県",
+      "city": "松江市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kumanotaisha.or.jp/"
+    },
+    {
+      "name": "出雲路幸神社",
+      "pref": "島根県",
+      "city": "意宇郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.jinja-net.jp/jinjacho-shimane/jsearch3shimane.php?jinjya=29807"
+    },
+    {
+      "name": "玉井宮東照宮",
+      "pref": "岡山県",
+      "city": "中区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.tamaigutousyouguu.com/"
+    },
+    {
+      "name": "備前国総社宮",
+      "pref": "岡山県",
+      "city": "中区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.soujagu.jp/"
+    },
+    {
+      "name": "岡山神社",
+      "pref": "岡山県",
+      "city": "北区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.okayama-jinjya.or.jp/english.html"
+    },
+    {
+      "name": "若宮八幡宮",
+      "pref": "岡山県",
+      "city": "瀬戸内市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.okayama-jinjacho.or.jp/search/18043/"
+    },
+    {
+      "name": "川嶋の宮八幡神社本宮",
+      "pref": "岡山県",
+      "city": "倉敷市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.okayama-jinjacho.or.jp/search/16627/"
+    },
+    {
+      "name": "吉備津神社",
+      "pref": "岡山県",
+      "city": "吉備津",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kibitujinja.com/"
+    },
+    {
+      "name": "吉備津彦神社",
+      "pref": "岡山県",
+      "city": "北区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kibitsuhiko.or.jp/"
+    },
+    {
+      "name": "高野神社",
+      "pref": "岡山県",
+      "city": "津山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://takano-jinjya.or.jp/"
+    },
+    {
+      "name": "多家神社",
+      "pref": "広島県",
+      "city": "府中町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.takejinja.net/"
+    },
+    {
+      "name": "饒津神社",
+      "pref": "広島県",
+      "city": "東区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nigitsu.jp/"
+    },
+    {
+      "name": "亀山神社",
+      "pref": "広島県",
+      "city": "呉市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kameyama-jinja.com/"
+    },
+    {
+      "name": "厳島神社",
+      "pref": "広島県",
+      "city": "廿日市市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.itsukushimajinja.jp/"
+    },
+    {
+      "name": "広島東照宮",
+      "pref": "広島県",
+      "city": "東区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hiroshima-toshogu.or.jp/"
+    },
+    {
+      "name": "広島護国神社",
+      "pref": "広島県",
+      "city": "基町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.h-gokoku.or.jp/"
+    },
+    {
+      "name": "福山八幡宮",
+      "pref": "広島県",
+      "city": "福山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.fukuyamahachimangu.or.jp/"
+    },
+    {
+      "name": "備後國二之宮 知波夜比古(ちはやひこ)神社",
+      "pref": "広島県",
+      "city": "三谿郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.city.miyoshi.hiroshima.jp/soshiki/49/26330.html"
+    },
+    {
+      "name": "防府天満宮",
+      "pref": "山口県",
+      "city": "防府市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hofutenmangu.com/"
+    },
+    {
+      "name": "松陰神社",
+      "pref": "山口県",
+      "city": "萩市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://showin-jinja.or.jp/"
+    },
+    {
+      "name": "乃木神社",
+      "pref": "山口県",
+      "city": "下関市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nogi-jinja.or.jp/"
+    },
+    {
+      "name": "忌宮神社",
+      "pref": "山口県",
+      "city": "豊浦郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://iminomiya-jinjya.com"
+    },
+    {
+      "name": "彦島八幡宮",
+      "pref": "山口県",
+      "city": "下関市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://hikoshima-guu.net/"
+    },
+    {
+      "name": "山口大神宮",
+      "pref": "山口県",
+      "city": "山口市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.yamaguchi-daijingu.or.jp/"
+    },
+    {
+      "name": "赤間神宮",
+      "pref": "山口県",
+      "city": "阿弥陀寺町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.tiki.ne.jp/~akama-jingu/"
+    },
+    {
+      "name": "亀山八幡宮",
+      "pref": "山口県",
+      "city": "中之町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kameyamagu.com/"
+    },
+    {
+      "name": "徳島眉山天神社",
+      "pref": "徳島県",
+      "city": "眉山町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.bizan-tenjinsha.org/"
+    },
+    {
+      "name": "王子神社",
+      "pref": "徳島県",
+      "city": "八万町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://oujijinja.com/"
+    },
+    {
+      "name": "日峰神社",
+      "pref": "徳島県",
+      "city": "中田町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://hinomine-jinja.sakura.ne.jp/"
+    },
+    {
+      "name": "大麻比古神社",
+      "pref": "徳島県",
+      "city": "大麻町板東",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.ooasahikojinja.jp/e/"
+    },
+    {
+      "name": "劔神社",
+      "pref": "徳島県",
+      "city": "東祖谷菅生",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.ctm.ne.jp/~turugijinjya/"
+    },
+    {
+      "name": "西照神社",
+      "pref": "徳島県",
+      "city": "美馬郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://nisiteru-jinja.com/"
+    },
+    {
+      "name": "鹿江比賣神社",
+      "pref": "徳島県",
+      "city": "徳島県",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E6%B1%9F%E6%AF%94%E8%B3%A3%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "雨降神社",
+      "pref": "徳島県",
+      "city": "徳島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%9B%A8%E9%99%8D%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "金刀比羅宮",
+      "pref": "香川県",
+      "city": "多度郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.konpira.or.jp/"
+    },
+    {
+      "name": "田村神社",
+      "pref": "香川県",
+      "city": "香川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tamurajinja.com/"
+    },
+    {
+      "name": "神谷神社",
+      "pref": "香川県",
+      "city": "阿野郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kandani.sakura.ne.jp/wp/"
+    },
+    {
+      "name": "石清尾八幡宮",
+      "pref": "香川県",
+      "city": "宮脇町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://iwaseo.com/"
+    },
+    {
+      "name": "香川県神社庁",
+      "pref": "香川県",
+      "city": "高松市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kagawakenjinjacho.or.jp/"
+    },
+    {
+      "name": "滝宮天満宮",
+      "pref": "香川県",
+      "city": "綾川町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://takinomiyatenmangu.com/"
+    },
+    {
+      "name": "香川縣護國神社",
+      "pref": "香川県",
+      "city": "善通寺市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://sanukinomiya.org/"
+    },
+    {
+      "name": "鼓岡神社",
+      "pref": "香川県",
+      "city": "坂出市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%BC%93%E5%B2%A1%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "湯神社",
+      "pref": "愛媛県",
+      "city": "道後湯之町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yu-jinja.official.jp/"
+    },
+    {
+      "name": "和霊神社",
+      "pref": "愛媛県",
+      "city": "宇和島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://wareijinja.fc2.net"
+    },
+    {
+      "name": "大山祇神社",
+      "pref": "愛媛県",
+      "city": "越智郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://oomishimagu.jp/"
+    },
+    {
+      "name": "伊佐爾波神社",
+      "pref": "愛媛県",
+      "city": "温泉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://isaniwa.official.jp/"
+    },
+    {
+      "name": "加茂神社",
+      "pref": "愛媛県",
+      "city": "今治市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kamoj.sakura.ne.jp/"
+    },
+    {
+      "name": "愛媛縣護國神社",
+      "pref": "愛媛県",
+      "city": "松山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.gokoku.org/"
+    },
+    {
+      "name": "石鎚神社",
+      "pref": "愛媛県",
+      "city": "西条市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://ishizuchisan.jp/"
+    },
+    {
+      "name": "黒嶋神宮",
+      "pref": "愛媛県",
+      "city": "新居郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E5%B6%8B%E7%A5%9E%E5%AE%AE"
+    },
+    {
+      "name": "高知大神宮",
+      "pref": "高知県",
+      "city": "高知市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yosakoi-inari.com/kochidaijingu/"
+    },
+    {
+      "name": "土佐神社",
+      "pref": "高知県",
+      "city": "土佐郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tosajinja.com/"
+    },
+    {
+      "name": "小津神社",
+      "pref": "高知県",
+      "city": "高知市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://odu-jinjya.com/"
+    },
+    {
+      "name": "馬之助神社",
+      "pref": "高知県",
+      "city": "四万十町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ksmv.jp/kappakan/umanosuke"
+    },
+    {
+      "name": "山内神社",
+      "pref": "高知県",
+      "city": "高知市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.yamauchijinjya.net/"
+    },
+    {
+      "name": "潮江天満宮",
+      "pref": "高知県",
+      "city": "高知市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.ushioe-tenmangu.jp/"
+    },
+    {
+      "name": "朝倉神社 (高知市)",
+      "pref": "高知県",
+      "city": "土佐郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://asakurajinja.yamanoha.com"
+    },
+    {
+      "name": "鳴無神社",
+      "pref": "高知県",
+      "city": "須崎市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B3%B4%E7%84%A1%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "八坂神社",
+      "pref": "福岡県",
+      "city": "城内",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yasaka-jinja.com/"
+    },
+    {
+      "name": "住吉神社",
+      "pref": "福岡県",
+      "city": "住吉特別緑地保全地区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nihondaiichisumiyoshigu.jp/"
+    },
+    {
+      "name": "沖津宮",
+      "pref": "福岡県",
+      "city": "宗像市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.munakata-taisha.or.jp/about_okitsu.html"
+    },
+    {
+      "name": "中津宮",
+      "pref": "福岡県",
+      "city": "宗像市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.munakata-taisha.or.jp/about_nakatsu.html"
+    },
+    {
+      "name": "宮地嶽神社",
+      "pref": "福岡県",
+      "city": "福津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.miyajidake.or.jp/"
+    },
+    {
+      "name": "和布刈神社",
+      "pref": "福岡県",
+      "city": "門司区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.mekarijinja.com/"
+    },
+    {
+      "name": "春日神社",
+      "pref": "福岡県",
+      "city": "春日市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kasugajinjya.jp/"
+    },
+    {
+      "name": "筥崎宮",
+      "pref": "福岡県",
+      "city": "箱崎",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hakozakigu.or.jp/"
+    },
+    {
+      "name": "與賀神社",
+      "pref": "佐賀県",
+      "city": "佐賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yokajinjya.sagafan.jp/"
+    },
+    {
+      "name": "與止日女神社",
+      "pref": "佐賀県",
+      "city": "佐賀郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://yodohime-jinja.jimdofree.com/"
+    },
+    {
+      "name": "祐徳稲荷神社",
+      "pref": "佐賀県",
+      "city": "鹿島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.yutokusan.jp/en/"
+    },
+    {
+      "name": "男女神社",
+      "pref": "佐賀県",
+      "city": "佐賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nannyojinja.or.jp/"
+    },
+    {
+      "name": "唐津神社",
+      "pref": "佐賀県",
+      "city": "唐津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.karatsu-jinja.org/"
+    },
+    {
+      "name": "佐嘉神社",
+      "pref": "佐賀県",
+      "city": "松原",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sagajinjya.jp/"
+    },
+    {
+      "name": "鏡神社",
+      "pref": "佐賀県",
+      "city": "唐津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kagami.or.jp/"
+    },
+    {
+      "name": "陶山神社",
+      "pref": "佐賀県",
+      "city": "有田町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://arita-toso.net/"
+    },
+    {
+      "name": "鎮西大社諏訪神社",
+      "pref": "長崎県",
+      "city": "長崎市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.osuwasan.jp/"
+    },
+    {
+      "name": "山王神社",
+      "pref": "長崎県",
+      "city": "長崎市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sannou-jinjya.jp/"
+    },
+    {
+      "name": "亀岡神社",
+      "pref": "長崎県",
+      "city": "平戸市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kameoka-j.jp/"
+    },
+    {
+      "name": "国津神社",
+      "pref": "長崎県",
+      "city": "石田郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.ikishi.sakura.ne.jp/ikinokokutuzinsha.html"
+    },
+    {
+      "name": "飯盛神社",
+      "pref": "長崎県",
+      "city": "佐世保市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E7%9B%9B%E7%A5%9E%E7%A4%BE_(%E4%BD%90%E4%B8%96%E4%BF%9D%E5%B8%82)"
+    },
+    {
+      "name": "青方神社",
+      "pref": "長崎県",
+      "city": "新上五島町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%96%B9%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "霊丘神社",
+      "pref": "長崎県",
+      "city": "島原市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%9C%8A%E4%B8%98%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "雄嶽日枝神社",
+      "pref": "長崎県",
+      "city": "上五島町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%9B%84%E5%B6%BD%E6%97%A5%E6%9E%9D%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "疋野神社",
+      "pref": "熊本県",
+      "city": "玉名郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.hikino-jinja.jp/"
+    },
+    {
+      "name": "藤崎八旛宮",
+      "pref": "熊本県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://fujisakigu.or.jp/"
+    },
+    {
+      "name": "梅林天満宮",
+      "pref": "熊本県",
+      "city": "玉名市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://bairin-tenmangu.jp/"
+    },
+    {
+      "name": "青井阿蘇神社",
+      "pref": "熊本県",
+      "city": "人吉市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://aoisan.jp/"
+    },
+    {
+      "name": "熊本県護国神社",
+      "pref": "熊本県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kumamoto-gokoku.jp/"
+    },
+    {
+      "name": "北岡神社",
+      "pref": "熊本県",
+      "city": "春日",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kitaoka-jinja.or.jp/"
+    },
+    {
+      "name": "加藤神社",
+      "pref": "熊本県",
+      "city": "中央区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kato-jinja.or.jp/"
+    },
+    {
+      "name": "八代宮",
+      "pref": "熊本県",
+      "city": "八代市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://selectroyal.com/yatsushirogu/"
+    },
+    {
+      "name": "西寒多神社",
+      "pref": "大分県",
+      "city": "大分郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://sasamuta.com/"
+    },
+    {
+      "name": "柞原八幡宮",
+      "pref": "大分県",
+      "city": "大分市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://oita-yusuhara.com/"
+    },
+    {
+      "name": "火男火売神社",
+      "pref": "大分県",
+      "city": "速見郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://honomejinja.jp/"
+    },
+    {
+      "name": "宇佐神宮",
+      "pref": "大分県",
+      "city": "宇佐郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.usajinguu.com/"
+    },
+    {
+      "name": "波止場神社",
+      "pref": "大分県",
+      "city": "別府市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.inaojinjya.com/"
+    },
+    {
+      "name": "八幡朝見神社",
+      "pref": "大分県",
+      "city": "別府市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.asami.or.jp/"
+    },
+    {
+      "name": "八幡竈門神社",
+      "pref": "大分県",
+      "city": "別府市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://hachimannkamado.sub.jp/"
+    },
+    {
+      "name": "鶴一社",
+      "pref": "大分県",
+      "city": "中津市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B6%B4%E4%B8%80%E7%A4%BE"
+    },
+    {
+      "name": "鵜戸神宮",
+      "pref": "宮崎県",
+      "city": "日南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.udojingu.or.jp/"
+    },
+    {
+      "name": "諏訪神社",
+      "pref": "宮崎県",
+      "city": "都城市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.city.miyakonojo.miyazaki.jp/site/bunkazai/3274.html"
+    },
+    {
+      "name": "都農神社",
+      "pref": "宮崎県",
+      "city": "児湯郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://tunojinjya6.webnode.jp/"
+    },
+    {
+      "name": "大御神社",
+      "pref": "宮崎県",
+      "city": "日向市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://oomijinja.com/index.html"
+    },
+    {
+      "name": "宮﨑神宮",
+      "pref": "宮崎県",
+      "city": "宮崎市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://miyazakijingu.or.jp/"
+    },
+    {
+      "name": "霧島神宮",
+      "pref": "宮崎県",
+      "city": "諸県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kirishimajingu.or.jp/"
+    },
+    {
+      "name": "旭丘神社",
+      "pref": "宮崎県",
+      "city": "都城市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://hinoo.net/"
+    },
+    {
+      "name": "青島神社",
+      "pref": "宮崎県",
+      "city": "青島",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://aoshima-jinja.jp/"
+    },
+    {
+      "name": "鶴嶺神社",
+      "pref": "鹿児島県",
+      "city": "吉野",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.shimadzu-ltd.jp/tsuruganejinja/"
+    },
+    {
+      "name": "新田神社",
+      "pref": "鹿児島県",
+      "city": "宮内町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.nitta-jinja.or.jp/"
+    },
+    {
+      "name": "照島神社",
+      "pref": "鹿児島県",
+      "city": "いちき串木野市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.kagojinjacho.or.jp/shrine-search/area-kagoshima/%E3%81%84%E3%81%A1%E3%81%8D%E4%B8%B2%E6%9C%A8%E9%87%8E%E5%B8%82/941/"
+    },
+    {
+      "name": "揖宿神社",
+      "pref": "鹿児島県",
+      "city": "東方",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.ibusukijinsha.com/"
+    },
+    {
+      "name": "豊玉姫神社",
+      "pref": "鹿児島県",
+      "city": "知覧町郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://toyotamahime-jinja.or.jp/"
+    },
+    {
+      "name": "松原神社",
+      "pref": "鹿児島県",
+      "city": "松原町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://matsubarajinja.com/"
+    },
+    {
+      "name": "霧島神宮",
+      "pref": "鹿児島県",
+      "city": "諸県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kirishimajingu.or.jp/"
+    },
+    {
+      "name": "川上天満宮",
+      "pref": "鹿児島県",
+      "city": "川上町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kawakamitenmangu.wixsite.com/main"
+    },
+    {
+      "name": "尖閣神社",
+      "pref": "沖縄県",
+      "city": "石垣市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.senkakujinja.jp/"
+    },
+    {
+      "name": "沖縄県護国神社",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.okinawa-gokoku.jp/"
+    },
+    {
+      "name": "宮古神社",
+      "pref": "沖縄県",
+      "city": "宮古島市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://www.miyako-jinja.com/"
+    },
+    {
+      "name": "沖宮",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://okinogu.or.jp/"
+    },
+    {
+      "name": "識名宮",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://sikinagu.com/"
+    },
+    {
+      "name": "波上宮",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://naminouegu.jp/"
+    },
+    {
+      "name": "普天満宮",
+      "pref": "沖縄県",
+      "city": "普天間",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://futenmagu.or.jp/"
+    },
+    {
+      "name": "金武宮",
+      "pref": "沖縄県",
+      "city": "金武",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%AD%A6%E5%AE%AE"
+    }
+  ]
+}
