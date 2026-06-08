@@ -295,6 +295,24 @@
       <div class="note" style="margin-top:10px;">すべて「こう<b>傾きやすい</b>／こう<b>活かせる</b>」という傾向と活かし方でお伝えします。「必ずこうなる」と決めつけたり、不安をあおったりはしません。最後に選ぶのはご本人です。<br><span style="font-size:0.78rem;color:#7a6f5d;">※ここでの説明は、流派によらない一般的・標準的なセオリーです。</span></div>
     </div>
 
+    <div class="card">
+      <h2>九星気学　─ 吉方位と色 ─</h2>
+      <div class="un-meta" id="kigaku-meta"></div>
+      <div id="kigaku"></div>
+    </div>
+
+    <div class="card">
+      <h2>占星術　─ ホロスコープ（インド式・星座） ─</h2>
+      <div class="un-meta">実際の星空に合わせたインド式。雑誌の星占いと星座がひとつずれることがあります</div>
+      <div id="seiyo"></div>
+    </div>
+
+    <div class="card" style="text-align:center;background:linear-gradient(180deg,#fffdf8,#f6eddc);">
+      <h2 style="border:none;justify-content:center;letter-spacing:0.35em;">星の断片</h2>
+      <div class="un-meta">あなたの星から生まれた、みじかい詩。占いの“結果”ではなく、読み終えたあとの余韻です。</div>
+      <div id="hoshi-kakera" style="font-size:1.06rem;line-height:2.2;letter-spacing:0.08em;color:var(--ink);margin-top:10px;white-space:pre-line;"></div>
+    </div>
+
     <div class="card member-only" style="text-align:center;border:1px dashed var(--accent);background:#f7f3ea;">
       <h2 style="color:var(--accent);">━━ ここから先は「あなた専用」の深い読み解き ─ 先生の鑑定 ─ ━━</h2>
       <div class="un-meta">ここまでが、どなたでも見られる「自分の図と、その読み方（辞書＋地図）」です。ここから下は、いくつもの星を重ね、いまの運気や歩みとあわせて“あなたの現在地と、これからの進み方”まで読み込む、先生の深い鑑定になります。</div>
@@ -367,12 +385,6 @@
     </div>
 
     <div class="card member-only">
-      <h2>九星気学　─ 吉方位と色 ─</h2>
-      <div class="un-meta" id="kigaku-meta"></div>
-      <div id="kigaku"></div>
-    </div>
-
-    <div class="card member-only">
       <h2>相性診断　─ 恋愛・仕事 ─</h2>
       <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。<b>生年月日を入れると、お相手が十干のどれにあたるか／あなたから見た役割（鍛える人・支える人など）まで分かります。</b>むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
       <div style="text-align:center;margin:12px 0;">
@@ -398,11 +410,6 @@
       <div id="saikoukyuu"></div>
     </div>
 
-    <div class="card member-only">
-      <h2>占星術　─ ホロスコープ（インド式） ─</h2>
-      <div class="un-meta">実際の星空に合わせたインド式。雑誌の星占いと星座がひとつずれることがあります</div>
-      <div id="seiyo"></div>
-    </div>
 
     <div class="card">
       <div class="note">
@@ -458,7 +465,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v34） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v35） — テスト運用中</footer>
 </div>
 
 <script>
@@ -1122,6 +1129,12 @@ function runAishou(){
   out+="<div style='font-size:0.78rem;color:#7a6f5d;'>※点数は表示しません——数字より、縁の形を言葉でお伝えする方針です。月星座は正午計算の参考値。</div>";
   document.getElementById("aout").innerHTML=out;
 }
+// 星の断片（詩）── 占いの結果ではなく余韻。日干（あなたの本質）から3行。リーダーが声を上書きする前提の叩き台。
+function hoshiKakera(ds){
+  const NAT=["天をめざす大樹のように、まっすぐなあなた。","風になびく草花のように、しなやかなあなた。","あたりを照らす陽のように、あたたかなあなた。","闇にともる灯のように、やさしいあなた。","動かぬ山のように、ゆるがないあなた。","実りを抱く畑のように、ふところの深いあなた。","鍛えられた刃のように、芯の強いあなた。","みがかれた宝のように、繊細なあなた。","海へ向かう大河のように、自由なあなた。","草をうるおす雨のように、しずかなあなた。"];
+  const EL=["芽吹きの力を、その内に秘めている。","あたたかな光を、その内に灯している。","ゆるがぬ大地を、その内に抱いている。","澄んだ硬さを、その内に磨いている。","しずかな流れを、その内にたたえている。"];
+  return NAT[ds]+"\n"+EL[Math.floor(ds/2)]+"\n急がなくていい。めぐる季節が、いつか連れてゆく。";
+}
 function run(){
   const y=+ySel.value,m=+mSel.value,d=+dSel.value;
   const dim=new Date(y,m,0).getDate();
@@ -1142,6 +1155,7 @@ function run(){
   document.getElementById("p-day").textContent=STEMS[ds]+BRANCHES[db];
   document.getElementById("p-month").textContent=STEMS[mk.stem]+BRANCHES[mk.branch];
   document.getElementById("p-year").textContent=STEMS[yk.stem]+BRANCHES[yk.branch];
+  try{var _hk=document.getElementById("hoshi-kakera"); if(_hk) _hk.textContent=hoshiKakera(ds);}catch(e){}
 
   const stars={
     head:mainStar(ds,yk.stem),
