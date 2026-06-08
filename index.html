@@ -149,9 +149,9 @@
 
     <div class="card">
       <h2>陽占　─ 人体星図 ─</h2>
-      <div class="un-meta">干支から導いた星の配置。胸の星があなたの本質、まわりの星が場面ごとの顔です。点数はエネルギーの大きさで、優劣ではありません</div>
+      <div class="un-meta">干支から導いた星の配置。胸の星があなたの本質、まわりの星が場面ごとの顔です</div>
       <div class="grid" id="grid"></div>
-      <div class="energy-total">エネルギー総数　<b id="energy"></b><span>　点</span></div>
+      <div class="energy-total">あなたのエネルギーの型　<b id="energy-type"></b><div style="font-size:0.8rem;color:#7a6f5d;margin-top:4px;font-weight:normal;">（参考：エネルギー総数 <span id="energy"></span> 点／6〜33点。これは力の大きさの「型」で、点が高い・低いに良し悪しはありません）</div></div>
     </div>
 
     <div class="card">
@@ -172,19 +172,6 @@
       <div class="tenchu" id="tenchu-name"></div>
       <p id="tenchu-text" style="font-size:0.95rem;"></p>
       <div id="tenchu-extra"></div>
-    </div>
-
-    <div class="card">
-      <h2>大運　─ 10年ごとの運の流れ ─</h2>
-      <div class="un-meta" id="taiun-meta"></div>
-      <div class="un-meta">色のついた行が「いま」のあなた。星の名前の下に、その星のテーマを小さく添えています</div>
-      <div id="taiun"></div>
-    </div>
-
-    <div class="card">
-      <h2>年運　─ 年ごとの運勢 ─</h2>
-      <div class="un-meta">年の切り替わりはお正月ではなく立春です。色のついた行が「今年」</div>
-      <div id="nenun"></div>
     </div>
 
     <div class="card">
@@ -235,12 +222,25 @@
 
     <div class="card member-only" style="text-align:center;border:1px dashed var(--accent);background:#f7f3ea;">
       <h2 style="color:var(--accent);">━━ ここから有料メニュー ━━</h2>
-      <div class="un-meta">ここから下は、より深い読み解きと勉強用の内容です。算命学を中心に、いちばん下にインド式占星術を置いています。</div>
+      <div class="un-meta">ここから下は、あなた専用の、より深い読み解きです。運の時期（大運・年運）から始まり、いちばん下に「占いの仕組みを学ぶ学習コーナー」をまとめています。</div>
     </div>
 
     <div class="card member-only">
-      <h2>算命学「名前と意味」勉強シート　─ 十神（通変星）─</h2>
-      <div class="un-meta">命式の核（型）を読むための基本です。ふだんは畳んでいます。学ぶときにタップで開いてください</div>
+      <h2>大運　─ 10年ごとの運の流れ ─</h2>
+      <div class="un-meta" id="taiun-meta"></div>
+      <div class="un-meta">色のついた行が「いま」のあなた。星の名前の下に、その星のテーマを小さく添えています</div>
+      <div id="taiun"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>年運　─ 年ごとの運勢 ─</h2>
+      <div class="un-meta">年の切り替わりはお正月ではなく立春です。色のついた行が「今年」</div>
+      <div id="nenun"></div>
+    </div>
+
+    <div class="card member-only">
+      <h2>📖 算命学「名前と意味」勉強シート　─ 十神（通変星）─</h2>
+      <div class="un-meta"><b>※学習用（一般の説明です）。</b>命式の核（型）を読むための基本です。ふだんは畳んでいます。学ぶときにタップで開いてください</div>
 
       <details style="margin:6px 0;">
         <summary style="cursor:pointer;font-weight:700;color:var(--accent);">📖 十神の早見表（全10種）を開く</summary>
@@ -272,8 +272,8 @@
     </div>
 
     <div class="card member-only">
-      <h2>結果の読み解きガイド　─ 数や星を「どう読むか」─</h2>
-      <div class="un-meta">出てきた数字や守護神が「どういう意味で、どう読めるか」の一般的な見方です（流派によらない標準的な考え方）</div>
+      <h2>📖 読み解きの基礎知識　─ 一般の読み方（学習用）─</h2>
+      <div class="un-meta"><b>※これは占いの一般的な説明です（あなた個人の結果ではありません）。</b>数字や守護神を「どういう意味で、どう読むか」を学ぶためのページです。あなた自身の読みは、上の各カードと、下の「結論レポート」をご覧ください。</div>
 
       <p style="font-size:0.9rem;">算命学のおおもとは「<b>人も自然の一部</b>」という考え方です。陰陽（光と影）と五行（木・火・土・金・水。生み合い・抑え合い）の巡りで、命式＝生まれた瞬間の自然のバランスを読みます。下の項目はすべて「<b>その人の中の自然のバランスをどう見るか</b>」の道具です。</p>
 
@@ -374,7 +374,7 @@
 
     <div class="card member-only">
       <h2>相性診断　─ 恋愛・仕事 ─</h2>
-      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
+      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。<b>生年月日を入れると、お相手が十干のどれにあたるか／あなたから見た役割（鍛える人・支える人など）まで分かります。</b>むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
       <div style="text-align:center;margin:12px 0;">
         <select id="ay"></select>
         <select id="am"></select>
@@ -395,8 +395,8 @@
     </div>
 
     <div class="card member-only">
-      <h2>読み解き例（詳細）　─ 勉強用サンプル ─</h2>
-      <div class="un-meta">「命式をどう読むか」の見本です（例：1983年6月6日／日干 乙）。実際の鑑定はご自身の命式で行います</div>
+      <h2>📖 読み解き例（サンプル）　─ 勉強用 ─</h2>
+      <div class="un-meta"><b>⚠これは説明用のサンプルです（1983年6月6日の例）。あなたの結果ではありません。</b>「命式をどう読むか」の見本として、流れをつかむのにお使いください。あなた自身の読みは、上の各カードと「結論レポート」です</div>
 
       <h3 style="margin:10px 0 4px;font-size:1rem;color:var(--accent);">構造（十神で核を見る）</h3>
       <p style="font-size:0.9rem;">
@@ -481,7 +481,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v31） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v32） — テスト運用中</footer>
 </div>
 
 <script>
@@ -1101,6 +1101,27 @@ function runAishou(){
   let out="<h3>ふたりの星</h3><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
     +"<tr><td>あなた</td><td>"+kanshiName(A.di)+"</td><td>"+A.chest+"</td><td>"+A.tc.slice(0,2)+"</td><td>"+ZODIAC[A.moon]+"</td></tr>"
     +"<tr><td>お相手</td><td>"+kanshiName(B.di)+"</td><td>"+B.chest+"</td><td>"+B.tc.slice(0,2)+"</td><td>"+ZODIAC[B.moon]+"</td></tr></table>";
+  // 生年月日 → お相手の十干 → あなたから見た役割（十干と占星術の両方から）
+  (function(){
+    var eaR=Math.floor(A.ds/2), ebR=Math.floor(B.ds/2);
+    var label,desc;
+    if(kangoCheck(A.ds,B.ds)){
+      label="最も深い縁（干合）";
+      desc="理屈ぬきで強く惹かれ合う、十干でただ一組の特別なご縁。たがいに形や方向を与え合う関係です。";
+    }else{
+      var rel=((ebR-eaR)%5+5)%5;
+      if(rel===0){label="仲間・同志";desc="感覚が近く、分かり合える相手。ただ似すぎて、停滞や頑固くらべになることもあります。";}
+      else if(rel===1){label="あなたが育てる相手";desc="あなたが力を注ぎ、育てる人。与えすぎ・尽くしすぎにだけ気をつけて。";}
+      else if(rel===2){label="あなたが動かす（リードする）相手";desc="あなたが流れを整え、方向づける人。相手が強いと振り回されることもあります。";}
+      else if(rel===3){label="あなたを鍛える相手";desc="あなたのペースを崩すこともあるけれど、固さをほぐし、いちばん成長させてくれる人です。";}
+      else {label="あなたを支え、育ててくれる相手";desc="あなたを助け、うるおしてくれる人。素直に頼るほど、うまくいきます。";}
+    }
+    out+="<div style='border:1px solid var(--accent);border-radius:8px;padding:10px 12px;margin:6px 0 10px;background:#f3f8fa;font-size:0.92rem;'>"
+      +"お相手の日干（生まれ日の十干）は【<b>"+STEMS[B.ds]+"（"+GOGYO_NAME[ebR]+"）</b>】。<br>"
+      +"あなた（"+STEMS[A.ds]+"＝"+GOGYO_NAME[eaR]+"）から見て、この方は<b>「"+label+"」</b>です。"
+      +"<br><span style='font-size:0.84rem;color:#7a6f5d;'>"+desc+"</span>"
+      +"<br><span style='font-size:0.8rem;color:#7a6f5d;'>※この見方は『十干（算命学）』と、下の『占星術（月星座）』の両方から見ています。</span></div>";
+  })();
   out+="<h3>縁の形</h3>";
   if(A.di===B.di)out+="<p>同じ日干支どうしの<b>律音</b>——60分の1の確率でしか出会えない、鏡のような縁です。</p>";
   const T=KANREL_TEXT[mode];
@@ -1180,6 +1201,8 @@ function run(){
     grid.appendChild(div);
   });
   document.getElementById("energy").textContent=total;
+  var _et=document.getElementById("energy-type");
+  if(_et){ _et.textContent = total>=20 ? "パワー型（押して動くと活きる）" : (total<=17 ? "感性型（受けて・人と組むと活きる）" : "バランス型（攻めと受けを選べる）"); }
 
   const tc=TENCHU[Math.floor(dayIdx/10)];
   document.getElementById("tenchu-name").textContent=tc;
