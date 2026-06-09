@@ -155,8 +155,8 @@
     </div>
 
     <div class="card">
-      <h2>あなたの星　─ かんたんな説明 ─</h2>
-      <div class="un-meta">あなたの「中心星」を、ひとことで。くわしい読み解きは、この先（鑑定）でお伝えします</div>
+      <h2>あなたの星　─ かんたんな読み解き ─</h2>
+      <div class="un-meta">あなたの5つの星と、それぞれのテーマです。星どうしの組み合わせの深い読み解きは、この先（鑑定）でお伝えします</div>
       <div id="reading-simple"></div>
     </div>
 
@@ -368,7 +368,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v38） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v39） — テスト運用中</footer>
 </div>
 
 <script>
@@ -1133,7 +1133,16 @@ function run(){
   var _et=document.getElementById("energy-type");
   if(_et){ _et.textContent = total>=20 ? "パワー型（押して動くと活きる）" : (total<=17 ? "感性型（受けて・人と組むと活きる）" : "バランス型（攻めと受けを選べる）"); }
   var _rs=document.getElementById("reading-simple");
-  if(_rs){ _rs.innerHTML='<p style="font-size:1rem;">あなたの中心星は <b>'+stars.chest+'</b>。性格の核にあるテーマは「<b>'+STAR_KEY[stars.chest]+'</b>」です。</p><p style="font-size:0.92rem;color:#5a5040;">'+hoshiHitokoto(ds)+'</p>'; }
+  if(_rs){
+    var _pos=[["胸（本質・中心星）",stars.chest],["頭（目上・天）",stars.head],["腹（内面・家庭）",stars.belly],["左手（身近・配偶者）",stars.leftHand],["右手（社会・晩年）",stars.rightHand]];
+    var _h='<p style="font-size:1rem;">あなたの中心にある星は <b>'+stars.chest+'</b>。テーマは「<b>'+STAR_KEY[stars.chest]+'</b>」です。</p>';
+    _h+='<table class="un" style="font-size:0.9rem;"><tr><th style="width:8.5em;">場所</th><th class="adv">星とテーマ</th></tr>';
+    for(var _i=0;_i<_pos.length;_i++){ _h+='<tr><td>'+_pos[_i][0]+'</td><td class="adv"><b>'+_pos[_i][1]+'</b>……'+STAR_KEY[_pos[_i][1]]+'</td></tr>'; }
+    _h+='</table>';
+    _h+='<p style="font-size:0.92rem;color:#5a5040;margin-top:8px;">'+hoshiHitokoto(ds)+'</p>';
+    _h+='<p style="font-size:0.84rem;color:#7a6f5d;">※ここでは星の「テーマ」まで。星どうしの組み合わせや、人生の場面ごとの読み解きは、この先の鑑定でお伝えします。</p>';
+    _rs.innerHTML=_h;
+  }
   var _td=document.getElementById("today"); if(_td) _td.innerHTML=todayUnsei(ds);
 
   const tc=TENCHU[Math.floor(dayIdx/10)];
