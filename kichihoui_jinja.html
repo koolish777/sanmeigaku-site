@@ -21,6 +21,7 @@
   .row > div{ flex:1; min-width:140px; }
   button{ margin-top:14px; width:100%; padding:12px; font-size:1.02rem; font-weight:700; color:#fff;
           background:var(--accent); border:0; border-radius:24px; cursor:pointer; }
+  button.secondary{ background:#fff; color:var(--accent); border:1px solid var(--accent); }
   button:active{ opacity:.85; }
   .hint{ font-size:0.78rem; color:#9a8f7d; margin-top:6px; }
   .result h2{ font-size:1.05rem; margin:4px 0 8px; color:var(--accent); }
@@ -29,6 +30,9 @@
   .jinja{ border-left:4px solid var(--accent); padding:8px 0 8px 12px; margin:10px 0; }
   .jinja .nm{ font-weight:700; font-size:1rem; }
   .jinja .meta{ font-size:0.82rem; color:#7a6f5d; }
+  .jinja .desc{ font-size:0.8rem; color:#6f6450; margin-top:3px; }
+  details.more{ margin:8px 0 14px; border-top:1px dashed var(--line); padding-top:8px; }
+  details.more summary{ cursor:pointer; color:var(--accent); font-weight:700; font-size:0.9rem; }
   .empty{ color:#9a8f7d; font-size:0.9rem; padding:8px 0; }
   .note{ background:#f4efe2; border-radius:8px; padding:10px 12px; font-size:0.82rem; color:#6f6450; margin-top:12px; }
   a{ color:var(--accent); }
@@ -42,7 +46,9 @@
   <div class="card">
     <label>① 郵便番号（7桁）</label>
     <input type="text" id="zip" inputmode="numeric" placeholder="例：9000015（ハイフン無し）" maxlength="8">
-    <div class="hint">入力後に下のボタンを押すと、お住まいの都道府県を調べます（インターネット接続が必要です）。</div>
+    <div class="hint">郵便番号の代表点を使います。より正確にしたい場合は「現在地を使う」も選べます。</div>
+    <button type="button" class="secondary" id="useLoc">現在地を使う（許可制）</button>
+    <div class="hint" id="locHint">現在地はブラウザの許可が出た時だけ使います。無料・端末内の位置情報です。</div>
 
     <label>② 守護神の五行（診断結果から選んでください）</label>
     <select id="gogyo">
@@ -65,7 +71,7 @@
 
   <div class="card result" id="result" style="display:none;"></div>
   <div class="note">
-    距離・方角は、郵便番号データの緯度経度を基準に、各神社の緯度経度との直線距離・8方位で計算します。
+    距離・方角は、郵便番号データまたは許可された現在地を基準に、各神社の緯度経度との直線距離・8方位で計算します。
     郵便番号座標が取得できない場合は住所検索、それも失敗した場合だけ都道府県代表点で代替します。徒歩・車の所要時間ではなく、吉方位の目安です。
     神社は実在確認済みのものを掲載し、データは順次拡充します。より精密な気学の吉方位（年・月で変わります）は、先生にご相談ください。
   </div>
@@ -112,6 +118,7 @@ const SEED = { "shrines": [
 ]};
 
 let SHRINES = SEED.shrines;
+let CURRENT_HOME = null; // {coord:[lat,lng], address:string, pref:string, source:string}
 
 // shrines.json を読めれば差し替え
 fetch("shrines.json").then(r=>r.ok?r.json():null).then(d=>{
@@ -169,6 +176,7 @@ async function geocodeAddress(address){
 }
 
 async function resolveHome(){
+  if(CURRENT_HOME && CURRENT_HOME.coord) return CURRENT_HOME;
   const zip=(document.getElementById("zip").value||"").replace(/[^0-9]/g,"");
   let pref=null, address="", coord=null, source="都道府県代表点";
   document.getElementById("manualPref").style.display="none";
@@ -210,6 +218,34 @@ function shrineCoord(s){
   return null;
 }
 
+function mapUrl(s){
+  const q=[s.name, s.pref, s.city].filter(Boolean).join(' ');
+  if(Number.isFinite(s.lat) && Number.isFinite(s.lng)) return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q || (s.lat+','+s.lng));
+  return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+}
+
+function shrineDesc(s){
+  const base = s.note || '実在確認済みの神社です。';
+  if(/神宮|大社|東照宮/.test(s.name)) return base+' 由緒ある大きな社として確認できます。';
+  if(/天満宮/.test(s.name)) return base+' 天満宮系の神社として確認できます。';
+  if(/稲荷/.test(s.name)) return base+' 稲荷系の神社として確認できます。';
+  if(/八幡/.test(s.name)) return base+' 八幡系の神社として確認できます。';
+  return base+' 地図で場所を確認してからお出かけください。';
+}
+
+document.getElementById('useLoc').addEventListener('click', ()=>{
+  const hint=document.getElementById('locHint');
+  if(!navigator.geolocation){ hint.textContent='このブラウザでは現在地取得が使えません。郵便番号を使ってください。'; return; }
+  hint.textContent='現在地を取得しています…ブラウザの許可を押してください。';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const lat=pos.coords.latitude, lng=pos.coords.longitude;
+    CURRENT_HOME={pref:'現在地', address:'現在地', coord:[lat,lng], source:'ブラウザ現在地'};
+    hint.textContent='現在地を使います（緯度 '+lat.toFixed(4)+' / 経度 '+lng.toFixed(4)+'）。守護神を選んで検索してください。';
+  }, err=>{
+    hint.textContent='現在地を取得できませんでした。郵便番号を使ってください。';
+  }, {enableHighAccuracy:true, timeout:10000, maximumAge:300000});
+});
+
 document.getElementById("go").addEventListener("click", async ()=>{
   const gogyo=document.getElementById("gogyo").value;
   const box=document.getElementById("result");
@@ -233,16 +269,28 @@ document.getElementById("go").addEventListener("click", async ()=>{
   }).filter(Boolean);
   const allGoodMatches=list.filter(s=> goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
   const allNearby=list.filter(s=> s._near && !goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
-  const MAX_GOOD=80, MAX_NEARBY=30;
-  const goodMatches=allGoodMatches.slice(0, MAX_GOOD);
-  const nearby=allNearby.slice(0, MAX_NEARBY);
+  const TOP_GOOD=10, TOP_NEARBY=5;
+  const goodMatches=allGoodMatches.slice(0, TOP_GOOD);
+  const goodMore=allGoodMatches.slice(TOP_GOOD);
+  const nearby=allNearby.slice(0, TOP_NEARBY);
+  const nearbyMore=allNearby.slice(TOP_NEARBY);
 
-  function renderShrine(s, tag){
+  function renderShrine(s, tag, rank){
     const precision = s._exact ? '神社座標で計算' : '県代表点で代替';
-    return '<div class="jinja"><div class="nm">'+escapeHtml(s.name)+'</div>'+
+    return '<div class="jinja"><div class="nm">'+(rank?rank+'. ':'')+escapeHtml(s.name)+'</div>'+
           '<div class="meta"><span class="pill">'+escapeHtml(tag)+'</span>'+escapeHtml(s.pref)+(s.city?'・'+escapeHtml(s.city):'')+
           '／約'+s._dist+'km／'+escapeHtml(s._dir)+'（'+s._bearing+'°）／'+precision+
-          (s.note?'　'+escapeHtml(s.note):'')+(s.url?'　<a href="'+escapeHtml(s.url)+'" target="_blank" rel="noopener">公式・出典</a>':'')+'</div></div>';
+          '　<a href="'+escapeHtml(mapUrl(s))+'" target="_blank" rel="noopener">地図で見る</a>'+
+          (s.url?'　<a href="'+escapeHtml(s.url)+'" target="_blank" rel="noopener">公式・出典</a>':'')+'</div>'+ 
+          '<div class="desc">'+escapeHtml(shrineDesc(s))+'</div></div>';
+  }
+
+  function renderMore(items, label, tagFn, offset){
+    if(!items.length) return '';
+    let out='<details class="more"><summary>'+escapeHtml(label)+'（'+items.length+'件）</summary>';
+    items.forEach((s,i)=> out+=renderShrine(s, tagFn(s), offset+i+1));
+    out+='</details>';
+    return out;
   }
 
   let html='<div class="result">';
@@ -254,19 +302,21 @@ document.getElementById("go").addEventListener("click", async ()=>{
   }else{
     if(goodMatches.length){
       html+='<h2 style="margin-top:14px;">吉方位にある神社</h2>';
-      goodMatches.forEach(s=>{
+      goodMatches.forEach((s,i)=>{
         const tag = s._near ? '吉方位・お近く' : (s._dir+'の方角');
-        html+=renderShrine(s, tag);
+        html+=renderShrine(s, tag, i+1);
       });
+      html+=renderMore(goodMore, '残りの吉方位候補を見る', s=>s._near ? '吉方位・お近く' : (s._dir+'の方角'), TOP_GOOD);
     }
     if(nearby.length){
       html+='<h2 style="margin-top:14px;">近くの参考神社</h2>';
-      html+='<div class="hint">吉方位ではない場合もあります。距離優先で見たい時の参考です。</div>';
-      nearby.forEach(s=> html+=renderShrine(s, '近場・方角参考'));
+      html+='<div class="hint">吉方位ではない場合もあります。距離優先で見たい時の参考です。上位だけ表示します。</div>';
+      nearby.forEach((s,i)=> html+=renderShrine(s, '近場・方角参考', i+1));
+      html+=renderMore(nearbyMore, '残りの近場参考を見る', s=>'近場・方角参考', TOP_NEARBY);
     }
   }
   const coordCount=SHRINES.filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lng)).length;
-  html+='<div class="hint" style="margin-top:8px;">※掲載データは'+SHRINES.length+'件。神社座標あり '+coordCount+'件。距離は直線距離、方角は8方位です。候補が多い場合は、吉方位 '+allGoodMatches.length+'件中 近い順に最大'+MAX_GOOD+'件、近場参考 '+allNearby.length+'件中 最大'+MAX_NEARBY+'件を表示します。</div>';
+  html+='<div class="hint" style="margin-top:8px;">※掲載データは'+SHRINES.length+'件。神社座標あり '+coordCount+'件。距離は直線距離、方角は8方位です。吉方位 '+allGoodMatches.length+'件中 近い順に上位'+Math.min(TOP_GOOD, allGoodMatches.length)+'件、近場参考 '+allNearby.length+'件中 上位'+Math.min(TOP_NEARBY, allNearby.length)+'件を基本表示します。</div>';
   html+='</div>';
   box.innerHTML=html;
 });
