@@ -65,8 +65,8 @@
 
   <div class="card result" id="result" style="display:none;"></div>
   <div class="note">
-    距離・方角は、郵便番号から分かる住所を緯度経度化し、各神社の緯度経度との直線距離・8方位で計算します。
-    住所の緯度経度化ができない場合だけ、都道府県代表点で代替します。徒歩・車の所要時間ではなく、吉方位の目安です。
+    距離・方角は、郵便番号データの緯度経度を基準に、各神社の緯度経度との直線距離・8方位で計算します。
+    郵便番号座標が取得できない場合は住所検索、それも失敗した場合だけ都道府県代表点で代替します。徒歩・車の所要時間ではなく、吉方位の目安です。
     神社は実在確認済みのものを掲載し、データは順次拡充します。より精密な気学の吉方位（年・月で変わります）は、先生にご相談ください。
   </div>
 </div>
@@ -139,6 +139,24 @@ function dir8(deg){ return DIR8[Math.round(deg/45)%8]; }
 
 function escapeHtml(v){ return String(v ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch] || ch)); }
 
+async function geocodePostal(zip){
+  if(!zip || zip.length!==7) return null;
+  try{
+    const params=new URLSearchParams({method:"searchByPostal", postal:zip});
+    const r=await fetch("https://geoapi.heartrails.com/api/json?"+params.toString(), {headers:{"Accept":"application/json"}});
+    const d=await r.json();
+    const loc=d && d.response && Array.isArray(d.response.location) ? d.response.location[0] : null;
+    if(loc && loc.y && loc.x){
+      return {
+        pref: loc.prefecture || null,
+        address: [loc.prefecture, loc.city, loc.town].filter(Boolean).join(""),
+        coord: [parseFloat(loc.y), parseFloat(loc.x)]
+      };
+    }
+  }catch(e){}
+  return null;
+}
+
 async function geocodeAddress(address){
   if(!address) return null;
   try{
@@ -155,17 +173,26 @@ async function resolveHome(){
   let pref=null, address="", coord=null, source="都道府県代表点";
   document.getElementById("manualPref").style.display="none";
   if(zip.length===7){
-    try{
-      const r=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+zip);
-      const d=await r.json();
-      if(d && d.results && d.results[0]){
-        const z=d.results[0];
-        pref=z.address1;
-        address=[z.address1,z.address2,z.address3].filter(Boolean).join("");
-        coord=await geocodeAddress(address);
-        if(coord) source="郵便番号住所の緯度経度";
-      }
-    }catch(e){}
+    const postalGeo=await geocodePostal(zip);
+    if(postalGeo && postalGeo.coord){
+      pref=postalGeo.pref;
+      address=postalGeo.address;
+      coord=postalGeo.coord;
+      source="郵便番号データの緯度経度";
+    }
+    if(!coord){
+      try{
+        const r=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+zip);
+        const d=await r.json();
+        if(d && d.results && d.results[0]){
+          const z=d.results[0];
+          pref=z.address1;
+          address=[z.address1,z.address2,z.address3].filter(Boolean).join("");
+          coord=await geocodeAddress(address);
+          if(coord) source="住所文字列の緯度経度";
+        }
+      }catch(e){}
+    }
   }
   if(!coord && pref && PREF[pref]) coord=PREF[pref];
   if(!pref || !coord){
