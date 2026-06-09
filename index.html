@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>総合運勢診断（テスト運用版 v24）</title>
+<title>総合運勢診断（テスト運用版 v44）</title>
 <style>
   :root {
     --bg: #f7f3ec;
@@ -52,10 +52,16 @@
   }
   button.go:hover { opacity: 0.85; }
   #result { display: none; }
-  .pillars { display: flex; gap: 10px; justify-content: center; text-align: center; }
-  .pillar { flex: 1; max-width: 160px; border: 1px solid var(--line); border-radius: 8px; padding: 14px 6px; background: #fcf9f2; }
-  .pillar .label { font-size: 0.8rem; color: #7a6f5d; letter-spacing: 0.2em; }
-  .pillar .kanshi { font-size: 1.7rem; margin-top: 4px; color: var(--ink); }
+  .pillars { display: flex; gap: 10px; justify-content: center; text-align: center; align-items: stretch; }
+  .pillar { flex: 1 1 0; min-width: 0; max-width: 160px; border: 1px solid var(--line); border-radius: 8px; padding: 14px 6px; background: #fcf9f2; display: flex; flex-direction: column; align-items: center; }
+  .pillar .label { font-size: 0.8rem; color: #7a6f5d; letter-spacing: 0.12em; line-height: 1.25; min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
+  .pillar .kanshi { font-size: 1.7rem; margin-top: 6px; color: var(--ink); white-space: nowrap; }
+  @media (max-width: 430px){
+    .pillars { gap: 6px; }
+    .pillar { padding: 10px 3px; }
+    .pillar .label { font-size: 0.68rem; letter-spacing: 0.02em; min-height: 2.6em; }
+    .pillar .kanshi { font-size: 1.45rem; }
+  }
   .grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
     max-width: 480px; margin: 0 auto;
@@ -110,7 +116,7 @@
   <header>
     <h1>総合運勢診断</h1>
     <p class="sub">算命学・九星気学・インド占星術で、あなたの宿命の星を読み解きます</p>
-    <span class="test-badge">テスト運用版 v24</span>
+    <span class="test-badge">テスト運用版 v44</span>
   </header>
 
   <div class="card">
@@ -151,7 +157,7 @@
       <h2>陽占　─ 人体星図 ─</h2>
       <div class="un-meta">干支から導いた星の配置。胸の星があなたの本質、まわりの星が場面ごとの顔です</div>
       <div class="grid" id="grid"></div>
-      <div class="energy-total">あなたのエネルギーの型　<b id="energy-type"></b><div style="font-size:0.8rem;color:#7a6f5d;margin-top:4px;font-weight:normal;">（参考：エネルギー総数 <span id="energy"></span> 点／6〜33点。これは力の大きさの「型」で、点が高い・低いに良し悪しはありません）</div></div>
+      <div class="energy-total">あなたのエネルギーの型　<b id="energy-type"></b><div style="font-size:0.8rem;color:#7a6f5d;margin-top:4px;font-weight:normal;">（参考：エネルギー総数 <span id="energy"></span> 点／3〜36点。これは力の大きさの「型」で、点が高い・低いに良し悪しはありません）</div></div>
     </div>
 
     <div class="card">
@@ -271,8 +277,14 @@
     </div>
 
     <div class="card member-only">
+      <h2>今日・今月・今年の運気とラッキー　─ 気学 × 中心星 × 占星 ─</h2>
+      <div class="un-meta">あなたの本命星（気学）・中心星（陽占）・いまの星のめぐり（占星）から、今日／今月／今年それぞれの運気と、ラッキーアイテム・色をまとめました</div>
+      <div id="life-lucky"></div>
+    </div>
+
+    <div class="card member-only">
       <h2>相性診断　─ 恋愛・仕事 ─</h2>
-      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。<b>生年月日を入れると、お相手が十干のどれにあたるか／あなたから見た役割（鍛える人・支える人など）まで分かります。</b>むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
+      <div class="un-meta">上で入力した生年月日（あなた）と、お相手の生年月日で見ます。<b>生年月日を入れると、お相手が十干のどれにあたるか／あなたから見た役割（鍛える人・支える人など）、さらにお相手の陽占（どんな人か）まで分かります。</b>そのまま下の陽占と同じ見方でつながります。むずかしい言葉が出てきたら「ことばの小事典」をどうぞ</div>
       <div style="text-align:center;margin:12px 0;">
         <select id="ay"></select>
         <select id="am"></select>
@@ -343,7 +355,7 @@
           var m=t.match(/守護神[^（(]*[（(]([木火土金水])/);
           if(!m){ return; }
           var g=m[1], d=G[g]; if(!d) return;
-          var kyo = t.indexOf('身強')>-1 ? '身強（攻めが活きる）' : (t.indexOf('身弱')>-1 ? '身弱（受け・協調が活きる）' : '');
+          var kyo = t.indexOf('身強')>-1 ? '身強（前に出る力が活きる）' : (t.indexOf('身弱')>-1 ? '身弱（守り・協調が活きる）' : '');
           var konkyo = '根拠：あなたの命式の偏り（季節と'+(kyo? kyo.replace(/（.*/,''):'強弱')+'）を整えるのに、'+g+'が最も効くからです。詳しくは上の「守護神」欄に。';
           box.innerHTML =
             '<div style="border:1px solid var(--accent);border-radius:10px;padding:12px;background:#f3f8fa;">'
@@ -368,7 +380,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v39） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v44） — テスト運用中</footer>
 </div>
 
 <script>
@@ -848,6 +860,7 @@ const BANSEI_TEXT={
  "玉堂星":"学んだことを人に伝え、育てることがお役目。知識を独り占めせず、分かち合う生き方が指針です。"
 };
 const STAR_KEY={"貫索星":"自分を貫く","石門星":"仲間と組む","鳳閣星":"楽しむ・表現する","調舒星":"感性を磨く","禄存星":"人に尽くす","司禄星":"こつこつ蓄える","車騎星":"動く・働く","牽牛星":"役割を果たす","龍高星":"学ぶ・旅する","玉堂星":"知恵を深める"};
+const STAR_BRIEF={"貫索星":"自分を貫く（マイペースに、信じた道をコツコツ続ける）","石門星":"仲間と組む（人と対等に、和をつくって協力する）","鳳閣星":"楽しむ・表現する（自然体で、おおらかに味わい伝える）","調舒星":"感性を磨く（繊細な感覚で、こだわりを表現する）","禄存星":"人に尽くす（愛情と思いやりで、まわりを和ませる）","司禄星":"こつこつ蓄える（堅実に、家庭や財産を守り育てる）","車騎星":"動く・働く（まっすぐ行動し、人のために汗をかく）","牽牛星":"役割を果たす（責任感とプライドで、きちんと務める）","龍高星":"学ぶ・旅する（好奇心で、未知や変化に飛び込む）","玉堂星":"知恵を深める（学びを好み、冷静に筋道を立てる）"};
 const STAR_TEXT={
  "貫索星":"自分の世界をしっかり持って、一度決めたことを最後までやり通す星です。人に流されない芯の強さがあります。頑固に見えることもありますけれど、その変わらなさこそ、人さまから信用される土台です。",
  "石門星":"人の輪の中で力を出す、和合の星です。やわらかな物腰の奥に、しっかりした意志を持っています。仲間をまとめる力があって、人とのご縁がそのまま財産になる人です。",
@@ -979,10 +992,14 @@ function runAishou(){
     const yk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(yk2.stem,sm.monthIdx);
     const dss=jdn(y,m,d)-sm.setsuJ+1;
     const chest=mainStar(ds2,zokan(mk2.branch,dss));
+    const head=mainStar(ds2,yk2.stem);
+    const belly=mainStar(ds2,mk2.stem);
+    const leftHand=mainStar(ds2,zokan(db3,dss));
+    const rightHand=mainStar(ds2,zokan(yk2.branch,dss));
     const tc2=TENCHU[Math.floor(di/10)];
     const jdUT2=jdn(y,m,d)-0.5+(12-9)/24;
     const moonSid2=siderealSign(moonLon(jdUT2),jdUT2);
-    return {di,ds:ds2,db:db3,chest,tc:tc2,moon:moonSid2};
+    return {di,ds:ds2,db:db3,chest,head,belly,leftHand,rightHand,tc:tc2,moon:moonSid2};
   }
   const A=chart(yA,mA,dA),B=chart(yB,mB,dB2);
   let out="<h3>ふたりの星</h3><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
@@ -1009,6 +1026,15 @@ function runAishou(){
       +"<br><span style='font-size:0.84rem;color:#7a6f5d;'>"+desc+"</span>"
       +"<br><span style='font-size:0.8rem;color:#7a6f5d;'>※この見方は『十干（算命学）』と、下の『占星術（月星座）』の両方から見ています。</span></div>";
   })();
+  out+="<h3>お相手の陽占（人体星図の主星）</h3>"
+    +"<p style='font-size:0.85rem;color:#7a6f5d;'>お相手が「どんな人か」を、五つの主星でつかめます。胸（中心星）が核。これは下の『陽占』とまったく同じ見方です。</p>"
+    +"<table class='un'>"
+    +"<tr><td>胸（中心星・本質）</td><td><b>"+B.chest+"</b>……"+STAR_KEY[B.chest]+"</td></tr>"
+    +"<tr><td>頭（目上・若い頃）</td><td>"+B.head+"……"+STAR_KEY[B.head]+"</td></tr>"
+    +"<tr><td>腹（家庭・土台）</td><td>"+B.belly+"……"+STAR_KEY[B.belly]+"</td></tr>"
+    +"<tr><td>左手（身近・配偶者）</td><td>"+B.leftHand+"……"+STAR_KEY[B.leftHand]+"</td></tr>"
+    +"<tr><td>右手（社会・晩年）</td><td>"+B.rightHand+"……"+STAR_KEY[B.rightHand]+"</td></tr>"
+    +"</table>";
   out+="<h3>縁の形</h3>";
   if(A.di===B.di)out+="<p>同じ日干支どうしの<b>律音</b>——60分の1の確率でしか出会えない、鏡のような縁です。</p>";
   const T=KANREL_TEXT[mode];
@@ -1044,7 +1070,7 @@ function hoshiHitokoto(ds){
   return H[Math.floor(ds/2)];
 }
 // 今日の運勢＋ラッキーアイテム（その日に合うものを日付でひとつ）
-function todayUnsei(ds){
+function todayUnsei(ds,chestStar,honmei){
   try{
     var t=new Date(); var ty=t.getFullYear(), tm=t.getMonth()+1, td=t.getDate();
     var tds=dayKanshi(ty,tm,td)%10;
@@ -1066,12 +1092,41 @@ function todayUnsei(ds){
     ];
     var COLOR=["緑","赤","黄色","白","青"];
     var seed=ty*10000+tm*100+td;
-    var item=ITEM[te][seed%ITEM[te].length], color=COLOR[te];
+    var chestEl=(typeof STAR_GROUP[chestStar]==="number")?STAR_GROUP[chestStar]:null;
+    var bel=(chestEl!==null)?chestEl:te;
+    var item=ITEM[bel][seed%ITEM[bel].length], color=(honmei?KYUSEI_COLOR[honmei-1]:COLOR[te]);
     return '<p style="font-size:1rem;">'+FORT[rel]+'</p>'
       +'<div style="border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-top:6px;background:#f3f8fa;font-size:0.96rem;">'
-      +'🎁 <b>今日のラッキーアイテム</b>：'+item+'<br>🎨 <b>ラッキーカラー</b>：'+color+'</div>'
+      +'🎁 <b>今日のラッキーアイテム（中心星から）</b>：'+item+'<br>🎨 <b>今日の色（本命星から）</b>：'+color+'</div>'
       +'<p style="font-size:0.88rem;color:#7a6f5d;margin-top:6px;">迷ったら、今日の色（'+color+'）を少しだけ取り入れてみてください。きっと、追い風になります。</p>';
   }catch(e){ return ''; }
+}
+// 有料：今日・今月・今年の運気とラッキー（気学＝九星 × 中心星＝陽占 × 占星＝いまの星めぐり）。叩き台。
+function lifeLucky(ds, chestStar){
+  try{
+    var ITEM5=[["観葉植物","木のお箸","一冊の本","緑のハンカチ"],["小さな灯り","赤い小物","あたたかい食事","日なたの散歩"],["陶器のマグ","黄色い小物","おにぎり","土に触れる時間"],["銀のアクセサリー","白いシャツ","みがいた鏡","金属のペン"],["ガラスのコップ","青い小物","ゆっくりのお風呂","こまめな水分"]];
+    var ZK=["勇気","安定","好奇心","愛情","輝き","気配り","調和","深さ","自由","努力","個性","やさしさ"];
+    var chestEl=(typeof STAR_GROUP[chestStar]==="number")?STAR_GROUP[chestStar]:2;
+    var t=new Date(), ty=t.getFullYear(), tm=t.getMonth()+1, td=t.getDate();
+    var cm=solarMonth(ty,tm,td);
+    var nDay=nineStarDay(ty,tm,td), nMon=nineStarMonth(cm.setsuYear,cm.monthIdx), nYer=nineStarYear(cm.setsuYear);
+    var jdNow=jdn(ty,tm,td)-0.5+(12-9)/24;
+    var tMoon=siderealSign(moonLon(jdNow),jdNow), tSun=siderealSign(sunLon(jdNow),jdNow), tJup=siderealSign(planetGeoLon("木星",jdNow),jdNow);
+    function item(seed){return ITEM5[chestEl][seed%ITEM5[chestEl].length];}
+    var th=STAR_KEY[chestStar];
+    var rows=[
+      ["今日", nDay, "月星座 "+ZODIAC[tMoon]+"（"+ZK[tMoon]+"）", item(ty*10000+tm*100+td), "今日の心は"+ZK[tMoon]+"モード。"+KYUSEI_SHORT[nDay-1]+"の日の気に合わせて、中心星「"+chestStar+"」の“"+th+"”を小さくひとつ。"],
+      ["今月", nMon, "太陽星座 "+ZODIAC[tSun]+"（"+ZK[tSun]+"）", item(ty*100+tm), "今月は"+ZK[tSun]+"がテーマの流れ。"+KYUSEI_SHORT[nMon-1]+"の月、“"+th+"”をていねいに育てる一ヶ月に。"],
+      ["今年", nYer, "木星 "+ZODIAC[tJup]+"（"+ZK[tJup]+"）", item(ty), "今年は"+ZK[tJup]+"の追い風。"+KYUSEI_SHORT[nYer-1]+"の年、“"+th+"”を一段ひろげる一年に。"]
+    ];
+    var H='<table class="un"><tr><th>いつ</th><th>気学<br><span style="font-size:0.7rem;">（色）</span></th><th>占星</th><th>ラッキー<br>アイテム</th><th class="adv">運勢ひとこと</th></tr>';
+    rows.forEach(function(r){
+      H+='<tr><td><b>'+r[0]+'</b></td><td>'+KYUSEI_SHORT[r[1]-1]+'<br><span style="font-size:0.7rem;color:#7a6f5d;">'+KYUSEI_COLOR[r[1]-1]+'</span></td><td style="font-size:0.78rem;">'+r[2]+'</td><td><b>'+r[3]+'</b></td><td class="adv">'+r[4]+'</td></tr>';
+    });
+    H+='</table>';
+    H+='<p style="font-size:0.78rem;color:#7a6f5d;">※色＝気学（今日＝日の九星／今月＝月運／今年＝本命星めぐり）、アイテム＝あなたの中心星（五行）、占星＝いまの星めぐり（今日＝月・今月＝太陽・今年＝木星）。運勢文の声はリーダー上書き前提の叩き台です。</p>';
+    return H;
+  }catch(e){ return '<p style="color:#7a6f5d;font-size:0.85rem;">運気データを準備中です。</p>'; }
 }
 function run(){
   const y=+ySel.value,m=+mSel.value,d=+dSel.value;
@@ -1131,19 +1186,20 @@ function run(){
   });
   document.getElementById("energy").textContent=total;
   var _et=document.getElementById("energy-type");
-  if(_et){ _et.textContent = total>=20 ? "パワー型（押して動くと活きる）" : (total<=17 ? "感性型（受けて・人と組むと活きる）" : "バランス型（攻めと受けを選べる）"); }
+  if(_et){ _et.textContent = total>=20 ? "パワー型（押して動くと活きる）" : (total<=17 ? "感性型（受けて・人と組むと活きる）" : "バランス型（前に出る・守るを選べる）"); }
   var _rs=document.getElementById("reading-simple");
   if(_rs){
-    var _pos=[["胸（本質・中心星）",stars.chest],["頭（目上・天）",stars.head],["腹（内面・家庭）",stars.belly],["左手（身近・配偶者）",stars.leftHand],["右手（社会・晩年）",stars.rightHand]];
+    var _pos=[["胸（本質・中心星）",stars.chest],["頭（目上・天）",stars.head],["腹（家庭・子ども・部下）",stars.belly],["左手（身近・配偶者）",stars.leftHand],["右手（社会・晩年）",stars.rightHand]];
     var _h='<p style="font-size:1rem;">あなたの中心にある星は <b>'+stars.chest+'</b>。テーマは「<b>'+STAR_KEY[stars.chest]+'</b>」です。</p>';
     _h+='<table class="un" style="font-size:0.9rem;"><tr><th style="width:8.5em;">場所</th><th class="adv">星とテーマ</th></tr>';
-    for(var _i=0;_i<_pos.length;_i++){ _h+='<tr><td>'+_pos[_i][0]+'</td><td class="adv"><b>'+_pos[_i][1]+'</b>……'+STAR_KEY[_pos[_i][1]]+'</td></tr>'; }
+    for(var _i=0;_i<_pos.length;_i++){ _h+='<tr><td>'+_pos[_i][0]+'</td><td class="adv"><b>'+_pos[_i][1]+'</b>……'+(STAR_BRIEF[_pos[_i][1]]||STAR_KEY[_pos[_i][1]])+'</td></tr>'; }
     _h+='</table>';
     _h+='<p style="font-size:0.92rem;color:#5a5040;margin-top:8px;">'+hoshiHitokoto(ds)+'</p>';
     _h+='<p style="font-size:0.84rem;color:#7a6f5d;">※ここでは星の「テーマ」まで。星どうしの組み合わせや、人生の場面ごとの読み解きは、この先の鑑定でお伝えします。</p>';
     _rs.innerHTML=_h;
   }
-  var _td=document.getElementById("today"); if(_td) _td.innerHTML=todayUnsei(ds);
+  var _td=document.getElementById("today"); if(_td) _td.innerHTML=todayUnsei(ds, stars.chest, nineStarYear(setsuYear));
+  var _ll=document.getElementById("life-lucky"); if(_ll) _ll.innerHTML=lifeLucky(ds, stars.chest);
 
   const tc=TENCHU[Math.floor(dayIdx/10)];
   document.getElementById("tenchu-name").textContent=tc;
@@ -1196,14 +1252,17 @@ function run(){
     H+='<b style="color:var(--accent);">🔍 この表の読み方 — あなたは「'+STEMS[ds]+'＝'+self+'（'+GN[dEl]+'）」</b><br>';
     H+='相性は「好き・嫌い」ではなく、<b>相手があなたにとってどんな“自然のはたらき”をするか</b>を見る役割表です。<br>';
     H+='<table class="un" style="font-size:0.85rem;margin-top:8px;"><tr><th style="width:7.5em;">相手</th><th class="adv">あなた（'+self+'）にとっての役割</th></tr>';
-    H+=row('最も深い縁','干合・'+STEMS[kgoStem]+'（'+NIKKAN_NATURE[kgoStem]+'）','理屈ぬきで強く惹かれる特別な縁。あなたに形や方向を与える相手（緊張感も出やすい）。');
-    H+=row('支えてくれる',stems(inEl)+'（'+GN[inEl]+'）',GEN_ME[dEl]+'ように、あなたを育てる味方。安心・知恵・回復・自信をくれる。');
-    H+=row('仲間・同志',stems(sameEl)+'（同じ'+GN[dEl]+'）','感覚が近く、分かり合える相手。ただし似すぎて、停滞や頑固くらべになることも。');
-    H+=row('あなたが育てる',stems(outEl)+'（'+GN[outEl]+'）',ME_GEN[dEl]+'ように、あなたが力を引き出して育てる側。与えすぎると自分が消耗するので、ほどほどに。');
-    H+=row('あなたが動かす',stems(ctrlEl)+'（'+GN[ctrlEl]+'）',ME_CTRL[dEl]+'ように、あなたが流れを整え方向づける相手。頼られるが、相手が強いと振り回されることも。');
-    H+=row('あなたを鍛える',stems(koEl)+'（'+GN[koEl]+'）',CTRL_ME[dEl]+'ように、あなたのペースを崩す相手。でも悪い意味ではなく、固さをほぐし磨いて成長させてくれる。');
+    var TT='<br><span style="color:var(--accent-soft);font-size:0.82rem;">伝え方：';
+    var TE='</span>';
+    H+=row('最も深い縁','干合・'+STEMS[kgoStem]+'（'+NIKKAN_NATURE[kgoStem]+'）','理屈ぬきで強く惹かれる特別な縁。あなたに形や方向を与える相手（緊張感も出やすい）。'+TT+'「あなたと強く引き合う、運命的な相手。あなたに形や方向を与えてくれる深いご縁です。ただ、運命的なぶん、楽とは限りません」'+TE);
+    H+=row('支えてくれる',stems(inEl)+'（'+GN[inEl]+'）',GEN_ME[dEl]+'ように、あなたを育てる味方。安心・知恵・回復・自信をくれる。'+TT+'「あなたを助け、育ててくれる相手。弱っているとき、考えを広げたり、心を潤してくれます。ただ、甘えすぎ・流されすぎには気をつけて」'+TE);
+    H+=row('仲間・同志',stems(sameEl)+'（同じ'+GN[dEl]+'）','感覚が近く、分かり合える相手。ただし似すぎて、停滞や頑固くらべになることも。'+TT+'「同じ方向を向ける仲間。価値観が近く、分かり合えます。ただ、似ているぶん、張り合ったり、相手の存在感が強く感じられることも」'+TE);
+    H+=row('あなたが育てる',stems(outEl)+'（'+GN[outEl]+'）',ME_GEN[dEl]+'ように、あなたが力を引き出して育てる側。与えすぎると自分が消耗するので、ほどほどに。'+TT+'「あなたが応援したくなる相手。あなたの言葉や気づかいで、その人が輝きます。恋愛・子育て・部下・創作でも同じ。ただ、尽くしすぎには注意を」'+TE);
+    H+=row('あなたが動かす',stems(ctrlEl)+'（'+GN[ctrlEl]+'）',ME_CTRL[dEl]+'ように、あなたが流れを整え方向づける相手。頼られるが、相手が強いと振り回されることも。'+TT+'「あなたが整え、導く相手。仕事・お金・生活の土台に方向を与えられます。『支配』ではなく『整える・導く』と思うとやわらかいです」'+TE);
+    H+=row('あなたを鍛える',stems(koEl)+'（'+GN[koEl]+'）',CTRL_ME[dEl]+'ように、あなたのペースを崩す相手。でも悪い意味ではなく、固さをほぐし磨いて成長させてくれる。'+TT+'「あなたを鍛える相手。厳しさや細かさを通して、甘さや曖昧さを整えてくれます。痛いけれど、磨かれる関係。距離感が大事です」'+TE);
     H+='</table>';
     H+='<div style="color:#7a6f5d;margin-top:8px;font-size:0.85rem;">ひとことで——あなたは'+self+'。'+GN[inEl]+'に育てられ、'+GN[dEl]+'と並び、'+GN[outEl]+'を育て、'+GN[ctrlEl]+'を動かし、'+GN[koEl]+'に磨かれる。相手は敵でも味方でもなく、あなたを変化させる“自然のはたらき”です。</div></div>';
+    H+='<div style="background:#faf6ec;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:0.85rem;">⚠ 十干の相性は「相手が良い人か悪い人か」を見るものではありません。<b>あなたから見て、その相手がどんな“役割”になりやすいか</b>を見るものです。「鍛える相手」は苦手な人ではなく、あなたを成長させてくれる人のことが多いですよ。</div>';
     r.insertAdjacentHTML("beforeend", H);
   })();
   POS_META.forEach(([key,label,meaning])=>{
@@ -1243,7 +1302,7 @@ function run(){
       if(ko(h,c)) return "目上・親から規律やプレッシャーを受けやすい関係。厳しさの中で鍛えられる。";
       return "あなたが目上を動かす関係。上とぶつかることもあるが、自分で切りひらく力がある。";
     }
-    // 右手(家庭)と左手(仕事)
+    // hands(家庭star, 仕事star)：左手＝家庭・身内／右手＝仕事・社会
     function hands(r,l){
       if(r===l) return "家庭と仕事が同じリズムで、両立させやすい関係。";
       if(gen(r,l)) return "家庭・身内が仕事を支える流れ。家庭が安定すると、仕事が伸びる。";
@@ -1251,12 +1310,12 @@ function run(){
       if(ko(r,l)) return "家庭と仕事が引っ張り合いやすい。時間とエネルギーの配分に工夫を。";
       return "仕事が家庭を圧迫しやすいので、意識して家庭の時間を守ると安定する。";
     }
-    var POS=[["頭（目上・親）",head],["胸（本質）",chest],["腹（子・部下）",belly],["右手（家庭）",rh],["左手（仕事）",lh]];
+    var POS=[["頭（目上・親）",head],["胸（本質）",chest],["腹（子・部下）",belly],["右手（仕事）",rh],["左手（家庭）",lh]];
     var cEl=SG[chest];
 
     var H='<div style="border-top:1px solid var(--line);margin-top:14px;padding-top:10px;">';
     H+='<h3 style="font-size:1rem;color:var(--accent);">星のつながり ── 何通りかの見方 ──</h3>';
-    H+='<p style="font-size:0.84rem;color:#7a6f5d;">星は1つずつ見るより、<b>星どうしの関係</b>を読むと深まります。位置の意味（流派で多少違います）：頭＝目上・親・精神／胸＝あなたの核／腹＝子・部下・実行／右手＝家庭・身内／左手＝仕事・社会。下は五行の生剋（生む・剋す）で関係を読んだものです。</p>';
+    H+='<p style="font-size:0.84rem;color:#7a6f5d;">星は1つずつ見るより、<b>星どうしの関係</b>を読むと深まります。位置の意味（流派で多少違います）：頭＝目上・親・精神／胸＝あなたの核／腹＝子・部下・実行／左手＝家庭・身内・プライベート／右手＝仕事・社会。下は五行の生剋（生む・剋す）で関係を読んだものです。</p>';
 
     // 見方① 中心星を軸に
     H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方①　中心星「'+chest+'」（'+GN[cEl]+'）から見た、まわりの星</b></p>';
@@ -1271,8 +1330,8 @@ function run(){
     H+='<span style="font-size:0.88rem;">頭の「'+head+'」と胸の「'+chest+'」── '+headChest(SG[head],cEl)+'</span></p>';
 
     // 見方③ 右手と左手
-    H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方③　右手と左手（家庭 ↔ 仕事）</b><br>';
-    H+='<span style="font-size:0.88rem;">右手の「'+rh+'」と左手の「'+lh+'」── '+hands(SG[rh],SG[lh])+'</span></p>';
+    H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方③　左手と右手（家庭 ↔ 仕事）</b><br>';
+    H+='<span style="font-size:0.88rem;">左手の「'+lh+'」（家庭）と右手の「'+rh+'」（仕事）── '+hands(SG[lh],SG[rh])+'</span></p>';
 
     // 見方④ 親と子（相生の流れ）
     var pairs=[];
@@ -1319,7 +1378,7 @@ function run(){
   if(curTaiunIdx!==null){const cst=mainStar(ds,curTaiunIdx%10);taiunHtml+="<p style='font-size:0.92rem;'>いまの10年は<b>"+cst+"</b>の季節。「"+STAR_KEY[cst]+"」が、運をひらくテーマです。</p>";}
   document.getElementById("taiun").innerHTML=taiunHtml;
   document.getElementById("taiun-meta").textContent=
-    (male?"男性":"女性")+"・"+(yangYear?"陽":"陰")+"の年干 → "+(forward?"順行":"逆行")+"　／　立運 "+ritsuun+"歳（節入りまで"+days+"日）";
+    (male?"男性":"女性")+"・"+(yangYear?"陽":"陰")+"の年干 → "+(forward?"順行":"逆行")+"　／　立運 "+ritsuun+"歳（"+(forward?"次の節入りまで":"前の節入りから")+days+"日）";
 
   // ===== 年運 =====
   let nenunHtml='<table class="un"><tr><th>年</th><th>年齢</th><th>干支</th><th>主星</th><th>従星</th></tr>';
@@ -1353,7 +1412,7 @@ function run(){
   };
   function adviceOf(star,energy){
     let a=ADVICE[star];
-    if(energy>=10)a+="（エネルギーの強い日。攻めの行動OK）";
+    if(energy>=10)a+="（エネルギーの強い日。前に出る行動OK）";
     else if(energy<=4)a+="（エネルギー控えめの日。無理せず休息も）";
     return a;
   }
@@ -1365,7 +1424,7 @@ function run(){
   const WEEKDAYS=["日","月","火","水","木","金","土"];
   const cMonNine=nineStarMonth(cm.setsuYear,cm.monthIdx);
   let gHtml='<table class="un"><tr><th>日付</th><th>干支</th><th>主星</th><th>従星</th><th>九星・色</th><th>過ごし方のヒント</th></tr>';
-  gHtml+='<tr><td>今月（'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'月）</td><td>'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'</td><td>'+cmStar+'</td><td>'+cms.name+'（'+cms.energy+'点）</td><td>'+KYUSEI_SHORT[cMonNine-1]+'<br>'+KYUSEI_COLOR[cMonNine-1]+'</td><td class="adv">今月のテーマ：'+ADVICE[cmStar]+'</td></tr>';
+  gHtml+='<tr><td>今月（'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'月）</td><td>'+STEMS[cmk.stem]+BRANCHES[cmk.branch]+'</td><td>'+cmStar+'</td><td>'+cms.name+'（'+cms.energy+'点）</td><td>'+KYUSEI_SHORT[cMonNine-1]+'<br>'+KYUSEI_COLOR[cMonNine-1]+'</td><td class="adv">今月の主星は'+cmStar+'。「'+STAR_KEY[cmStar]+'」が活きる月です。</td></tr>';
   for(let i=0;i<7;i++){
     const dt=new Date(ty,tm-1,td+i);
     const dy=dt.getFullYear(),dm=dt.getMonth()+1,dd=dt.getDate();
@@ -1383,7 +1442,7 @@ function run(){
   const honmei=nineStarYear(setsuYear);
   const getsumei=nineStarMonth(setsuYear,monthIdx);
   document.getElementById("kigaku-meta").innerHTML=
-    "本命星：<b>"+KYUSEI[honmei-1]+"</b>（ラッキーカラー："+KYUSEI_COLOR[honmei-1]+"）　月命星："+KYUSEI[getsumei-1];
+    "本命星：<b>"+KYUSEI[honmei-1]+"</b>（九星の色："+KYUSEI_COLOR[honmei-1]+"）　月命星："+KYUSEI[getsumei-1];
   const todayNine=nineStarDay(ty,tm,td);
   let kHtml='<div style="text-align:center;font-size:0.95rem;">今日の九星：<b>'+KYUSEI[todayNine-1]+'</b>　今日の色：<b style="color:var(--accent);">'+KYUSEI_COLOR[todayNine-1]+'</b></div>';
   kHtml+='<div class="un-meta" style="margin-top:6px;">いちばんかんたんな使い方：今日の色をどこかひとつ身につける。お出かけは「◎」の方角へ。それだけで十分ですよ</div>';
@@ -1442,7 +1501,7 @@ function run(){
   pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokan(yk.branch,daysSinceSetsu)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokan(mk.branch,daysSinceSetsu)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokan(db,daysSinceSetsu)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
   // 身強・身弱（先生確定: 陽占の点数の単純比較。特別な流儀なし）
   const miJudge=total>=20?"身強（みきょう）——エネルギー点数が高く、背負える・押せる体質":total<=17?"身弱（みじゃく）——エネルギー点数が低めの、繊細・感性型の体質":"中間——強弱のバランス型";
-  pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小6点〜最大33点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
+  pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小3点〜最大36点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
   const stN=(gogyoN[dE]-1)+gogyoN[(dE+4)%5];
   const wkN=gogyoN[(dE+1)%5]+gogyoN[(dE+2)%5]+gogyoN[(dE+3)%5];
   pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>参考（五行側の見方）：日干を強める星（比劫・印）＝"+stN+"つ〔"+GOGYO_NAME[dE]+"・"+GOGYO_NAME[(dE+4)%5]+"〕／弱める星（食傷・財・官殺）＝"+wkN+"つ〔"+GOGYO_NAME[(dE+1)%5]+"・"+GOGYO_NAME[(dE+2)%5]+"・"+GOGYO_NAME[(dE+3)%5]+"〕。過多・忌神の厳密な判定は身強・身弱と照らして行います（先生）。境界は通常の目安（20点以上=身強・17点以下=身弱）を採用しています（先生: 通常どおり）。</p>";
@@ -1709,8 +1768,8 @@ function run(){
 
     // ===== ① 算命学の結論 =====
     H.push(HS+'① 算命学の結論</h3>');
-    H.push('<p style="font-size:0.95rem;">日干は <b>「'+STEMS[ds]+'（'+gel+'）」</b>。'+ELEM_PERSON[gel]+'。性格の核となる中心星は <b>'+center+'</b>（テーマ「'+STAR_KEY[center]+'」）。タイプは <b>'+(kyo==="身強"?"身強（攻め）":(kyo==="身弱"?"身弱（受け）":"中庸（バランス）"))+'</b>。足りない力を補う守護神は <b>「'+sgEl+'」</b>'+(sgHave>=1?('（命式の中に'+sgHave+'つ。恵まれた配置）。'):'（命式の中になし。外から取り入れて開く型）。')+'</p>');
-    H.push(kaisetsu("算命学","<b>日干</b>＝生まれた日の十干で、あなた自身の本質（木火土金水のどれか）。<b>中心星</b>＝命式の胸にあたる星で、性格の核。<b>身強・身弱</b>＝命式の力の強さで、攻め型か受け型かを見ます。<b>守護神</b>＝寒暖や五行の偏りを整えるために必要な五行。まずこの4つで骨格が読めます。"));
+    H.push('<p style="font-size:0.95rem;">日干は <b>「'+STEMS[ds]+'（'+gel+'）」</b>。'+ELEM_PERSON[gel]+'。性格の核となる中心星は <b>'+center+'</b>（テーマ「'+STAR_KEY[center]+'」）。タイプは <b>'+(kyo==="身強"?"身強（前に出る力）":(kyo==="身弱"?"身弱（守る力）":"中庸（バランス）"))+'</b>。足りない力を補う守護神は <b>「'+sgEl+'」</b>'+(sgHave>=1?('（命式の中に'+sgHave+'つ。恵まれた配置）。'):'（命式の中になし。外から取り入れて開く型）。')+'</p>');
+    H.push(kaisetsu("算命学","<b>日干</b>＝生まれた日の十干で、あなた自身の本質（木火土金水のどれか）。<b>中心星</b>＝命式の胸にあたる星で、性格の核。<b>身強・身弱</b>＝命式の力の強さで、前に出る型か守る型かを見ます。<b>守護神</b>＝寒暖や五行の偏りを整えるために必要な五行。まずこの4つで骨格が読めます。"));
     H.push('<div style="border:1px solid var(--accent);border-radius:10px;padding:10px 14px;margin:8px 0;background:#fbf7ee;font-size:0.95rem;">🎨 <b>ラッキーカラー</b>：'+gm.c+'　／　🔮 <b>ラッキーアイテム</b>：'+gm.i+'<br>🧭 <b>吉方位</b>：'+gm.d+'　／　✨ <b>開運の行動</b>：'+gm.a+'<br><span style="font-size:0.8rem;color:#7a6f5d;">守護神「'+sgEl+'」の五行を、色・小物・方位・行動に少し取り入れると、命式の偏りが整います。</span></div>');
 
     // ===== ② 占星術の結論 =====
@@ -1719,11 +1778,30 @@ function run(){
     var nak=NAK[nIdx];
     var nakLord=DASHA_SEQ[nIdx%9][0];
     H.push(HS+'② 占星術の結論</h3>');
-    H.push('<p style="font-size:0.95rem;">生き方の太陽星座は <b>'+ZODIAC[sunSid]+'</b>（'+ZKEY[sunSid]+'）、心の月星座は <b>'+ZODIAC[moonSid]+'</b>（'+ZKEY[moonSid]+'）。インド式の生まれ星（月の宿）は <b>'+nak+'</b>（支配星＝'+nakLord+'）。'+((typeof ascSid!=="undefined"&&ascSid!==null)?('まわりから見た顔（ラグナ）は <b>'+ZODIAC[ascSid]+'</b>。'):'（出生時刻を入れるとラグナも表示）')+'いちばん力強い星は <b>'+bestP[0]+'</b>（'+bestP[3][0]+'＝「'+bestP[1].split("・")[0]+'」が武器）、磨いている途中の星は <b>'+worstP[0]+'</b>。</p>');
-    if(knownTime && typeof ascSid!=="undefined" && ascSid!==null){
-      var ho=function(s){return ((s-ascSid+12)%12);};
-      H.push('<p style="font-size:0.95rem;">力が働く舞台（ハウス）は、<b>太陽＝第'+(ho(sunSid)+1)+'室（'+HN[ho(sunSid)]+'）</b>が人生の主舞台、<b>月＝第'+(ho(moonSid)+1)+'室（'+HN[ho(moonSid)]+'）</b>が心の安らぐ場面。</p>');
-    }
+    // 結論＝「どんな人か・どう生きると自分らしいか」を平易に（叩き台。声はリーダー上書き前提）
+    var SUN_LIVE=["自分から動き、先頭を切ること。思い立ったら動く中で、自分らしさが出ます。","急に変わるより、安心・継続・積み重ね・心地よさを大切にすること。体感で納得しながら、じっくり形にする中で力が出ます。","知りたいことを追い、軽やかに動き、言葉でつなぐこと。変化や情報の中でいきいきします。","身近な人を守り、安心できる場所を育てること。気持ちの通った関係の中で自分らしくいられます。","自分の名前で表に立ち、人を照らすこと。見られる場面でこそ輝きます。","ていねいに整え、人の役に立つこと。細やかに尽くす中で存在感が出ます。","人とのバランスを取り、美しく調えること。対等な関係の中で自分が活きます。","ひとつのことに深く入り込むこと。簡単に手放さず、本質に迫る中で力が出ます。","自由に学び、遠くを目指すこと。視野を広げ、意味を探す中で自分らしくいられます。","目標を決め、責任を持って積み上げること。時間をかけて築く中で本領を発揮します。","自分らしい個性を大切に、新しいやり方を選ぶこと。型にはまらない場面で輝きます。","感じる心を大切に、人に寄り添うこと。やさしさや想像力を活かす中で自分らしくいられます。"];
+    var MOON_HEART=["自分のペースで動けるとき、心が落ち着きます。さっぱりして引きずらない心です。","変わらない安心と、心地よさ（自然・音・香り・肌ざわり・おいしいもの）の中で休まります。穏やかでマイペースな心です。","おしゃべりや新しい情報の中で、心が軽くなります。好奇心ゆたかな心です。","身近な人とのつながりの中で、いちばん安心します。情のこまやかな心です。","認められ、喜ばれるときに心が満ちます。あたたかく、ほめられて伸びる心です。","きちんと整っているときに、心が落ち着きます。よく気のつく、繊細な心です。","人と心地よく調和しているとき、安心します。やわらかく公平な心です。","深く信頼できる関係の中でだけ、本音を出して安らぎます。一途で濃い心です。","自由でいられるとき、心が元気になります。明るく前向きな心です。","役割を果たし、地に足がついているとき安心します。まじめで我慢づよい心です。","自分らしくいられて、束縛されないとき安らぎます。さっぱりして独立した心です。","やさしさ・共感・想像の世界の中で、心が潤います。とてもやわらかく、感じ取る心です。"];
+    var LAGNA_LOOK=["行動的で、はっきりした、エネルギーのある人に見えます。","落ち着いていて、穏やかで、安心感のある人に見えます。","軽やかで、話しやすく、知的で、好奇心のある人に見えます。","やさしく、面倒見がよく、親しみやすい人に見えます。","華やかで、堂々として、存在感のある人に見えます。","きちんとして、誠実で、よく気のつく人に見えます。","上品で、感じがよく、バランスの取れた人に見えます。","深く、簡単には本音を見せない、静かな迫力のある人に見えます。","明るく、おおらかで、自由な雰囲気の人に見えます。","まじめで、しっかりして、信頼できそうな人に見えます。","個性的で、自分を持っている、少し独特な人に見えます。","やわらかく、やさしく、つかみどころのない雰囲気の人に見えます。"];
+    // ハウス別「人生の舞台」やわらかい言い回し（重い8/12室も怖く言わない）
+    var HOUSE_LIVE=["自分自身・体・第一印象。自分を前に出して生きる場面で力が出ます。","お金・才能・持ちもの。自分の価値を形にする場面が舞台です。","学び・言葉・身近な人。伝える・動く・つなぐ場面が舞台です。","家庭・住まい・心の土台。安心できる場所を育てる場面が舞台です。","恋愛・創作・子ども・楽しみ。表現や楽しみの中で力が出ます。","日々の務め・健康・役割。こつこつ務める場面が舞台です。","結婚・パートナー・契約。人と向き合う関係の中で本領が出ます。","受け継ぐもの・深いご縁・大きな変化。深く関わり、人生が大きく動く場面が舞台です（怖い意味ではなく“深さ”の場所）。","学び・信仰・遠い世界。意味を求め、視野を広げる場面が舞台です。","天職・社会での顔。表に立ち、役割を果たす場面が舞台です。","仲間・願いごと・広がり。人とのつながりの中で実っていきます。","静養・癒やし・ひとりの時間・見えない世界。表で目立つより、静かな場所で自分を整え、見えないところで人を支える場面で本質が出ます（孤独ではなく“充電と祈り”の場所です）。"];
+    var PL_STRONG={"太陽":"自分の名前で前に立つ力。責任を引き受けるほど、輝きが増します。","月":"心で感じ取り、人を包む力。気合いで耐える強さではなく、人を安心させ、場をやわらかくする強さです。整った場所でこそ、ぐっと力が出ます。","水星":"言葉・説明・整理の力。話す・書く・つなぐことが、この人の武器です。","金星":"愛され、楽しみ、和ませる力。人間関係や美しさを扱う場面で強さが出ます。","火星":"動く・挑む・やり切る力。勝負どころで前に出るほど強くなります。","木星":"学び・広げ・人を導く力。知恵とおおらかさが、人を引き寄せます。","土星":"続ける・耐える・積み上げる力。試練や時間を、そのまま経験値に変えていける人です。若い頃より、年を重ねてから味が出ます。"};
+    var PL_WEAK={"太陽":"自分を前に出すこと、主役になることを、これから少しずつ育てていくテーマです。","月":"気持ちを安定させること、心の置き場を持つことを、これから育てていくテーマです。","水星":"考えを整理して言葉で伝えることを、これから磨いていくテーマです。","金星":"愛され方や楽しみ方、自分の魅力の出し方を、これから少しずつ育てていくテーマです。","火星":"思い切って動くこと、自分の意志を通すことを、これから育てていくテーマです。","木星":"感じたことを知恵として言葉にすること、人を導く言葉を、これから育てていくテーマです。経験を重ねるほど、人を導く言葉に深みが出ます。","土星":"こつこつ続けること、責任を引き受けることを、これから育てていくテーマです。"};
+    var hoS=function(sg){return ((sg-ascSid+12)%12);};
+    var hasAsc=(knownTime && typeof ascSid!=="undefined" && ascSid!==null);
+    var sunH=hasAsc?hoS(sunSid):null, moonH=hasAsc?hoS(moonSid):null;
+    var seiH='<div style="border-left:4px solid var(--accent);padding:4px 0 6px 14px;margin:6px 0;line-height:1.9;font-size:0.96rem;">';
+    seiH+='<p><b>1. どう生きると自分らしいか（太陽＝'+ZODIAC[sunSid]+'）</b><br>'+SUN_LIVE[sunSid]+(hasAsc?'<br>さらに太陽は第'+(sunH+1)+'室にあるので、人生の主な舞台は——'+HOUSE_LIVE[sunH]:'')+'</p>';
+    seiH+='<p><b>2. 心が安心する場所（月＝'+ZODIAC[moonSid]+'）</b><br>'+MOON_HEART[moonSid]+(hasAsc?'<br>心がいちばん休まるのは、第'+(moonH+1)+'室。'+HOUSE_LIVE[moonH]:'')+'</p>';
+    if(hasAsc && sunH===moonH){ seiH+='<p style="background:#f4ecdc;border-radius:8px;padding:6px 10px;font-size:0.92rem;"><b>※太陽も月も同じ第'+(sunH+1)+'室。</b>人生でこの場面がとても大きな意味を持ちます。「'+HN[sunH]+'」のテーマが、生き方にも心にも、二重に強く出る人です。</p>'; }
+    seiH+='<p><b>3. 心の奥の質（月の宿＝'+nak+'）</b><br>インド式の生まれ星は'+nak+'、支配星は'+nakLord+'。心の奥には「'+(DASHA_THEME[nakLord]||'')+'」につながる質があります。ふだんは表に出にくいけれど、いざというときに出る“その人の芯”です。</p>';
+    if(hasAsc){ seiH+='<p><b>4. まわりから見える第一印象（ラグナ＝'+ZODIAC[ascSid]+'）</b><br>'+LAGNA_LOOK[ascSid]+'ただし内側の核（太陽'+ZODIAC[sunSid]+'・心'+ZODIAC[moonSid]+'）は、外から見える顔と必ずしも同じではありません。見た目と中身のこの差が、その人らしさ・魅力になります。</p>'; }
+    else{ seiH+='<p style="color:#7a6f5d;font-size:0.88rem;"><b>4. 第一印象（ラグナ）</b><br>出生時刻を入れると「まわりからどう見えるか」も結論に加わります。</p>'; }
+    seiH+='<p><b>5. いちばん強い星（'+bestP[0]+'・'+bestP[3][0]+'）＝武器になる力</b><br>'+(PL_STRONG[bestP[0]]||(bestP[1].split("・")[0]+'の力が、この人の武器です。'))+(bestP[0]==="月"?'<br><span style="font-size:0.85rem;color:#7a6f5d;">※強い心は環境の影響も受けやすいので、静かに戻れる場所・時間を持つことが、運を整える鍵になります。</span>':'')+'</p>';
+    seiH+='<p><b>6. これから磨くテーマ（'+worstP[0]+'）</b><br>'+(PL_WEAK[worstP[0]]||(worstP[1].split("・")[0]+'を、これから育てていくテーマです。'))+'「弱い」「ダメ」という意味ではなく、人生の中で育てていく場所です。</p>';
+    seiH+='<p style="margin-top:8px;"><b>まとめ。</b>この方は、生き方の軸が'+ZODIAC[sunSid]+'（'+ZKEY[sunSid]+'）、心は'+ZODIAC[moonSid]+'（'+ZKEY[moonSid]+'）'+(hasAsc?'、外から見える顔は'+ZODIAC[ascSid]:'')+'。いちばんの武器は'+bestP[0]+'、これから育てるのは'+worstP[0]+'です。'+(hasAsc&&(sunH===11||moonH===11)?'静かな場所で自分を整え、見えないところで人を支えるほど、本質が輝きます。':'')+'</p>';
+    seiH+='<div style="font-size:0.83rem;color:#7a6f5d;margin-top:4px;">※伝え方のコツ：「'+ZODIAC[sunSid]+'だから○○」と言い切らず、「'+ZODIAC[sunSid]+'は、こういう場面で力が出ます」と伝えるとやわらかくなります。弱い星も「ダメ」ではなく「これから磨くテーマ」と。重いハウス（8室・12室）も「孤独・損失」と怖く言わず、「深さ」「充電と祈りの時間」と伝えるのがコツです。</div>';
+    seiH+='</div>';
+    H.push(seiH);
     H.push(kaisetsu("占星術","<b>西洋式（トロピカル）</b>と<b>インド式（サイデリアル）</b>は約24度ずれ、星座がほぼ1つ前にずれます（西洋＝双子座でも、インド式では牡牛座、など）。<b>ナクシャトラ</b>＝月の通り道を27に分けた生まれ星で、支配星が中核の色を示します。<b>ハウス</b>＝ラグナの星座を第1室として12の場面に分けたもの（ホールサイン方式）。<b>高揚・減衰</b>＝その星が元気か窮屈か。"));
 
     // ===== ③ 最高級結論（ダシャー＋4層の収束・断定の言葉） =====
@@ -1739,14 +1817,14 @@ function run(){
     H.push(HS+'③ 最高級結論 ── あなたへの言葉 ──</h3>');
     H.push('<div style="border-left:4px solid var(--accent);padding:6px 0 8px 14px;margin:8px 0;font-size:0.98rem;line-height:1.9;">');
     // 断定の核
-    H.push('<p>——'+ELEM_PERSON[gel]+'。それが、あなたという人の芯。</p>');
-    H.push('<p>中心星「'+center+'」が示すのは、<b>'+STAR_KEY[center]+'</b>力。これは生まれ持った武器。身につけようとしなくても、もう持っている。だから、磨くより、使う。</p>');
-    // 攻め受け（断定・呼びかけ）
-    H.push('<p>'+(kyo==="身強"?'あなたは、自分から動いて道をひらく人。前に出ることを、ためらわなくていい。':(kyo==="身弱"?'あなたは、人と組んで力を発揮する人。ひとりで抱えないこと。よい相棒を持つ——それが、いちばんの近道。':'あなたは、攻めと受けを場面で選べる人。その柔らかさが、強み。'))+'</p>');
-    // 今（呼びかけ）
-    if(curLord) H.push('<p>そして、いま。<b>'+curLord+'期</b>（'+curFrom+'〜'+curTo+'年ごろ）。「'+theme1+'」に踏み出すとき。この流れは、あなたの味方。</p>');
-    // 守護神（命令形のやさしい戒め）
-    H.push('<p>ただし、ひとつだけ。<b>「'+sgEl+'」を切らさないこと。</b>'+gm.a+'——これを忘れなければ、あなたの力は枯れない。</p>');
+    // ① どんな人か（断定・具体）
+    H.push('<p><b>あなたは、こういう人。</b>'+ELEM_PERSON[gel]+'。中心星「'+center+'」の人だから、<b>'+STAR_KEY[center]+'</b>ときに、いちばん自分らしく力が出ます。'+(kyo==="身強"?'自分で決めて動くほど調子が上がるタイプ。人に合わせすぎると、かえって伸び悩みます。':(kyo==="身弱"?'信頼できる人と組むほど力が何倍にもなるタイプ。ひとりで抱えこむと、もったいない。':'前に出るときと守るときを場面で切り替えられる、しなやかなタイプ。'))+'</p>');
+    // ② 現状の星回り（具体）
+    if(curLord) H.push('<p><b>いまの星回り。</b>'+curFrom+'〜'+curTo+'年ごろは「'+curLord+'期」、テーマは「'+theme1+'」。'+(DASHA_THEME[curLord]||'')+'。いまのあなたは、'+theme1+'に関わる選択が、あとあとまで効いてくる時期にいます。</p>');
+    // ③ 今後どうなるか（具体）
+    H.push('<p><b>これから。</b>'+(kyo==="身強"?'チャンスは「待つ」より「取りにいく」方が向いています。迷ったら、前に出る。動いた先に道がひらけます。':(kyo==="身弱"?'ひとりで決めず、早めに人へ相談を。よいご縁が、次の扉をあけてくれます。':'前に出るとき・守るときの見極めが、そのままあなたの強みになります。流れを読んで、力の出し入れを。'))+'</p>');
+    // ④ 実際のアドバイス（今日からできること）
+    H.push('<p><b>今日からできること。</b>守護神「'+sgEl+'」を切らさないのがコツ。🎨'+gm.c+'を身につける／🔮'+gm.i+'を持つ／🧭'+gm.d+'を意識する／✨'+gm.a+'。小さくても続けるほど、運の土台が安定します。</p>');
     // 収束の断定
     H.push('<p style="color:#7a6f5d;">算命学も、西洋も、インド式も、時期も。すべて同じ方を向いている。</p>');
     H.push('<p style="font-size:1.05rem;text-align:center;font-weight:700;color:var(--accent);margin:10px 0;">「'+centerName+'を核に。'+sgEl+'を切らさず、自分を生きる。」</p>');
