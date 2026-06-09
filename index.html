@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>総合運勢診断（テスト運用版 v46）</title>
+<title>総合運勢診断（テスト運用版 v47）</title>
 <style>
   :root {
     --bg: #f7f3ec;
@@ -116,7 +116,7 @@
   <header>
     <h1>総合運勢診断</h1>
     <p class="sub">算命学・九星気学・インド占星術で、あなたの宿命の星を読み解きます</p>
-    <span class="test-badge">テスト運用版 v46</span>
+    <span class="test-badge">テスト運用版 v47</span>
   </header>
 
   <div class="card">
@@ -309,8 +309,8 @@
     </div>
 
     <div class="card member-only" style="text-align:center;border:1px dashed var(--gold);background:#faf6ec;">
-      <h2 style="color:var(--gold);">━━ ここからは「最高級・個別鑑定」── 占星術まで重ねた総合判断 ── ━━</h2>
-      <div class="un-meta">さらに深く「自分という人」を知りたい方へ。算命学・気学に西洋占星術・インド式を重ね、いまの時期（ダシャー）まで合わせて読み込む、いちばん深い総合判断です（個別鑑定の範囲）。</div>
+      <h2 style="color:var(--gold);">━━ ここからは「一人のあなたへ」── 占星術まで重ねた個別鑑定 ── ━━</h2>
+      <div class="un-meta">さらに深く「自分という人」を知りたい方へ。算命学・気学に西洋占星術・インド式を重ね、いまの時期（ダシャー）まで合わせて読み込む、あなた一人のための個別鑑定です。</div>
     </div>
 
     <div class="card member-only">
@@ -380,7 +380,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v46） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v47） — テスト運用中</footer>
 </div>
 
 <script>
@@ -1719,7 +1719,7 @@ function run(){
     sHtml+='<div style="font-size:0.85rem;color:#7a6f5d;margin-top:10px;">出生時刻を入れると「星のお部屋（ハウス）」——その星が人生のどの場面（お金・家庭・天職など）で働くか——も表示されます。</div>';
   }
   document.getElementById("seiyo").innerHTML=sHtml;
-  // ===== 結論レポート（最高級・自動生成・解説つき） v31 =====
+  // ===== 結論レポート（一人のあなたへ・自動生成・解説つき） v31 =====
   (function(){
     var box=document.getElementById("saikoukyuu");
     if(!box) return;
@@ -1804,7 +1804,7 @@ function run(){
     H.push(seiH);
     H.push(kaisetsu("占星術","<b>西洋式（トロピカル）</b>と<b>インド式（サイデリアル）</b>は約24度ずれ、星座がほぼ1つ前にずれます（西洋＝双子座でも、インド式では牡牛座、など）。<b>ナクシャトラ</b>＝月の通り道を27に分けた生まれ星で、支配星が中核の色を示します。<b>ハウス</b>＝ラグナの星座を第1室として12の場面に分けたもの（ホールサイン方式）。<b>高揚・減衰</b>＝その星が元気か窮屈か。"));
 
-    // ===== ③ 最高級結論（ダシャー＋4層の収束・断定の言葉） =====
+    // ===== ③ 一人のあなたへ（ダシャー＋4層の収束・断定の言葉） =====
     var li=nIdx%9, yrs=(1-frac)*DASHA_SEQ[li][1];
     var cur=new Date(Date.UTC(y,m-1,d)), nowD=new Date();
     var curLord=null,curFrom=null,curTo=null;
