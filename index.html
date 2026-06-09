@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>総合運勢診断（テスト運用版 v45）</title>
+<title>総合運勢診断（テスト運用版 v46）</title>
 <style>
   :root {
     --bg: #f7f3ec;
@@ -116,7 +116,7 @@
   <header>
     <h1>総合運勢診断</h1>
     <p class="sub">算命学・九星気学・インド占星術で、あなたの宿命の星を読み解きます</p>
-    <span class="test-badge">テスト運用版 v45</span>
+    <span class="test-badge">テスト運用版 v46</span>
   </header>
 
   <div class="card">
@@ -380,7 +380,7 @@
 
   </div>
 
-  <footer>総合運勢診断（プロトタイプ v45） — テスト運用中</footer>
+  <footer>総合運勢診断（プロトタイプ v46） — テスト運用中</footer>
 </div>
 
 <script>
@@ -1815,30 +1815,32 @@ function run(){
     }
     var theme1=curLord?DASHA_THEME[curLord].split("・")[0]:"";
     var hasAsc2=(knownTime && typeof ascSid!=="undefined" && ascSid!==null);
-    H.push(HS+'③ 一人のあなたへ ── 算命学と占星術が重なる、あなたの芯 ──</h3>');
-    H.push('<div style="border-left:4px solid var(--accent);padding:6px 0 8px 16px;margin:8px 0;font-size:0.98rem;line-height:1.95;">');
-    H.push('<p style="font-size:0.9rem;color:#7a6f5d;">同じ生年月日の人は、たくさんいます。'+(hasAsc2?'でも、生まれた<b>時刻</b>まで見て初めて、ここからは「あなた一人」の星になります。':'生まれた時刻まで分かると、さらに「あなた一人」に絞り込めます（今は時刻なしで、芯の部分をお伝えします）。')+'算命学から見たあなたと、占星術から見たあなた——その両方が同じ方を指している“芯”だけを、まっすぐ書きます。</p>');
-    // 1 芯
-    H.push('<p><b>あなたの芯。</b>'+ELEM_PERSON[gel]+'。算命学の中心星は「<b>'+center+'</b>」（'+STAR_KEY[center]+'）、占星術の太陽は<b>'+ZODIAC[sunSid]+'</b>（'+ZKEY[sunSid]+'）。ちがう占いが、同じことを言っています——あなたは、'+STAR_KEY[center]+'ことで、いちばん「あなた」になる人です。'+(kyo==="身強"?'自分で決めて動くほど、芯が強くなります。':(kyo==="身弱"?'信頼できる人とつながるほど、芯が強くなります。':'前に出る・引くを場面で選べる、しなやかな芯です。'))+'</p>');
-    // 2 心
-    H.push('<p><b>あなたの心。</b>'+MOON_HEART[moonSid]+'インド式の月の宿「'+nak+'」（支配星'+nakLord+'）も、心の奥に「'+(DASHA_THEME[nakLord]||'')+'」を持つことを示します。あなたは、理屈より先に空気や気持ちを感じ取る人。その感受性は弱点ではなく、人や場を読み取るあなたの力です。</p>');
-    // 3 見え方と中身
-    if(hasAsc2){ H.push('<p><b>外から見えるあなたと、本当のあなた。</b>まわりからは、'+LAGNA_LOOK[ascSid]+'でも本当の中身は、太陽'+ZODIAC[sunSid]+'・月'+ZODIAC[moonSid]+'のとおり、'+ZKEY[sunSid]+'を軸に'+ZKEY[moonSid]+'を抱えた人。見た目と中身のこの差こそ、あなたの奥行きであり、簡単には底を見せない魅力です。</p>'); }
-    // 4 武器
-    H.push('<p><b>あなたの武器。</b>いちばん力を持つ星は<b>'+bestP[0]+'</b>（'+bestP[3][0]+'）。'+(PL_STRONG[bestP[0]]||'')+'算命学で言えば、中心星「'+center+'」の“'+STAR_KEY[center]+'”の力です。これは生まれ持ったもの。身につけようとしなくても、もうあなたの中にあります。だから、磨くより使う。'+(bestP[0]==="月"?'（強い心は環境に影響されやすいので、静かに戻れる場所を持つこと。）':'')+'</p>');
-    // 5 課題
-    H.push('<p><b>あなたが揺れるところ。</b>磨いている途中の星は<b>'+worstP[0]+'</b>。'+(PL_WEAK[worstP[0]]||'')+'守護神は「'+sgEl+'」'+(sgHave>=1?'（命式の中にあり、恵まれた配置）':'（命式の中になく、外から取り入れて開く型）')+'。ここが切れると、力が空回りしやすくなります。欠点ではなく、一生かけて育てる“伸びしろ”です。</p>');
-    // 6 対人
-    H.push('<p><b>人との関わりで。</b>'+(kyo==="身強"?'あなたは自分の軸がはっきりしている人。対等に向き合える相手や、任せ合える関係が合います。世話を焼きすぎるより、自分の世界を持ったまま関わるほうがうまくいきます。':(kyo==="身弱"?'あなたは人とのつながりで力が増す人。よい相手・よい場に身を置くことが、そのまま運になります。ひとりで抱えこまず、頼っていいのです。':'あなたは相手や場に合わせて距離を変えられる人。器用さでもあり、ときに「本当はどうしたい？」を見失う原因にも。自分の本音を、まん中に置いておくこと。'))+'心は月'+ZODIAC[moonSid]+'。'+ZKEY[moonSid]+'を大切にできる相手と、長くつづきます。</p>');
-    // 7 仕事・役割
-    H.push('<p><b>仕事と役割で。</b>社会で出るあなたの顔は星「'+stars.rightHand+'」、核は中心星「'+center+'」。'+STAR_KEY[center]+'ことが、そのまま強みになる仕事が向きます。'+(hasAsc2?'とくに太陽が第'+(sunH+1)+'室（'+HN[sunH]+'）にあるので、「'+HN[sunH]+'」に関わる場で、あなたらしさがいちばん輝きます。':'人の中で“'+STAR_KEY[center]+'”が活きる場を選ぶと、力が出ます。')+'</p>');
-    // 8 いまの時期
-    if(curLord){ H.push('<p><b>いま、あなたがいる時期。</b>'+curFrom+'〜'+curTo+'年ごろは「'+curLord+'期」、テーマは「'+theme1+'」。'+(DASHA_THEME[curLord]||'')+'。これは説明ではなく、いま現実に動いている流れです。この数年の「'+theme1+'」に関わる選択が、これから先のあなたを形づくります。迷ったら、'+theme1+'へ向かうほうを選んで大丈夫。</p>'); }
-    // 9 これから・整え方
-    H.push('<p><b>これからと、整え方。</b>'+(kyo==="身強"?'チャンスは取りにいく人。動いた先に道がひらけます。':(kyo==="身弱"?'よいご縁と場が、次の扉をひらきます。早めに人を頼ること。':'前に出る時・守る時の見極めが、そのまま強みになります。'))+'土台を切らさない鍵は、守護神「'+sgEl+'」。'+gm.c+'を身につけ、'+gm.i+'を持ち、'+gm.d+'を意識し、'+gm.a+'。小さくても続けるほど、あなたの運は安定します。</p>');
-    // 締め
-    H.push('<p style="font-size:1.06rem;text-align:center;font-weight:700;color:var(--accent);margin:12px 0 4px;">あなたは、'+ZKEY[sunSid]+'を軸に、'+STAR_KEY[center]+'人。<br>'+sgEl+'を切らさず、あなたのまま生きていい。</p>');
-    H.push('<p style="font-size:0.86rem;color:#7a6f5d;text-align:center;">——算命学のあなたも、占星術のあなたも、同じ方を向いています。</p>');
+    H.push(HS+'③ 一人のあなたへ ── あなたの芯 ──</h3>');
+    var SG_ESSENCE={"木":"伸びて育つ、やわらかな成長の力","火":"照らして伝える、あたたかさの力","土":"支えて受けとめる、安定の力","金":"みがいて整える、けじめと凜とした強さ","水":"流れて蓄える、知恵としなやかさ"};
+    var sgE=SG_ESSENCE[sgEl]||"";
+    H.push('<div style="border-left:4px solid var(--accent);padding:6px 0 8px 16px;margin:8px 0;font-size:0.96rem;line-height:1.9;">');
+    H.push('<p style="font-size:0.9rem;color:#7a6f5d;">同じ生年月日の人は、たくさんいます。'+(hasAsc2?'生まれた<b>時刻</b>まで見て、ここからは「あなた一人」の星です。':'生まれた時刻まで分かると、さらに「あなた一人」に絞り込めます（今は時刻なしで、芯の部分をお伝えします）。')+'まず算命学、次に占星術。それぞれの目で見たあなたを、無理につなげず、そのまま並べます。</p>');
+    H.push('<p style="font-weight:700;color:var(--accent);margin:10px 0 2px;">▼ 算命学から見た、あなた</p>');
+    H.push('<ul style="margin:2px 0 8px 1.1em;padding:0;line-height:1.85;">');
+    H.push('<li><b>本質</b>：'+ELEM_PERSON[gel]+'</li>');
+    H.push('<li><b>性格の核（中心星）</b>：'+center+'「'+STAR_KEY[center]+'」</li>');
+    H.push('<li><b>力の出し方</b>：'+(kyo==="身強"?"自分で決めて前に出るほど、活きる":(kyo==="身弱"?"信頼できる人と組むほど、活きる":"前に出る・引くを場面で選べる、しなやかな型"))+'</li>');
+    H.push('<li><b>社会で出る顔</b>：星「'+stars.rightHand+'」。'+STAR_KEY[center]+'ことが、そのまま強みになる場が向く</li>');
+    H.push('<li><b>人との関わり</b>：'+(kyo==="身強"?"対等に向き合える相手・任せ合える関係が合う":(kyo==="身弱"?"よい相手・よい場が、そのまま運になる。頼っていい":"相手や場に合わせて距離を変えられる。本音をまん中に置くこと"))+'</li>');
+    H.push('<li><b>補うとよい力（守護神＝'+sgEl+'）</b>：'+sgE+'。'+(sgHave>=1?"命式の中にあり、恵まれた配置":"命式にはなく、外から取り入れて開く型")+'</li>');
+    H.push('</ul>');
+    H.push('<p style="font-weight:700;color:var(--accent);margin:10px 0 2px;">▼ 占星術から見た、あなた</p>');
+    H.push('<ul style="margin:2px 0 8px 1.1em;padding:0;line-height:1.85;">');
+    H.push('<li><b>生き方（太陽）</b>：'+ZODIAC[sunSid]+'——'+ZKEY[sunSid]+'</li>');
+    H.push('<li><b>心（月）</b>：'+ZODIAC[moonSid]+'——'+ZKEY[moonSid]+'。月の宿「'+nak+'」</li>');
+    if(hasAsc2){ H.push('<li><b>第一印象（ラグナ）</b>：'+LAGNA_LOOK[ascSid]+'</li>'); }
+    H.push('<li><b>いちばん強い星（武器）</b>：'+bestP[0]+'——'+(PL_STRONG[bestP[0]]||'')+'</li>');
+    H.push('<li><b>これから育てる星</b>：'+worstP[0]+'——'+(PL_WEAK[worstP[0]]||'')+'</li>');
+    if(curLord){ H.push('<li><b>いまの時期（ダシャー）</b>：'+curFrom+'〜'+curTo+'年ごろ「'+curLord+'期」＝テーマ「'+theme1+'」</li>'); }
+    H.push('</ul>');
+    H.push('<p style="font-weight:700;color:var(--accent);margin:10px 0 2px;">▼ 結論 ── あなたの芯</p>');
+    H.push('<p>あなたは、'+STAR_KEY[center]+'ことで、いちばん「あなた」になる人です。'+(kyo==="身強"?"自分で決めて動くほど、芯が定まります。":(kyo==="身弱"?"信頼できる人とつながるほど、芯が定まります。":"前に出る時と引く時を選べる、しなやかな芯です。"))+'算命学も占星術も、別々の言葉で同じ方を指しています。守護神「'+sgEl+'」＝'+sgE+'を、暮らしに少しずつ。'+gm.c+'を身につけ、'+gm.d+'を意識し、'+gm.a+'と、土台が安定します。</p>');
+    H.push('<p style="font-size:1.04rem;text-align:center;font-weight:700;color:var(--accent);margin:12px 0 4px;">あなたは、'+ZKEY[sunSid]+'を軸に、'+STAR_KEY[center]+'人。<br>'+sgEl+'の力（'+sgE.split("、")[0]+'）を切らさず、あなたのまま生きていい。</p>');
     H.push('</div>');
     H.push(kaisetsu("一人のあなたへ（算命学×占星術のブレンド）","算命学（生まれ日の十干・中心星・身強身弱・守護神・時期＝大運）と占星術（太陽・月・月の宿・ラグナ・いちばん強い星・時期＝ダシャー）を重ね、<b>両方が同じことを指している“芯”だけ</b>を取り出してお伝えします。生まれた<b>時刻</b>まで分かると、同じ生年月日の人と区別された「あなた一人」の星になります。"));
     H.push('<div class="note" style="margin-top:10px;">惑星の位置・宿・ダシャーは計算による目安です（境目付近は前後します）。この結論レポートは、入力された生年月日・時刻・場所から毎回自動で組み立てています。</div>');
