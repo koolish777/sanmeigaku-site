@@ -204,8 +204,11 @@ document.getElementById("go").addEventListener("click", async ()=>{
     const hasExact=Number.isFinite(s.lat) && Number.isFinite(s.lng);
     return {...s, _dist:d, _dir:dr, _bearing:Math.round(b), _near:d<40, _exact:hasExact};
   }).filter(Boolean);
-  const goodMatches=list.filter(s=> goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
-  const nearby=list.filter(s=> s._near && !goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+  const allGoodMatches=list.filter(s=> goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+  const allNearby=list.filter(s=> s._near && !goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+  const MAX_GOOD=80, MAX_NEARBY=30;
+  const goodMatches=allGoodMatches.slice(0, MAX_GOOD);
+  const nearby=allNearby.slice(0, MAX_NEARBY);
 
   function renderShrine(s, tag){
     const precision = s._exact ? '神社座標で計算' : '県代表点で代替';
@@ -236,7 +239,7 @@ document.getElementById("go").addEventListener("click", async ()=>{
     }
   }
   const coordCount=SHRINES.filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lng)).length;
-  html+='<div class="hint" style="margin-top:8px;">※掲載は'+SHRINES.length+'件。神社座標あり '+coordCount+'件。距離は直線距離、方角は8方位です。</div>';
+  html+='<div class="hint" style="margin-top:8px;">※掲載データは'+SHRINES.length+'件。神社座標あり '+coordCount+'件。距離は直線距離、方角は8方位です。候補が多い場合は、吉方位 '+allGoodMatches.length+'件中 近い順に最大'+MAX_GOOD+'件、近場参考 '+allNearby.length+'件中 最大'+MAX_NEARBY+'件を表示します。</div>';
   html+='</div>';
   box.innerHTML=html;
 });
