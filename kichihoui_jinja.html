@@ -65,8 +65,9 @@
 
   <div class="card result" id="result" style="display:none;"></div>
   <div class="note">
-    方角は「自宅の都道府県」と「神社の都道府県」のおおよその位置から計算しています（広い吉方位の目安）。
-    神社は実在するもののみを掲載し、データは順次拡充します。お参りの作法やより精密な気学の吉方位（年・月で変わります）は、先生にご相談ください。
+    距離・方角は、郵便番号から分かる住所を緯度経度化し、各神社の緯度経度との直線距離・8方位で計算します。
+    住所の緯度経度化ができない場合だけ、都道府県代表点で代替します。徒歩・車の所要時間ではなく、吉方位の目安です。
+    神社は実在確認済みのものを掲載し、データは順次拡充します。より精密な気学の吉方位（年・月で変わります）は、先生にご相談ください。
   </div>
 </div>
 
@@ -136,18 +137,50 @@ function dist(a,b){ // 概算km
 }
 function dir8(deg){ return DIR8[Math.round(deg/45)%8]; }
 
-async function resolvePref(){
+function escapeHtml(v){ return String(v ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch] || ch)); }
+
+async function geocodeAddress(address){
+  if(!address) return null;
+  try{
+    const params=new URLSearchParams({format:"jsonv2", q:address, countrycodes:"jp", limit:"1"});
+    const r=await fetch("https://nominatim.openstreetmap.org/search?"+params.toString(), {headers:{"Accept":"application/json"}});
+    const d=await r.json();
+    if(Array.isArray(d) && d[0] && d[0].lat && d[0].lon) return [parseFloat(d[0].lat), parseFloat(d[0].lon)];
+  }catch(e){}
+  return null;
+}
+
+async function resolveHome(){
   const zip=(document.getElementById("zip").value||"").replace(/[^0-9]/g,"");
+  let pref=null, address="", coord=null, source="都道府県代表点";
+  document.getElementById("manualPref").style.display="none";
   if(zip.length===7){
     try{
       const r=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+zip);
       const d=await r.json();
-      if(d && d.results && d.results[0]) return d.results[0].address1;
+      if(d && d.results && d.results[0]){
+        const z=d.results[0];
+        pref=z.address1;
+        address=[z.address1,z.address2,z.address3].filter(Boolean).join("");
+        coord=await geocodeAddress(address);
+        if(coord) source="郵便番号住所の緯度経度";
+      }
     }catch(e){}
   }
-  // フォールバック：手動選択を表示
-  document.getElementById("manualPref").style.display="block";
-  return prefSel.value || null;
+  if(!coord && pref && PREF[pref]) coord=PREF[pref];
+  if(!pref || !coord){
+    document.getElementById("manualPref").style.display="block";
+    pref=prefSel.value || null;
+    coord=pref && PREF[pref] ? PREF[pref] : null;
+    address=pref || "";
+  }
+  return {pref, address, coord, source};
+}
+
+function shrineCoord(s){
+  if(Number.isFinite(s.lat) && Number.isFinite(s.lng)) return [s.lat, s.lng];
+  if(s.pref && PREF[s.pref]) return PREF[s.pref];
+  return null;
 }
 
 document.getElementById("go").addEventListener("click", async ()=>{
@@ -155,36 +188,55 @@ document.getElementById("go").addEventListener("click", async ()=>{
   const box=document.getElementById("result");
   box.style.display="block";
   if(!gogyo){ box.innerHTML='<div class="empty">②「守護神の五行」を選んでください。</div>'; return; }
-  box.innerHTML='<div class="empty">調べています…</div>';
-  const pref=await resolvePref();
-  if(!pref || !PREF[pref]){
+  box.innerHTML='<div class="empty">住所と神社の位置から、距離・方角を計算しています…</div>';
+  const homeInfo=await resolveHome();
+  const pref=homeInfo.pref;
+  const home=homeInfo.coord;
+  if(!pref || !home){
     box.innerHTML='<div class="empty">郵便番号から地域を特定できませんでした。「都道府県」を選んで、もう一度ボタンを押してください。</div>';
     return;
   }
-  const home=PREF[pref];
   const goodDirs=GUARDIAN_DIRS[gogyo];
-  // 各神社を方角・距離で評価
+  // 各神社を神社ごとの緯度経度で評価。座標がない場合だけ県代表点にフォールバック。
   const list=SHRINES.map(s=>{
-    const sc=PREF[s.pref]; if(!sc) return null;
+    const sc=shrineCoord(s); if(!sc) return null;
     const d=dist(home,sc), b=bearing(home,sc), dr=dir8(b);
-    return {...s, _dist:d, _dir:dr, _near:d<40};
+    const hasExact=Number.isFinite(s.lat) && Number.isFinite(s.lng);
+    return {...s, _dist:d, _dir:dr, _bearing:Math.round(b), _near:d<40, _exact:hasExact};
   }).filter(Boolean);
-  const match=list.filter(s=> s._near || goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+  const goodMatches=list.filter(s=> goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+  const nearby=list.filter(s=> s._near && !goodDirs.includes(s._dir)).sort((a,b)=>a._dist-b._dist);
+
+  function renderShrine(s, tag){
+    const precision = s._exact ? '神社座標で計算' : '県代表点で代替';
+    return '<div class="jinja"><div class="nm">'+escapeHtml(s.name)+'</div>'+
+          '<div class="meta"><span class="pill">'+escapeHtml(tag)+'</span>'+escapeHtml(s.pref)+(s.city?'・'+escapeHtml(s.city):'')+
+          '／約'+s._dist+'km／'+escapeHtml(s._dir)+'（'+s._bearing+'°）／'+precision+
+          (s.note?'　'+escapeHtml(s.note):'')+(s.url?'　<a href="'+escapeHtml(s.url)+'" target="_blank" rel="noopener">公式・出典</a>':'')+'</div></div>';
+  }
 
   let html='<div class="result">';
-  html+='<h2>'+pref+'のあなたへ（守護神：'+gogyo+'）</h2>';
-  html+='<div>吉方位：'+goodDirs.map(d=>'<span class="pill">'+d+'</span>').join('')+'　<span class="hint">＋お近くの神社</span></div>';
-  if(!match.length){
-    html+='<div class="empty">この方角に該当する神社が、今のデータにありません。データ拡充をお待ちください（実在のみ掲載のため）。</div>';
+  html+='<h2>'+escapeHtml(pref)+'のあなたへ（守護神：'+escapeHtml(gogyo+'）')+'</h2>';
+  html+='<div>吉方位：'+goodDirs.map(d=>'<span class="pill">'+escapeHtml(d)+'</span>').join('')+'　<span class="hint">＋約40km以内の近場も参考表示</span></div>';
+  html+='<div class="hint" style="margin-top:6px;">基準地点：'+escapeHtml(homeInfo.address || pref)+'（'+escapeHtml(homeInfo.source)+'）</div>';
+  if(!goodMatches.length && !nearby.length){
+    html+='<div class="empty">該当する神社が、今のデータにありません。データ拡充をお待ちください（実在のみ掲載のため）。</div>';
   }else{
-    match.forEach(s=>{
-      const tag = s._near ? 'お近く' : (s._dir+'の方角');
-      html+='<div class="jinja"><div class="nm">'+s.name+'</div>'+
-            '<div class="meta"><span class="pill">'+tag+'</span>'+s.pref+(s.city?'・'+s.city:'')+'／約'+s._dist+'km'+
-            (s.note?'　'+s.note:'')+(s.url?'　<a href="'+s.url+'" target="_blank" rel="noopener">公式</a>':'')+'</div></div>';
-    });
+    if(goodMatches.length){
+      html+='<h2 style="margin-top:14px;">吉方位にある神社</h2>';
+      goodMatches.forEach(s=>{
+        const tag = s._near ? '吉方位・お近く' : (s._dir+'の方角');
+        html+=renderShrine(s, tag);
+      });
+    }
+    if(nearby.length){
+      html+='<h2 style="margin-top:14px;">近くの参考神社</h2>';
+      html+='<div class="hint">吉方位ではない場合もあります。距離優先で見たい時の参考です。</div>';
+      nearby.forEach(s=> html+=renderShrine(s, '近場・方角参考'));
+    }
   }
-  html+='<div class="hint" style="margin-top:8px;">※掲載は'+SHRINES.length+'件（順次拡充）。方角は都道府県のおおよその位置から計算した目安です。</div>';
+  const coordCount=SHRINES.filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lng)).length;
+  html+='<div class="hint" style="margin-top:8px;">※掲載は'+SHRINES.length+'件。神社座標あり '+coordCount+'件。距離は直線距離、方角は8方位です。</div>';
   html+='</div>';
   box.innerHTML=html;
 });

@@ -2,11 +2,12 @@
   "_meta": {
     "about": "全国の実在する神社・パワースポットのデータ。吉方位・神社さがしページ用。捏造禁止のためWikidata/Wikipedia/公式サイト等で実在確認できたもののみ。",
     "schema": "name / pref / city / gogyo(木火土金水。不明は空欄) / note / lat / lng / url",
-    "status": "全国47都道府県版（Wikidata SPARQLで神社→現在市区町村→都道府県の行政区画ルートを確認して抽出）",
-    "updated": "2026-06-08",
+    "status": "全国47都道府県版（Wikidata SPARQLで神社→現在市区町村→都道府県の行政区画ルートを確認して抽出。緯度経度付き、かつ名称が神社/神宮/大社/宮/天満宮/稲荷/八幡等と分かるものを優先）",
+    "updated": "2026-06-09",
     "source": "Wikidata Query Service; urlは公式サイト(P856)優先、なければ日本語Wikipedia、なければWikidata item",
     "prefecture_count": 47,
     "shrine_count": 376,
+    "coordinate_count": 376,
     "per_prefecture_counts": {
       "北海道": 8,
       "青森県": 8,
@@ -56,185 +57,307 @@
       "鹿児島県": 8,
       "沖縄県": 8
     },
+    "per_prefecture_coordinate_counts": {
+      "北海道": 8,
+      "青森県": 8,
+      "岩手県": 8,
+      "宮城県": 8,
+      "秋田県": 8,
+      "山形県": 8,
+      "福島県": 8,
+      "茨城県": 8,
+      "栃木県": 8,
+      "群馬県": 8,
+      "埼玉県": 8,
+      "千葉県": 8,
+      "東京都": 8,
+      "神奈川県": 8,
+      "新潟県": 8,
+      "富山県": 8,
+      "石川県": 8,
+      "福井県": 8,
+      "山梨県": 8,
+      "長野県": 8,
+      "岐阜県": 8,
+      "静岡県": 8,
+      "愛知県": 8,
+      "三重県": 8,
+      "滋賀県": 8,
+      "京都府": 8,
+      "大阪府": 8,
+      "兵庫県": 8,
+      "奈良県": 8,
+      "和歌山県": 8,
+      "鳥取県": 8,
+      "島根県": 8,
+      "岡山県": 8,
+      "広島県": 8,
+      "山口県": 8,
+      "徳島県": 8,
+      "香川県": 8,
+      "愛媛県": 8,
+      "高知県": 8,
+      "福岡県": 8,
+      "佐賀県": 8,
+      "長崎県": 8,
+      "熊本県": 8,
+      "大分県": 8,
+      "宮崎県": 8,
+      "鹿児島県": 8,
+      "沖縄県": 8
+    },
     "under_minimum_5": [],
-    "query_errors": []
+    "query_errors": [],
+    "rejected_label_examples": {
+      "北海道": [],
+      "青森県": [],
+      "岩手県": [],
+      "宮城県": [],
+      "秋田県": [],
+      "山形県": [],
+      "福島県": [
+        "伊勢大御神 (南相馬市)"
+      ],
+      "茨城県": [],
+      "栃木県": [],
+      "群馬県": [],
+      "埼玉県": [],
+      "千葉県": [
+        "庚申様",
+        "庚申堂",
+        "弁財天",
+        "金光教銚子教会"
+      ],
+      "東京都": [],
+      "神奈川県": [],
+      "新潟県": [
+        "白滝"
+      ],
+      "富山県": [],
+      "石川県": [],
+      "福井県": [],
+      "山梨県": [],
+      "長野県": [],
+      "岐阜県": [],
+      "静岡県": [
+        "摂社 雷電社"
+      ],
+      "愛知県": [],
+      "三重県": [],
+      "滋賀県": [],
+      "京都府": [
+        "（参考）松尾寺院青葉山権現"
+      ],
+      "大阪府": [],
+      "兵庫県": [],
+      "奈良県": [
+        "円成寺白山堂",
+        "円成寺春日堂",
+        "春日山原始林"
+      ],
+      "和歌山県": [],
+      "鳥取県": [
+        "二上山",
+        "岩井温泉"
+      ],
+      "島根県": [],
+      "岡山県": [],
+      "広島県": [],
+      "山口県": [],
+      "徳島県": [],
+      "香川県": [],
+      "愛媛県": [],
+      "高知県": [],
+      "福岡県": [],
+      "佐賀県": [],
+      "長崎県": [],
+      "熊本県": [],
+      "大分県": [],
+      "宮崎県": [],
+      "鹿児島県": [],
+      "沖縄県": []
+    }
   },
   "shrines": [
     {
-      "name": "義経神社",
+      "name": "宗谷岬神社",
       "pref": "北海道",
-      "city": "平取町",
+      "city": "稚内市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yoshitsune-jinja.com/website/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%97%E8%B0%B7%E5%B2%AC%E7%A5%9E%E7%A4%BE",
+      "lng": 141.934777777,
+      "lat": 45.521833333
     },
     {
-      "name": "湯倉神社",
+      "name": "常呂神社",
       "pref": "北海道",
-      "city": "函館市",
+      "city": "北見市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yukurajinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%B8%B8%E5%91%82%E7%A5%9E%E7%A4%BE",
+      "lng": 144.081785,
+      "lat": 44.120476
     },
     {
-      "name": "樽前山神社",
+      "name": "中標津神社",
       "pref": "北海道",
-      "city": "苫小牧市",
+      "city": "中標津町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tarumaesanjinja.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A8%99%E6%B4%A5%E7%A5%9E%E7%A4%BE",
+      "lng": 144.975492,
+      "lat": 43.544725
     },
     {
-      "name": "弥彦神社",
+      "name": "金刀比羅神社",
       "pref": "北海道",
-      "city": "中央区",
+      "city": "根室市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.iyahiko.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%88%80%E6%AF%94%E7%BE%85%E7%A5%9E%E7%A4%BE_(%E6%A0%B9%E5%AE%A4%E5%B8%82)",
+      "lng": 145.587472,
+      "lat": 43.343789
     },
     {
-      "name": "永山神社",
+      "name": "網走神社",
       "pref": "北海道",
-      "city": "旭川市",
+      "city": "網走市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hokkaidou-asahikawa-nagayamajinnja.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%B6%B2%E8%B5%B0%E7%A5%9E%E7%A4%BE",
+      "lng": 144.270194,
+      "lat": 44.015722
     },
     {
-      "name": "新琴似神社",
+      "name": "呼人神社",
       "pref": "北海道",
-      "city": "新琴似",
+      "city": "網走市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://shinkotonijinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%91%BC%E4%BA%BA%E7%A5%9E%E7%A4%BE",
+      "lng": 144.2205,
+      "lat": 43.960694444
     },
     {
-      "name": "札幌護国神社",
+      "name": "鳥取神社",
       "pref": "北海道",
-      "city": "中央区",
+      "city": "釧路市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sapporo-gokoku.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%B3%A5%E5%8F%96%E7%A5%9E%E7%A4%BE_(%E9%87%A7%E8%B7%AF%E5%B8%82)",
+      "lng": 144.352847,
+      "lat": 43.012639
     },
     {
-      "name": "刈田神社",
+      "name": "厳島神社",
       "pref": "北海道",
-      "city": "登別市",
+      "city": "釧路市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kattajinja.jimdo.com/"
+      "url": "http://kushiro-itsukushimajinja.com/english/",
+      "lng": 144.37194444,
+      "lat": 42.97194444
     },
     {
-      "name": "櫛引八幡宮",
+      "name": "大間稲荷神社",
       "pref": "青森県",
-      "city": "八幡",
+      "city": "大間町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kushihikihachimangu.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%A8%B2%E8%8D%B7%E7%A5%9E%E7%A4%BE_(%E5%A4%A7%E9%96%93%E7%94%BA)",
+      "lng": 140.911389,
+      "lat": 41.525556
     },
     {
-      "name": "長者山新羅神社",
+      "name": "矢越八幡宮",
       "pref": "青森県",
-      "city": "長者",
+      "city": "佐井村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.at-ml.jp/72215/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%9F%A2%E8%B6%8A%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 140.839028,
+      "lat": 41.414694
     },
     {
-      "name": "高山稲荷神社",
+      "name": "脇野沢八幡宮",
       "pref": "青森県",
-      "city": "つがる市",
+      "city": "むつ市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://takayamainari.jp/"
+      "url": "http://www.wikidata.org/entity/Q132125493",
+      "lng": 140.824772112,
+      "lat": 41.146755206
     },
     {
-      "name": "秋葉山神社",
+      "name": "愛宕神社",
       "pref": "青森県",
-      "city": "八戸市",
+      "city": "むつ市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://shinto-shrine-871.business.site/"
+      "url": "http://www.wikidata.org/entity/Q132125494",
+      "lng": 140.822309266,
+      "lat": 41.140596035
     },
     {
-      "name": "岩木山神社",
+      "name": "市杵島神社",
       "pref": "青森県",
-      "city": "百沢",
+      "city": "むつ市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://iwakiyamajinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q132125562",
+      "lng": 140.816881638,
+      "lat": 41.136733127
     },
     {
-      "name": "弘前八幡宮",
+      "name": "八幡宮",
       "pref": "青森県",
-      "city": "弘前市",
+      "city": "むつ市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://hirosaki-hachimangu.com/"
+      "url": "http://www.wikidata.org/entity/Q132125560",
+      "lng": 140.814399698,
+      "lat": 41.13252695
     },
     {
-      "name": "青森県護国神社",
+      "name": "稲荷神社",
       "pref": "青森県",
-      "city": "下白銀町",
+      "city": "むつ市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://aomorigokoku-housankai.com/"
+      "url": "http://www.wikidata.org/entity/Q132125495",
+      "lng": 140.805118328,
+      "lat": 41.130097807
     },
     {
-      "name": "熊野奥照神社",
+      "name": "弁天宮",
       "pref": "青森県",
-      "city": "弘前市",
+      "city": "平内町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.city.hirosaki.aomori.jp/gaiyou/bunkazai/kuni/kuni15.html"
+      "url": "http://www.wikidata.org/entity/Q132125498",
+      "lng": 140.871703279,
+      "lat": 41.016352854
     },
     {
-      "name": "桜山神社",
+      "name": "金刀比羅神社 (久慈市)",
       "pref": "岩手県",
-      "city": "盛岡市",
+      "city": "久慈市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sakurayamajinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%88%80%E6%AF%94%E7%BE%85%E7%A5%9E%E7%A4%BE_(%E4%B9%85%E6%85%88%E5%B8%82)",
+      "lng": 141.791306,
+      "lat": 40.203194
     },
     {
-      "name": "盛岡八幡宮",
+      "name": "鵜鳥神社",
       "pref": "岩手県",
-      "city": "盛岡市",
+      "city": "普代村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://morioka8man.jp/"
-    },
-    {
-      "name": "小鎚神社",
-      "pref": "岩手県",
-      "city": "大槌町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kozuchi-shrine.jimdofree.com/"
-    },
-    {
-      "name": "駒形神社",
-      "pref": "岩手県",
-      "city": "胆沢郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://komagata.iwate.jp/"
-    },
-    {
-      "name": "横山八幡宮",
-      "pref": "岩手県",
-      "city": "宮古市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://y-hachimangu.com/"
-    },
-    {
-      "name": "榊山稲荷神社",
-      "pref": "岩手県",
-      "city": "盛岡市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://kaiunjinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%B5%9C%E9%B3%A5%E7%A5%9E%E7%A4%BE",
+      "lng": 141.852111111,
+      "lat": 40.0095
     },
     {
       "name": "黒森神社",
@@ -242,999 +365,1279 @@
       "city": "宮古市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E6%A3%AE%E7%A5%9E%E7%A4%BE"
+      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E6%A3%AE%E7%A5%9E%E7%A4%BE",
+      "lng": 141.940556,
+      "lat": 39.660806
     },
     {
-      "name": "鹿島神社",
+      "name": "横山八幡宮",
       "pref": "岩手県",
-      "city": "一関市",
+      "city": "宮古市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E7%A5%9E%E7%A4%BE_(%E4%B8%80%E9%96%A2%E5%B8%82%E7%9C%9F%E6%9F%B4)"
+      "url": "http://y-hachimangu.com/",
+      "lng": 141.943694,
+      "lat": 39.638194
     },
     {
-      "name": "大崎八幡宮",
+      "name": "山田八幡宮",
+      "pref": "岩手県",
+      "city": "山田町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 141.948056,
+      "lat": 39.468056
+    },
+    {
+      "name": "大槌稲荷神社",
+      "pref": "岩手県",
+      "city": "大槌町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A7%8C%E7%A8%B2%E8%8D%B7%E7%A5%9E%E7%A4%BE",
+      "lng": 141.918055555,
+      "lat": 39.359722222
+    },
+    {
+      "name": "小鎚神社",
+      "pref": "岩手県",
+      "city": "大槌町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://kozuchi-shrine.jimdofree.com/",
+      "lng": 141.897167,
+      "lat": 39.358056
+    },
+    {
+      "name": "鵜住神社",
+      "pref": "岩手県",
+      "city": "鵜住居町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%B5%9C%E4%BD%8F%E7%A5%9E%E7%A4%BE",
+      "lng": 141.883888888,
+      "lat": 39.324722222
+    },
+    {
+      "name": "御崎神社",
       "pref": "宮城県",
-      "city": "青葉区",
+      "city": "桃生郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osakihachimangu.com/"
+      "url": "http://www.wikidata.org/entity/Q135069871",
+      "lng": 141.671475,
+      "lat": 38.861266
     },
     {
-      "name": "鹿島御児神社",
-      "pref": "宮城県",
-      "city": "牡鹿郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kashimamiko.org/"
-    },
-    {
-      "name": "二柱神社",
-      "pref": "宮城県",
-      "city": "泉区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.f-shrine.com/"
-    },
-    {
-      "name": "黄金山神社",
-      "pref": "宮城県",
-      "city": "涌谷町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://wakuya-koganeyama.info/kogane-annai/"
-    },
-    {
-      "name": "榴岡天満宮",
-      "pref": "宮城県",
-      "city": "榴ケ岡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tsutsujigaokatenmangu.jp/"
-    },
-    {
-      "name": "陸奥総社宮",
-      "pref": "宮城県",
-      "city": "多賀城市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sousyanomiya.jp/"
-    },
-    {
-      "name": "計仙麻大嶋神社",
+      "name": "早馬神社",
       "pref": "宮城県",
       "city": "気仙沼市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ohshima.miyagi.jp/"
+      "url": "https://hayama.jinja.jp/",
+      "lng": 141.638889,
+      "lat": 38.903056
     },
     {
-      "name": "和我神社（築館）",
+      "name": "大島神社",
       "pref": "宮城県",
-      "city": "栗原郡",
+      "city": "桃生郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://miyagi-jinjacho.or.jp/jinja-search/detail.php?code=310020562"
+      "url": "http://www.wikidata.org/entity/Q135069870",
+      "lng": 141.622894,
+      "lat": 38.87265
     },
     {
-      "name": "土崎神明社",
+      "name": "大島神社",
+      "pref": "宮城県",
+      "city": "桃生郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135194398",
+      "lng": 141.622894,
+      "lat": 38.87265
+    },
+    {
+      "name": "五十鈴神社",
+      "pref": "宮城県",
+      "city": "気仙沼市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BA%94%E5%8D%81%E9%88%B4%E7%A5%9E%E7%A4%BE_(%E6%B0%97%E4%BB%99%E6%B2%BC%E5%B8%82)",
+      "lng": 141.579194444,
+      "lat": 38.907111111
+    },
+    {
+      "name": "五十鈴神社境内龍神社",
+      "pref": "宮城県",
+      "city": "牡鹿郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135194372",
+      "lng": 141.579136,
+      "lat": 38.906995
+    },
+    {
+      "name": "羽黒神社",
+      "pref": "宮城県",
+      "city": "牡鹿郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135194375",
+      "lng": 141.55003,
+      "lat": 38.897888
+    },
+    {
+      "name": "岩倉神社",
+      "pref": "宮城県",
+      "city": "桃生郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135194389",
+      "lng": 141.55392,
+      "lat": 38.848645
+    },
+    {
+      "name": "大日霊貴神社",
       "pref": "秋田県",
-      "city": "秋田市",
+      "city": "鹿角市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tsuchizakishinnmeisha.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%97%A5%E9%9C%8A%E8%B2%B4%E7%A5%9E%E7%A4%BE",
+      "lng": 140.805806,
+      "lat": 40.144333
     },
     {
-      "name": "真山神社",
+      "name": "老犬神社",
       "pref": "秋田県",
-      "city": "男鹿市",
+      "city": "大館市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.namahage.ne.jp/~shinzanjinja/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%80%81%E7%8A%AC%E7%A5%9E%E7%A4%BE",
+      "lng": 140.686944444,
+      "lat": 40.238888888
     },
     {
-      "name": "彌高神社",
+      "name": "三哲神社",
       "pref": "秋田県",
-      "city": "秋田市",
+      "city": "大館市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.iyataka-jinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%93%B2%E7%A5%9E%E7%A4%BE",
+      "lng": 140.687227777,
+      "lat": 40.218441666
     },
     {
-      "name": "日吉神社",
+      "name": "松舘菅原神社",
       "pref": "秋田県",
-      "city": "秋田市",
+      "city": "鹿角市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://hiyoshi-jinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E8%88%98%E8%8F%85%E5%8E%9F%E7%A5%9E%E7%A4%BE",
+      "lng": 140.779944444,
+      "lat": 40.159
     },
     {
-      "name": "金峰神社 (にかほ市)",
+      "name": "天照皇御祖神社",
       "pref": "秋田県",
-      "city": "にかほ市",
+      "city": "鹿角市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://akita-jinjacho.sakura.ne.jp/tatsujin_etc/01_jinja/nikaho/10_kinbou.html"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%85%A7%E7%9A%87%E5%BE%A1%E7%A5%96%E7%A5%9E%E7%A4%BE",
+      "lng": 140.790333333,
+      "lat": 40.110555555
     },
     {
-      "name": "高岩神社",
+      "name": "大館八幡神社",
       "pref": "秋田県",
-      "city": "能代市",
+      "city": "大館市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B2%A9%E7%A5%9E%E7%A4%BE_(%E8%83%BD%E4%BB%A3%E5%B8%82)"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%A4%A8%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 140.571861111,
+      "lat": 40.274083333
     },
     {
-      "name": "金澤八幡宮",
+      "name": "素波里神社",
       "pref": "秋田県",
-      "city": "金沢",
+      "city": "藤里町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%BE%A4%E5%85%AB%E5%B9%A1%E5%AE%AE"
+      "url": "https://ja.wikipedia.org/wiki/%E7%B4%A0%E6%B3%A2%E9%87%8C%E7%A5%9E%E7%A4%BE",
+      "lng": 140.220166666,
+      "lat": 40.332666666
     },
     {
-      "name": "赤神神社",
+      "name": "白瀑神社",
       "pref": "秋田県",
-      "city": "男鹿市",
+      "city": "八峰町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%A5%9E%E7%A5%9E%E7%A4%BE"
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E7%80%91%E7%A5%9E%E7%A4%BE",
+      "lng": 140.037967,
+      "lat": 40.338861
     },
     {
-      "name": "松岬神社",
+      "name": "石動神社",
       "pref": "山形県",
-      "city": "米沢市",
+      "city": "新庄市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.uesugi-jinja.or.jp/about/#matsugasakijinja"
+      "url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%8B%95%E7%A5%9E%E7%A4%BE_(%E6%96%B0%E5%BA%84%E5%B8%82)",
+      "lng": 140.359722,
+      "lat": 38.819167
     },
     {
-      "name": "上杉神社",
+      "name": "西山愛宕神社",
       "pref": "山形県",
-      "city": "米沢市",
+      "city": "新庄市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.uesugi-jinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B1%B1%E6%84%9B%E5%AE%95%E7%A5%9E%E7%A4%BE",
+      "lng": 140.278611,
+      "lat": 38.776944
     },
     {
-      "name": "荘内神社",
+      "name": "鳥越八幡神社",
       "pref": "山形県",
-      "city": "鶴岡市",
+      "city": "新庄市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://jinjahan.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%B3%A5%E8%B6%8A%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 140.316389,
+      "lat": 38.741667
+    },
+    {
+      "name": "今熊野神社",
+      "pref": "山形県",
+      "city": "戸沢村",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E7%86%8A%E9%87%8E%E7%A5%9E%E7%A4%BE_(%E6%88%B8%E6%B2%A2%E6%9D%91)",
+      "lng": 140.146944444,
+      "lat": 38.661388888
     },
     {
       "name": "鳥海山大物忌神社",
       "pref": "山形県",
-      "city": "飽海郡",
+      "city": "遊佐町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www9.piala.or.jp/thoukai/"
+      "url": "http://www.wikidata.org/entity/Q135194452",
+      "lng": 140.048709,
+      "lat": 39.097732
     },
     {
-      "name": "熊野神社",
+      "name": "鳥海山大物忌神社",
       "pref": "山形県",
-      "city": "宮内町",
+      "city": "遊佐町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kumano-taisha.or.jp"
+      "url": "http://www9.piala.or.jp/thoukai/",
+      "lng": 140.048694444,
+      "lat": 39.097694444
     },
     {
-      "name": "出羽神社",
+      "name": "鳥海山大物忌神社吹浦口之宮",
       "pref": "山形県",
-      "city": "田川郡",
+      "city": "遊佐町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.dewasanzan.jp/publics/index/55/"
+      "url": "http://www.wikidata.org/entity/Q135194453",
+      "lng": 139.878929,
+      "lat": 39.075283
     },
     {
-      "name": "湯殿山神社",
+      "name": "鳥海山大物忌神社蕨岡口之宮",
       "pref": "山形県",
-      "city": "鶴岡市",
+      "city": "遊佐町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.dewasanzan.jp/publics/index/52/"
+      "url": "http://www.wikidata.org/entity/Q135194454",
+      "lng": 139.9439,
+      "lat": 38.996876
     },
     {
-      "name": "月山神社",
-      "pref": "山形県",
-      "city": "庄内町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.dewasanzan.jp/publics/index/51/"
-    },
-    {
-      "name": "大國魂神社",
+      "name": "子眉嶺神社",
       "pref": "福島県",
-      "city": "石城郡",
+      "city": "宇多郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ookunisama.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%AD%90%E7%9C%89%E5%B6%BA%E7%A5%9E%E7%A4%BE",
+      "lng": 140.896131,
+      "lat": 37.852316
     },
     {
-      "name": "田村神社 (郡山市)",
+      "name": "御刀神社",
       "pref": "福島県",
-      "city": "郡山市",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kanko-koriyama.gr.jp/tourism/detail2-3-80.html"
+      "url": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E5%88%80%E7%A5%9E%E7%A4%BE",
+      "lng": 140.990253,
+      "lat": 37.701497
     },
     {
-      "name": "開成山大神宮",
+      "name": "鹿島御子神社",
       "pref": "福島県",
-      "city": "郡山市",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kaiseizan.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E5%BE%A1%E5%AD%90%E7%A5%9E%E7%A4%BE",
+      "lng": 140.96685,
+      "lat": 37.702916
     },
     {
-      "name": "福島縣護國神社",
+      "name": "鹿嶋御子神社古社地",
       "pref": "福島県",
-      "city": "福島市",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gokoku559.info/"
+      "url": "http://www.wikidata.org/entity/Q135194402",
+      "lng": 140.967273,
+      "lat": 37.701491
     },
     {
-      "name": "福島稲荷神社",
+      "name": "日吉神社",
       "pref": "福島県",
-      "city": "福島市",
+      "city": "南相馬市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.fukushima-inari.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%90%89%E7%A5%9E%E7%A4%BE_(%E5%8D%97%E7%9B%B8%E9%A6%AC%E5%B8%82)",
+      "lng": 140.970944444,
+      "lat": 37.690222222
     },
     {
-      "name": "青海神社",
+      "name": "押雄神社",
       "pref": "福島県",
-      "city": "蒲原郡",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.aomi-jinjya.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135040021",
+      "lng": 140.956733,
+      "lat": 37.660239
     },
     {
-      "name": "二本松神社",
+      "name": "日祭神社",
       "pref": "福島県",
-      "city": "二本松市",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nihonmatsu-shrine.com/"
+      "url": "http://www.wikidata.org/entity/Q135040017",
+      "lng": 141.005662,
+      "lat": 37.607347
     },
     {
-      "name": "石都々古和気神社",
+      "name": "多珂神社",
       "pref": "福島県",
-      "city": "石川町",
+      "city": "行方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www13.plala.or.jp/seihuukan/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%9A%E7%8F%82%E7%A5%9E%E7%A4%BE",
+      "lng": 140.992644,
+      "lat": 37.600781
     },
     {
-      "name": "筑波山神社",
+      "name": "八幡神社",
       "pref": "茨城県",
-      "city": "筑波",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tsukubasanjinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q135154053",
+      "lng": 140.794769,
+      "lat": 36.852383
     },
     {
-      "name": "大中神社",
+      "name": "愛宕神社",
       "pref": "茨城県",
-      "city": "常陸太田市",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.oonakajinjya.com/"
+      "url": "http://www.wikidata.org/entity/Q135156064",
+      "lng": 140.793808,
+      "lat": 36.854607
     },
     {
-      "name": "眞弓神社",
+      "name": "稲荷神社",
       "pref": "茨城県",
-      "city": "常陸太田市",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.mayumi-jinja.or.jp"
+      "url": "http://www.wikidata.org/entity/Q135155789",
+      "lng": 140.790421,
+      "lat": 36.853909
     },
     {
-      "name": "国王神社",
+      "name": "雷神社",
       "pref": "茨城県",
-      "city": "坂東市",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kokuou.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135154345",
+      "lng": 140.787949,
+      "lat": 36.854923
     },
     {
-      "name": "取手八坂神社",
+      "name": "佐波波地祇神社",
       "pref": "茨城県",
-      "city": "取手市",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://toride-yasaka.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135154917",
+      "lng": 140.79213,
+      "lat": 36.832664
     },
     {
-      "name": "酒列磯前神社",
+      "name": "天神宮",
       "pref": "茨城県",
-      "city": "那珂郡",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sakatura.org/"
+      "url": "http://www.wikidata.org/entity/Q135155792",
+      "lng": 140.78331,
+      "lat": 36.832405
     },
     {
-      "name": "常磐神社",
+      "name": "東光宮大山祇神社",
       "pref": "茨城県",
-      "city": "水戸市",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://komonsan.jp/"
+      "url": "http://www.wikidata.org/entity/Q135155794",
+      "lng": 140.766541,
+      "lat": 36.835728
     },
     {
-      "name": "鹿島神宮",
+      "name": "稲荷神社",
       "pref": "茨城県",
-      "city": "宮中",
+      "city": "北茨城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kashimajingu.jp/"
-    },
-    {
-      "name": "日光東照宮",
-      "pref": "栃木県",
-      "city": "日光市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.toshogu.jp/english/"
-    },
-    {
-      "name": "乃木神社",
-      "pref": "栃木県",
-      "city": "那須塩原市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nasu-nogijinja.jp/"
-    },
-    {
-      "name": "日光二荒山神社",
-      "pref": "栃木県",
-      "city": "日光市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.futarasan.info/"
-    },
-    {
-      "name": "名草厳島神社",
-      "pref": "栃木県",
-      "city": "足利市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ashikaga-kankou.jp/spot/nagusaitsukushima"
-    },
-    {
-      "name": "髙靇神社",
-      "pref": "栃木県",
-      "city": "日光市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://takaokami.skr.jp/"
-    },
-    {
-      "name": "那須神社",
-      "pref": "栃木県",
-      "city": "大田原市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nasujinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q135155505",
+      "lng": 140.771317,
+      "lat": 36.826206
     },
     {
       "name": "那須温泉神社",
       "pref": "栃木県",
+      "city": "那須町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://nasu-yuzen.jp/",
+      "lng": 139.999174,
+      "lat": 37.100031
+    },
+    {
+      "name": "境内社 愛宕神社",
+      "pref": "栃木県",
+      "city": "那須町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q123201518",
+      "lng": 139.999177065,
+      "lat": 37.098653731
+    },
+    {
+      "name": "健武山神社",
+      "pref": "栃木県",
       "city": "那須郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nasu-yuzen.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%81%A5%E6%AD%A6%E5%B1%B1%E7%A5%9E%E7%A4%BE",
+      "lng": 140.19477,
+      "lat": 36.749826
     },
     {
-      "name": "朝日森天満宮",
+      "name": "鷲子山上神社",
       "pref": "栃木県",
-      "city": "佐野市",
+      "city": "那珂川町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://asahimoritenmangu.wixsite.com/asahimoritenmangu"
+      "url": "http://www.torinokosan.com/",
+      "lng": 140.23505556,
+      "lat": 36.69972222
     },
     {
-      "name": "前橋東照宮",
+      "name": "浅間神社",
+      "pref": "栃木県",
+      "city": "那須烏山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135259633",
+      "lng": 140.170319,
+      "lat": 36.656631
+    },
+    {
+      "name": "八幡宮",
+      "pref": "栃木県",
+      "city": "那須烏山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135260702",
+      "lng": 140.169403,
+      "lat": 36.657116
+    },
+    {
+      "name": "八天神社",
+      "pref": "栃木県",
+      "city": "那須烏山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135259636",
+      "lng": 140.161453,
+      "lat": 36.65506
+    },
+    {
+      "name": "天満宮",
+      "pref": "栃木県",
+      "city": "那須烏山市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135259635",
+      "lng": 140.155075,
+      "lat": 36.661968
+    },
+    {
+      "name": "金精神社",
       "pref": "群馬県",
-      "city": "大手町",
+      "city": "片品村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.toshogu.net/maebashi/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E7%B2%BE%E7%A5%9E%E7%A4%BE_(%E6%97%A5%E5%85%89%E5%B8%82%E3%83%BB%E7%89%87%E5%93%81%E6%9D%91)",
+      "lng": 139.394756,
+      "lat": 36.818809
     },
     {
-      "name": "咲前神社",
+      "name": "武尊神社",
       "pref": "群馬県",
-      "city": "安中市",
+      "city": "片品村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sakisaki.net/pages/27/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E5%B0%8A%E7%A5%9E%E7%A4%BE_(%E7%89%87%E5%93%81%E6%9D%91%E8%8A%B1%E5%92%B2)",
+      "lng": 139.190056,
+      "lat": 36.752139
     },
     {
-      "name": "世良田東照宮",
+      "name": "愛宕神社",
       "pref": "群馬県",
-      "city": "太田市",
+      "city": "沼田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.net-you.com/toshogu/"
+      "url": "http://www.wikidata.org/entity/Q135425756",
+      "lng": 139.073639,
+      "lat": 36.660698
     },
     {
-      "name": "総社神社",
+      "name": "神明宮",
       "pref": "群馬県",
-      "city": "元総社町",
+      "city": "沼田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.net-you.com/souja/"
+      "url": "http://www.wikidata.org/entity/Q135425591",
+      "lng": 139.051102,
+      "lat": 36.652473
     },
     {
-      "name": "妙義神社",
+      "name": "神明宮",
       "pref": "群馬県",
-      "city": "富岡市",
+      "city": "沼田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.myougi.jp/"
+      "url": "http://www.wikidata.org/entity/Q135425910",
+      "lng": 139.063065,
+      "lat": 36.641602
     },
     {
-      "name": "玉村八幡宮",
+      "name": "西宮神社",
       "pref": "群馬県",
-      "city": "玉村町",
+      "city": "沼田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://top.tamamurahachimangu.net/"
+      "url": "http://www.wikidata.org/entity/Q135425132",
+      "lng": 139.051468,
+      "lat": 36.64727
     },
     {
-      "name": "高山神社",
+      "name": "神明宮",
       "pref": "群馬県",
-      "city": "太田市",
+      "city": "沼田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://takayamajinjya.com/"
+      "url": "http://www.wikidata.org/entity/Q135425416",
+      "lng": 139.049911,
+      "lat": 36.645805
     },
     {
-      "name": "渋川八幡宮",
+      "name": "栗生神社",
       "pref": "群馬県",
-      "city": "渋川市",
+      "city": "桐生市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://shibukawa-hachimangu.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%A0%97%E7%94%9F%E7%A5%9E%E7%A4%BE",
+      "lng": 139.275,
+      "lat": 36.54333
     },
     {
-      "name": "瀧宮神社",
+      "name": "八幡社",
       "pref": "埼玉県",
-      "city": "深谷市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.takinomiya.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134886449",
+      "lng": 139.657227,
+      "lat": 36.212955
     },
     {
-      "name": "草加神社",
+      "name": "鷲神社",
       "pref": "埼玉県",
-      "city": "草加市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sokajinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q134886780",
+      "lng": 139.653702,
+      "lat": 36.207058
     },
     {
-      "name": "所澤神明社",
+      "name": "鷲神社",
       "pref": "埼玉県",
-      "city": "所沢市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shinmeisha.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134887290",
+      "lng": 139.688278,
+      "lat": 36.191444
     },
     {
-      "name": "荒薙山王教神社",
+      "name": "鷲神社",
       "pref": "埼玉県",
-      "city": "日高市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sannokyojinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q134885972",
+      "lng": 139.676865,
+      "lat": 36.1992
     },
     {
-      "name": "賀茂神社",
+      "name": "出流神社",
       "pref": "埼玉県",
-      "city": "足立郡",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.saitama-jinjacho.or.jp/shrine/9124/"
+      "url": "http://www.wikidata.org/entity/Q134885971",
+      "lng": 139.669159,
+      "lat": 36.201199
     },
     {
-      "name": "中氷川神社",
+      "name": "鷲神社",
       "pref": "埼玉県",
-      "city": "入間郡",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nakahikawa.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134887127",
+      "lng": 139.666275,
+      "lat": 36.202461
     },
     {
-      "name": "三峯神社",
+      "name": "浅間神社",
       "pref": "埼玉県",
-      "city": "秩父市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.mitsuminejinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134886779",
+      "lng": 139.683121,
+      "lat": 36.176006
     },
     {
-      "name": "氷川神社",
+      "name": "鷲神社",
       "pref": "埼玉県",
-      "city": "川越市",
+      "city": "加須市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kawagoehikawa.jp/"
+      "url": "http://www.wikidata.org/entity/Q134886627",
+      "lng": 139.678833,
+      "lat": 36.179634
     },
     {
-      "name": "玉崎神社",
-      "pref": "千葉県",
-      "city": "旭市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tamasakijinja.com/"
-    },
-    {
-      "name": "玉前神社",
-      "pref": "千葉県",
-      "city": "上埴生郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tamasaki.org/tamasaki_english/"
-    },
-    {
-      "name": "玉崎神社",
-      "pref": "千葉県",
-      "city": "市原市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tamasaki.org/"
-    },
-    {
-      "name": "諏訪神社 (流山市)",
-      "pref": "千葉県",
-      "city": "流山市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.suwano-mori.com/"
-    },
-    {
-      "name": "二宮神社",
-      "pref": "千葉県",
-      "city": "千葉郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ninomiya-jinja.jp/"
-    },
-    {
-      "name": "松戸神社",
-      "pref": "千葉県",
-      "city": "松戸市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.matsudojinja.com/"
-    },
-    {
-      "name": "葛飾八幡宮 (市川市)",
-      "pref": "千葉県",
-      "city": "八幡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.katsushikahachimangu.com/"
-    },
-    {
-      "name": "銚港神社",
+      "name": "川口神社",
       "pref": "千葉県",
       "city": "銚子市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.chokojinja.info/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%8F%A3%E7%A5%9E%E7%A4%BE_(%E9%8A%9A%E5%AD%90%E5%B8%82)",
+      "lng": 140.855403,
+      "lat": 35.738239
     },
     {
-      "name": "雪ヶ谷八幡神社",
-      "pref": "東京都",
-      "city": "大田区",
+      "name": "御嶽神社",
+      "pref": "千葉県",
+      "city": "銚子市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yukigaya.info/"
+      "url": "http://www.wikidata.org/entity/Q130382010",
+      "lng": 140.855509,
+      "lat": 35.736933
     },
     {
-      "name": "湯島天満宮",
-      "pref": "東京都",
-      "city": "湯島",
+      "name": "西宮大神",
+      "pref": "千葉県",
+      "city": "銚子市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yushimatenjin.or.jp/pc/eng-page/english.htm"
-    },
-    {
-      "name": "代々木八幡宮",
-      "pref": "東京都",
-      "city": "代々木",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yoyogihachimangu.or.jp/"
-    },
-    {
-      "name": "靖国神社",
-      "pref": "東京都",
-      "city": "九段北",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yasukuni.or.jp/"
-    },
-    {
-      "name": "宇喜田稲荷神社",
-      "pref": "東京都",
-      "city": "北葛西",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ukita-inari.net/"
-    },
-    {
-      "name": "妻恋神社",
-      "pref": "東京都",
-      "city": "湯島",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tsumakoi.jp/"
-    },
-    {
-      "name": "住吉神社",
-      "pref": "東京都",
-      "city": "佃",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sumiyoshijinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134598470",
+      "lng": 140.854172,
+      "lat": 35.735947
     },
     {
       "name": "水天宮",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q130382077",
+      "lng": 140.841814,
+      "lat": 35.736308
+    },
+    {
+      "name": "庚申神社",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q130381531",
+      "lng": 140.847615,
+      "lat": 35.734035
+    },
+    {
+      "name": "琴平神社",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q130381206",
+      "lng": 140.847194,
+      "lat": 35.73173
+    },
+    {
+      "name": "三峯神社",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q130381177",
+      "lng": 140.846955,
+      "lat": 35.731721
+    },
+    {
+      "name": "浅間神社・愛宕神社",
+      "pref": "千葉県",
+      "city": "銚子市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q130380992",
+      "lng": 140.845917,
+      "lat": 35.731418
+    },
+    {
+      "name": "日枝神社",
       "pref": "東京都",
-      "city": "日本橋蛎殻町",
+      "city": "東水元",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.suitengu.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9E%9D%E7%A5%9E%E7%A4%BE_(%E8%91%9B%E9%A3%BE%E5%8C%BA%E6%9D%B1%E6%B0%B4%E5%85%83)",
+      "lng": 139.86776,
+      "lat": 35.79003
     },
     {
-      "name": "座間神社",
-      "pref": "神奈川県",
-      "city": "座間",
+      "name": "熊野神社",
+      "pref": "東京都",
+      "city": "東水元",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://zamajinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q110065528",
+      "lng": 139.86731,
+      "lat": 35.79199
     },
     {
-      "name": "天照山神社",
-      "pref": "神奈川県",
-      "city": "湯河原町",
+      "name": "水元神社",
+      "pref": "東京都",
+      "city": "葛飾区",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.town.yugawara.kanagawa.jp/soshiki/8/1281.html"
+      "url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E5%85%83%E7%A5%9E%E7%A4%BE_(%E8%91%9B%E9%A3%BE%E5%8C%BA)",
+      "lng": 139.856953,
+      "lat": 35.789094
     },
     {
-      "name": "瀬戸神社",
-      "pref": "神奈川県",
-      "city": "瀬戸",
+      "name": "半田稲荷神社",
+      "pref": "東京都",
+      "city": "東金町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.setojinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%8D%8A%E7%94%B0%E7%A8%B2%E8%8D%B7%E7%A5%9E%E7%A4%BE",
+      "lng": 139.8775,
+      "lat": 35.775833333
     },
     {
-      "name": "諏訪神社",
-      "pref": "神奈川県",
-      "city": "横須賀市",
+      "name": "葛西神社",
+      "pref": "東京都",
+      "city": "東金町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osuwasama.com/"
+      "url": "http://kasaijinjya.world.coocan.jp/",
+      "lng": 139.878638888,
+      "lat": 35.771444444
     },
     {
-      "name": "報徳二宮神社",
-      "pref": "神奈川県",
-      "city": "小田原市",
+      "name": "香取神社",
+      "pref": "東京都",
+      "city": "東水元",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ninomiya.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%8F%96%E7%A5%9E%E7%A4%BE_(%E8%91%9B%E9%A3%BE%E5%8C%BA%E6%9D%B1%E6%B0%B4%E5%85%83)",
+      "lng": 139.86956,
+      "lat": 35.78289
     },
     {
-      "name": "児玉神社",
-      "pref": "神奈川県",
-      "city": "藤沢市",
+      "name": "花之木稲荷神社",
+      "pref": "東京都",
+      "city": "新宿",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kodamajinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q110064143",
+      "lng": 139.86553,
+      "lat": 35.77252
     },
     {
-      "name": "諏訪神社",
-      "pref": "神奈川県",
-      "city": "仙石原",
+      "name": "天祖神社",
+      "pref": "東京都",
+      "city": "北小岩",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kintokijinja.com/jinja-suwa.html"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%A5%96%E7%A5%9E%E7%A4%BE_(%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA%E5%8C%97%E5%B0%8F%E5%B2%A9%E4%B8%83%E4%B8%81%E7%9B%AE)",
+      "lng": 139.89381,
+      "lat": 35.74429
+    },
+    {
+      "name": "日枝神社",
+      "pref": "神奈川県",
+      "city": "中原区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9E%9D%E7%A5%9E%E7%A4%BE_(%E5%B7%9D%E5%B4%8E%E5%B8%82)",
+      "lng": 139.667833333,
+      "lat": 35.579027777
+    },
+    {
+      "name": "京濱伏見稲荷神社",
+      "pref": "神奈川県",
+      "city": "中原区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BA%AC%E6%BF%B1%E4%BC%8F%E8%A6%8B%E7%A8%B2%E8%8D%B7%E7%A5%9E%E7%A4%BE",
+      "lng": 139.662116666,
+      "lat": 35.578847222
+    },
+    {
+      "name": "二子神社",
+      "pref": "神奈川県",
+      "city": "高津区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BA%8C%E5%AD%90%E7%A5%9E%E7%A4%BE",
+      "lng": 139.621389,
+      "lat": 35.608611
+    },
+    {
+      "name": "溝口神社",
+      "pref": "神奈川県",
+      "city": "溝口",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.mizonokuchijinjya.org",
+      "lng": 139.610378,
+      "lat": 35.602394
     },
     {
       "name": "春日神社",
       "pref": "神奈川県",
-      "city": "横須賀市",
+      "city": "中原区",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kanagawa-jinja.or.jp/shrine/1205060-000/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5%E7%A5%9E%E7%A4%BE_(%E5%B7%9D%E5%B4%8E%E5%B8%82)",
+      "lng": 139.645555555,
+      "lat": 35.58625
     },
     {
-      "name": "彌彦神社",
+      "name": "橘樹神社 (川崎市)",
+      "pref": "神奈川県",
+      "city": "高津区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%A9%98%E6%A8%B9%E7%A5%9E%E7%A4%BE_(%E5%B7%9D%E5%B4%8E%E5%B8%82)",
+      "lng": 139.626058333,
+      "lat": 35.572736111
+    },
+    {
+      "name": "馬絹神社",
+      "pref": "神奈川県",
+      "city": "宮前区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%A6%AC%E7%B5%B9%E7%A5%9E%E7%A4%BE",
+      "lng": 139.600916666,
+      "lat": 35.583594444
+    },
+    {
+      "name": "若宮八幡宮",
+      "pref": "神奈川県",
+      "city": "川崎区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E5%AE%AE%E5%85%AB%E5%B9%A1%E5%AE%AE_(%E5%B7%9D%E5%B4%8E%E5%B8%82)",
+      "lng": 139.724663888,
+      "lat": 35.534661111
+    },
+    {
+      "name": "荒川神社（村上市荒川）",
       "pref": "新潟県",
-      "city": "弥彦村",
+      "city": "岩船郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yahiko-jinjya.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195154",
+      "lng": 139.600141,
+      "lat": 38.45676
     },
     {
-      "name": "白山神社",
+      "name": "多岐神社（村上市高根）",
       "pref": "新潟県",
-      "city": "一番堀通町",
+      "city": "岩船郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.niigatahakusanjinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195167",
+      "lng": 139.610856,
+      "lat": 38.335483
     },
     {
-      "name": "新潟縣護國神社",
+      "name": "蒲原神社",
       "pref": "新潟県",
-      "city": "中央区",
+      "city": "岩船郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.niigata-gokoku.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195148",
+      "lng": 139.519613,
+      "lat": 38.496173
     },
     {
-      "name": "宝徳山稲荷大社",
+      "name": "筥堅八幡宮",
       "pref": "新潟県",
-      "city": "長岡市",
+      "city": "岩船郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.houtoku.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195149",
+      "lng": 139.515653,
+      "lat": 38.491991
     },
     {
-      "name": "蒼柴神社",
+      "name": "漆山神社",
       "pref": "新潟県",
-      "city": "長岡市",
+      "city": "村上市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.aoshijinja.or.jp/%E8%92%BC%E6%9F%B4%E7%A5%9E%E7%A4%BE%E3%81%AE%E6%AD%B4%E5%8F%B2/history/"
+      "url": "http://www.wikidata.org/entity/Q135040477",
+      "lng": 139.571085,
+      "lat": 38.400657
     },
     {
-      "name": "青海神社",
+      "name": "羽黒神社",
       "pref": "新潟県",
-      "city": "加茂市",
+      "city": "村上市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.aomi-jinjya.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135463129",
+      "lng": 139.523824,
+      "lat": 38.27511
     },
     {
-      "name": "古町愛宕神社",
+      "name": "河内神社",
       "pref": "新潟県",
-      "city": "中央区",
+      "city": "岩船郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.niigata-atago.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195178",
+      "lng": 139.497002,
+      "lat": 38.257878
     },
     {
-      "name": "金峯神社 (長岡市)",
+      "name": "菅原神社",
       "pref": "新潟県",
-      "city": "長岡市",
+      "city": "村上市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kinpu.jp/"
+      "url": "http://www.wikidata.org/entity/Q135462464",
+      "lng": 139.49765,
+      "lat": 38.240162
     },
     {
-      "name": "高瀬神社",
+      "name": "脇子八幡宮",
       "pref": "富山県",
-      "city": "礪波郡",
+      "city": "朝日町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.takase.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%84%87%E5%AD%90%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 137.571653,
+      "lat": 36.958233
     },
     {
-      "name": "高岡関野神社",
+      "name": "八心大市比古神社",
       "pref": "富山県",
-      "city": "高岡市",
+      "city": "黒部市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.takaokasekinojinjya.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E5%BF%83%E5%A4%A7%E5%B8%82%E6%AF%94%E5%8F%A4%E7%A5%9E%E7%A4%BE",
+      "lng": 137.443217,
+      "lat": 36.872278
     },
     {
-      "name": "二上射水神社",
+      "name": "雄山神社峰本社",
       "pref": "富山県",
-      "city": "高岡市",
+      "city": "立山町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.imizujinjya.or.jp/about"
+      "url": "http://www.wikidata.org/entity/Q135195022",
+      "lng": 137.617915,
+      "lat": 36.573203
     },
     {
-      "name": "射水神社",
+      "name": "雄山神社",
       "pref": "富山県",
-      "city": "射水郡",
+      "city": "立山町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.imizujinjya.or.jp/"
+      "url": "http://www.oyamajinja.org/",
+      "lng": 137.617919,
+      "lat": 36.573178
     },
     {
-      "name": "日枝神社",
-      "pref": "富山県",
-      "city": "富山市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hie.jp/"
-    },
-    {
-      "name": "気多神社",
-      "pref": "富山県",
-      "city": "射水郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ketaweb.net/"
-    },
-    {
-      "name": "浅井神社",
-      "pref": "富山県",
-      "city": "礪波郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www3.ic-net.or.jp/~asaijinjya/"
-    },
-    {
-      "name": "諏訪神社",
+      "name": "北鬼江八幡宮",
       "pref": "富山県",
       "city": "魚津市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www115.sakura.ne.jp/~suwajinjya/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%8C%97%E9%AC%BC%E6%B1%9F%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 137.404709,
+      "lat": 36.830707
     },
     {
-      "name": "石浦神社",
-      "pref": "石川県",
-      "city": "本多町",
+      "name": "魚津神社",
+      "pref": "富山県",
+      "city": "魚津市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ishiura.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%AD%9A%E6%B4%A5%E7%A5%9E%E7%A4%BE",
+      "lng": 137.397639,
+      "lat": 36.818222
     },
     {
-      "name": "石川護国神社",
-      "pref": "石川県",
-      "city": "石引",
+      "name": "魚津八幡宮",
+      "pref": "富山県",
+      "city": "魚津市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ishikawagokoku.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%AD%9A%E6%B4%A5%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 137.398972222,
+      "lat": 36.810611111
     },
     {
-      "name": "神目神社",
+      "name": "道神社（氷見市）",
+      "pref": "富山県",
+      "city": "射水郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135194965",
+      "lng": 137.02428,
+      "lat": 36.942255
+    },
+    {
+      "name": "鹿嶋神社",
+      "pref": "石川県",
+      "city": "新川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135195015",
+      "lng": 137.587675,
+      "lat": 36.972345
+    },
+    {
+      "name": "八心大市比古神社",
+      "pref": "石川県",
+      "city": "新川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E5%BF%83%E5%A4%A7%E5%B8%82%E6%AF%94%E5%8F%A4%E7%A5%9E%E7%A4%BE",
+      "lng": 137.443217,
+      "lat": 36.872278
+    },
+    {
+      "name": "布勢神社",
+      "pref": "石川県",
+      "city": "新川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135195020",
+      "lng": 137.473842,
+      "lat": 36.832499
+    },
+    {
+      "name": "雄山神社峰本社",
+      "pref": "石川県",
+      "city": "新川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135195022",
+      "lng": 137.617915,
+      "lat": 36.573203
+    },
+    {
+      "name": "雄山神社",
+      "pref": "石川県",
+      "city": "新川郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.oyamajinja.org/",
+      "lng": 137.617919,
+      "lat": 36.573178
+    },
+    {
+      "name": "奥津比咩神社（海士町）",
       "pref": "石川県",
       "city": "鳳至郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ishikawa-jinjacho.or.jp/shrine/j1730/"
+      "url": "http://www.wikidata.org/entity/Q135194928",
+      "lng": 136.913671,
+      "lat": 37.845986
     },
     {
-      "name": "諸岡比古神社",
+      "name": "須須神社高座宮",
       "pref": "石川県",
-      "city": "鳳至郡",
+      "city": "珠洲郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ishikawa-jinjacho.or.jp/shrine/j1590/"
+      "url": "http://www.wikidata.org/entity/Q135194934",
+      "lng": 137.346237,
+      "lat": 37.498433
     },
     {
-      "name": "椿原天満宮",
+      "name": "須須神社",
       "pref": "石川県",
-      "city": "金沢市",
+      "city": "珠洲郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tsubakihara.wixsite.com/my-site"
+      "url": "https://ja.wikipedia.org/wiki/%E9%A0%88%E9%A0%88%E7%A5%9E%E7%A4%BE",
+      "lng": 137.346667,
+      "lat": 37.498333
     },
     {
-      "name": "大地主神社",
-      "pref": "石川県",
-      "city": "七尾市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sannoushrinenoto.wixsite.com/mysite"
-    },
-    {
-      "name": "大野湊神社",
-      "pref": "石川県",
-      "city": "金沢市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://oonominato.or.jp/"
-    },
-    {
-      "name": "気多大社",
-      "pref": "石川県",
-      "city": "羽咋郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://keta.jp"
-    },
-    {
-      "name": "毛谷黒龍神社",
+      "name": "平泉寺白山神社",
       "pref": "福井県",
-      "city": "福井市",
+      "city": "勝山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kurotatu-jinja.jp/"
+      "url": "http://heisenji.jp/",
+      "lng": 136.542131,
+      "lat": 36.043917
     },
     {
-      "name": "黒龍神社（白山神社境内）",
+      "name": "春日神社",
       "pref": "福井県",
-      "city": "坂井郡",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.jinja-fukui.jp/detail/index.php?ID=20170112_165124"
+      "url": "http://www.wikidata.org/entity/Q135194697",
+      "lng": 136.567053,
+      "lat": 35.997121
     },
     {
-      "name": "岡太神社",
+      "name": "大欟磐座神社",
       "pref": "福井県",
-      "city": "越前市",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.jinja-fukui.jp/detail/index.php?ID=20160121_091752"
+      "url": "http://www.wikidata.org/entity/Q135040217",
+      "lng": 136.501786,
+      "lat": 36.015626
     },
     {
-      "name": "福井県護国神社",
+      "name": "国生大野神社",
       "pref": "福井県",
-      "city": "福井市",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.fukuigokoku.jp/"
+      "url": "http://www.wikidata.org/entity/Q135194707",
+      "lng": 136.505972,
+      "lat": 35.97709
     },
     {
-      "name": "足羽神社",
+      "name": "八幡神社",
       "pref": "福井県",
-      "city": "足羽",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.asuwajinja.jp/english.htm"
+      "url": "http://www.wikidata.org/entity/Q135194698",
+      "lng": 136.494881,
+      "lat": 36.017078
     },
     {
-      "name": "藤島神社",
+      "name": "風速神社",
       "pref": "福井県",
-      "city": "福井市",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nitta.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135194696",
+      "lng": 136.485218,
+      "lat": 36.012715
     },
     {
-      "name": "氣比神宮",
+      "name": "篠座神社",
       "pref": "福井県",
-      "city": "敦賀市",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kehijingu.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%AF%A0%E5%BA%A7%E7%A5%9E%E7%A4%BE",
+      "lng": 136.488576,
+      "lat": 35.971725
     },
     {
-      "name": "柴田神社",
+      "name": "篠座神社境内磐座神社",
       "pref": "福井県",
-      "city": "福井市",
+      "city": "大野郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.sibatajinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q135194693",
+      "lng": 136.488576,
+      "lat": 35.971725
     },
     {
-      "name": "北口本宮冨士浅間神社",
+      "name": "軍刀利神社",
       "pref": "山梨県",
-      "city": "富士吉田市",
+      "city": "上野原市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sengenjinja.jp/english/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%BB%8D%E5%88%80%E5%88%A9%E7%A5%9E%E7%A4%BE_(%E4%B8%8A%E9%87%8E%E5%8E%9F%E5%B8%82)",
+      "lng": 139.123061,
+      "lat": 35.670739
     },
     {
-      "name": "冨士御室浅間神社",
+      "name": "王勢籠神社 (上野原市)",
       "pref": "山梨県",
-      "city": "富士河口湖町",
+      "city": "上野原市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.fujiomurosengenjinja.com/"
-    },
-    {
-      "name": "三國第一山新倉富士浅間神社",
-      "pref": "山梨県",
-      "city": "富士吉田市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.arakurafujisengen.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%8E%8B%E5%8B%A2%E7%B1%A0%E7%A5%9E%E7%A4%BE_(%E4%B8%8A%E9%87%8E%E5%8E%9F%E5%B8%82)",
+      "lng": 139.05727778,
+      "lat": 35.65869444
     },
     {
       "name": "大嶽山那賀都神社",
@@ -1242,271 +1645,349 @@
       "city": "山梨市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nagato-jinja.jp/"
+      "url": "https://nagato-jinja.jp/",
+      "lng": 138.745833,
+      "lat": 35.822444
     },
     {
-      "name": "若宮八幡宮",
+      "name": "金櫻神社",
       "pref": "山梨県",
-      "city": "韮崎市",
+      "city": "山梨郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kawarabesan.jp/"
+      "url": "http://www.wikidata.org/entity/Q135193246",
+      "lng": 138.694626,
+      "lat": 35.777735
     },
     {
-      "name": "河口浅間神社",
+      "name": "神部神社",
       "pref": "山梨県",
-      "city": "八代郡",
+      "city": "山梨郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://asamajinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135193241",
+      "lng": 138.77493,
+      "lat": 35.724365
     },
     {
-      "name": "浅間神社",
+      "name": "喜久里神社",
       "pref": "山梨県",
-      "city": "笛吹市",
+      "city": "甲州市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://asamajinja.jp"
+      "url": "https://ja.wikipedia.org/wiki/%E5%96%9C%E4%B9%85%E9%87%8C%E7%A5%9E%E7%A4%BE",
+      "lng": 138.74889,
+      "lat": 35.719028
     },
     {
-      "name": "新屋山神社",
+      "name": "喜久理神社",
       "pref": "山梨県",
-      "city": "富士吉田市",
+      "city": "甲州市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.yamajinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%96%9C%E4%B9%85%E7%90%86%E7%A5%9E%E7%A4%BE",
+      "lng": 138.748889,
+      "lat": 35.719028
     },
     {
-      "name": "戸隠神社",
+      "name": "八天宮社",
+      "pref": "山梨県",
+      "city": "甲州市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E5%A4%A9%E5%AE%AE%E7%A4%BE",
+      "lng": 138.76722,
+      "lat": 35.71333
+    },
+    {
+      "name": "健御名方富命彦神別神社",
       "pref": "長野県",
-      "city": "長野市",
+      "city": "水内郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.togakushi-jinja.jp/english/"
+      "url": "http://www.wikidata.org/entity/Q135069832",
+      "lng": 138.374687,
+      "lat": 36.921329
     },
     {
-      "name": "仁科神明宮",
+      "name": "小菅神社 (飯山市)",
       "pref": "長野県",
-      "city": "大町市",
+      "city": "飯山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sinmeigu.jp/"
+      "url": "http://kosugejinja.jp/",
+      "lng": 138.435389,
+      "lat": 36.896556
     },
     {
-      "name": "王滝御嶽神社",
+      "name": "高杜神社奥社",
       "pref": "長野県",
-      "city": "王滝村",
+      "city": "高井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ontakejinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q135194254",
+      "lng": 138.403403,
+      "lat": 36.799287
     },
     {
-      "name": "御柱祭",
+      "name": "日高見神社",
       "pref": "長野県",
-      "city": "長野県",
+      "city": "中野市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.onbashira.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E9%AB%98%E8%A6%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 138.360524,
+      "lat": 36.801472
     },
     {
-      "name": "生島足島神社",
+      "name": "高杜神社中社",
       "pref": "長野県",
-      "city": "小県郡",
+      "city": "高井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ikushimatarushima.com/"
+      "url": "http://www.wikidata.org/entity/Q135194253",
+      "lng": 138.370294,
+      "lat": 36.786961
     },
     {
-      "name": "長谷寺",
+      "name": "高杜神社里社",
       "pref": "長野県",
-      "city": "更級郡",
+      "city": "高井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hasedera.net/"
+      "url": "http://www.wikidata.org/entity/Q135194252",
+      "lng": 138.363111,
+      "lat": 36.787952
     },
     {
-      "name": "深志神社",
+      "name": "越智神社（中野市）",
       "pref": "長野県",
-      "city": "深志",
+      "city": "高井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.fukashi-tenjin.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135194245",
+      "lng": 138.369684,
+      "lat": 36.779811
     },
     {
-      "name": "諏訪大社",
+      "name": "笠原神社",
       "pref": "長野県",
-      "city": "下諏訪町",
+      "city": "高井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://suwataisha.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135039936",
+      "lng": 138.359671,
+      "lat": 36.778924
     },
     {
-      "name": "養老神社",
-      "pref": "岐阜県",
-      "city": "養老町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yoro-park.com/facility-map/yoro-falls/#01"
-    },
-    {
-      "name": "春日神社",
-      "pref": "岐阜県",
-      "city": "関市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.seki-kasuga.com/html/english.html"
-    },
-    {
-      "name": "走り乃神社",
+      "name": "村上神社",
       "pref": "岐阜県",
       "city": "高山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.optionland.jp/blank-1"
+      "url": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E7%A5%9E%E7%A4%BE_(%E9%AB%98%E5%B1%B1%E5%B8%82)",
+      "lng": 137.515944,
+      "lat": 36.246278
     },
     {
-      "name": "南宮大社",
+      "name": "平湯神社",
       "pref": "岐阜県",
-      "city": "不破郡",
+      "city": "高山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nangu-san.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B9%AF%E7%A5%9E%E7%A4%BE",
+      "lng": 137.554694,
+      "lat": 36.192139
     },
     {
-      "name": "春日神社",
-      "pref": "岐阜県",
-      "city": "下中屋町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=798&shrname=%E2%98%85%E6%98%A5%E6%97%A5%E7%A5%9E%E7%A4%BE%E2%98%85"
-    },
-    {
-      "name": "八幡神社",
+      "name": "坂下神社 (中津川市)",
       "pref": "岐阜県",
       "city": "中津川市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=2220"
+      "url": "https://ja.wikipedia.org/wiki/%E5%9D%82%E4%B8%8B%E7%A5%9E%E7%A4%BE_(%E4%B8%AD%E6%B4%A5%E5%B7%9D%E5%B8%82)",
+      "lng": 137.52672,
+      "lat": 35.577039
     },
     {
-      "name": "天神神社 (岐阜市柳津町)",
+      "name": "出雲福徳神社",
       "pref": "岐阜県",
-      "city": "岐阜市",
+      "city": "中津川市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=193"
+      "url": "https://ja.wikipedia.org/wiki/%E5%87%BA%E9%9B%B2%E7%A6%8F%E5%BE%B3%E7%A5%9E%E7%A4%BE",
+      "lng": 137.526667,
+      "lat": 35.576389
     },
     {
-      "name": "大八賀神社",
+      "name": "恵那神社 奥宮",
       "pref": "岐阜県",
-      "city": "高山市",
+      "city": "中津川市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=1699&shrname=%E2%96%A0%E5%A4%A7%E5%85%AB%E8%B3%80%E7%A5%9E%E7%A4%BE%E2%96%A0"
+      "url": "http://www.wikidata.org/entity/Q135193982",
+      "lng": 137.597071,
+      "lat": 35.443416
     },
     {
-      "name": "日吉浅間神社",
+      "name": "諏訪神社",
+      "pref": "岐阜県",
+      "city": "中津川市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%AB%8F%E8%A8%AA%E7%A5%9E%E7%A4%BE_(%E4%B8%AD%E6%B4%A5%E5%B7%9D%E5%B8%82%E5%B1%B1%E5%8F%A3)",
+      "lng": 137.54,
+      "lat": 35.56306
+    },
+    {
+      "name": "榊山神社",
+      "pref": "岐阜県",
+      "city": "中津川市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%A6%8A%E5%B1%B1%E7%A5%9E%E7%A4%BE_(%E4%B8%AD%E6%B4%A5%E5%B7%9D%E5%B8%82)",
+      "lng": 137.455144,
+      "lat": 35.559908
+    },
+    {
+      "name": "中川神社",
+      "pref": "岐阜県",
+      "city": "恵那郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E7%A5%9E%E7%A4%BE_(%E4%B8%AD%E6%B4%A5%E5%B7%9D%E5%B8%82)",
+      "lng": 137.505485,
+      "lat": 35.506904
+    },
+    {
+      "name": "若一王子神社",
       "pref": "静岡県",
-      "city": "今泉",
+      "city": "藤枝市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yoshikazurokusho.wixsite.com/hiyoshi-sengen"
+      "url": "http://www.wikidata.org/entity/Q117197847",
+      "lng": 137.853534,
+      "lat": 36.515638
     },
     {
-      "name": "焼津神社",
+      "name": "山神社",
       "pref": "静岡県",
-      "city": "焼津市",
+      "city": "熱海市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yaizujinja.or.jp"
+      "url": "http://www.wikidata.org/entity/Q134957866",
+      "lng": 139.067673,
+      "lat": 35.144135
     },
     {
-      "name": "久能山東照宮",
+      "name": "伊豆山神社",
       "pref": "静岡県",
-      "city": "駿河区",
+      "city": "田方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.toshogu.or.jp/tw/"
+      "url": "https://izusanjinjya.jp/",
+      "lng": 139.082478,
+      "lat": 35.115699
     },
     {
-      "name": "久能山東照宮社殿",
+      "name": "藤森稲荷神社",
       "pref": "静岡県",
-      "city": "静岡市",
+      "city": "熱海市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.toshogu.or.jp/about/shinto_shrine.php"
+      "url": "http://www.wikidata.org/entity/Q134957549",
+      "lng": 139.072388,
+      "lat": 35.099163
     },
     {
-      "name": "曽我八幡宮",
+      "name": "湯前神社",
       "pref": "静岡県",
-      "city": "富士宮市",
+      "city": "田方郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.soga-kamiide.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%B9%AF%E5%89%8D%E7%A5%9E%E7%A4%BE",
+      "lng": 139.071306,
+      "lat": 35.098222
     },
     {
-      "name": "日吉神社",
+      "name": "来宮神社",
       "pref": "静岡県",
-      "city": "島田市",
+      "city": "熱海市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sizutabi.com/simada/hiyosi.html"
+      "url": "https://kinomiya.or.jp/",
+      "lng": 139.067806,
+      "lat": 35.1005
     },
     {
-      "name": "矢奈比売神社",
+      "name": "初木神社",
       "pref": "静岡県",
-      "city": "磐田郡",
+      "city": "熱海市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.mitsuke-tenjin.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%88%9D%E6%9C%A8%E7%A5%9E%E7%A4%BE",
+      "lng": 139.1681485,
+      "lat": 35.041932306
     },
     {
-      "name": "秋葉山本宮秋葉神社",
+      "name": "今宮神社",
       "pref": "静岡県",
-      "city": "天竜区",
+      "city": "熱海市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.akihasanhongu.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E5%AE%AE%E7%A5%9E%E7%A4%BE_(%E7%86%B1%E6%B5%B7%E5%B8%82)",
+      "lng": 139.067055555,
+      "lat": 35.088055555
     },
     {
-      "name": "八百富神社",
+      "name": "津具八幡宮",
       "pref": "愛知県",
-      "city": "蒲郡市",
+      "city": "設楽町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yaotomi.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%B4%A5%E5%85%B7%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 137.622416666,
+      "lat": 35.175888888
     },
     {
-      "name": "砥鹿神社",
+      "name": "稲橋八幡神社",
       "pref": "愛知県",
-      "city": "宝飯郡",
+      "city": "豊田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.togajinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%A8%B2%E6%A9%8B%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 137.510472,
+      "lat": 35.215861
     },
     {
-      "name": "石刀神社",
+      "name": "諏訪南宮神社",
       "pref": "愛知県",
-      "city": "一宮市",
+      "city": "東栄町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.iwatojinja.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%AB%8F%E8%A8%AA%E5%8D%97%E5%AE%AE%E7%A5%9E%E7%A4%BE",
+      "lng": 137.703472222,
+      "lat": 35.0685
     },
     {
-      "name": "伊文神社",
+      "name": "槻神社",
       "pref": "愛知県",
-      "city": "西尾市",
+      "city": "東栄町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ibunjinja.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%A7%BB%E7%A5%9E%E7%A4%BE",
+      "lng": 137.662167,
+      "lat": 35.08075
     },
     {
-      "name": "星神社 (名古屋市)",
+      "name": "白鳥神社",
       "pref": "愛知県",
-      "city": "西区",
+      "city": "設楽町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hoshijinjya.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%B3%A5%E7%A5%9E%E7%A4%BE_(%E8%A8%AD%E6%A5%BD%E7%94%BA%E7%94%B0%E5%B3%AF)",
+      "lng": 137.531277777,
+      "lat": 35.057611111
     },
     {
       "name": "鳳来山東照宮",
@@ -1514,255 +1995,329 @@
       "city": "新城市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.horaisantoshogu.com/"
+      "url": "https://www.horaisantoshogu.com/",
+      "lng": 137.587472,
+      "lat": 34.978833
     },
     {
-      "name": "針綱神社",
+      "name": "諏訪神社",
       "pref": "愛知県",
-      "city": "犬山",
+      "city": "副川",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.haritsunajinja.com/"
+      "url": "http://www.wikidata.org/entity/Q130343688",
+      "lng": 137.555873126,
+      "lat": 35.016959916
     },
     {
-      "name": "綾衾神社",
+      "name": "瀧神社",
       "pref": "愛知県",
-      "city": "葉栗郡",
+      "city": "大海",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.gifu-jinjacho.jp/syosai.php?shrno=163&shrname=%E2%98%85%E7%B6%BE%E8%A1%BE%E7%A5%9E%E7%A4%BE%E2%98%85"
+      "url": "http://www.wikidata.org/entity/Q130343956",
+      "lng": 137.549633492,
+      "lat": 34.938555291
     },
     {
-      "name": "菅原神社",
+      "name": "多奈閇神社",
       "pref": "三重県",
-      "city": "伊賀市",
+      "city": "員弁郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sugawara25.jp/"
+      "url": "http://www.wikidata.org/entity/Q135186784",
+      "lng": 136.522662,
+      "lat": 35.197872
     },
     {
-      "name": "猿田彦神社",
+      "name": "猪名部神社",
       "pref": "三重県",
-      "city": "伊勢市",
+      "city": "員弁郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sarutahikojinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135069249",
+      "lng": 136.491786,
+      "lat": 35.184421
     },
     {
-      "name": "桑名宗社",
+      "name": "尾津神社",
+      "pref": "三重県",
+      "city": "桑名郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135186792",
+      "lng": 136.643661,
+      "lat": 35.136883
+    },
+    {
+      "name": "宇賀神社",
+      "pref": "三重県",
+      "city": "桑名郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135039451",
+      "lng": 136.637409,
+      "lat": 35.139513
+    },
+    {
+      "name": "宇賀神社",
       "pref": "三重県",
       "city": "桑名市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kuwanasousha.org/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%87%E8%B3%80%E7%A5%9E%E7%A4%BE_(%E6%A1%91%E5%90%8D%E5%B8%82%E5%A4%9A%E5%BA%A6%E7%94%BA)",
+      "lng": 136.6375,
+      "lat": 35.139166666
     },
     {
-      "name": "神服織機殿神社",
+      "name": "尾津神社",
       "pref": "三重県",
-      "city": "多気郡",
+      "city": "桑名郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.jingukaikan.jp/125mairi/m09/0902.html"
+      "url": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E6%B4%A5%E7%A5%9E%E7%A4%BE_(%E6%A1%91%E5%90%8D%E5%B8%82%E5%A4%9A%E5%BA%A6%E7%94%BA%E5%B0%8F%E5%B1%B1)",
+      "lng": 136.640749,
+      "lat": 35.135327
     },
     {
-      "name": "宇治山田神社",
+      "name": "野志里神社",
       "pref": "三重県",
-      "city": "伊勢市",
+      "city": "桑名郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.jingukaikan.jp/125mairi/m03/0307.html"
+      "url": "http://www.wikidata.org/entity/Q135039446",
+      "lng": 136.645801,
+      "lat": 35.118467
     },
     {
-      "name": "皇大神宮",
+      "name": "小山神社",
       "pref": "三重県",
-      "city": "伊勢市",
+      "city": "桑名郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.isejingu.or.jp/en/about/index.html#naiku"
+      "url": "http://www.wikidata.org/entity/Q135039445",
+      "lng": 136.634635,
+      "lat": 35.122818
     },
     {
-      "name": "豊受大神宮",
-      "pref": "三重県",
-      "city": "伊勢市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.isejingu.or.jp/en/about/index.html#geku"
-    },
-    {
-      "name": "月讀宮",
-      "pref": "三重県",
-      "city": "伊勢市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.isejingu.or.jp/about/outerbetsugu/#tsukiyomi"
-    },
-    {
-      "name": "飯道神社（信楽町）",
+      "name": "（合祀）八幡神社",
       "pref": "滋賀県",
-      "city": "甲賀郡",
+      "city": "伊香郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shiga-jinjacho.jp/ycBBS/Board.cgi/02_jinja_db/db/ycDB_02jinja-pc-detail.html?mode:view=1&view:oid=630"
+      "url": "http://www.wikidata.org/entity/Q135193681",
+      "lng": 136.174032,
+      "lat": 35.613771
     },
     {
-      "name": "飯道神社（甲西町）",
+      "name": "横山神社（木之本町）",
       "pref": "滋賀県",
-      "city": "甲賀郡",
+      "city": "伊香郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shiga-jinjacho.jp/ycBBS/Board.cgi/02_jinja_db/db/ycDB_02jinja-pc-detail.html?mode:view=1&view:oid=526"
+      "url": "http://www.wikidata.org/entity/Q135193673",
+      "lng": 136.26637,
+      "lat": 35.565659
     },
     {
-      "name": "立志神社",
-      "pref": "滋賀県",
-      "city": "湖南市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ryushijinjya.com/"
-    },
-    {
-      "name": "伊砂砂神社",
-      "pref": "滋賀県",
-      "city": "草津市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.isasajinja.com/"
-    },
-    {
-      "name": "都久夫須麻神社",
+      "name": "丹生神社",
       "pref": "滋賀県",
       "city": "長浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.chikubusima.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%B9%E7%94%9F%E7%A5%9E%E7%A4%BE_(%E9%95%B7%E6%B5%9C%E5%B8%82)",
+      "lng": 136.233911,
+      "lat": 35.564826
     },
     {
-      "name": "近津尾神社",
+      "name": "水分神社",
       "pref": "滋賀県",
-      "city": "国分",
+      "city": "伊香郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.chikatsuo-com.com/"
+      "url": "http://www.wikidata.org/entity/Q135193725",
+      "lng": 136.248887,
+      "lat": 35.518123
     },
     {
-      "name": "立木神社",
+      "name": "佐波加刀神社",
       "pref": "滋賀県",
-      "city": "草津市",
+      "city": "伊香郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tatikijinja.net/"
+      "url": "http://www.wikidata.org/entity/Q135039850",
+      "lng": 136.247028,
+      "lat": 35.518488
     },
     {
-      "name": "関蝉丸神社",
+      "name": "伊波太岐神社",
       "pref": "滋賀県",
-      "city": "大津市",
+      "city": "伊香郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://semimaru.ehoh.net/"
+      "url": "http://www.wikidata.org/entity/Q135039858",
+      "lng": 136.259464,
+      "lat": 35.512424
     },
     {
-      "name": "吉田神社",
+      "name": "神前神社",
+      "pref": "滋賀県",
+      "city": "伊香郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135039831",
+      "lng": 136.257478,
+      "lat": 35.501816
+    },
+    {
+      "name": "伊香具坂神社（木之本町古橋）",
+      "pref": "滋賀県",
+      "city": "伊香郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135193684",
+      "lng": 136.251597,
+      "lat": 35.508726
+    },
+    {
+      "name": "天満神社",
       "pref": "京都府",
-      "city": "左京区",
+      "city": "加佐郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yoshidajinja.com/"
+      "url": "http://www.wikidata.org/entity/Q135195233",
+      "lng": 135.429505,
+      "lat": 35.568645
     },
     {
-      "name": "八坂神社",
+      "name": "新井崎神社",
       "pref": "京都府",
-      "city": "東山区",
+      "city": "伊根町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yasaka-jinja.or.jp/en/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BA%95%E5%B4%8E%E7%A5%9E%E7%A4%BE",
+      "lng": 135.3075,
+      "lat": 35.694722
     },
     {
-      "name": "宇治上神社",
+      "name": "阿字野神社",
       "pref": "京都府",
-      "city": "宇治郡",
+      "city": "伊根町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ujikamijinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%98%BF%E5%AD%97%E9%87%8E%E7%A5%9E%E7%A4%BE",
+      "lng": 135.291944,
+      "lat": 35.668333
     },
     {
-      "name": "賀茂御祖神社",
+      "name": "稲荷神社",
       "pref": "京都府",
-      "city": "愛宕郡",
+      "city": "舞鶴市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shimogamo-jinja.or.jp/english/"
+      "url": "http://www.wikidata.org/entity/Q118014044",
+      "lng": 135.4515053,
+      "lat": 35.4867695
     },
     {
-      "name": "晴明神社",
+      "name": "阿良須神社（舞鶴市）",
       "pref": "京都府",
-      "city": "上京区",
+      "city": "加佐郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.seimeijinja.jp/ch/"
+      "url": "http://www.wikidata.org/entity/Q135195231",
+      "lng": 135.43073,
+      "lat": 35.480436
     },
     {
-      "name": "山王宮日吉神社",
+      "name": "日尾池姫神社",
       "pref": "京都府",
-      "city": "宮津市",
+      "city": "加佐郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sannougu.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195235",
+      "lng": 135.43146,
+      "lat": 35.444242
     },
     {
-      "name": "半木神社",
+      "name": "河辺八幡神社",
       "pref": "京都府",
-      "city": "左京区",
+      "city": "加佐郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.pref.kyoto.jp/plant/11900017.html"
+      "url": "http://www.wikidata.org/entity/Q135070023",
+      "lng": 135.405564,
+      "lat": 35.521692
     },
     {
-      "name": "梨木神社",
+      "name": "三宅神社",
       "pref": "京都府",
-      "city": "上京区",
+      "city": "加佐郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nashinoki.jp/"
+      "url": "http://www.wikidata.org/entity/Q135070022",
+      "lng": 135.386306,
+      "lat": 35.472529
     },
     {
-      "name": "住吉大社",
+      "name": "諏訪神社 (島本町)",
       "pref": "大阪府",
-      "city": "住吉郡",
+      "city": "島本町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sumiyoshitaisha.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%AB%8F%E8%A8%AA%E7%A5%9E%E7%A4%BE_(%E5%B3%B6%E6%9C%AC%E7%94%BA)",
+      "lng": 135.65222,
+      "lat": 34.897722
     },
     {
-      "name": "四條畷神社",
+      "name": "樫船神社",
       "pref": "大阪府",
-      "city": "四條畷市",
+      "city": "高槻市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shijonawatejinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%A8%AB%E8%88%B9%E7%A5%9E%E7%A4%BE",
+      "lng": 135.59225,
+      "lat": 34.963611
     },
     {
-      "name": "柴籬神社",
+      "name": "八阪神社",
       "pref": "大阪府",
-      "city": "松原市",
+      "city": "高槻市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shibagaki.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E9%98%AA%E7%A5%9E%E7%A4%BE_(%E9%AB%98%E6%A7%BB%E5%B8%82)",
+      "lng": 135.600111,
+      "lat": 34.896917
     },
     {
-      "name": "サムハラ神社",
+      "name": "走落神社",
       "pref": "大阪府",
-      "city": "立売堀",
+      "city": "島下郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.samuhara.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135039214",
+      "lng": 135.499429,
+      "lat": 34.918588
     },
     {
-      "name": "大阪護國神社",
+      "name": "野間神社 (能勢町)",
       "pref": "大阪府",
-      "city": "南加賀屋",
+      "city": "能勢郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osakagokoku.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135039228",
+      "lng": 135.456392,
+      "lat": 34.952737
+    },
+    {
+      "name": "吉川八幡神社",
+      "pref": "大阪府",
+      "city": "豊能町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%90%89%E5%B7%9D%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_(%E8%B1%8A%E8%83%BD%E7%94%BA)",
+      "lng": 135.446944444,
+      "lat": 34.919611111
     },
     {
       "name": "久佐々神社",
@@ -1770,183 +2325,199 @@
       "city": "能勢郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osaka-jinjacho.jp/funai_jinja/dai1shibu/nose-cho/01020kusasajinja.html"
+      "url": "https://www.osaka-jinjacho.jp/funai_jinja/dai1shibu/nose-cho/01020kusasajinja.html",
+      "lng": 135.419287,
+      "lat": 34.976404
     },
     {
-      "name": "豊國神社",
+      "name": "岐尼神社",
       "pref": "大阪府",
-      "city": "大阪城",
+      "city": "能勢郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osaka-hokokujinja.org/"
+      "url": "http://www.wikidata.org/entity/Q135039225",
+      "lng": 135.393196,
+      "lat": 34.968528
     },
     {
-      "name": "大鳥大社",
-      "pref": "大阪府",
-      "city": "大鳥郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ootoritaisha.jp/"
-    },
-    {
-      "name": "弓弦羽神社",
+      "name": "大石神社",
       "pref": "兵庫県",
-      "city": "東灘区",
+      "city": "赤穂市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yuzuruha-jinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%9F%B3%E7%A5%9E%E7%A4%BE",
+      "lng": 135.795556,
+      "lat": 34.97
     },
     {
-      "name": "住吉神社",
+      "name": "櫛石窓神社",
       "pref": "兵庫県",
-      "city": "明石市",
+      "city": "多紀郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sumiyoshijinjya.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%AB%9B%E7%9F%B3%E7%AA%93%E7%A5%9E%E7%A4%BE",
+      "lng": 135.33029,
+      "lat": 35.112443
     },
     {
-      "name": "湊川神社",
+      "name": "波々伯部神社",
       "pref": "兵庫県",
-      "city": "中央区",
+      "city": "丹波篠山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.minatogawajinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%B3%A2%E3%80%85%E4%BC%AF%E9%83%A8%E7%A5%9E%E7%A4%BE",
+      "lng": 135.299722,
+      "lat": 35.070833
     },
     {
-      "name": "北野天満神社",
+      "name": "八坂神社",
       "pref": "兵庫県",
-      "city": "北野町",
+      "city": "猪名川町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kobe-kitano.net/"
+      "url": "http://www.wikidata.org/entity/Q131925929",
+      "lng": 135.328903,
+      "lat": 34.989201
     },
     {
-      "name": "柏原八幡宮",
+      "name": "八幡神社",
       "pref": "兵庫県",
-      "city": "丹波市",
+      "city": "猪名川町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kaibarahachiman.jp/"
+      "url": "http://www.wikidata.org/entity/Q131274502",
+      "lng": 135.337936,
+      "lat": 34.948818
     },
     {
-      "name": "いそ部神社",
+      "name": "多太神社",
       "pref": "兵庫県",
-      "city": "氷上郡",
+      "city": "川辺郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hyogo-jinjacho.com/data/6308071.html"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%9A%E5%A4%AA%E7%A5%9E%E7%A4%BE_(%E5%B7%9D%E8%A5%BF%E5%B8%82)",
+      "lng": 135.414283,
+      "lat": 34.867222
     },
     {
-      "name": "西宮神社",
+      "name": "伊居太神社",
       "pref": "兵庫県",
-      "city": "西宮市",
+      "city": "川辺郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hyogo-jinjacho.com/data/6301007.html"
+      "url": "http://www.wikidata.org/entity/Q135270127",
+      "lng": 135.414283,
+      "lat": 34.867222
     },
     {
-      "name": "大国主西神社",
+      "name": "九頭神社",
       "pref": "兵庫県",
-      "city": "菟原郡",
+      "city": "川西市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hyogo-jinjacho.com/data/6301007.html"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B9%9D%E9%A0%AD%E7%A5%9E%E7%A4%BE_(%E5%B7%9D%E8%A5%BF%E5%B8%82)",
+      "lng": 135.4215,
+      "lat": 34.856528
     },
     {
-      "name": "八咫烏神社",
+      "name": "神波多神社",
       "pref": "奈良県",
-      "city": "宇陀市",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yatagarasujinja.net/"
+      "url": "http://www.wikidata.org/entity/Q135038837",
+      "lng": 136.064271,
+      "lat": 34.690299
     },
     {
-      "name": "吉水神社",
+      "name": "天乃石吸神社",
       "pref": "奈良県",
-      "city": "吉野町",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yoshimizu-shrine.com/"
+      "url": "http://www.wikidata.org/entity/Q135038843",
+      "lng": 135.977627,
+      "lat": 34.67744
     },
     {
-      "name": "與喜天満神社",
+      "name": "天石立神社",
       "pref": "奈良県",
-      "city": "初瀬",
+      "city": "柳生町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yokitenmanjinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%9F%B3%E7%AB%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 135.959422,
+      "lat": 34.726708
     },
     {
-      "name": "薬師寺",
+      "name": "夜支布山口神社",
       "pref": "奈良県",
-      "city": "奈良市",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yakushiji.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135038841",
+      "lng": 135.929474,
+      "lat": 34.70288
     },
     {
-      "name": "天河大弁財天社",
+      "name": "奈良豆比古神社",
       "pref": "奈良県",
-      "city": "天川村",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tenkawa-jinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E8%B1%86%E6%AF%94%E5%8F%A4%E7%A5%9E%E7%A4%BE",
+      "lng": 135.834167,
+      "lat": 34.704444
     },
     {
-      "name": "龍田大社",
+      "name": "鳴雷神社",
       "pref": "奈良県",
-      "city": "平群郡",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tatsutataisha.jp/"
+      "url": "http://www.wikidata.org/entity/Q135098815",
+      "lng": 135.871678,
+      "lat": 34.677758
     },
     {
-      "name": "談山神社",
+      "name": "本宮神社",
       "pref": "奈良県",
-      "city": "桜井市",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tanzan.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135098821",
+      "lng": 135.85249,
+      "lat": 34.681497
     },
     {
-      "name": "吉野神宮",
+      "name": "春日大社",
       "pref": "奈良県",
-      "city": "吉野町",
+      "city": "添上郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.naranet.co.jp/yoshinojingu/"
+      "url": "https://www.kasugataisha.or.jp/",
+      "lng": 135.848348,
+      "lat": 34.681336
     },
     {
-      "name": "春日神社",
+      "name": "白浜町の下立松原神社",
       "pref": "和歌山県",
-      "city": "海南市",
+      "city": "白浜町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kasuga-kainan.com/"
+      "url": "http://www.wikidata.org/entity/Q135193410",
+      "lng": 139.867724,
+      "lat": 34.915135
     },
     {
-      "name": "竈山神社",
+      "name": "恋の水神社",
       "pref": "和歌山県",
-      "city": "名草郡",
+      "city": "美浜町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kamayama-jinja.com/"
-    },
-    {
-      "name": "淡嶋神社",
-      "pref": "和歌山県",
-      "city": "名草郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kada.jp/awashima/"
-    },
-    {
-      "name": "熊野本宮大社",
-      "pref": "和歌山県",
-      "city": "本宮町本宮",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hongutaisha.jp/english/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%81%8B%E4%B9%8B%E6%B0%B4%E7%A5%9E%E7%A4%BE",
+      "lng": 136.879333,
+      "lat": 34.786831
     },
     {
       "name": "隅田八幡神社",
@@ -1954,295 +2525,389 @@
       "city": "橋本市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sudahachimanjinjya.org/"
+      "url": "https://sudahachimanjinjya.org/",
+      "lng": 135.645556,
+      "lat": 34.333194
     },
     {
-      "name": "丹生都比売神社",
+      "name": "相賀八幡神社",
       "pref": "和歌山県",
-      "city": "かつらぎ町",
+      "city": "橋本市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://niutsuhime.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%9B%B8%E8%B3%80%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 135.609972222,
+      "lat": 34.335694444
     },
     {
-      "name": "飛瀧神社",
+      "name": "相賀大神社",
       "pref": "和歌山県",
-      "city": "那智勝浦町",
+      "city": "橋本市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kumanonachitaisha.or.jp/pavilion/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%9B%B8%E8%B3%80%E5%A4%A7%E7%A5%9E%E7%A4%BE",
+      "lng": 135.597611,
+      "lat": 34.317083
     },
     {
-      "name": "熊野那智大社",
+      "name": "小田神社 (橋本市)",
       "pref": "和歌山県",
-      "city": "那智勝浦町",
+      "city": "伊都郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kumanonachitaisha.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135041273",
+      "lng": 135.564594,
+      "lat": 34.30008
     },
     {
-      "name": "宇倍神社",
+      "name": "槇尾山明神社",
+      "pref": "和歌山県",
+      "city": "九度山町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%A7%87%E5%B0%BE%E5%B1%B1%E6%98%8E%E7%A5%9E%E7%A4%BE",
+      "lng": 135.567583,
+      "lat": 34.28825
+    },
+    {
+      "name": "椎出厳嶋神社",
+      "pref": "和歌山県",
+      "city": "九度山町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%A4%8E%E5%87%BA%E5%8E%B3%E5%B6%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 135.565943,
+      "lat": 34.271721
+    },
+    {
+      "name": "甘露神社",
       "pref": "鳥取県",
-      "city": "法美郡",
+      "city": "岩井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ubejinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135040725",
+      "lng": 134.360576,
+      "lat": 35.598491
     },
     {
-      "name": "倭文神社",
+      "name": "荒砂神社",
       "pref": "鳥取県",
-      "city": "河村郡",
+      "city": "岩井郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.sitorijinja.com/"
-    },
-    {
-      "name": "白兎神社",
-      "pref": "鳥取県",
-      "city": "鳥取市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://hakutojinja.jp/"
-    },
-    {
-      "name": "妖怪神社",
-      "pref": "鳥取県",
-      "city": "大正町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://yo-kai.net/"
-    },
-    {
-      "name": "大神山神社",
-      "pref": "鳥取県",
-      "city": "大山町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.oogamiyama.or.jp/"
-    },
-    {
-      "name": "鳥取東照宮",
-      "pref": "鳥取県",
-      "city": "鳥取市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%B3%A5%E5%8F%96%E6%9D%B1%E7%85%A7%E5%AE%AE"
-    },
-    {
-      "name": "金持神社",
-      "pref": "鳥取県",
-      "city": "日野町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%8C%81%E7%A5%9E%E7%A4%BE"
-    },
-    {
-      "name": "赤猪岩神社",
-      "pref": "鳥取県",
-      "city": "南部町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%8C%AA%E5%B2%A9%E7%A5%9E%E7%A4%BE"
-    },
-    {
-      "name": "八重垣神社",
-      "pref": "島根県",
-      "city": "意宇郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yaegakijinja.or.jp"
-    },
-    {
-      "name": "物部神社",
-      "pref": "島根県",
-      "city": "安濃郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.mononobe-jinja.jp/"
-    },
-    {
-      "name": "松江護國神社",
-      "pref": "島根県",
-      "city": "松江市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.matsuegokoku.com/"
-    },
-    {
-      "name": "須我神社",
-      "pref": "島根県",
-      "city": "雲南市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://suga-jinja.or.jp/"
-    },
-    {
-      "name": "命主社 (神魂伊能知奴志神社)",
-      "pref": "島根県",
-      "city": "出雲市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://izumooyashiro.or.jp/precinct/keidai-index/setumatu"
-    },
-    {
-      "name": "出雲大社",
-      "pref": "島根県",
-      "city": "出雲市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://izumooyashiro.or.jp/"
-    },
-    {
-      "name": "熊野大社",
-      "pref": "島根県",
-      "city": "松江市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kumanotaisha.or.jp/"
-    },
-    {
-      "name": "出雲路幸神社",
-      "pref": "島根県",
-      "city": "意宇郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.jinja-net.jp/jinjacho-shimane/jsearch3shimane.php?jinjya=29807"
-    },
-    {
-      "name": "玉井宮東照宮",
-      "pref": "岡山県",
-      "city": "中区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.tamaigutousyouguu.com/"
-    },
-    {
-      "name": "備前国総社宮",
-      "pref": "岡山県",
-      "city": "中区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.soujagu.jp/"
-    },
-    {
-      "name": "岡山神社",
-      "pref": "岡山県",
-      "city": "北区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.okayama-jinjya.or.jp/english.html"
-    },
-    {
-      "name": "若宮八幡宮",
-      "pref": "岡山県",
-      "city": "瀬戸内市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.okayama-jinjacho.or.jp/search/18043/"
-    },
-    {
-      "name": "川嶋の宮八幡神社本宮",
-      "pref": "岡山県",
-      "city": "倉敷市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.okayama-jinjacho.or.jp/search/16627/"
-    },
-    {
-      "name": "吉備津神社",
-      "pref": "岡山県",
-      "city": "吉備津",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kibitujinja.com/"
-    },
-    {
-      "name": "吉備津彦神社",
-      "pref": "岡山県",
-      "city": "北区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kibitsuhiko.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135195566",
+      "lng": 134.321253,
+      "lat": 35.591128
     },
     {
       "name": "高野神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135040721",
+      "lng": 134.330434,
+      "lat": 35.575767
+    },
+    {
+      "name": "日野神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135040724",
+      "lng": 134.297918,
+      "lat": 35.576349
+    },
+    {
+      "name": "御湯神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135195567",
+      "lng": 134.369163,
+      "lat": 35.558161
+    },
+    {
+      "name": "佐彌乃兵主神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135270329",
+      "lng": 134.325277,
+      "lat": 35.564985
+    },
+    {
+      "name": "美取神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135195565",
+      "lng": 134.321616,
+      "lat": 35.563691
+    },
+    {
+      "name": "許野乃兵主神社",
+      "pref": "鳥取県",
+      "city": "岩井郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135040723",
+      "lng": 134.329921,
+      "lat": 35.550164
+    },
+    {
+      "name": "伊勢命神社",
+      "pref": "島根県",
+      "city": "隠岐の島町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%8B%A2%E5%91%BD%E7%A5%9E%E7%A4%BE",
+      "lng": 133.235446,
+      "lat": 36.319754
+    },
+    {
+      "name": "水若酢神社",
+      "pref": "島根県",
+      "city": "穏地郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E8%8B%A5%E9%85%A2%E7%A5%9E%E7%A4%BE",
+      "lng": 133.248989,
+      "lat": 36.280128
+    },
+    {
+      "name": "玉若酢命神社",
+      "pref": "島根県",
+      "city": "周吉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%8E%89%E8%8B%A5%E9%85%A2%E5%91%BD%E7%A5%9E%E7%A4%BE",
+      "lng": 133.312663,
+      "lat": 36.207051
+    },
+    {
+      "name": "和気能須命神社",
+      "pref": "島根県",
+      "city": "隠岐の島町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%92%8C%E6%B0%97%E8%83%BD%E9%A0%88%E7%A5%9E%E7%A4%BE",
+      "lng": 133.307311,
+      "lat": 36.206769
+    },
+    {
+      "name": "水祖神社",
+      "pref": "島根県",
+      "city": "周吉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E7%A5%96%E7%A5%9E%E7%A4%BE",
+      "lng": 133.331116,
+      "lat": 36.203067
+    },
+    {
+      "name": "賀茂那備神社",
+      "pref": "島根県",
+      "city": "周吉郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%B3%80%E8%8C%82%E9%82%A3%E5%82%99%E7%A5%9E%E7%A4%BE",
+      "lng": 133.278334,
+      "lat": 36.188472
+    },
+    {
+      "name": "天健金草神社",
+      "pref": "島根県",
+      "city": "隠岐の島町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%81%A5%E9%87%91%E8%8D%89%E7%A5%9E%E7%A4%BE",
+      "lng": 133.230887,
+      "lat": 36.205681
+    },
+    {
+      "name": "美保神社",
+      "pref": "島根県",
+      "city": "松江市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://mihojinja.or.jp/",
+      "lng": 133.306047,
+      "lat": 35.562311
+    },
+    {
+      "name": "讃甘神社",
       "pref": "岡山県",
-      "city": "津山市",
+      "city": "美作市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://takano-jinjya.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%AE%83%E7%94%98%E7%A5%9E%E7%A4%BE",
+      "lng": 134.3278083,
+      "lat": 35.095475
     },
     {
-      "name": "多家神社",
+      "name": "神根神社 旧社地",
+      "pref": "岡山県",
+      "city": "和気郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135197892",
+      "lng": 134.240042,
+      "lat": 34.844331
+    },
+    {
+      "name": "神根神社",
+      "pref": "岡山県",
+      "city": "和気郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135041202",
+      "lng": 134.234649,
+      "lat": 34.843093
+    },
+    {
+      "name": "八幡宮",
+      "pref": "岡山県",
+      "city": "備前市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q124388132",
+      "lng": 134.29576,
+      "lat": 34.74851
+    },
+    {
+      "name": "久刀神社 旧社地",
+      "pref": "岡山県",
+      "city": "大庭郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135197849",
+      "lng": 133.779358,
+      "lat": 35.244852
+    },
+    {
+      "name": "長田神社 旧社地",
+      "pref": "岡山県",
+      "city": "大庭郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135197864",
+      "lng": 133.738669,
+      "lat": 35.288383
+    },
+    {
+      "name": "形部神社",
+      "pref": "岡山県",
+      "city": "大庭郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135041182",
+      "lng": 133.760331,
+      "lat": 35.182391
+    },
+    {
+      "name": "佐波良神社",
+      "pref": "岡山県",
+      "city": "大庭郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135197837",
+      "lng": 133.760331,
+      "lat": 35.182391
+    },
+    {
+      "name": "多祁伊奈太岐佐耶布都神社",
       "pref": "広島県",
-      "city": "府中町",
+      "city": "安那郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.takejinja.net/"
+      "url": "http://www.wikidata.org/entity/Q135070211",
+      "lng": 133.352954,
+      "lat": 34.65958
     },
     {
-      "name": "饒津神社",
+      "name": "二宮神社",
       "pref": "広島県",
-      "city": "東区",
+      "city": "安那郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nigitsu.jp/"
+      "url": "http://www.wikidata.org/entity/Q135070213",
+      "lng": 133.419409,
+      "lat": 34.567573
     },
     {
-      "name": "亀山神社",
+      "name": "素盞嗚神社",
       "pref": "広島県",
-      "city": "呉市",
+      "city": "深津郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kameyama-jinja.com/"
+      "url": "http://www.wikidata.org/entity/Q135070215",
+      "lng": 133.403556,
+      "lat": 34.570031
     },
     {
-      "name": "厳島神社",
+      "name": "多理比理神社 旧社地",
       "pref": "広島県",
-      "city": "廿日市市",
+      "city": "品治郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.itsukushimajinja.jp/"
+      "url": "http://www.wikidata.org/entity/Q135197969",
+      "lng": 133.301217,
+      "lat": 34.628078
     },
     {
-      "name": "広島東照宮",
-      "pref": "広島県",
-      "city": "東区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hiroshima-toshogu.or.jp/"
-    },
-    {
-      "name": "広島護国神社",
-      "pref": "広島県",
-      "city": "基町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.h-gokoku.or.jp/"
-    },
-    {
-      "name": "福山八幡宮",
+      "name": "大滝神社",
       "pref": "広島県",
       "city": "福山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.fukuyamahachimangu.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%BB%9D%E7%A5%9E%E7%A4%BE_(%E7%A6%8F%E5%B1%B1%E5%B8%82)",
+      "lng": 133.281111111,
+      "lat": 34.593611111
     },
     {
-      "name": "備後國二之宮 知波夜比古(ちはやひこ)神社",
+      "name": "養兎神社",
       "pref": "広島県",
-      "city": "三谿郡",
+      "city": "福山市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.city.miyoshi.hiroshima.jp/soshiki/49/26330.html"
+      "url": "https://ja.wikipedia.org/wiki/%E9%A4%8A%E5%85%8E%E7%A5%9E%E7%A4%BE",
+      "lng": 133.379555555,
+      "lat": 34.556638888
     },
     {
-      "name": "防府天満宮",
-      "pref": "山口県",
-      "city": "防府市",
+      "name": "天別豊姫神社",
+      "pref": "広島県",
+      "city": "安那郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hofutenmangu.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%88%A5%E8%B1%8A%E5%A7%AB%E7%A5%9E%E7%A4%BE",
+      "lng": 133.384015,
+      "lat": 34.538907
+    },
+    {
+      "name": "天神社",
+      "pref": "広島県",
+      "city": "深津郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135070214",
+      "lng": 133.38948,
+      "lat": 34.517302
+    },
+    {
+      "name": "人丸神社",
+      "pref": "山口県",
+      "city": "萩市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q106852669",
+      "lng": 131.432255,
+      "lat": 34.416179
     },
     {
       "name": "松陰神社",
@@ -2250,239 +2915,249 @@
       "city": "萩市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://showin-jinja.or.jp/"
+      "url": "https://showin-jinja.or.jp/",
+      "lng": 131.418222,
+      "lat": 34.412139
     },
     {
-      "name": "乃木神社",
+      "name": "八幡人丸神社",
       "pref": "山口県",
-      "city": "下関市",
+      "city": "長門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://nogi-jinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q106852489",
+      "lng": 131.066542,
+      "lat": 34.376498
     },
     {
-      "name": "忌宮神社",
+      "name": "元乃隅神社",
       "pref": "山口県",
-      "city": "豊浦郡",
+      "city": "長門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://iminomiya-jinjya.com"
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%83%E4%B9%83%E9%9A%85%E7%A5%9E%E7%A4%BE",
+      "lng": 131.062777777,
+      "lat": 34.419888888
     },
     {
-      "name": "彦島八幡宮",
+      "name": "宇津神社",
       "pref": "山口県",
-      "city": "下関市",
+      "city": "岩国市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://hikoshima-guu.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%87%E6%B4%A5%E7%A5%9E%E7%A4%BE_(%E5%B2%A9%E5%9B%BD%E5%B8%82)",
+      "lng": 132.213959,
+      "lat": 34.162865
     },
     {
-      "name": "山口大神宮",
+      "name": "白崎八幡宮",
       "pref": "山口県",
-      "city": "山口市",
+      "city": "岩国市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.yamaguchi-daijingu.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E5%B4%8E%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 132.209388888,
+      "lat": 34.160361111
     },
     {
-      "name": "赤間神宮",
+      "name": "吉香神社",
       "pref": "山口県",
-      "city": "阿弥陀寺町",
+      "city": "岩国市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.tiki.ne.jp/~akama-jingu/"
+      "url": "http://www.wikidata.org/entity/Q114564620",
+      "lng": 132.176666666,
+      "lat": 34.172027777
     },
     {
-      "name": "亀山八幡宮",
+      "name": "岩隈八幡宮",
       "pref": "山口県",
-      "city": "中之町",
+      "city": "熊毛郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kameyamagu.com/"
+      "url": "http://www.wikidata.org/entity/Q135070229",
+      "lng": 132.088368,
+      "lat": 34.071913
     },
     {
-      "name": "徳島眉山天神社",
+      "name": "御瀧神社",
       "pref": "徳島県",
-      "city": "眉山町",
+      "city": "石井町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.bizan-tenjinsha.org/"
+      "url": "http://www.wikidata.org/entity/Q124496707",
+      "lng": 139.827774,
+      "lat": 34.980854
     },
     {
-      "name": "王子神社",
+      "name": "瓶浦神社",
       "pref": "徳島県",
-      "city": "八万町",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://oujijinja.com/"
+      "url": "http://www.wikidata.org/entity/Q119929726",
+      "lng": 134.6354194,
+      "lat": 34.2320222
     },
     {
-      "name": "日峰神社",
+      "name": "十二神社",
       "pref": "徳島県",
-      "city": "中田町",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://hinomine-jinja.sakura.ne.jp/"
+      "url": "http://www.wikidata.org/entity/Q106852657",
+      "lng": 134.630244,
+      "lat": 34.17702
     },
     {
-      "name": "大麻比古神社",
+      "name": "阿波井神社",
       "pref": "徳島県",
-      "city": "大麻町板東",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.ooasahikojinja.jp/e/"
+      "url": "https://ja.wikipedia.org/wiki/%E9%98%BF%E6%B3%A2%E4%BA%95%E7%A5%9E%E7%A4%BE",
+      "lng": 134.591833333,
+      "lat": 34.216472222
     },
     {
-      "name": "劔神社",
+      "name": "大元神社",
       "pref": "徳島県",
-      "city": "東祖谷菅生",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.ctm.ne.jp/~turugijinjya/"
+      "url": "http://www.wikidata.org/entity/Q119929744",
+      "lng": 134.5775139,
+      "lat": 34.2110361
     },
     {
-      "name": "西照神社",
+      "name": "市杵島姫神社",
       "pref": "徳島県",
-      "city": "美馬郡",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://nisiteru-jinja.com/"
+      "url": "http://www.wikidata.org/entity/Q128866779",
+      "lng": 134.617762,
+      "lat": 34.180075
     },
     {
-      "name": "鹿江比賣神社",
+      "name": "妙見神社",
       "pref": "徳島県",
-      "city": "徳島県",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E6%B1%9F%E6%AF%94%E8%B3%A3%E7%A5%9E%E7%A4%BE"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A6%99%E8%A6%8B%E7%A5%9E%E7%A4%BE_(%E9%B3%B4%E9%96%80%E5%B8%82)",
+      "lng": 134.618285,
+      "lat": 34.178413
     },
     {
-      "name": "雨降神社",
+      "name": "宇佐八幡神社",
       "pref": "徳島県",
-      "city": "徳島市",
+      "city": "鳴門市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%9B%A8%E9%99%8D%E7%A5%9E%E7%A4%BE"
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%87%E4%BD%90%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_(%E9%B3%B4%E9%96%80%E5%B8%82)",
+      "lng": 134.592745,
+      "lat": 34.184764
     },
     {
-      "name": "金刀比羅宮",
+      "name": "峰悧冨神社",
       "pref": "香川県",
-      "city": "多度郡",
+      "city": "小豆島町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.konpira.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q94057",
+      "lng": 134.326,
+      "lat": 34.5097
     },
     {
-      "name": "田村神社",
+      "name": "八坂神社",
       "pref": "香川県",
-      "city": "香川郡",
+      "city": "小豆島町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tamurajinja.com/"
+      "url": "http://www.wikidata.org/entity/Q134989391",
+      "lng": 134.301682,
+      "lat": 34.481796
     },
     {
-      "name": "神谷神社",
+      "name": "金刀比羅神社",
       "pref": "香川県",
-      "city": "阿野郡",
+      "city": "小豆島町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kandani.sakura.ne.jp/wp/"
+      "url": "http://www.wikidata.org/entity/Q134989227",
+      "lng": 134.308472,
+      "lat": 34.47942
     },
     {
-      "name": "石清尾八幡宮",
+      "name": "秋葉神社",
       "pref": "香川県",
-      "city": "宮脇町",
+      "city": "小豆島町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://iwaseo.com/"
+      "url": "http://www.wikidata.org/entity/Q134989225",
+      "lng": 134.308472,
+      "lat": 34.47942
     },
     {
-      "name": "香川県神社庁",
+      "name": "鵜羽神社",
       "pref": "香川県",
       "city": "高松市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kagawakenjinjacho.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q134989146",
+      "lng": 134.092529,
+      "lat": 34.365936
     },
     {
-      "name": "滝宮天満宮",
+      "name": "住吉神社",
       "pref": "香川県",
-      "city": "綾川町",
+      "city": "高松市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://takinomiyatenmangu.com/"
+      "url": "http://www.wikidata.org/entity/Q134988978",
+      "lng": 133.985825,
+      "lat": 34.359863
     },
     {
-      "name": "香川縣護國神社",
+      "name": "船玉神社",
       "pref": "香川県",
-      "city": "善通寺市",
+      "city": "高松市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://sanukinomiya.org/"
+      "url": "http://www.wikidata.org/entity/Q134988742",
+      "lng": 133.966675,
+      "lat": 34.362778
     },
     {
-      "name": "鼓岡神社",
+      "name": "塩竈神社",
       "pref": "香川県",
-      "city": "坂出市",
+      "city": "高松市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%BC%93%E5%B2%A1%E7%A5%9E%E7%A4%BE"
+      "url": "http://www.wikidata.org/entity/Q134989068",
+      "lng": 133.957381,
+      "lat": 34.36778
     },
     {
-      "name": "湯神社",
+      "name": "三島神社",
       "pref": "愛媛県",
-      "city": "道後湯之町",
+      "city": "四国中央市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yu-jinja.official.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%B3%B6%E7%A5%9E%E7%A4%BE_(%E5%9B%9B%E5%9B%BD%E4%B8%AD%E5%A4%AE%E5%B8%82)",
+      "lng": 133.545364,
+      "lat": 33.984512
     },
     {
-      "name": "和霊神社",
+      "name": "村山神社",
       "pref": "愛媛県",
-      "city": "宇和島市",
+      "city": "四国中央市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://wareijinja.fc2.net"
-    },
-    {
-      "name": "大山祇神社",
-      "pref": "愛媛県",
-      "city": "越智郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://oomishimagu.jp/"
-    },
-    {
-      "name": "伊佐爾波神社",
-      "pref": "愛媛県",
-      "city": "温泉郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://isaniwa.official.jp/"
-    },
-    {
-      "name": "加茂神社",
-      "pref": "愛媛県",
-      "city": "今治市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kamoj.sakura.ne.jp/"
-    },
-    {
-      "name": "愛媛縣護國神社",
-      "pref": "愛媛県",
-      "city": "松山市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.gokoku.org/"
-    },
-    {
-      "name": "石鎚神社",
-      "pref": "愛媛県",
-      "city": "西条市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://ishizuchisan.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%9D%91%E5%B1%B1%E7%A5%9E%E7%A4%BE",
+      "lng": 133.455077,
+      "lat": 33.960266
     },
     {
       "name": "黒嶋神宮",
@@ -2490,111 +3165,189 @@
       "city": "新居郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E5%B6%8B%E7%A5%9E%E5%AE%AE"
+      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E5%B6%8B%E7%A5%9E%E5%AE%AE",
+      "lng": 133.345198,
+      "lat": 33.987392
     },
     {
-      "name": "高知大神宮",
-      "pref": "高知県",
-      "city": "高知市",
+      "name": "一宮神社",
+      "pref": "愛媛県",
+      "city": "新居浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yosakoi-inari.com/kochidaijingu/"
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%80%E5%AE%AE%E7%A5%9E%E7%A4%BE_(%E6%96%B0%E5%B1%85%E6%B5%9C%E5%B8%82)",
+      "lng": 133.279583333,
+      "lat": 33.961805555
     },
     {
-      "name": "土佐神社",
-      "pref": "高知県",
-      "city": "土佐郡",
+      "name": "東臺神社",
+      "pref": "愛媛県",
+      "city": "新居浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tosajinja.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E8%87%BA%E7%A5%9E%E7%A4%BE",
+      "lng": 133.31725,
+      "lat": 33.944639
     },
     {
-      "name": "小津神社",
-      "pref": "高知県",
-      "city": "高知市",
+      "name": "浦渡神社",
+      "pref": "愛媛県",
+      "city": "新居浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://odu-jinjya.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E6%B8%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 133.31094972,
+      "lat": 33.9405025
     },
     {
-      "name": "馬之助神社",
-      "pref": "高知県",
-      "city": "四万十町",
+      "name": "白山神社",
+      "pref": "愛媛県",
+      "city": "新居浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ksmv.jp/kappakan/umanosuke"
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E5%B1%B1%E7%A5%9E%E7%A4%BE_(%E6%96%B0%E5%B1%85%E6%B5%9C%E5%B8%82)",
+      "lng": 133.286833333,
+      "lat": 33.928277777
     },
     {
-      "name": "山内神社",
-      "pref": "高知県",
-      "city": "高知市",
+      "name": "大足智姫神社",
+      "pref": "愛媛県",
+      "city": "新居浜市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.yamauchijinjya.net/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E8%B6%B3%E6%99%BA%E5%A7%AB%E7%A5%9E%E7%A4%BE",
+      "lng": 133.324722,
+      "lat": 33.9225
     },
     {
-      "name": "潮江天満宮",
+      "name": "小松神社 (香美市)",
       "pref": "高知県",
-      "city": "高知市",
+      "city": "香美郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.ushioe-tenmangu.jp/"
+      "url": "http://www.wikidata.org/entity/Q135041450",
+      "lng": 133.973058,
+      "lat": 33.740415
     },
     {
-      "name": "朝倉神社 (高知市)",
+      "name": "熊野神社",
       "pref": "高知県",
-      "city": "土佐郡",
+      "city": "馬路村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://asakurajinja.yamanoha.com"
+      "url": "https://ja.wikipedia.org/wiki/%E7%86%8A%E9%87%8E%E7%A5%9E%E7%A4%BE_(%E9%A6%AC%E8%B7%AF%E6%9D%91)",
+      "lng": 134.046777777,
+      "lat": 33.563388888
     },
     {
-      "name": "鳴無神社",
+      "name": "大川上美良布神社",
       "pref": "高知県",
-      "city": "須崎市",
+      "city": "香美郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%B3%B4%E7%84%A1%E7%A5%9E%E7%A4%BE"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B7%9D%E4%B8%8A%E7%BE%8E%E8%89%AF%E5%B8%83%E7%A5%9E%E7%A4%BE",
+      "lng": 133.783611,
+      "lat": 33.649956
     },
     {
-      "name": "八坂神社",
+      "name": "天忍穂別神社",
+      "pref": "高知県",
+      "city": "香南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%BF%8D%E7%A9%82%E5%88%A5%E7%A5%9E%E7%A4%BE",
+      "lng": 133.781211,
+      "lat": 33.586771
+    },
+    {
+      "name": "立山神社",
+      "pref": "高知県",
+      "city": "香南市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%AB%8B%E5%B1%B1%E7%A5%9E%E7%A4%BE",
+      "lng": 133.71889,
+      "lat": 33.555
+    },
+    {
+      "name": "深淵神社",
+      "pref": "高知県",
+      "city": "香美郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135041451",
+      "lng": 133.689265,
+      "lat": 33.569181
+    },
+    {
+      "name": "多気坂本神社",
+      "pref": "高知県",
+      "city": "安芸郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135041448",
+      "lng": 134.030238,
+      "lat": 33.433853
+    },
+    {
+      "name": "多気坂本神社",
+      "pref": "高知県",
+      "city": "安芸郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135070341",
+      "lng": 134.0299574,
+      "lat": 33.433918
+    },
+    {
+      "name": "八幡古表神社",
       "pref": "福岡県",
-      "city": "城内",
+      "city": "吉富町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yasaka-jinja.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E5%B9%A1%E5%8F%A4%E8%A1%A8%E7%A5%9E%E7%A4%BE",
+      "lng": 131.180389,
+      "lat": 33.614417
     },
     {
-      "name": "住吉神社",
+      "name": "綱敷天満宮",
       "pref": "福岡県",
-      "city": "住吉特別緑地保全地区",
+      "city": "築上町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nihondaiichisumiyoshigu.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%B6%B1%E6%95%B7%E5%A4%A9%E6%BA%80%E5%AE%AE_(%E7%AF%89%E4%B8%8A%E7%94%BA)",
+      "lng": 131.06386111,
+      "lat": 33.66044444
     },
     {
-      "name": "沖津宮",
+      "name": "金富神社",
       "pref": "福岡県",
-      "city": "宗像市",
+      "city": "築上町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.munakata-taisha.or.jp/about_okitsu.html"
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%AF%8C%E7%A5%9E%E7%A4%BE",
+      "lng": 131.066944,
+      "lat": 33.650833
     },
     {
-      "name": "中津宮",
+      "name": "葛城神社妙見宮",
       "pref": "福岡県",
-      "city": "宗像市",
+      "city": "築上町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.munakata-taisha.or.jp/about_nakatsu.html"
+      "url": "https://ja.wikipedia.org/wiki/%E8%91%9B%E5%9F%8E%E7%A5%9E%E7%A4%BE%E5%A6%99%E8%A6%8B%E5%AE%AE",
+      "lng": 131.030417,
+      "lat": 33.631139
     },
     {
-      "name": "宮地嶽神社",
+      "name": "大富神社",
       "pref": "福岡県",
-      "city": "福津市",
+      "city": "豊前市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.miyajidake.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%AF%8C%E7%A5%9E%E7%A4%BE",
+      "lng": 131.101333,
+      "lat": 33.604778
     },
     {
       "name": "和布刈神社",
@@ -2602,303 +3355,359 @@
       "city": "門司区",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.mekarijinja.com/"
+      "url": "https://www.mekarijinja.com/",
+      "lng": 130.962277777,
+      "lat": 33.960916666
+    },
+    {
+      "name": "甲宗八幡神社",
+      "pref": "福岡県",
+      "city": "門司区",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.kosohachimangu.jp/",
+      "lng": 130.967778,
+      "lat": 33.952778
+    },
+    {
+      "name": "淡島神社",
+      "pref": "福岡県",
+      "city": "北九州市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://awashimajinjya.com/",
+      "lng": 130.962583333,
+      "lat": 33.915222222
+    },
+    {
+      "name": "荒穂神社",
+      "pref": "佐賀県",
+      "city": "基肄郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%8D%92%E7%A9%82%E7%A5%9E%E7%A4%BE",
+      "lng": 130.509468,
+      "lat": 33.434017
+    },
+    {
+      "name": "四阿屋神社",
+      "pref": "佐賀県",
+      "city": "鳥栖市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%9B%9B%E9%98%BF%E5%B1%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 130.479366666,
+      "lat": 33.391852777
+    },
+    {
+      "name": "千栗八幡宮",
+      "pref": "佐賀県",
+      "city": "みやき町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%8D%83%E6%A0%97%E5%85%AB%E5%B9%A1%E5%AE%AE",
+      "lng": 130.479,
+      "lat": 33.3314
+    },
+    {
+      "name": "綾部神社",
+      "pref": "佐賀県",
+      "city": "みやき町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%B6%BE%E9%83%A8%E7%A5%9E%E7%A4%BE",
+      "lng": 130.441111111,
+      "lat": 33.360555555
+    },
+    {
+      "name": "仁比山神社",
+      "pref": "佐賀県",
+      "city": "神埼市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BB%81%E6%AF%94%E5%B1%B1%E7%A5%9E%E7%A4%BE",
+      "lng": 130.364853,
+      "lat": 33.358336
+    },
+    {
+      "name": "白角折神社",
+      "pref": "佐賀県",
+      "city": "神埼市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E8%A7%92%E6%8A%98%E7%A5%9E%E7%A4%BE",
+      "lng": 130.365019444,
+      "lat": 33.348736111
+    },
+    {
+      "name": "白鬚神社",
+      "pref": "佐賀県",
+      "city": "佐賀市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%AC%9A%E7%A5%9E%E7%A4%BE_(%E4%BD%90%E8%B3%80%E5%B8%82)",
+      "lng": 130.325555555,
+      "lat": 33.332222222
+    },
+    {
+      "name": "櫛田宮",
+      "pref": "佐賀県",
+      "city": "神埼市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%AB%9B%E7%94%B0%E5%AE%AE",
+      "lng": 130.372583333,
+      "lat": 33.310166666
+    },
+    {
+      "name": "島大國魂神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135198689",
+      "lng": 129.463831,
+      "lat": 34.700114
+    },
+    {
+      "name": "島大國魂神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135199590",
+      "lng": 129.463831,
+      "lat": 34.700114
+    },
+    {
+      "name": "能理刀神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135198758",
+      "lng": 129.477026,
+      "lat": 34.657537
+    },
+    {
+      "name": "嶋大國魂御子神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135198701",
+      "lng": 129.404931,
+      "lat": 34.638087
+    },
+    {
+      "name": "嶋大國魂御子神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135199454",
+      "lng": 129.404931,
+      "lat": 34.638087
+    },
+    {
+      "name": "霹靂神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135198763",
+      "lng": 129.447469,
+      "lat": 34.627609
+    },
+    {
+      "name": "胡禄神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135199312",
+      "lng": 129.472846,
+      "lat": 34.555641
+    },
+    {
+      "name": "胡禄神社",
+      "pref": "長崎県",
+      "city": "上県郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135199395",
+      "lng": 129.472846,
+      "lat": 34.555641
+    },
+    {
+      "name": "小国両神社",
+      "pref": "熊本県",
+      "city": "小国町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%9B%BD%E4%B8%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 131.072852,
+      "lat": 33.120221833
+    },
+    {
+      "name": "国造神社",
+      "pref": "熊本県",
+      "city": "阿蘇郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%80%A0%E7%A5%9E%E7%A4%BE",
+      "lng": 131.124281,
+      "lat": 32.989554
+    },
+    {
+      "name": "阿蘇比咩神社",
+      "pref": "熊本県",
+      "city": "阿蘇郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135041486",
+      "lng": 131.116181,
+      "lat": 32.948001
+    },
+    {
+      "name": "阿蘇神社",
+      "pref": "熊本県",
+      "city": "阿蘇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://asojinja.or.jp/",
+      "lng": 131.11597222,
+      "lat": 32.94777778
+    },
+    {
+      "name": "上色見熊野座神社",
+      "pref": "熊本県",
+      "city": "高森町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E8%89%B2%E8%A6%8B%E7%86%8A%E9%87%8E%E5%BA%A7%E7%A5%9E%E7%A4%BE",
+      "lng": 131.158666666,
+      "lat": 32.8545
+    },
+    {
+      "name": "草部吉見神社",
+      "pref": "熊本県",
+      "city": "高森町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%8D%89%E9%83%A8%E5%90%89%E8%A6%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 131.217972,
+      "lat": 32.782639
+    },
+    {
+      "name": "阿蘇山上神社",
+      "pref": "熊本県",
+      "city": "阿蘇郡",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://www.wikidata.org/entity/Q135198303",
+      "lng": 131.075523,
+      "lat": 32.880031
+    },
+    {
+      "name": "幣立神社",
+      "pref": "熊本県",
+      "city": "山都町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%B9%A3%E7%AB%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 131.135602,
+      "lat": 32.687056
+    },
+    {
+      "name": "伊美別宮社",
+      "pref": "大分県",
+      "city": "国東市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E7%BE%8E%E5%88%A5%E5%AE%AE%E7%A4%BE",
+      "lng": 131.600439,
+      "lat": 33.684878
+    },
+    {
+      "name": "奈多宮",
+      "pref": "大分県",
+      "city": "杵築市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A5%88%E5%A4%9A%E5%AE%AE",
+      "lng": 131.706279,
+      "lat": 33.428719
+    },
+    {
+      "name": "白鬚田原神社",
+      "pref": "大分県",
+      "city": "杵築市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%AC%9A%E7%94%B0%E5%8E%9F%E7%A5%9E%E7%A4%BE",
+      "lng": 131.549861111,
+      "lat": 33.503194444
+    },
+    {
+      "name": "若宮八幡社",
+      "pref": "大分県",
+      "city": "杵築市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E5%AE%AE%E5%85%AB%E5%B9%A1%E7%A4%BE_(%E6%9D%B5%E7%AF%89%E5%B8%82)",
+      "lng": 131.610222,
+      "lat": 33.428167
+    },
+    {
+      "name": "日出若宮八幡神社",
+      "pref": "大分県",
+      "city": "日出町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%87%BA%E8%8B%A5%E5%AE%AE%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE",
+      "lng": 131.536917,
+      "lat": 33.368833
+    },
+    {
+      "name": "別宮八幡社",
+      "pref": "大分県",
+      "city": "豊後高田市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%88%A5%E5%AE%AE%E5%85%AB%E5%B9%A1%E7%A4%BE",
+      "lng": 131.525806,
+      "lat": 33.670194
     },
     {
       "name": "春日神社",
-      "pref": "福岡県",
-      "city": "春日市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kasugajinjya.jp/"
-    },
-    {
-      "name": "筥崎宮",
-      "pref": "福岡県",
-      "city": "箱崎",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hakozakigu.or.jp/"
-    },
-    {
-      "name": "與賀神社",
-      "pref": "佐賀県",
-      "city": "佐賀市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yokajinjya.sagafan.jp/"
-    },
-    {
-      "name": "與止日女神社",
-      "pref": "佐賀県",
-      "city": "佐賀郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://yodohime-jinja.jimdofree.com/"
-    },
-    {
-      "name": "祐徳稲荷神社",
-      "pref": "佐賀県",
-      "city": "鹿島市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.yutokusan.jp/en/"
-    },
-    {
-      "name": "男女神社",
-      "pref": "佐賀県",
-      "city": "佐賀市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nannyojinja.or.jp/"
-    },
-    {
-      "name": "唐津神社",
-      "pref": "佐賀県",
-      "city": "唐津市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.karatsu-jinja.org/"
-    },
-    {
-      "name": "佐嘉神社",
-      "pref": "佐賀県",
-      "city": "松原",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sagajinjya.jp/"
-    },
-    {
-      "name": "鏡神社",
-      "pref": "佐賀県",
-      "city": "唐津市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kagami.or.jp/"
-    },
-    {
-      "name": "陶山神社",
-      "pref": "佐賀県",
-      "city": "有田町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://arita-toso.net/"
-    },
-    {
-      "name": "鎮西大社諏訪神社",
-      "pref": "長崎県",
-      "city": "長崎市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.osuwasan.jp/"
-    },
-    {
-      "name": "山王神社",
-      "pref": "長崎県",
-      "city": "長崎市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sannou-jinjya.jp/"
-    },
-    {
-      "name": "亀岡神社",
-      "pref": "長崎県",
-      "city": "平戸市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kameoka-j.jp/"
-    },
-    {
-      "name": "国津神社",
-      "pref": "長崎県",
-      "city": "石田郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.ikishi.sakura.ne.jp/ikinokokutuzinsha.html"
-    },
-    {
-      "name": "飯盛神社",
-      "pref": "長崎県",
-      "city": "佐世保市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E7%9B%9B%E7%A5%9E%E7%A4%BE_(%E4%BD%90%E4%B8%96%E4%BF%9D%E5%B8%82)"
-    },
-    {
-      "name": "青方神社",
-      "pref": "長崎県",
-      "city": "新上五島町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%96%B9%E7%A5%9E%E7%A4%BE"
-    },
-    {
-      "name": "霊丘神社",
-      "pref": "長崎県",
-      "city": "島原市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%9C%8A%E4%B8%98%E7%A5%9E%E7%A4%BE"
-    },
-    {
-      "name": "雄嶽日枝神社",
-      "pref": "長崎県",
-      "city": "上五島町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%9B%84%E5%B6%BD%E6%97%A5%E6%9E%9D%E7%A5%9E%E7%A4%BE"
-    },
-    {
-      "name": "疋野神社",
-      "pref": "熊本県",
-      "city": "玉名郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.hikino-jinja.jp/"
-    },
-    {
-      "name": "藤崎八旛宮",
-      "pref": "熊本県",
-      "city": "中央区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://fujisakigu.or.jp/"
-    },
-    {
-      "name": "梅林天満宮",
-      "pref": "熊本県",
-      "city": "玉名市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://bairin-tenmangu.jp/"
-    },
-    {
-      "name": "青井阿蘇神社",
-      "pref": "熊本県",
-      "city": "人吉市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://aoisan.jp/"
-    },
-    {
-      "name": "熊本県護国神社",
-      "pref": "熊本県",
-      "city": "中央区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kumamoto-gokoku.jp/"
-    },
-    {
-      "name": "北岡神社",
-      "pref": "熊本県",
-      "city": "春日",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kitaoka-jinja.or.jp/"
-    },
-    {
-      "name": "加藤神社",
-      "pref": "熊本県",
-      "city": "中央区",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.kato-jinja.or.jp/"
-    },
-    {
-      "name": "八代宮",
-      "pref": "熊本県",
-      "city": "八代市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://selectroyal.com/yatsushirogu/"
-    },
-    {
-      "name": "西寒多神社",
       "pref": "大分県",
-      "city": "大分郡",
+      "city": "豊後高田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://sasamuta.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5%E7%A5%9E%E7%A4%BE_(%E8%B1%8A%E5%BE%8C%E9%AB%98%E7%94%B0%E5%B8%82)",
+      "lng": 131.468388888,
+      "lat": 33.577111111
     },
     {
-      "name": "柞原八幡宮",
+      "name": "若宮八幡神社",
       "pref": "大分県",
-      "city": "大分市",
+      "city": "豊後高田市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://oita-yusuhara.com/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E5%AE%AE%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_(%E8%B1%8A%E5%BE%8C%E9%AB%98%E7%94%B0%E5%B8%82)",
+      "lng": 131.446305555,
+      "lat": 33.554916666
     },
     {
-      "name": "火男火売神社",
-      "pref": "大分県",
-      "city": "速見郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://honomejinja.jp/"
-    },
-    {
-      "name": "宇佐神宮",
-      "pref": "大分県",
-      "city": "宇佐郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.usajinguu.com/"
-    },
-    {
-      "name": "波止場神社",
-      "pref": "大分県",
-      "city": "別府市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.inaojinjya.com/"
-    },
-    {
-      "name": "八幡朝見神社",
-      "pref": "大分県",
-      "city": "別府市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://www.asami.or.jp/"
-    },
-    {
-      "name": "八幡竈門神社",
-      "pref": "大分県",
-      "city": "別府市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://hachimannkamado.sub.jp/"
-    },
-    {
-      "name": "鶴一社",
-      "pref": "大分県",
-      "city": "中津市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%B6%B4%E4%B8%80%E7%A4%BE"
-    },
-    {
-      "name": "鵜戸神宮",
+      "name": "土持神社",
       "pref": "宮崎県",
-      "city": "日南市",
+      "city": "延岡市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.udojingu.or.jp/"
-    },
-    {
-      "name": "諏訪神社",
-      "pref": "宮崎県",
-      "city": "都城市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.city.miyakonojo.miyazaki.jp/site/bunkazai/3274.html"
-    },
-    {
-      "name": "都農神社",
-      "pref": "宮崎県",
-      "city": "児湯郡",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://tunojinjya6.webnode.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%9C%9F%E6%8C%81%E7%A5%9E%E7%A4%BE",
+      "lng": 131.626778,
+      "lat": 32.632417
     },
     {
       "name": "大御神社",
@@ -2906,159 +3715,179 @@
       "city": "日向市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://oomijinja.com/index.html"
+      "url": "https://oomijinja.com/index.html",
+      "lng": 131.649416666,
+      "lat": 32.411
     },
     {
-      "name": "宮﨑神宮",
+      "name": "都農神社",
       "pref": "宮崎県",
-      "city": "宮崎市",
+      "city": "児湯郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://miyazakijingu.or.jp/"
+      "url": "https://tunojinjya6.webnode.jp/",
+      "lng": 131.558668,
+      "lat": 32.263132
     },
     {
-      "name": "霧島神宮",
+      "name": "天岩戸神社",
       "pref": "宮崎県",
+      "city": "高千穂町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%B2%A9%E6%88%B8%E7%A5%9E%E7%A4%BE",
+      "lng": 131.350556,
+      "lat": 32.734444
+    },
+    {
+      "name": "荒立神社",
+      "pref": "宮崎県",
+      "city": "高千穂町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E8%8D%92%E7%AB%8B%E7%A5%9E%E7%A4%BE",
+      "lng": 131.317083,
+      "lat": 32.711722
+    },
+    {
+      "name": "槵觸神社",
+      "pref": "宮崎県",
+      "city": "高千穂町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%A7%B5%E8%A7%B8%E7%A5%9E%E7%A4%BE",
+      "lng": 131.315583,
+      "lat": 32.710028
+    },
+    {
+      "name": "高千穂神社",
+      "pref": "宮崎県",
+      "city": "高千穂町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%8D%83%E7%A9%82%E7%A5%9E%E7%A4%BE",
+      "lng": 131.301667,
+      "lat": 32.706667
+    },
+    {
+      "name": "宮水神社",
+      "pref": "宮崎県",
+      "city": "日之影町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%B0%B4%E7%A5%9E%E7%A4%BE",
+      "lng": 131.382194,
+      "lat": 32.664056
+    },
+    {
+      "name": "東霧島神社",
+      "pref": "鹿児島県",
       "city": "諸県郡",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kirishimajingu.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E9%9C%A7%E5%B3%B6%E7%A5%9E%E7%A4%BE",
+      "lng": 131.059896,
+      "lat": 31.845399
     },
     {
-      "name": "旭丘神社",
-      "pref": "宮崎県",
-      "city": "都城市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://hinoo.net/"
-    },
-    {
-      "name": "青島神社",
-      "pref": "宮崎県",
-      "city": "青島",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://aoshima-jinja.jp/"
-    },
-    {
-      "name": "鶴嶺神社",
+      "name": "澤田神社",
       "pref": "鹿児島県",
-      "city": "吉野",
+      "city": "曽於市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.shimadzu-ltd.jp/tsuruganejinja/"
+      "url": "http://www.wikidata.org/entity/Q135434210",
+      "lng": 131.001999,
+      "lat": 31.738136
     },
     {
-      "name": "新田神社",
+      "name": "田ノ浦山宮神社",
       "pref": "鹿児島県",
-      "city": "宮内町",
+      "city": "志布志市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.nitta-jinja.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%94%B0%E3%83%8E%E6%B5%A6%E5%B1%B1%E5%AE%AE%E7%A5%9E%E7%A4%BE",
+      "lng": 131.130917,
+      "lat": 31.560306
     },
     {
-      "name": "照島神社",
+      "name": "若一王子神社",
       "pref": "鹿児島県",
-      "city": "いちき串木野市",
+      "city": "曽於市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.kagojinjacho.or.jp/shrine-search/area-kagoshima/%E3%81%84%E3%81%A1%E3%81%8D%E4%B8%B2%E6%9C%A8%E9%87%8E%E5%B8%82/941/"
+      "url": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E4%B8%80%E7%8E%8B%E5%AD%90%E7%A5%9E%E7%A4%BE_(%E6%9B%BD%E6%96%BC%E5%B8%82)",
+      "lng": 131.043018,
+      "lat": 31.647165
     },
     {
-      "name": "揖宿神社",
+      "name": "松山神社",
       "pref": "鹿児島県",
-      "city": "東方",
+      "city": "志布志市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.ibusukijinsha.com/"
+      "url": "http://www.wikidata.org/entity/Q135434340",
+      "lng": 131.039642,
+      "lat": 31.577414
     },
     {
-      "name": "豊玉姫神社",
+      "name": "若宮神社",
       "pref": "鹿児島県",
-      "city": "知覧町郡",
+      "city": "志布志市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://toyotamahime-jinja.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135434214",
+      "lng": 131.108505,
+      "lat": 31.484097
     },
     {
       "name": "松原神社",
       "pref": "鹿児島県",
-      "city": "松原町",
+      "city": "志布志市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://matsubarajinja.com/"
+      "url": "http://www.wikidata.org/entity/Q135434473",
+      "lng": 131.110931,
+      "lat": 31.477268
     },
     {
-      "name": "霧島神宮",
+      "name": "蛭兒神社",
       "pref": "鹿児島県",
-      "city": "諸県郡",
+      "city": "志布志市",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kirishimajingu.or.jp/"
+      "url": "http://www.wikidata.org/entity/Q135433630",
+      "lng": 131.107162,
+      "lat": 31.474258
     },
     {
-      "name": "川上天満宮",
-      "pref": "鹿児島県",
-      "city": "川上町",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://kawakamitenmangu.wixsite.com/main"
-    },
-    {
-      "name": "尖閣神社",
+      "name": "大東宮",
       "pref": "沖縄県",
-      "city": "石垣市",
+      "city": "北大東村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.senkakujinja.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9D%B1%E5%AE%AE",
+      "lng": 131.302667,
+      "lat": 25.944
     },
     {
-      "name": "沖縄県護国神社",
+      "name": "大東神社",
       "pref": "沖縄県",
-      "city": "那覇市",
+      "city": "南大東村",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.okinawa-gokoku.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9D%B1%E7%A5%9E%E7%A4%BE_(%E5%8D%97%E5%A4%A7%E6%9D%B1%E6%9D%91)",
+      "lng": 131.226556,
+      "lat": 25.8425
     },
     {
-      "name": "宮古神社",
+      "name": "石嘉波神社",
       "pref": "沖縄県",
-      "city": "宮古島市",
+      "city": "本部町",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://www.miyako-jinja.com/"
-    },
-    {
-      "name": "沖宮",
-      "pref": "沖縄県",
-      "city": "那覇市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://okinogu.or.jp/"
-    },
-    {
-      "name": "識名宮",
-      "pref": "沖縄県",
-      "city": "那覇市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://sikinagu.com/"
-    },
-    {
-      "name": "波上宮",
-      "pref": "沖縄県",
-      "city": "那覇市",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://naminouegu.jp/"
-    },
-    {
-      "name": "普天満宮",
-      "pref": "沖縄県",
-      "city": "普天間",
-      "gogyo": "",
-      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "http://futenmagu.or.jp/"
+      "url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%98%89%E6%B3%A2%E7%A5%9E%E7%A4%BE",
+      "lng": 127.870961111,
+      "lat": 26.642561111
     },
     {
       "name": "金武宮",
@@ -3066,7 +3895,49 @@
       "city": "金武",
       "gogyo": "",
       "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
-      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%AD%A6%E5%AE%AE"
+      "url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%AD%A6%E5%AE%AE",
+      "lng": 127.921806,
+      "lat": 26.455319
+    },
+    {
+      "name": "普天満宮",
+      "pref": "沖縄県",
+      "city": "普天間",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "http://futenmagu.or.jp/",
+      "lng": 127.777222,
+      "lat": 26.292917
+    },
+    {
+      "name": "恵比須神社",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%81%B5%E6%AF%94%E9%A0%88%E7%A5%9E%E7%A4%BE_(%E9%82%A3%E8%A6%87%E5%B8%82)",
+      "lng": 127.685722222,
+      "lat": 26.239805555
+    },
+    {
+      "name": "末吉宮",
+      "pref": "沖縄県",
+      "city": "首里末吉町",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%9C%AB%E5%90%89%E5%AE%AE",
+      "lng": 127.714056,
+      "lat": 26.230167
+    },
+    {
+      "name": "沖縄神社",
+      "pref": "沖縄県",
+      "city": "那覇市",
+      "gogyo": "",
+      "note": "Wikidata/Wikipedia等で実在・所在地を確認済みの神社",
+      "url": "https://ja.wikipedia.org/wiki/%E6%B2%96%E7%B8%84%E7%A5%9E%E7%A4%BE",
+      "lng": 127.73093333,
+      "lat": 26.21738611
     }
   ]
 }
