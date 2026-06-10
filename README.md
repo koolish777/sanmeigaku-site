@@ -4,10 +4,22 @@
 
 ## 現行バージョン
 
-- **現行版：v39**（コミット `e63caf6` / 2026-06-09）
-- 正本：`E:\Aquane\sanmeigaku_prototype\uranai_v39.html`
-- 公開ファイル：このフォルダの `index.html`（＝正本v39と内容一致）
+- **現行作業ファイル：v51**（ローカル作業状態 / 2026-06-10）
+- 公開用作業ファイル：このフォルダの `index.html`（title / badge / footer はv51）
+- プロトタイプ保存版の最新番号：`E:\Aquane\sanmeigaku_prototype\uranai_v50.html`
+- 注意：`uranai_v51.html` は確認時点で未作成です。v51を正式正本にする場合は、保存版を作るか `index.html` を正本扱いにするか先に決めてください。
+- 注意：`index.html` にはv2辞書用の処理が入っていますが、旧 `LUCKY_POOL` / `LUCKY_FREE` と旧語句も残っています。公開前に必ず整合確認してください。
 - 公開先：GitHub `koolish777/sanmeigaku-site`（public）→ Netlify `rainbow-croissant-77ebf9.netlify.app`
+- 現行最新版の引継ぎ正本：`E:\Aquane\13_占いサイトプロジェクト_現行最新版管理\00_CURRENT_現行最新版\README_現行最新版と引継ぎ.md`
+
+## 守護神ラッキーアイテム辞書 v2
+
+- 最新Google Sheetsタブ `v2_拡張辞書_500` 由来の辞書エンジンは実装済みです。
+- 実装：`src/lucky-items.js`
+- 検証：`scripts/verify_lucky_items.js`
+- ローカル正本：`data/lucky_items_v2.csv` / `data/lucky_items_v2.json`
+- `index.html` にはv2辞書用の処理が入っていますが、旧 `LUCKY_POOL` / `LUCKY_FREE` も残っているため、完全接続済みとは断定しません。
+- `lucky_items_gsheet.csv` は旧タブ/旧形式なので、今後の正本扱いはしません。
 
 ## 設計の考え方（三段階）
 
@@ -21,7 +33,8 @@
 
 - このサイトは継続的に更新中です。**変更の詳細はすべて更新ログに記録**します：
   - 更新ログ正本：`E:\Aquane\13_占いサイトプロジェクト_更新ログ_20260609_v32.md`（v32〜v39＋保守記録）
-- バージョンを上げるときは `sanmeigaku_prototype\uranai_vXX.html` を正本として作成し、このフォルダの `index.html` に反映してから公開する。
+- 現行最新版の判断は、上記更新ログに加えて `E:\Aquane\13_占いサイトプロジェクト_現行最新版管理\` を確認する。
+- バージョンを上げるときは、原則 `sanmeigaku_prototype\uranai_vXX.html` を正本として作成し、このフォルダの `index.html` に反映してから公開する。v51は現時点で `index.html` 側が先行しています。
 - 公開・反映（git push 等の外部/不可逆操作）はリーダー承認のうえで行う。
 
 ## 保守記録（2026-06-09）
