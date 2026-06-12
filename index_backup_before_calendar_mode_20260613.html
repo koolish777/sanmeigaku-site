@@ -132,12 +132,6 @@
         <label style="cursor:pointer;"><input type="radio" name="sex" value="f"> 女性</label>
       </div>
       <div class="row" style="margin-top:14px;">
-        <select id="calendar-mode" aria-label="暦法モード">
-          <option value="shugakuin" selected>朱学院基準（立春）</option>
-          <option value="shizenhou">自然法算命学（冬至年初）</option>
-        </select>
-      </div>
-      <div class="row" style="margin-top:14px;">
         <select id="hh"></select>
         <select id="mi"></select>
         <select id="pref"></select>
@@ -157,7 +151,6 @@
         <div class="pillar"><div class="label">月（仕事・社会）</div><div class="kanshi" id="p-month"></div></div>
         <div class="pillar"><div class="label">年（家系・目上）</div><div class="kanshi" id="p-year"></div></div>
       </div>
-      <div class="un-meta" id="calendar-mode-result" style="margin-top:8px;"></div>
     </div>
 
     <div class="card">
@@ -449,15 +442,6 @@ function zokan(branch, days){
   for(const [stem, upto] of ZOKAN28[branch]){ if(days <= upto) return stem; }
   return ZOKAN28[branch][ZOKAN28[branch].length-1][0];
 }
-const SHIZENHOU_ZOKAN28 = Object.assign({}, ZOKAN28, {
-  8:[[4,7],[8,13],[6,99]],
-  11:[[0,13],[8,99]]
-});
-function zokanForMode(branch, days, mode){
-  const table=(mode==="shizenhou"?SHIZENHOU_ZOKAN28:ZOKAN28)[branch];
-  for(const [stem, upto] of table){ if(days <= upto) return stem; }
-  return table[table.length-1][0];
-}
 function jdn(y,m,d){const a=Math.floor((14-m)/12),yy=y+4800-a,mm=m+12*a-3;
   return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045;}
 function dayKanshi(y,m,d){return ((jdn(y,m,d)+49)%60+60)%60;}
@@ -472,23 +456,6 @@ function solarMonth(y,m,d){
   }
   const setsuYear=myJ>=setsuJdn(y,0)?y:y-1;
   return {setsuYear,monthIdx:best.idx,setsuJ:best.tj};
-}
-function sanmeiCalendarMode(){
-  const el=document.getElementById("calendar-mode");
-  return el&&el.value==="shizenhou"?"shizenhou":"shugakuin";
-}
-function sanmeiCalendarModeLabel(mode){
-  return mode==="shizenhou"?"自然法算命学（冬至年初）":"朱学院基準（立春）";
-}
-function sanmeiYearForMode(y,m,d,solar,mode){
-  if(mode==="shizenhou"){
-    return jdn(y,m,d)>=solsticeJdn(y,false)?y+1:y;
-  }
-  return solar.setsuYear;
-}
-function sanmeiZokanDays(y,m,d,solar,mode){
-  const days=jdn(y,m,d)-solar.setsuJ;
-  return mode==="shizenhou"?days:days+1;
 }
 function nextSetsuJdn(y,m,d){
   const myJ=jdn(y,m,d);
@@ -996,8 +963,6 @@ try{
   if(saved){
     ySel.value=saved.y;mSel.value=saved.m;dSel.value=saved.d;
     hhSel.value=saved.hh;miSel.value=saved.mi;prefSel.value=saved.pref;
-    const cmode=document.getElementById("calendar-mode");
-    if(cmode&&saved.calendarMode)cmode.value=saved.calendarMode;
     const sx=document.querySelector('input[name="sex"][value="'+saved.sex+'"]');
     if(sx)sx.checked=true;
   }
@@ -1056,25 +1021,23 @@ function runAishou(){
   const dim2=new Date(yB,mB,0).getDate();
   if(dB2>dim2){alert(yB+"年"+mB+"月は"+dim2+"日までです。");return;}
   const mode=document.querySelector('input[name="arel"]:checked').value;
-  const calendarMode=sanmeiCalendarMode();
-  const calendarLabel=sanmeiCalendarModeLabel(calendarMode);
   function chart(y,m,d){
     const di=dayKanshi(y,m,d),ds2=di%10,db3=di%12;
     const sm=solarMonth(y,m,d);
-    const yk2=yearKanshi(sanmeiYearForMode(y,m,d,sm,calendarMode)),mkBaseYk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(mkBaseYk2.stem,sm.monthIdx);
-    const dss=sanmeiZokanDays(y,m,d,sm,calendarMode);
-    const chest=mainStar(ds2,zokanForMode(mk2.branch,dss,calendarMode));
+    const yk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(yk2.stem,sm.monthIdx);
+    const dss=jdn(y,m,d)-sm.setsuJ+1;
+    const chest=mainStar(ds2,zokan(mk2.branch,dss));
     const head=mainStar(ds2,yk2.stem);
     const belly=mainStar(ds2,mk2.stem);
-    const rightHand=mainStar(ds2,zokanForMode(db3,dss,calendarMode));
-    const leftHand=mainStar(ds2,zokanForMode(yk2.branch,dss,calendarMode));
+    const leftHand=mainStar(ds2,zokan(db3,dss));
+    const rightHand=mainStar(ds2,zokan(yk2.branch,dss));
     const tc2=TENCHU[Math.floor(di/10)];
     const jdUT2=jdn(y,m,d)-0.5+(12-9)/24;
     const moonSid2=siderealSign(moonLon(jdUT2),jdUT2);
     return {di,ds:ds2,db:db3,chest,head,belly,leftHand,rightHand,tc:tc2,moon:moonSid2};
   }
   const A=chart(yA,mA,dA),B=chart(yB,mB,dB2);
-  let out="<h3>ふたりの星</h3><div class='un-meta'>暦法："+calendarLabel+"</div><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
+  let out="<h3>ふたりの星</h3><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
     +"<tr><td>あなた</td><td>"+kanshiName(A.di)+"</td><td>"+A.chest+"</td><td>"+A.tc.slice(0,2)+"</td><td>"+ZODIAC[A.moon]+"</td></tr>"
     +"<tr><td>お相手</td><td>"+kanshiName(B.di)+"</td><td>"+B.chest+"</td><td>"+B.tc.slice(0,2)+"</td><td>"+ZODIAC[B.moon]+"</td></tr></table>";
   // 生年月日 → お相手の十干 → あなたから見た役割（十干と占星術の両方から）
@@ -1214,34 +1177,28 @@ function run(){
     hh:document.getElementById("hh").value,
     mi:document.getElementById("mi").value,
     pref:document.getElementById("pref").value,
-    calendarMode:(document.getElementById("calendar-mode")||{}).value||"shugakuin",
     sex:document.querySelector('input[name="sex"]:checked').value
   }));}catch(e){}
 
   const dayIdx=dayKanshi(y,m,d), ds=dayIdx%10, db=dayIdx%12;
-  const calendarMode=sanmeiCalendarMode();
-  const calendarLabel=sanmeiCalendarModeLabel(calendarMode);
-  const solar=solarMonth(y,m,d);
-  const {setsuYear,monthIdx,setsuJ}=solar;
-  const yearCalcYear=sanmeiYearForMode(y,m,d,solar,calendarMode);
-  const yk=yearKanshi(yearCalcYear), mkBaseYk=yearKanshi(setsuYear), mk=monthKanshi(mkBaseYk.stem,monthIdx);
-  const daysSinceSetsu=sanmeiZokanDays(y,m,d,solar,calendarMode);
+  const {setsuYear,monthIdx,setsuJ}=solarMonth(y,m,d);
+  const yk=yearKanshi(setsuYear), mk=monthKanshi(yk.stem,monthIdx);
+  const daysSinceSetsu=jdn(y,m,d)-setsuJ+1;
 
   document.getElementById("p-day").textContent=STEMS[ds]+BRANCHES[db];
   document.getElementById("p-month").textContent=STEMS[mk.stem]+BRANCHES[mk.branch];
   document.getElementById("p-year").textContent=STEMS[yk.stem]+BRANCHES[yk.branch];
-  try{var _cmr=document.getElementById("calendar-mode-result"); if(_cmr) _cmr.textContent="暦法モード："+calendarLabel;}catch(e){}
   try{var _hk=document.getElementById("hoshi-kakera"); if(_hk) _hk.textContent=hoshiKakera(ds);}catch(e){}
 
   const stars={
     head:mainStar(ds,yk.stem),
-    chest:mainStar(ds,zokanForMode(mk.branch,daysSinceSetsu,calendarMode)),
+    chest:mainStar(ds,zokan(mk.branch,daysSinceSetsu)),
     belly:mainStar(ds,mk.stem),
-    rightHand:mainStar(ds,zokanForMode(db,daysSinceSetsu,calendarMode)),
-    leftHand:mainStar(ds,zokanForMode(yk.branch,daysSinceSetsu,calendarMode)),
+    leftHand:mainStar(ds,zokan(db,daysSinceSetsu)),
+    rightHand:mainStar(ds,zokan(yk.branch,daysSinceSetsu)),
     early:subStar(ds,yk.branch),
-    middle:subStar(ds,db),
-    late:subStar(ds,mk.branch)
+    middle:subStar(ds,mk.branch),
+    late:subStar(ds,db)
   };
   const total=stars.early.energy+stars.middle.energy+stars.late.energy;
 
@@ -1252,12 +1209,12 @@ function run(){
     {pos:"",empty:true},
     {pos:"頭",star:stars.head},
     {pos:"初年期",star:stars.early.name,energy:stars.early.energy+"点"},
-    {pos:"右手",star:stars.rightHand},
-    {pos:"胸（中心星）",star:stars.chest,center:true},
     {pos:"左手",star:stars.leftHand},
-    {pos:"中年期",star:stars.middle.name,energy:stars.middle.energy+"点"},
+    {pos:"胸（中心星）",star:stars.chest,center:true},
+    {pos:"右手",star:stars.rightHand},
+    {pos:"晩年期",star:stars.late.name,energy:stars.late.energy+"点"},
     {pos:"腹",star:stars.belly},
-    {pos:"晩年期",star:stars.late.name,energy:stars.late.energy+"点"}
+    {pos:"中年期",star:stars.middle.name,energy:stars.middle.energy+"点"}
   ];
   cells.forEach(c=>{
     const div=document.createElement("div");
@@ -1576,14 +1533,14 @@ function run(){
   pro+="<p style='margin-bottom:4px;'><b>命式内の干合・位相法：</b></p><table class='un'>"+isouRows+"</table>";
   const gogyoN=[0,0,0,0,0];
   [yk.stem,mk.stem,ds].forEach(s=>gogyoN[Math.floor(s/2)]++);
-  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokanForMode(b,daysSinceSetsu,calendarMode)/2)]++);
+  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokan(b,daysSinceSetsu)/2)]++);
   const dE=Math.floor(ds/2);
   const REL_NAME=["比劫","食傷","財","官殺","印"];
   const relOf=e=>REL_NAME[((e-dE)%5+5)%5];
   const relRow="<tr>"+[0,1,2,3,4].map(e=>"<td style='font-size:0.75rem;color:#7a6f5d;'>"+relOf(e)+"</td>").join("")+"</tr>";
   pro+="<p style='margin-bottom:4px;'><b>五行バランス（三干＋蔵干）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+gogyoN.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
   pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>下段＝日干"+STEMS[ds]+"（"+GOGYO_NAME[dE]+"）から見た関係。比劫＝日干と同じ／食傷＝日干が生む／財＝日干が剋す／官殺＝日干を剋す／印＝日干を生む。過多・不足は数だけでなく、日干と照らし合わせて判定します（先生）。</p>";
-  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokanForMode(yk.branch,daysSinceSetsu,calendarMode)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokanForMode(mk.branch,daysSinceSetsu,calendarMode)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokanForMode(db,daysSinceSetsu,calendarMode)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokan(yk.branch,daysSinceSetsu)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokan(mk.branch,daysSinceSetsu)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokan(db,daysSinceSetsu)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
   // 身強・身弱（先生確定: 陽占の点数の単純比較。特別な流儀なし）
   const miJudge=total>=20?"身強（みきょう）——エネルギー点数が高く、背負える・押せる体質":total<=17?"身弱（みじゃく）——エネルギー点数が低めの、繊細・感性型の体質":"中間——強弱のバランス型";
   pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小3点〜最大36点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
@@ -1606,9 +1563,9 @@ function run(){
   // 調候守護神（標準表・要監修）
   const sg=SHUGO[ds][monthIdx];
   const sgPlaces=[["年干",yk.stem],["月干",mk.stem],
-    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokanForMode(yk.branch,daysSinceSetsu,calendarMode)],
-    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokanForMode(mk.branch,daysSinceSetsu,calendarMode)],
-    ["日支"+BRANCHES[db]+"の蔵干",zokanForMode(db,daysSinceSetsu,calendarMode)]];
+    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokan(yk.branch,daysSinceSetsu)],
+    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokan(mk.branch,daysSinceSetsu)],
+    ["日支"+BRANCHES[db]+"の蔵干",zokan(db,daysSinceSetsu)]];
   let sgHtml="";
   sg.forEach((g,i)=>{
     const exact=sgPlaces.filter(([lb,s])=>s===g).map(([lb])=>lb);

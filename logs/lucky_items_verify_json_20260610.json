@@ -1,0 +1,527 @@
+{
+  "source": {
+    "type": "json",
+    "path": "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\6167d1e9d9dda346\\data\\lucky_items_v2.json"
+  },
+  "stats": {
+    "total": 500,
+    "byElement": {
+      "木": 100,
+      "火": 100,
+      "土": 100,
+      "金": 100,
+      "水": 100
+    },
+    "freeTotal": 150,
+    "freeByElement": {
+      "木": 30,
+      "火": 30,
+      "土": 30,
+      "金": 30,
+      "水": 30
+    },
+    "prohibitedHits": [],
+    "staleHits": []
+  },
+  "warningCount": 2,
+  "warnings": [
+    {
+      "type": "duplicate_item_suspect",
+      "item": "テラコッタの植木鉢",
+      "rows": [
+        168,
+        207
+      ]
+    },
+    {
+      "type": "duplicate_item_suspect",
+      "item": "黄色いキーホルダー",
+      "rows": [
+        204,
+        301
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "required columns exist",
+      "ok": true,
+      "detail": "五行,無料(○),アイテム,似合う色,メモ,時間帯,九星タグ,表示文,カテゴリ,使う場面,季節タグ,重複回避タグ"
+    },
+    {
+      "name": "total is around 500",
+      "ok": true,
+      "detail": "500"
+    },
+    {
+      "name": "木 count is around 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "木 free count is around 30",
+      "ok": true,
+      "detail": "30"
+    },
+    {
+      "name": "火 count is around 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "火 free count is around 30",
+      "ok": true,
+      "detail": "30"
+    },
+    {
+      "name": "土 count is around 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "土 free count is around 30",
+      "ok": true,
+      "detail": "30"
+    },
+    {
+      "name": "金 count is around 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "金 free count is around 30",
+      "ok": true,
+      "detail": "30"
+    },
+    {
+      "name": "水 count is around 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "水 free count is around 30",
+      "ok": true,
+      "detail": "30"
+    },
+    {
+      "name": "free items can be extracted",
+      "ok": true,
+      "detail": "150"
+    },
+    {
+      "name": "kyusei tags split by middle dot",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "free 木 + 九紫火星 returns 5",
+      "ok": true,
+      "detail": "木:緑のブックカバー:木|文具・学び|グリーン|緑のブックカバー / 木:ハーブの鉢植え:木|植物・花|ハーブグリーン|ハーブの鉢植え / 木:観葉植物の小鉢:木|植物・花|深緑|観葉植物の小鉢 / 火:ガラスのランタン:火|香り・灯り|琥珀色|ガラスのランタン / 火:真鍮のキャンドルスタンド:火|香り・灯り|ブラス|真鍮のキャンドルスタンド"
+    },
+    {
+      "name": "free 水 + 一白水星 returns 5",
+      "ok": true,
+      "detail": "水:青いハンカチ:水|身につけるもの|ブルー|青いハンカチ / 水:黒い手帳:水|文具・学び|ブラック|黒い手帳 / 水:青いクリアファイル:水|文具・学び|ブルー|青いクリアファイル / 水:ネイビーのソックス:水|身につけるもの|ネイビー|ネイビーのソックス / 水:ガラスのフラワーベース:水|暮らしの道具|クリアブルー|ガラスのフラワーベース"
+    },
+    {
+      "name": "same date/userSeed is stable",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "date change can change selection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "free selection has no duplicate item",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "free selection avoids duplicate dedupeTag",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "paid selection returns 8",
+      "ok": true,
+      "detail": "金:金属製の時計:金|暮らしの道具|ステンレス|金属製の時計 / 金:白い財布:金|身につけるもの|ホワイト|白い財布 / 金:白いフラワーベース:金|暮らしの道具|ホワイト|白いフラワーベース / 金:白いハンドクリーム:金|日用品|パールホワイト|白いハンドクリーム / 金:白いルームソックス:金|身につけるもの|オフホワイト|白いルームソックス / 金:金属製の定規:金|日用品|ステンレス|金属製の定規 / 金:シルバーのマグネット:金|飲食・休息|シルバー|シルバーのマグネット / 水:夜空の写真:水|インテリア|ミッドナイトブルー|夜空の写真"
+    },
+    {
+      "name": "daily delivery returns 3",
+      "ok": true,
+      "detail": "土:きなこのお菓子:土|飲食・休息|きなこ色|きなこのお菓子 / 土:黄色いマグカップ:土|飲食・休息|マスタードイエロー|黄色いマグカップ / 土:黄色いキーホルダー:土|日用品|マスタード|黄色いキーホルダー"
+    },
+    {
+      "name": "caution text is available",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no validation errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "stale replaced values are absent",
+      "ok": true,
+      "detail": "こまめな水分,ぬか色,ホットワイン"
+    },
+    {
+      "name": "prohibited phrases are absent",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "samples": {
+    "freeWoodFire": [
+      {
+        "element": "木",
+        "item": "緑のブックカバー",
+        "color": "グリーン",
+        "message": "今日は「緑のブックカバー」を取り入れると、気持ちの呼吸が戻りやすいかもしれません。",
+        "category": "文具・学び",
+        "scene": "考えごと・学び",
+        "timeSlot": "朝・昼",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "三碧木星",
+          "四緑木星"
+        ],
+        "dedupeTag": "木|文具・学び|グリーン|緑のブックカバー",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "木",
+        "item": "ハーブの鉢植え",
+        "color": "ハーブグリーン",
+        "message": "今日は「ハーブの鉢植え」を取り入れると、気持ちの呼吸が戻りやすいかもしれません。",
+        "category": "植物・花",
+        "scene": "部屋や机まわりを整える",
+        "timeSlot": "朝・昼",
+        "seasonTag": "春",
+        "kyuseiTags": [
+          "三碧木星",
+          "四緑木星"
+        ],
+        "dedupeTag": "木|植物・花|ハーブグリーン|ハーブの鉢植え",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "木",
+        "item": "観葉植物の小鉢",
+        "color": "深緑",
+        "message": "今日は「観葉植物の小鉢」を取り入れると、気持ちの呼吸が戻りやすいかもしれません。",
+        "category": "植物・花",
+        "scene": "部屋や机まわりを整える",
+        "timeSlot": "朝・昼",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "三碧木星",
+          "四緑木星"
+        ],
+        "dedupeTag": "木|植物・花|深緑|観葉植物の小鉢",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "火",
+        "item": "ガラスのランタン",
+        "color": "琥珀色",
+        "message": "今日は「ガラスのランタン」を取り入れると、心に小さな灯りを足しやすい日です。",
+        "category": "香り・灯り",
+        "scene": "気分の切り替え",
+        "timeSlot": "昼・夜",
+        "seasonTag": "夏",
+        "kyuseiTags": [
+          "九紫火星"
+        ],
+        "dedupeTag": "火|香り・灯り|琥珀色|ガラスのランタン",
+        "sourceReason": "dailyKyusei"
+      },
+      {
+        "element": "火",
+        "item": "真鍮のキャンドルスタンド",
+        "color": "ブラス",
+        "message": "今日は「真鍮のキャンドルスタンド」を取り入れると、心に小さな灯りを足しやすい日です。",
+        "category": "香り・灯り",
+        "scene": "気分の切り替え",
+        "timeSlot": "昼・夜",
+        "seasonTag": "秋・冬",
+        "kyuseiTags": [
+          "九紫火星"
+        ],
+        "dedupeTag": "火|香り・灯り|ブラス|真鍮のキャンドルスタンド",
+        "sourceReason": "dailyKyusei"
+      }
+    ],
+    "freeWater": [
+      {
+        "element": "水",
+        "item": "青いハンカチ",
+        "color": "ブルー",
+        "message": "今日は「青いハンカチ」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "身につけるもの",
+        "scene": "外出前・身支度",
+        "timeSlot": "夜・休息",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|身につけるもの|ブルー|青いハンカチ",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "水",
+        "item": "黒い手帳",
+        "color": "ブラック",
+        "message": "今日は「黒い手帳」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "文具・学び",
+        "scene": "考えごと・学び",
+        "timeSlot": "夜・休息",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|文具・学び|ブラック|黒い手帳",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "水",
+        "item": "青いクリアファイル",
+        "color": "ブルー",
+        "message": "今日は「青いクリアファイル」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "文具・学び",
+        "scene": "考えごと・学び",
+        "timeSlot": "夜・休息",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|文具・学び|ブルー|青いクリアファイル",
+        "sourceReason": "guardian"
+      },
+      {
+        "element": "水",
+        "item": "ネイビーのソックス",
+        "color": "ネイビー",
+        "message": "今日は「ネイビーのソックス」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "身につけるもの",
+        "scene": "外出前・身支度",
+        "timeSlot": "夜・休息",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|身につけるもの|ネイビー|ネイビーのソックス",
+        "sourceReason": "dailyKyusei"
+      },
+      {
+        "element": "水",
+        "item": "ガラスのフラワーベース",
+        "color": "クリアブルー",
+        "message": "今日は「ガラスのフラワーベース」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "暮らしの道具",
+        "scene": "生活の土台を整える",
+        "timeSlot": "夜・休息",
+        "seasonTag": "夏",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|暮らしの道具|クリアブルー|ガラスのフラワーベース",
+        "sourceReason": "dailyKyusei"
+      }
+    ],
+    "paid": [
+      {
+        "element": "金",
+        "item": "金属製の時計",
+        "color": "ステンレス",
+        "message": "今日は「金属製の時計」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "暮らしの道具",
+        "scene": "生活の土台を整える",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|暮らしの道具|ステンレス|金属製の時計",
+        "sourceReason": "guardian-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "白い財布",
+        "color": "ホワイト",
+        "message": "今日は「白い財布」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "身につけるもの",
+        "scene": "外出前・身支度",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|身につけるもの|ホワイト|白い財布",
+        "sourceReason": "guardian-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "白いフラワーベース",
+        "color": "ホワイト",
+        "message": "今日は「白いフラワーベース」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "暮らしの道具",
+        "scene": "生活の土台を整える",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|暮らしの道具|ホワイト|白いフラワーベース",
+        "sourceReason": "guardian-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "白いハンドクリーム",
+        "color": "パールホワイト",
+        "message": "今日は「白いハンドクリーム」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "日用品",
+        "scene": "日常に小さく取り入れる",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|日用品|パールホワイト|白いハンドクリーム",
+        "sourceReason": "guardian-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "白いルームソックス",
+        "color": "オフホワイト",
+        "message": "今日は「白いルームソックス」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "身につけるもの",
+        "scene": "外出前・身支度",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|身につけるもの|オフホワイト|白いルームソックス",
+        "sourceReason": "guardian-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "金属製の定規",
+        "color": "ステンレス",
+        "message": "今日は「金属製の定規」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "日用品",
+        "scene": "日常に小さく取り入れる",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|日用品|ステンレス|金属製の定規",
+        "sourceReason": "dailyKyusei-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "金",
+        "item": "シルバーのマグネット",
+        "color": "シルバー",
+        "message": "今日は「シルバーのマグネット」を取り入れると、気持ちの輪郭を整えやすい日です。",
+        "category": "飲食・休息",
+        "scene": "休憩・回復",
+        "timeSlot": "朝・外出前",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "六白金星",
+          "七赤金星"
+        ],
+        "dedupeTag": "金|飲食・休息|シルバー|シルバーのマグネット",
+        "sourceReason": "dailyKyusei-paid",
+        "memo": "整える・磨く・輪郭を作るヒント"
+      },
+      {
+        "element": "水",
+        "item": "夜空の写真",
+        "color": "ミッドナイトブルー",
+        "message": "今日は「夜空の写真」を取り入れると、頭と心に余白が戻りやすいかもしれません。",
+        "category": "インテリア",
+        "scene": "視界を整える",
+        "timeSlot": "夜・休息",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "一白水星"
+        ],
+        "dedupeTag": "水|インテリア|ミッドナイトブルー|夜空の写真",
+        "sourceReason": "season-paid",
+        "memo": "休む・流す・静けさを取り戻すヒント"
+      }
+    ],
+    "delivery": [
+      {
+        "element": "土",
+        "item": "きなこのお菓子",
+        "color": "きなこ色",
+        "message": "今日は「きなこのお菓子」を取り入れると、足元の感覚を取り戻しやすいかもしれません。",
+        "category": "飲食・休息",
+        "scene": "休憩・回復",
+        "timeSlot": "朝・昼",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "二黒土星",
+          "五黄土星",
+          "八白土星"
+        ],
+        "dedupeTag": "土|飲食・休息|きなこ色|きなこのお菓子",
+        "sourceReason": "guardian-delivery"
+      },
+      {
+        "element": "土",
+        "item": "黄色いマグカップ",
+        "color": "マスタードイエロー",
+        "message": "今日は「黄色いマグカップ」を取り入れると、足元の感覚を取り戻しやすいかもしれません。",
+        "category": "飲食・休息",
+        "scene": "休憩・回復",
+        "timeSlot": "朝・昼",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "二黒土星",
+          "五黄土星",
+          "八白土星"
+        ],
+        "dedupeTag": "土|飲食・休息|マスタードイエロー|黄色いマグカップ",
+        "sourceReason": "dailyKyusei-delivery"
+      },
+      {
+        "element": "土",
+        "item": "黄色いキーホルダー",
+        "color": "マスタード",
+        "message": "今日は「黄色いキーホルダー」を取り入れると、足元の感覚を取り戻しやすいかもしれません。",
+        "category": "日用品",
+        "scene": "日常に小さく取り入れる",
+        "timeSlot": "朝・昼",
+        "seasonTag": "通年",
+        "kyuseiTags": [
+          "二黒土星",
+          "五黄土星",
+          "八白土星"
+        ],
+        "dedupeTag": "土|日用品|マスタード|黄色いキーホルダー",
+        "sourceReason": "season-time-delivery"
+      }
+    ],
+    "caution": "このアイテムは、持てば必ず運が上がるという意味ではありません。命式や九星から見た、今日の心を整えるための小さなヒントとしてお使いください。"
+  }
+}

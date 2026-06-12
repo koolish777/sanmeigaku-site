@@ -449,15 +449,6 @@ function zokan(branch, days){
   for(const [stem, upto] of ZOKAN28[branch]){ if(days <= upto) return stem; }
   return ZOKAN28[branch][ZOKAN28[branch].length-1][0];
 }
-const SHIZENHOU_ZOKAN28 = Object.assign({}, ZOKAN28, {
-  8:[[4,7],[8,13],[6,99]],
-  11:[[0,13],[8,99]]
-});
-function zokanForMode(branch, days, mode){
-  const table=(mode==="shizenhou"?SHIZENHOU_ZOKAN28:ZOKAN28)[branch];
-  for(const [stem, upto] of table){ if(days <= upto) return stem; }
-  return table[table.length-1][0];
-}
 function jdn(y,m,d){const a=Math.floor((14-m)/12),yy=y+4800-a,mm=m+12*a-3;
   return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045;}
 function dayKanshi(y,m,d){return ((jdn(y,m,d)+49)%60+60)%60;}
@@ -1063,11 +1054,11 @@ function runAishou(){
     const sm=solarMonth(y,m,d);
     const yk2=yearKanshi(sanmeiYearForMode(y,m,d,sm,calendarMode)),mkBaseYk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(mkBaseYk2.stem,sm.monthIdx);
     const dss=sanmeiZokanDays(y,m,d,sm,calendarMode);
-    const chest=mainStar(ds2,zokanForMode(mk2.branch,dss,calendarMode));
+    const chest=mainStar(ds2,zokan(mk2.branch,dss));
     const head=mainStar(ds2,yk2.stem);
     const belly=mainStar(ds2,mk2.stem);
-    const rightHand=mainStar(ds2,zokanForMode(db3,dss,calendarMode));
-    const leftHand=mainStar(ds2,zokanForMode(yk2.branch,dss,calendarMode));
+    const rightHand=mainStar(ds2,zokan(db3,dss));
+    const leftHand=mainStar(ds2,zokan(yk2.branch,dss));
     const tc2=TENCHU[Math.floor(di/10)];
     const jdUT2=jdn(y,m,d)-0.5+(12-9)/24;
     const moonSid2=siderealSign(moonLon(jdUT2),jdUT2);
@@ -1235,10 +1226,10 @@ function run(){
 
   const stars={
     head:mainStar(ds,yk.stem),
-    chest:mainStar(ds,zokanForMode(mk.branch,daysSinceSetsu,calendarMode)),
+    chest:mainStar(ds,zokan(mk.branch,daysSinceSetsu)),
     belly:mainStar(ds,mk.stem),
-    rightHand:mainStar(ds,zokanForMode(db,daysSinceSetsu,calendarMode)),
-    leftHand:mainStar(ds,zokanForMode(yk.branch,daysSinceSetsu,calendarMode)),
+    rightHand:mainStar(ds,zokan(db,daysSinceSetsu)),
+    leftHand:mainStar(ds,zokan(yk.branch,daysSinceSetsu)),
     early:subStar(ds,yk.branch),
     middle:subStar(ds,db),
     late:subStar(ds,mk.branch)
@@ -1576,14 +1567,14 @@ function run(){
   pro+="<p style='margin-bottom:4px;'><b>命式内の干合・位相法：</b></p><table class='un'>"+isouRows+"</table>";
   const gogyoN=[0,0,0,0,0];
   [yk.stem,mk.stem,ds].forEach(s=>gogyoN[Math.floor(s/2)]++);
-  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokanForMode(b,daysSinceSetsu,calendarMode)/2)]++);
+  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokan(b,daysSinceSetsu)/2)]++);
   const dE=Math.floor(ds/2);
   const REL_NAME=["比劫","食傷","財","官殺","印"];
   const relOf=e=>REL_NAME[((e-dE)%5+5)%5];
   const relRow="<tr>"+[0,1,2,3,4].map(e=>"<td style='font-size:0.75rem;color:#7a6f5d;'>"+relOf(e)+"</td>").join("")+"</tr>";
   pro+="<p style='margin-bottom:4px;'><b>五行バランス（三干＋蔵干）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+gogyoN.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
   pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>下段＝日干"+STEMS[ds]+"（"+GOGYO_NAME[dE]+"）から見た関係。比劫＝日干と同じ／食傷＝日干が生む／財＝日干が剋す／官殺＝日干を剋す／印＝日干を生む。過多・不足は数だけでなく、日干と照らし合わせて判定します（先生）。</p>";
-  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokanForMode(yk.branch,daysSinceSetsu,calendarMode)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokanForMode(mk.branch,daysSinceSetsu,calendarMode)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokanForMode(db,daysSinceSetsu,calendarMode)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokan(yk.branch,daysSinceSetsu)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokan(mk.branch,daysSinceSetsu)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokan(db,daysSinceSetsu)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
   // 身強・身弱（先生確定: 陽占の点数の単純比較。特別な流儀なし）
   const miJudge=total>=20?"身強（みきょう）——エネルギー点数が高く、背負える・押せる体質":total<=17?"身弱（みじゃく）——エネルギー点数が低めの、繊細・感性型の体質":"中間——強弱のバランス型";
   pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小3点〜最大36点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
@@ -1606,9 +1597,9 @@ function run(){
   // 調候守護神（標準表・要監修）
   const sg=SHUGO[ds][monthIdx];
   const sgPlaces=[["年干",yk.stem],["月干",mk.stem],
-    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokanForMode(yk.branch,daysSinceSetsu,calendarMode)],
-    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokanForMode(mk.branch,daysSinceSetsu,calendarMode)],
-    ["日支"+BRANCHES[db]+"の蔵干",zokanForMode(db,daysSinceSetsu,calendarMode)]];
+    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokan(yk.branch,daysSinceSetsu)],
+    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokan(mk.branch,daysSinceSetsu)],
+    ["日支"+BRANCHES[db]+"の蔵干",zokan(db,daysSinceSetsu)]];
   let sgHtml="";
   sg.forEach((g,i)=>{
     const exact=sgPlaces.filter(([lb,s])=>s===g).map(([lb])=>lb);

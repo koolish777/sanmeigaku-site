@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -132,12 +132,6 @@
         <label style="cursor:pointer;"><input type="radio" name="sex" value="f"> 女性</label>
       </div>
       <div class="row" style="margin-top:14px;">
-        <select id="calendar-mode" aria-label="暦法モード">
-          <option value="shugakuin" selected>朱学院基準（立春）</option>
-          <option value="shizenhou">自然法算命学（冬至年初）</option>
-        </select>
-      </div>
-      <div class="row" style="margin-top:14px;">
         <select id="hh"></select>
         <select id="mi"></select>
         <select id="pref"></select>
@@ -157,7 +151,6 @@
         <div class="pillar"><div class="label">月（仕事・社会）</div><div class="kanshi" id="p-month"></div></div>
         <div class="pillar"><div class="label">年（家系・目上）</div><div class="kanshi" id="p-year"></div></div>
       </div>
-      <div class="un-meta" id="calendar-mode-result" style="margin-top:8px;"></div>
     </div>
 
     <div class="card">
@@ -432,31 +425,22 @@ function setsuJdn(calYear,idx){
   return setsuCache[key]=jdn(t.y,t.m,t.d);
 }
 const ZOKAN28 = {
-  0:[[9,99]],
+  0:[[8,10],[9,99]],
   1:[[9,9],[7,12],[5,99]],
   2:[[4,7],[2,14],[0,99]],
-  3:[[1,99]],
+  3:[[0,10],[1,99]],
   4:[[1,9],[9,12],[4,99]],
   5:[[4,5],[6,14],[2,99]],
-  6:[[5,19],[3,99]],
+  6:[[2,10],[5,19],[3,99]],
   7:[[3,9],[1,12],[5,99]],
   8:[[4,7],[8,14],[6,99]],
-  9:[[7,99]],
+  9:[[6,10],[7,99]],
   10:[[7,9],[3,12],[4,99]],
-  11:[[0,14],[8,99]]
+  11:[[4,7],[0,14],[8,99]]
 };
 function zokan(branch, days){
   for(const [stem, upto] of ZOKAN28[branch]){ if(days <= upto) return stem; }
   return ZOKAN28[branch][ZOKAN28[branch].length-1][0];
-}
-const SHIZENHOU_ZOKAN28 = Object.assign({}, ZOKAN28, {
-  8:[[4,7],[8,13],[6,99]],
-  11:[[0,13],[8,99]]
-});
-function zokanForMode(branch, days, mode){
-  const table=(mode==="shizenhou"?SHIZENHOU_ZOKAN28:ZOKAN28)[branch];
-  for(const [stem, upto] of table){ if(days <= upto) return stem; }
-  return table[table.length-1][0];
 }
 function jdn(y,m,d){const a=Math.floor((14-m)/12),yy=y+4800-a,mm=m+12*a-3;
   return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045;}
@@ -472,23 +456,6 @@ function solarMonth(y,m,d){
   }
   const setsuYear=myJ>=setsuJdn(y,0)?y:y-1;
   return {setsuYear,monthIdx:best.idx,setsuJ:best.tj};
-}
-function sanmeiCalendarMode(){
-  const el=document.getElementById("calendar-mode");
-  return el&&el.value==="shizenhou"?"shizenhou":"shugakuin";
-}
-function sanmeiCalendarModeLabel(mode){
-  return mode==="shizenhou"?"自然法算命学（冬至年初）":"朱学院基準（立春）";
-}
-function sanmeiYearForMode(y,m,d,solar,mode){
-  if(mode==="shizenhou"){
-    return jdn(y,m,d)>=solsticeJdn(y,false)?y+1:y;
-  }
-  return solar.setsuYear;
-}
-function sanmeiZokanDays(y,m,d,solar,mode){
-  const days=jdn(y,m,d)-solar.setsuJ;
-  return mode==="shizenhou"?days:days+1;
 }
 function nextSetsuJdn(y,m,d){
   const myJ=jdn(y,m,d);
@@ -945,8 +912,8 @@ const POS_META = [
   ["head","頭","目上・親との関わり方、若い頃に表に出る性質"],
   ["chest","胸（中心星）","あなたの本質。人生の中心となる性質"],
   ["belly","腹","家庭や身近な人への接し方、土台となる性質"],
-  ["rightHand","右手","配偶者・補佐役・家庭内で発揮される性質"],
-  ["leftHand","左手","兄弟姉妹・友人・同じ立場の人に発揮される性質"]
+  ["leftHand","左手","プライベート・家庭側で発揮される性質"],
+  ["rightHand","右手","仕事や社会との関わりで発揮される性質"]
 ];
 const SUB_TEXT={
  "天報星":"胎児の星。たくさんの可能性を抱いて、変化と転身をくり返しながら、自分を見つけていきます。",
@@ -996,8 +963,6 @@ try{
   if(saved){
     ySel.value=saved.y;mSel.value=saved.m;dSel.value=saved.d;
     hhSel.value=saved.hh;miSel.value=saved.mi;prefSel.value=saved.pref;
-    const cmode=document.getElementById("calendar-mode");
-    if(cmode&&saved.calendarMode)cmode.value=saved.calendarMode;
     const sx=document.querySelector('input[name="sex"][value="'+saved.sex+'"]');
     if(sx)sx.checked=true;
   }
@@ -1056,25 +1021,23 @@ function runAishou(){
   const dim2=new Date(yB,mB,0).getDate();
   if(dB2>dim2){alert(yB+"年"+mB+"月は"+dim2+"日までです。");return;}
   const mode=document.querySelector('input[name="arel"]:checked').value;
-  const calendarMode=sanmeiCalendarMode();
-  const calendarLabel=sanmeiCalendarModeLabel(calendarMode);
   function chart(y,m,d){
     const di=dayKanshi(y,m,d),ds2=di%10,db3=di%12;
     const sm=solarMonth(y,m,d);
-    const yk2=yearKanshi(sanmeiYearForMode(y,m,d,sm,calendarMode)),mkBaseYk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(mkBaseYk2.stem,sm.monthIdx);
-    const dss=sanmeiZokanDays(y,m,d,sm,calendarMode);
-    const chest=mainStar(ds2,zokanForMode(mk2.branch,dss,calendarMode));
+    const yk2=yearKanshi(sm.setsuYear),mk2=monthKanshi(yk2.stem,sm.monthIdx);
+    const dss=jdn(y,m,d)-sm.setsuJ+1;
+    const chest=mainStar(ds2,zokan(mk2.branch,dss));
     const head=mainStar(ds2,yk2.stem);
     const belly=mainStar(ds2,mk2.stem);
-    const rightHand=mainStar(ds2,zokanForMode(db3,dss,calendarMode));
-    const leftHand=mainStar(ds2,zokanForMode(yk2.branch,dss,calendarMode));
+    const leftHand=mainStar(ds2,zokan(db3,dss));
+    const rightHand=mainStar(ds2,zokan(yk2.branch,dss));
     const tc2=TENCHU[Math.floor(di/10)];
     const jdUT2=jdn(y,m,d)-0.5+(12-9)/24;
     const moonSid2=siderealSign(moonLon(jdUT2),jdUT2);
     return {di,ds:ds2,db:db3,chest,head,belly,leftHand,rightHand,tc:tc2,moon:moonSid2};
   }
   const A=chart(yA,mA,dA),B=chart(yB,mB,dB2);
-  let out="<h3>ふたりの星</h3><div class='un-meta'>暦法："+calendarLabel+"</div><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
+  let out="<h3>ふたりの星</h3><table class='un'><tr><th></th><th>日干支</th><th>中心星</th><th>天中殺</th><th>月星座</th></tr>"
     +"<tr><td>あなた</td><td>"+kanshiName(A.di)+"</td><td>"+A.chest+"</td><td>"+A.tc.slice(0,2)+"</td><td>"+ZODIAC[A.moon]+"</td></tr>"
     +"<tr><td>お相手</td><td>"+kanshiName(B.di)+"</td><td>"+B.chest+"</td><td>"+B.tc.slice(0,2)+"</td><td>"+ZODIAC[B.moon]+"</td></tr></table>";
   // 生年月日 → お相手の十干 → あなたから見た役割（十干と占星術の両方から）
@@ -1104,8 +1067,8 @@ function runAishou(){
     +"<tr><td>胸（中心星・本質）</td><td><b>"+B.chest+"</b>……"+STAR_KEY[B.chest]+"</td></tr>"
     +"<tr><td>頭（目上・若い頃）</td><td>"+B.head+"……"+STAR_KEY[B.head]+"</td></tr>"
     +"<tr><td>腹（家庭・土台）</td><td>"+B.belly+"……"+STAR_KEY[B.belly]+"</td></tr>"
-    +"<tr><td>右手（配偶者・補佐）</td><td>"+B.rightHand+"……"+STAR_KEY[B.rightHand]+"</td></tr>"
-    +"<tr><td>左手（友人・同じ立場）</td><td>"+B.leftHand+"……"+STAR_KEY[B.leftHand]+"</td></tr>"
+    +"<tr><td>左手（身近・配偶者）</td><td>"+B.leftHand+"……"+STAR_KEY[B.leftHand]+"</td></tr>"
+    +"<tr><td>右手（社会・晩年）</td><td>"+B.rightHand+"……"+STAR_KEY[B.rightHand]+"</td></tr>"
     +"</table>";
   out+="<h3>縁の形</h3>";
   if(A.di===B.di)out+="<p>同じ日干支どうしの<b>律音</b>——60分の1の確率でしか出会えない、鏡のような縁です。</p>";
@@ -1214,34 +1177,28 @@ function run(){
     hh:document.getElementById("hh").value,
     mi:document.getElementById("mi").value,
     pref:document.getElementById("pref").value,
-    calendarMode:(document.getElementById("calendar-mode")||{}).value||"shugakuin",
     sex:document.querySelector('input[name="sex"]:checked').value
   }));}catch(e){}
 
   const dayIdx=dayKanshi(y,m,d), ds=dayIdx%10, db=dayIdx%12;
-  const calendarMode=sanmeiCalendarMode();
-  const calendarLabel=sanmeiCalendarModeLabel(calendarMode);
-  const solar=solarMonth(y,m,d);
-  const {setsuYear,monthIdx,setsuJ}=solar;
-  const yearCalcYear=sanmeiYearForMode(y,m,d,solar,calendarMode);
-  const yk=yearKanshi(yearCalcYear), mkBaseYk=yearKanshi(setsuYear), mk=monthKanshi(mkBaseYk.stem,monthIdx);
-  const daysSinceSetsu=sanmeiZokanDays(y,m,d,solar,calendarMode);
+  const {setsuYear,monthIdx,setsuJ}=solarMonth(y,m,d);
+  const yk=yearKanshi(setsuYear), mk=monthKanshi(yk.stem,monthIdx);
+  const daysSinceSetsu=jdn(y,m,d)-setsuJ+1;
 
   document.getElementById("p-day").textContent=STEMS[ds]+BRANCHES[db];
   document.getElementById("p-month").textContent=STEMS[mk.stem]+BRANCHES[mk.branch];
   document.getElementById("p-year").textContent=STEMS[yk.stem]+BRANCHES[yk.branch];
-  try{var _cmr=document.getElementById("calendar-mode-result"); if(_cmr) _cmr.textContent="暦法モード："+calendarLabel;}catch(e){}
   try{var _hk=document.getElementById("hoshi-kakera"); if(_hk) _hk.textContent=hoshiKakera(ds);}catch(e){}
 
   const stars={
     head:mainStar(ds,yk.stem),
-    chest:mainStar(ds,zokanForMode(mk.branch,daysSinceSetsu,calendarMode)),
+    chest:mainStar(ds,zokan(mk.branch,daysSinceSetsu)),
     belly:mainStar(ds,mk.stem),
-    rightHand:mainStar(ds,zokanForMode(db,daysSinceSetsu,calendarMode)),
-    leftHand:mainStar(ds,zokanForMode(yk.branch,daysSinceSetsu,calendarMode)),
+    leftHand:mainStar(ds,zokan(db,daysSinceSetsu)),
+    rightHand:mainStar(ds,zokan(yk.branch,daysSinceSetsu)),
     early:subStar(ds,yk.branch),
-    middle:subStar(ds,db),
-    late:subStar(ds,mk.branch)
+    middle:subStar(ds,mk.branch),
+    late:subStar(ds,db)
   };
   const total=stars.early.energy+stars.middle.energy+stars.late.energy;
 
@@ -1252,12 +1209,12 @@ function run(){
     {pos:"",empty:true},
     {pos:"頭",star:stars.head},
     {pos:"初年期",star:stars.early.name,energy:stars.early.energy+"点"},
-    {pos:"右手",star:stars.rightHand},
-    {pos:"胸（中心星）",star:stars.chest,center:true},
     {pos:"左手",star:stars.leftHand},
-    {pos:"中年期",star:stars.middle.name,energy:stars.middle.energy+"点"},
+    {pos:"胸（中心星）",star:stars.chest,center:true},
+    {pos:"右手",star:stars.rightHand},
+    {pos:"晩年期",star:stars.late.name,energy:stars.late.energy+"点"},
     {pos:"腹",star:stars.belly},
-    {pos:"晩年期",star:stars.late.name,energy:stars.late.energy+"点"}
+    {pos:"中年期",star:stars.middle.name,energy:stars.middle.energy+"点"}
   ];
   cells.forEach(c=>{
     const div=document.createElement("div");
@@ -1272,7 +1229,7 @@ function run(){
   if(_et){ _et.textContent = total>=20 ? "パワー型（押して動くと活きる）" : (total<=17 ? "感性型（受けて・人と組むと活きる）" : "バランス型（前に出る・守るを選べる）"); }
   var _rs=document.getElementById("reading-simple");
   if(_rs){
-    var _pos=[["胸（本質・中心星）",stars.chest],["頭（目上・天）",stars.head],["腹（家庭・子ども・部下）",stars.belly],["右手（配偶者・補佐）",stars.rightHand],["左手（友人・同じ立場）",stars.leftHand]];
+    var _pos=[["胸（本質・中心星）",stars.chest],["頭（目上・天）",stars.head],["腹（家庭・子ども・部下）",stars.belly],["左手（身近・配偶者）",stars.leftHand],["右手（社会・晩年）",stars.rightHand]];
     var _h='<p style="font-size:1rem;">あなたの中心にある星は <b>'+stars.chest+'</b>。テーマは「<b>'+STAR_KEY[stars.chest]+'</b>」です。</p>';
     _h+='<table class="un" style="font-size:0.9rem;"><tr><th style="width:8.5em;">場所</th><th class="adv">星とテーマ</th></tr>';
     for(var _i=0;_i<_pos.length;_i++){ _h+='<tr><td>'+_pos[_i][0]+'</td><td class="adv"><b>'+_pos[_i][1]+'</b>……'+(STAR_BRIEF[_pos[_i][1]]||STAR_KEY[_pos[_i][1]])+'</td></tr>'; }
@@ -1386,20 +1343,20 @@ function run(){
       if(ko(h,c)) return "目上・親から規律やプレッシャーを受けやすい関係。厳しさの中で鍛えられる。";
       return "あなたが目上を動かす関係。上とぶつかることもあるが、自分で切りひらく力がある。";
     }
-    // hands(配偶者・補佐star, 友人・同じ立場star)：右手＝配偶者・補佐／左手＝友人・同じ立場
+    // hands(家庭star, 仕事star)：左手＝家庭・身内／右手＝仕事・社会
     function hands(r,l){
-      if(r===l) return "配偶者・補佐役と友人・同じ立場の人に、同じリズムで向き合いやすい関係。";
-      if(gen(r,l)) return "家庭内や補佐役との安定が、友人・社会面の関わりを支える流れ。";
-      if(gen(l,r)) return "友人・社会面での活動が、家庭内や補佐役との関係を潤す流れ。";
-      if(ko(r,l)) return "家庭内と友人・社会面が引っ張り合いやすい。距離と役割の分け方に工夫を。";
-      return "友人・社会面の動きが家庭内を圧迫しやすいので、身近な約束を守ると安定する。";
+      if(r===l) return "家庭と仕事が同じリズムで、両立させやすい関係。";
+      if(gen(r,l)) return "家庭・身内が仕事を支える流れ。家庭が安定すると、仕事が伸びる。";
+      if(gen(l,r)) return "仕事・社会が家庭を潤す流れ。外での活動が、家庭に還元される。";
+      if(ko(r,l)) return "家庭と仕事が引っ張り合いやすい。時間とエネルギーの配分に工夫を。";
+      return "仕事が家庭を圧迫しやすいので、意識して家庭の時間を守ると安定する。";
     }
-    var POS=[["頭（目上・親）",head],["胸（本質）",chest],["腹（子・部下）",belly],["右手（配偶者・補佐）",rh],["左手（友人・同じ立場）",lh]];
+    var POS=[["頭（目上・親）",head],["胸（本質）",chest],["腹（子・部下）",belly],["右手（仕事）",rh],["左手（家庭）",lh]];
     var cEl=SG[chest];
 
     var H='<div style="border-top:1px solid var(--line);margin-top:14px;padding-top:10px;">';
     H+='<h3 style="font-size:1rem;color:var(--accent);">星のつながり ── 何通りかの見方 ──</h3>';
-    H+='<p style="font-size:0.84rem;color:#7a6f5d;">星は1つずつ見るより、<b>星どうしの関係</b>を読むと深まります。位置の意味（朱学院公式の人体図説明に合わせる）：頭＝目上・親・精神／胸＝あなたの核／腹＝子・部下・実行／右手＝配偶者・補佐役／左手＝兄弟姉妹・友人・同じ立場。下は五行の生剋（生む・剋す）で関係を読んだものです。</p>';
+    H+='<p style="font-size:0.84rem;color:#7a6f5d;">星は1つずつ見るより、<b>星どうしの関係</b>を読むと深まります。位置の意味（流派で多少違います）：頭＝目上・親・精神／胸＝あなたの核／腹＝子・部下・実行／左手＝家庭・身内・プライベート／右手＝仕事・社会。下は五行の生剋（生む・剋す）で関係を読んだものです。</p>';
 
     // 見方① 中心星を軸に
     H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方①　中心星「'+chest+'」（'+GN[cEl]+'）から見た、まわりの星</b></p>';
@@ -1414,8 +1371,8 @@ function run(){
     H+='<span style="font-size:0.88rem;">頭の「'+head+'」と胸の「'+chest+'」── '+headChest(SG[head],cEl)+'</span></p>';
 
     // 見方③ 右手と左手
-    H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方③　右手と左手（配偶者・補佐 ↔ 友人・同じ立場）</b><br>';
-    H+='<span style="font-size:0.88rem;">右手の「'+rh+'」（配偶者・補佐）と左手の「'+lh+'」（友人・同じ立場）── '+hands(SG[rh],SG[lh])+'</span></p>';
+    H+='<p style="font-size:0.92rem;margin-top:8px;"><b>見方③　左手と右手（家庭 ↔ 仕事）</b><br>';
+    H+='<span style="font-size:0.88rem;">左手の「'+lh+'」（家庭）と右手の「'+rh+'」（仕事）── '+hands(SG[lh],SG[rh])+'</span></p>';
 
     // 見方④ 親と子（相生の流れ）
     var pairs=[];
@@ -1576,14 +1533,14 @@ function run(){
   pro+="<p style='margin-bottom:4px;'><b>命式内の干合・位相法：</b></p><table class='un'>"+isouRows+"</table>";
   const gogyoN=[0,0,0,0,0];
   [yk.stem,mk.stem,ds].forEach(s=>gogyoN[Math.floor(s/2)]++);
-  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokanForMode(b,daysSinceSetsu,calendarMode)/2)]++);
+  [yk.branch,mk.branch,db].forEach(b=>gogyoN[Math.floor(zokan(b,daysSinceSetsu)/2)]++);
   const dE=Math.floor(ds/2);
   const REL_NAME=["比劫","食傷","財","官殺","印"];
   const relOf=e=>REL_NAME[((e-dE)%5+5)%5];
   const relRow="<tr>"+[0,1,2,3,4].map(e=>"<td style='font-size:0.75rem;color:#7a6f5d;'>"+relOf(e)+"</td>").join("")+"</tr>";
   pro+="<p style='margin-bottom:4px;'><b>五行バランス（三干＋蔵干）：</b></p><table class='un'><tr><th>木</th><th>火</th><th>土</th><th>金</th><th>水</th></tr><tr>"+gogyoN.map(n=>"<td>"+(n||"−")+"</td>").join("")+"</tr>"+relRow+"</table>";
   pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>下段＝日干"+STEMS[ds]+"（"+GOGYO_NAME[dE]+"）から見た関係。比劫＝日干と同じ／食傷＝日干が生む／財＝日干が剋す／官殺＝日干を剋す／印＝日干を生む。過多・不足は数だけでなく、日干と照らし合わせて判定します（先生）。</p>";
-  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokanForMode(yk.branch,daysSinceSetsu,calendarMode)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokanForMode(mk.branch,daysSinceSetsu,calendarMode)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokanForMode(db,daysSinceSetsu,calendarMode)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
+  pro+="<p style='font-size:0.78rem;color:#7a6f5d;'>補助（蔵干の内訳）：年支"+BRANCHES[yk.branch]+"→"+STEMS[zokan(yk.branch,daysSinceSetsu)]+"、月支"+BRANCHES[mk.branch]+"→"+STEMS[zokan(mk.branch,daysSinceSetsu)]+"、日支"+BRANCHES[db]+"→"+STEMS[zokan(db,daysSinceSetsu)]+"。蔵干＝支の中に隠れている十干。深く調べるときの補助として置いています（先生）。</p>";
   // 身強・身弱（先生確定: 陽占の点数の単純比較。特別な流儀なし）
   const miJudge=total>=20?"身強（みきょう）——エネルギー点数が高く、背負える・押せる体質":total<=17?"身弱（みじゃく）——エネルギー点数が低めの、繊細・感性型の体質":"中間——強弱のバランス型";
   pro+="<p style='font-size:0.85rem;'><b>身強・身弱（先生の方式：陽占の点数の単純比較）：</b>エネルギー総数<b>"+total+"点</b>（最小3点〜最大36点・中央およそ19.5点）→ <b>"+miJudge+"</b></p>";
@@ -1606,9 +1563,9 @@ function run(){
   // 調候守護神（標準表・要監修）
   const sg=SHUGO[ds][monthIdx];
   const sgPlaces=[["年干",yk.stem],["月干",mk.stem],
-    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokanForMode(yk.branch,daysSinceSetsu,calendarMode)],
-    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokanForMode(mk.branch,daysSinceSetsu,calendarMode)],
-    ["日支"+BRANCHES[db]+"の蔵干",zokanForMode(db,daysSinceSetsu,calendarMode)]];
+    ["年支"+BRANCHES[yk.branch]+"の蔵干",zokan(yk.branch,daysSinceSetsu)],
+    ["月支"+BRANCHES[mk.branch]+"の蔵干",zokan(mk.branch,daysSinceSetsu)],
+    ["日支"+BRANCHES[db]+"の蔵干",zokan(db,daysSinceSetsu)]];
   let sgHtml="";
   sg.forEach((g,i)=>{
     const exact=sgPlaces.filter(([lb,s])=>s===g).map(([lb])=>lb);
@@ -1701,7 +1658,7 @@ function run(){
   }
   document.getElementById("tenchu-extra").innerHTML=tx;
   // ===== 宿命と適性（職業・健康・組織）（サンプル・要監修） =====
-  let tk="<h3>職業適性 ── 中心星と左手の星から</h3>"
+  let tk="<h3>職業適性 ── 中心星と右手の星から</h3>"
     +"<p><b>"+stars.chest+"（あなたの本質）：</b>"+JOB_TEXT[stars.chest]+(stars.rightHand!==stars.chest?"<br><b>"+stars.rightHand+"（仕事の場での顔）：</b>"+JOB_TEXT[stars.rightHand]:"")+"</p>";
   tk+="<h3>経営・組織の中でのあなた</h3>"
     +"<p><b>"+stars.chest+"：</b>"+ORG_TEXT[stars.chest]+(stars.rightHand!==stars.chest?"<br><b>"+stars.rightHand+"：</b>"+ORG_TEXT[stars.rightHand]:"")+"</p>";
