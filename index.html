@@ -142,7 +142,7 @@
         <select id="mi"></select>
         <select id="pref"></select>
       </div>
-      <div style="text-align:center;font-size:0.78rem;color:#7a6f5d;margin-top:6px;">出生時刻・出生地は占星術（月星座・アセンダント）に使います。不明でも診断できます</div>
+      <div style="text-align:center;font-size:0.78rem;color:#7a6f5d;margin-top:6px;">出生時刻・出生地はジョーティッシュ（月星座・ラグナ）に使います。不明でも診断できます</div>
       <button class="go" onclick="run()">診断する</button>
     </form>
   </div>
@@ -324,11 +324,11 @@
 
     <div class="card member-only" style="text-align:center;border:1px dashed var(--gold);background:#faf6ec;">
       <h2 style="color:var(--gold);">━━ ここからは「一人のあなたへ」── 占星術まで重ねた個別鑑定 ── ━━</h2>
-      <div class="un-meta">さらに深く「自分という人」を知りたい方へ。算命学・気学に西洋占星術・インド式を重ね、いまの時期（ダシャー）まで合わせて読み込む、あなた一人のための個別鑑定です。</div>
+      <div class="un-meta">さらに深く「自分という人」を知りたい方へ。算命学・気学にジョーティッシュを重ね、月の宿・ラグナ・ハウス・いまの時期（ダシャー）まで合わせて読み込む、あなた一人のための個別鑑定です。</div>
     </div>
 
     <div class="card member-only">
-      <h2>結論レポート　─ 算命学 × 西洋 × インド式（自動・解説つき）─</h2>
+      <h2>結論レポート　─ 算命学 × ジョーティッシュ（自動・解説つき）─</h2>
       <div class="un-meta">入力された生年月日・時刻・場所から、「算命学の結論」「占星術の結論」、そして「一人のあなたへ」を毎回自動で組み立てます。各セクションの「🔍 使った見方」を読むと、なぜそう読むのかが学べます。</div>
       <div id="saikoukyuu"></div>
     </div>
@@ -344,7 +344,7 @@
       <div class="note">
         <b>※ この診断について</b><br>
         この診断は、自然法算命学の系譜に連なる鑑定方法と、一般に公開されている標準的な計算方式に基づいて作られています。<br>
-        【計算方式】節入りは太陽黄経による天文計算（日単位・日本時間）。蔵干は二十八元法。大運の立運は「節入りまでの日数÷3（余り2日は切り上げ・最低1歳）」、初旬は月柱の隣の干支から。九星気学は本命星＝年の九星・立春切替の標準方式。占星術はインド式（サイデリアル・ラヒリ方式の近似）を主表示とし、西洋式を参考表示。惑星位置はケプラー軌道要素による計算（精度±1度ほど）で、星座の境目付近では前後する場合があります。出生時刻を入れない場合、月星座は正午で計算した参考値です。ハウスはアセンダント基準のホールサイン方式で、出生時刻があるときのみ表示します。<br>
+        【計算方式】節入りは太陽黄経による天文計算（日単位・日本時間）。蔵干は二十八元法。大運の立運は「節入りまでの日数÷3（余り2日は切り上げ・最低1歳）」、初旬は月柱の隣の干支から。九星気学は本命星＝年の九星・立春切替の標準方式。ジョーティッシュはインド式（サイデリアル・ラヒリ方式の近似）を主表示。惑星位置はケプラー軌道要素による計算（精度±1度ほど）で、星座の境目付近では前後する場合があります。出生時刻を入れない場合、月星座は正午で計算した参考値です。ハウスはラグナ基準のホールサイン方式で、出生時刻があるときのみ表示します。<br>
         【鑑定の方式】調候守護神は標準表（日干×月支120パターン）。忌神は過剰になっている五行。五行の過多は命式6文字中3つ以上が目安で、厳密には日干・身強身弱と照らして判定します。干合は隣り合う柱でのみ成立し、成立したときは変化後の五行で数え直します。身強・身弱は陽占のエネルギー点数で見ます。伴星は日干と「年干と干合する干」から出します（実例で確認済み）。相性診断に点数は表示しません——数字より、縁の形を言葉でお伝えする方針です。<br>
         【ご注意】健康に関する記述は東洋五行の伝統的な見方の紹介であり、医学的な診断・助言ではありません。気になる症状は医療機関にご相談ください。解釈の文章は、鑑定の経験をもとにこれからも磨き続けていきます。
       </div>
@@ -1757,8 +1757,8 @@ function run(){
   let sHtml='<table class="un"><tr><th></th><th>星座</th><th class="adv">あなたの読み解き</th></tr>';
   const ELEM4=["火","地","風","水"];
   const sunSid=siderealSign(sunL,jdUT), moonSid=siderealSign(moonL,jdUT);
-  sHtml+='<tr><td>太陽星座</td><td><b>'+ZODIAC[sunSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[sunSid%4]+'のエレメント<br>西洋式では'+ZODIAC[sunSign]+'</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※太陽星座＝人生の方向・生き方の軸を表します</span><br>'+ZODIAC_TEXT[sunSid]+'</td></tr>';
-  sHtml+='<tr><td>月星座'+(knownTime?'':'<br><span style="font-size:0.7rem;">（時刻不明のため正午で計算・参考値）</span>')+'</td><td><b>'+ZODIAC[moonSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[moonSid%4]+'のエレメント<br>西洋式では'+ZODIAC[moonSign]+'</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※月星座＝感情・素顔・心のあり方を表します</span><br>'+ZODIAC_TEXT[moonSid]+'</td></tr>';
+  sHtml+='<tr><td>太陽星座</td><td><b>'+ZODIAC[sunSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[sunSid%4]+'のエレメント</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※太陽星座＝人生の方向・生き方の軸を表します</span><br>'+ZODIAC_TEXT[sunSid]+'</td></tr>';
+  sHtml+='<tr><td>月星座'+(knownTime?'':'<br><span style="font-size:0.7rem;">（時刻不明のため正午で計算・参考値）</span>')+'</td><td><b>'+ZODIAC[moonSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[moonSid%4]+'のエレメント</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※月星座＝感情・素顔・心のあり方を表します</span><br>'+ZODIAC_TEXT[moonSid]+'</td></tr>';
   const NAK=["アシュヴィニー","バラニー","クリッティカー","ローヒニー","ムリガシラー","アールドラー","プナルヴァス","プシュヤ","アーシュレーシャー","マガー","プールヴァ・パールグニー","ウッタラ・パールグニー","ハスタ","チットラー","スヴァーティー","ヴィシャーカー","アヌラーダー","ジェーシュター","ムーラ","プールヴァ・アーシャーダー","ウッタラ・アーシャーダー","シュラヴァナ","ダニシュター","シャタビシャー","プールヴァ・バードラパダー","ウッタラ・バードラパダー","レーヴァティー"];
   const sidMoonLon=((moonL-ayanamsa(jdUT))%360+360)%360;
   // 月の宿の本文（リーダー提供文を順次反映。未登録の宿は従来のフォールバック文を出す）
@@ -1773,9 +1773,9 @@ function run(){
     const ascL=ascendant(jdUT,p[1],p[2]);
     ascSign=Math.floor(ascL/30)%12;
     ascSid=siderealSign(ascL,jdUT);
-    sHtml+='<tr><td>アセンダント<br><span style="font-size:0.7rem;">（'+p[0]+'・'+hUsed+'時'+miV+'分）</span></td><td><b>'+ZODIAC[ascSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[ascSid%4]+'のエレメント<br>西洋式では'+ZODIAC[ascSign]+'</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※アセンダント＝第一印象・まわりから見えるあなたを表します</span><br>'+ZODIAC_TEXT[ascSid]+'</td></tr>';
+    sHtml+='<tr><td>ラグナ<br><span style="font-size:0.7rem;">（'+p[0]+'・'+hUsed+'時'+miV+'分）</span></td><td><b>'+ZODIAC[ascSid]+'</b><br><span style="font-size:0.75rem;color:#7a6f5d;">'+ELEM4[ascSid%4]+'のエレメント</span></td><td class="adv"><span style="font-size:0.72rem;color:#7a6f5d;">※ラグナ＝第一印象・まわりから見えるあなたを表します</span><br>'+ZODIAC_TEXT[ascSid]+'</td></tr>';
   }else{
-    sHtml+='<tr><td>アセンダント</td><td>−</td><td class="adv">出生時刻を入力すると表示されます。</td></tr>';
+    sHtml+='<tr><td>ラグナ</td><td>−</td><td class="adv">出生時刻を入力すると表示されます。</td></tr>';
   }
   // 惑星の配置と居心地（グラハ・マイトリー）
   sHtml+='<tr><th colspan="3" style="padding-top:16px;text-align:left;color:var(--accent-soft);">惑星の配置と居心地（インド式）</th></tr>';
@@ -1803,7 +1803,7 @@ function run(){
     planetList.forEach(([pn,mean,sgn])=>{const h=houseOf(sgn);hHtml+='<tr><td>'+pn+'<br><span style="font-size:0.7rem;">'+mean+'</span></td><td>第'+(h+1)+'ハウス</td><td class="adv">'+HOUSE_NAME[h]+'</td></tr>';});
     hHtml+='</table>';
     hHtml+="<p style='font-size:0.92rem;'>とくに大事なのはこの2つです。<br><b>太陽は第"+(houseOf(sunSid)+1)+"ハウス（"+HOUSE_NAME[houseOf(sunSid)]+"のお部屋）</b>——あなたの人生の主な舞台は、ここになります。<br><b>月は第"+(houseOf(moonSid)+1)+"ハウス（"+HOUSE_NAME[houseOf(moonSid)]+"のお部屋）</b>——心がいちばん安らぐのは、この場面です。</p>";
-    hHtml+='<div style="font-size:0.78rem;color:#7a6f5d;">ハウス＝空を12の「お部屋」に分けたもの。生まれた瞬間に東からのぼっていた星座（アセンダント）のお部屋を第1ハウスとして、順番に数えます（ホールサイン方式）。</div></div>';
+    hHtml+='<div style="font-size:0.78rem;color:#7a6f5d;">ハウス＝空を12の「お部屋」に分けたもの。生まれた瞬間に東からのぼっていた星座（ラグナ）のお部屋を第1ハウスとして、順番に数えます（ホールサイン方式）。</div></div>';
     sHtml+=hHtml;
   }else{
     sHtml+='<div style="font-size:0.85rem;color:#7a6f5d;margin-top:10px;">出生時刻を入れると「星のお部屋（ハウス）」——その星が人生のどの場面（お金・家庭・天職など）で働くか——も表示されます。</div>';
@@ -1901,7 +1901,7 @@ function run(){
     seiH+='<div style="font-size:0.83rem;color:#7a6f5d;margin-top:4px;">※読み方のご案内：星座や星は「だから必ずこうなる」というものではなく、「こういう場面で力が出る」という見方をします。弱い星は欠点ではなく、これから磨いていくテーマです。第8室・第12室なども怖い意味ではなく、「深さ」や「充電と祈りの時間」を表す場所です。</div>';
     seiH+='</div>';
     H.push(seiH);
-    H.push(kaisetsu("占星術","<b>西洋式（トロピカル）</b>と<b>インド式（サイデリアル）</b>は約24度ずれ、星座がほぼ1つ前にずれます（西洋＝双子座でも、インド式では牡牛座、など）。<b>ナクシャトラ</b>＝月の通り道を27に分けた生まれ星で、支配星が中核の色を示します。<b>ハウス</b>＝ラグナの星座を第1室として12の場面に分けたもの（ホールサイン方式）。<b>高揚・減衰</b>＝その星が元気か窮屈か。"));
+    H.push(kaisetsu("ジョーティッシュ","<b>サイデリアル</b>＝実際の星空に近い恒星基準で見る方式です。<b>ナクシャトラ</b>＝月の通り道を27に分けた生まれ星で、支配星が中核の色を示します。<b>ハウス</b>＝ラグナの星座を第1室として12の場面に分けたもの（ホールサイン方式）。<b>高揚・減衰</b>＝その星が元気か窮屈か。"));
 
     // ===== ③ 一人のあなたへ（ダシャー＋4層の収束・断定の言葉） =====
     var li=nIdx%9, yrs=(1-frac)*DASHA_SEQ[li][1];
@@ -1941,7 +1941,7 @@ function run(){
     H.push('<p>あなたは、'+STAR_KEY[center]+'ことで、いちばん「あなた」になる人です。'+(kyo==="身強"?"自分で決めて動くほど、芯が定まります。":(kyo==="身弱"?"信頼できる人とつながるほど、芯が定まります。":"前に出るときと引くときを選べる、しなやかな芯です。"))+'算命学も占星術も、別々の言葉で同じ方向を指しています。守護神「'+sgEl+'」の力——'+sgE+'——は、暮らしに少しずつ取り入れられます。色なら'+gm.c+'、方位なら'+gm.d+'。そして「'+gm.a+'」を心がけると、土台が安定していきます。</p>');
     H.push('<p style="font-size:1.04rem;text-align:center;font-weight:700;color:var(--accent);margin:12px 0 4px;">あなたは、'+ZKEY[sunSid]+'を軸に、'+STAR_KEY[center]+'人。<br>'+sgEl+'の力（'+sgE.split("、")[0]+'）を切らさず、あなたのまま生きていい。</p>');
     H.push('</div>');
-    H.push(kaisetsu("一人のあなたへ（算命学×占星術のブレンド）","算命学（生まれ日の十干・中心星・身強身弱・守護神・時期＝大運）と占星術（太陽・月・月の宿・ラグナ・いちばん強い星・時期＝ダシャー）を重ね、<b>両方が同じことを指している“芯”だけ</b>を取り出してお伝えします。生まれた<b>時刻</b>まで分かると、同じ生年月日の人と区別された「あなた一人」の星になります。"));
+    H.push(kaisetsu("一人のあなたへ（算命学×ジョーティッシュのブレンド）","算命学（生まれ日の十干・中心星・身強身弱・守護神・時期＝大運）とジョーティッシュ（太陽・月・月の宿・ラグナ・いちばん強い星・時期＝ダシャー）を重ね、<b>両方が同じことを指している“芯”だけ</b>を取り出してお伝えします。生まれた<b>時刻</b>まで分かると、同じ生年月日の人と区別された「あなた一人」の星になります。"));
     H.push('<div class="note" style="margin-top:10px;">惑星の位置・宿・ダシャーは計算による目安です（境目付近は前後します）。この結論レポートは、入力された生年月日・時刻・場所から毎回自動で組み立てています。</div>');
 
     box.innerHTML = H.join("");
@@ -1961,7 +1961,7 @@ function run(){
     hon+="<p>逆に、"+worstP[1]+"をつかさどる<b>"+worstP[0]+"</b>は、いまは少し窮屈な場所にあります。「"+worstP[1].split("・")[0]+"」のことで人より時間がかかると感じてきたなら、それは欠点ではなく、いまもゆっくり磨かれている途中の力だということです。</p>";
   }
   hon+="<p>いまあなたを悩ませていることにも、かならず出口があります。終わらない冬がないように、運にもかならず巡りが来ますからね。ひとりで抱えきれなくなったら、いつでもここへ戻っていらっしゃい。</p>";
-  hon+='<div style="border-left:4px solid var(--accent);background:#f3f8fa;border-radius:0 8px 8px 0;padding:8px 12px;margin-top:10px;font-size:0.82rem;line-height:1.7;"><b style="color:var(--accent);">🔍 使った見方：あなたという人</b><br>占星術の<b>太陽</b>（生き方）・<b>月</b>（心）・<b>アセンダント</b>（外向きの顔）と、算命学の<b>中心星</b>（性格の核）を重ねて自動で組み立てています。星座と中心星が同じ方向なら長所が強く出て、違うなら「奥行き・可能性」として読みます。</div>';
+  hon+='<div style="border-left:4px solid var(--accent);background:#f3f8fa;border-radius:0 8px 8px 0;padding:8px 12px;margin-top:10px;font-size:0.82rem;line-height:1.7;"><b style="color:var(--accent);">🔍 使った見方：あなたという人</b><br>ジョーティッシュの<b>太陽</b>（生き方）・<b>月</b>（心）・<b>ラグナ</b>（外向きの顔）と、算命学の<b>中心星</b>（性格の核）を重ねて自動で組み立てています。星座と中心星が同じ方向なら長所が強く出て、違うなら「奥行き・可能性」として読みます。</div>';
 
   document.getElementById("honshitsu").innerHTML=hon;
 
